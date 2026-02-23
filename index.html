@@ -54,10 +54,23 @@ nav.s{
 }
 .nb{display:flex;align-items:center;gap:0.85rem;text-decoration:none;}
 .ni{
-  width:44px;height:44px;border-radius:50%;
-  background:linear-gradient(135deg,var(--forest),var(--sage));
-  border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;
-  font-size:1.25rem;box-shadow:0 0 16px rgba(200,147,42,0.35);
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  padding:3px;
+  background:linear-gradient(135deg,var(--gold),var(--amber));
+  box-shadow:0 0 18px rgba(200,147,42,0.45);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.ni img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:50%;
+  border:2px solid rgba(255,255,255,0.15);
 }
 .nt .p1{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:700;color:#fff;letter-spacing:.06em;display:block;}
 .nt .p2{font-family:'Great Vibes',cursive;font-size:.88rem;color:var(--gold);display:block;}
@@ -72,15 +85,81 @@ nav.s{
   background:var(--gold);transform:scaleX(0);transform-origin:right;transition:transform .3s;
 }
 .nl a:hover{color:#fff;}.nl a:hover::after{transform:scaleX(1);transform-origin:left;}
-.nc{
-  background:linear-gradient(135deg,var(--amber),var(--gold));color:var(--charcoal);
-  border:none;padding:.58rem 1.6rem;border-radius:.25rem;
-  font-family:'Jost',sans-serif;font-size:.74rem;font-weight:700;
-  letter-spacing:.12em;text-transform:uppercase;cursor:pointer;
-  box-shadow:0 4px 18px rgba(200,147,42,.4);transition:all .3s;
+.login-btn{
+  background:transparent;
+  color:var(--gold);
+  border:1.5px solid var(--gold);
+  padding:.55rem 1.5rem;
+  border-radius:.3rem;
+  font-family:'Jost',sans-serif;
+  font-size:.74rem;
+  font-weight:600;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  cursor:pointer;
+  position:relative;
+  overflow:hidden;
+  transition:all .3s ease;
 }
-.nc:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(200,147,42,.55);}
 
+.login-btn::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:100%;
+  height:100%;
+  background:linear-gradient(120deg,transparent,rgba(255,255,255,0.25),transparent);
+  transition:all .6s;
+}
+
+.login-btn:hover{
+  background:var(--gold);
+  color:var(--charcoal);
+  box-shadow:0 6px 20px rgba(200,147,42,.5);
+  transform:translateY(-2px);
+}
+
+.login-btn:hover::before{
+  left:100%;
+}
+.nc{
+  background:linear-gradient(135deg,var(--amber),var(--gold));
+  color:var(--charcoal);
+  border:none;
+  padding:.58rem 1.6rem;
+  border-radius:.3rem;
+  font-family:'Jost',sans-serif;
+  font-size:.74rem;
+  font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  cursor:pointer;
+  box-shadow:0 4px 18px rgba(200,147,42,.4);
+  transition:all .3s ease;
+  position:relative;
+  overflow:hidden;
+}
+
+.nc::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:100%;
+  height:100%;
+  background:linear-gradient(120deg,transparent,rgba(255,255,255,0.3),transparent);
+  transition:.6s;
+}
+
+.nc:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 28px rgba(200,147,42,.55);
+}
+
+.nc:hover::before{
+  left:100%;
+}
 /* ══ HERO ══ */
 .hero{
   min-height:100vh;position:relative;
@@ -516,17 +595,32 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;back
 
 <!-- ═ NAV ═ -->
 <nav id="nav">
+  <!-- Logo + Brand -->
   <a class="nb" href="#">
-    <div class="ni">🌴</div>
-    <div class="nt"><span class="p1">Espacio Norte</span><span class="p2">AirBNB</span></div>
+    <div class="ni">
+      <img src="/assets/images/logo.jpg" alt="Espacio Norte Logo" style="height:40px;">
+    </div>
+    <div class="nt">
+      <span class="p1">Espacio Norte</span>
+      <span class="p2">AirBNB</span>
+    </div>
   </a>
+
+  <!-- Navigation Links -->
   <div class="nl">
     <a href="#rooms">Rooms</a>
     <a href="#avail">Availability</a>
     <a href="#bookings">Bookings</a>
     <a href="#footer">Contact</a>
   </div>
+
+  
+<div style="display:flex; gap:14px; align-items:center;">
+  <button class="login-btn" onclick="window.location.href='login.php'">
+    Login
+  </button>
   <button class="nc" onclick="openModal()">Book Now</button>
+</div>
 </nav>
 
 <!-- ═ HERO ═ -->
@@ -703,27 +797,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;back
   </div>
 </section>
 
-<!-- ═ BOOKINGS ═ -->
-<section class="sw bks" id="bookings">
-  <div class="ctr">
-    <div class="bkh">
-      <div>
-        <div class="ew"><span class="ed"></span><span class="et">Reservations</span></div>
-        <h2 class="st">Manage <em>Bookings</em></h2>
-      </div>
-      <button class="btn-nb" onclick="openModal()">+ New Booking</button>
-    </div>
-    <div class="tbl-wr">
-      <table class="bt">
-        <thead><tr>
-          <th>#</th><th>Guest</th><th>Suite</th><th>Check-in</th>
-          <th>Check-out</th><th>Pax</th><th>Total</th><th>Status</th><th>Action</th>
-        </tr></thead>
-        <tbody id="bktb"></tbody>
-      </table>
-    </div>
-  </div>
-</section>
+
 
 <!-- ═ FOOTER ═ -->
 <footer id="footer">
@@ -841,22 +915,6 @@ function renderSlots(){
     if(b){b.textContent=occ?'Booked':'Available';b.className=`rbadge ${occ?'ba-n':'ba-y'}`;}
   });
   document.getElementById('slots').innerHTML=h;
-}
-
-function renderTable(){
-  const tb=document.getElementById('bktb');
-  if(!bk.length){tb.innerHTML=`<tr><td class="erow" colspan="9">No bookings yet — be the first to reserve a suite 🌴</td></tr>`;return;}
-  const fmt=d=>new Date(d).toLocaleString('en-PH',{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'});
-  tb.innerHTML=bk.map((b,i)=>`<tr>
-    <td>${i+1}</td>
-    <td><div class="gn">${b.fn} ${b.ln}</div><div class="gp">${b.ph}</div></td>
-    <td>Suite ${b.rm}</td>
-    <td>${fmt(b.ci)}</td><td>${fmt(b.co)}</td>
-    <td>${b.px}</td>
-    <td><strong>₱${RATE.toLocaleString()}</strong></td>
-    <td><span class="ps ${b.st==='confirmed'?'psc':'psx'}">${b.st}</span></td>
-    <td>${b.st!=='cancelled'?`<button class="btn-can" onclick="cancel(${i})">Cancel</button>`:''}</td>
-  </tr>`).join('');
 }
 function cancel(i){if(!confirm('Cancel this booking?'))return;bk[i].st='cancelled';save();renderTable();renderCal();}
 
