@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Espacio Norte AirBNB — Your Home Away From Home</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════
+   PALETTE — extracted from promo image
+   Linen cream:  #F2E8D5
+   Parchment:    #EAD9BC
+   Forest green: #2B4A1A
+   Sage:         #4A7A2E
+   Amber gold:   #C8932A
+   Bright gold:  #DBA84A
+   Warm wood:    #8B5E3C
+   Deep charcoal:#2C2416
+   Off-white:    #FAF6EE
+   ═══════════════════════════════════════ */
+:root {
+  --linen:      #F2E8D5;
+  --parchment:  #EAD9BC;
+  --off-white:  #FAF6EE;
+  --forest:     #2B4A1A;
+  --forest-dk:  #1A2E10;
+  --sage:       #4A7A2E;
+  --amber:      #C8932A;
+  --gold:       #DBA84A;
+  --gold-pale:  #F0D08A;
+  --wood:       #8B5E3C;
+  --charcoal:   #2C2416;
+  --text:       #3A2C1A;
+  --muted:      #7A6248;
+  --border:     #D8C9A8;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Jost',sans-serif;background:var(--off-white);color:var(--text);overflow-x:hidden;}
+::-webkit-scrollbar{width:5px;}
+::-webkit-scrollbar-track{background:var(--linen);}
+::-webkit-scrollbar-thumb{background:var(--amber);border-radius:3px;}
+
+/* ══ NAV ══ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:900;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.2rem 4rem;transition:all 0.4s;
+}
+nav.s{
+  background:rgba(26,22,14,0.95);backdrop-filter:blur(16px);
+  padding:0.8rem 4rem;box-shadow:0 4px 40px rgba(0,0,0,0.25);
+}
+.nb{display:flex;align-items:center;gap:0.85rem;text-decoration:none;}
+.ni{
+  width:44px;height:44px;border-radius:50%;
+  background:linear-gradient(135deg,var(--forest),var(--sage));
+  border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;
+  font-size:1.25rem;box-shadow:0 0 16px rgba(200,147,42,0.35);
+}
+.nt .p1{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:700;color:#fff;letter-spacing:.06em;display:block;}
+.nt .p2{font-family:'Great Vibes',cursive;font-size:.88rem;color:var(--gold);display:block;}
+.nl{display:flex;gap:2.25rem;}
+.nl a{
+  color:rgba(255,255,255,.75);text-decoration:none;font-size:.76rem;
+  font-weight:500;letter-spacing:.12em;text-transform:uppercase;
+  position:relative;transition:color .2s;
+}
+.nl a::after{
+  content:'';position:absolute;bottom:-4px;left:0;right:0;height:1px;
+  background:var(--gold);transform:scaleX(0);transform-origin:right;transition:transform .3s;
+}
+.nl a:hover{color:#fff;}.nl a:hover::after{transform:scaleX(1);transform-origin:left;}
+.nc{
+  background:linear-gradient(135deg,var(--amber),var(--gold));color:var(--charcoal);
+  border:none;padding:.58rem 1.6rem;border-radius:.25rem;
+  font-family:'Jost',sans-serif;font-size:.74rem;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;cursor:pointer;
+  box-shadow:0 4px 18px rgba(200,147,42,.4);transition:all .3s;
+}
+.nc:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(200,147,42,.55);}
+
+/* ══ HERO ══ */
+.hero{
+  min-height:100vh;position:relative;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  overflow:hidden;
+  background:linear-gradient(160deg,#0e1a08 0%,#1a2e10 50%,#0e1a08 100%);
+}
+.hbg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 90% 70% at 15% 105%,rgba(139,94,60,.4) 0%,transparent 55%),
+    radial-gradient(ellipse 60% 50% at 85% -5%,rgba(74,122,46,.35) 0%,transparent 50%),
+    radial-gradient(ellipse 70% 60% at 50% 50%,rgba(26,46,16,.7) 0%,transparent 80%);
+}
+/* Subtle diagonal light shafts */
+.hr1,.hr2,.hr3{position:absolute;top:-30%;width:1px;height:160%;transform-origin:top;}
+.hr1{right:22%;background:linear-gradient(to bottom,transparent,rgba(219,168,74,.1),transparent);transform:rotate(-10deg);}
+.hr2{right:27%;background:linear-gradient(to bottom,transparent,rgba(219,168,74,.06),transparent);transform:rotate(-10deg);}
+.hr3{right:18%;background:linear-gradient(to bottom,transparent,rgba(219,168,74,.04),transparent);transform:rotate(-10deg);}
+
+.hpl{position:absolute;left:-40px;bottom:-30px;font-size:20rem;opacity:.06;transform:rotate(-12deg);pointer-events:none;user-select:none;filter:blur(1px);}
+.hpr{position:absolute;right:-40px;top:-40px;font-size:18rem;opacity:.06;transform:rotate(15deg) scaleX(-1);pointer-events:none;user-select:none;filter:blur(1px);}
+
+.hc{position:relative;z-index:2;text-align:center;padding:2rem 1.5rem;max-width:800px;}
+.heb{
+  display:inline-flex;align-items:center;gap:.7rem;margin-bottom:2rem;
+  opacity:0;animation:fup .8s .15s ease forwards;
+}
+.hebl{width:36px;height:1px;background:linear-gradient(90deg,transparent,var(--gold));}
+.hebr{width:36px;height:1px;background:linear-gradient(90deg,var(--gold),transparent);}
+.hebt{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-weight:500;}
+.hero h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(3.4rem,8.5vw,7rem);
+  font-weight:300;line-height:1.02;color:var(--off-white);
+  opacity:0;animation:fup .9s .3s ease forwards;margin-bottom:.25rem;
+}
+.hero h1 em{
+  font-style:italic;font-weight:400;
+  background:linear-gradient(135deg,var(--gold-pale),var(--gold));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.hscript{
+  font-family:'Great Vibes',cursive;
+  font-size:clamp(2.2rem,5.5vw,4rem);
+  color:var(--gold);display:block;
+  opacity:0;animation:fup .9s .48s ease forwards;margin-bottom:2.25rem;
+}
+.hero p{
+  font-size:.98rem;color:rgba(242,232,213,.65);line-height:1.85;
+  max-width:460px;margin:0 auto 2.75rem;font-weight:300;
+  opacity:0;animation:fup .9s .62s ease forwards;
+}
+.hbtns{
+  display:flex;gap:1.1rem;justify-content:center;flex-wrap:wrap;
+  opacity:0;animation:fup .9s .76s ease forwards;
+}
+.btn-gold{
+  background:linear-gradient(135deg,var(--amber),var(--gold));color:var(--charcoal);
+  border:none;padding:.95rem 2.5rem;border-radius:.25rem;
+  font-family:'Jost',sans-serif;font-size:.76rem;font-weight:700;
+  letter-spacing:.15em;text-transform:uppercase;cursor:pointer;
+  box-shadow:0 8px 28px rgba(200,147,42,.45);transition:all .3s;
+}
+.btn-gold:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(200,147,42,.6);}
+.btn-ghost{
+  background:transparent;color:rgba(242,232,213,.85);
+  border:1px solid rgba(242,232,213,.3);
+  padding:.95rem 2.5rem;border-radius:.25rem;
+  font-family:'Jost',sans-serif;font-size:.76rem;font-weight:500;
+  letter-spacing:.15em;text-transform:uppercase;cursor:pointer;transition:all .3s;
+}
+.btn-ghost:hover{border-color:rgba(242,232,213,.7);background:rgba(242,232,213,.07);}
+
+/* Hero stats bar */
+.hstats{
+  position:absolute;bottom:0;left:0;right:0;z-index:2;
+  display:flex;justify-content:center;gap:0;
+  background:rgba(26,22,10,.88);backdrop-filter:blur(10px);
+  border-top:1px solid rgba(219,168,74,.15);
+  opacity:0;animation:fup .9s 1s ease forwards;
+}
+.hstat{
+  flex:1;max-width:200px;text-align:center;padding:1.4rem 1rem;
+  border-right:1px solid rgba(219,168,74,.12);
+}
+.hstat:last-child{border-right:none;}
+.hstat-num{
+  font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:600;
+  color:var(--gold);line-height:1;
+}
+.hstat-lbl{font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(242,232,213,.4);margin-top:.3rem;}
+
+.hcurve{position:absolute;bottom:-1px;left:0;right:0;}
+
+@keyframes fup{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
+
+/* ══ BOOKING BAR ══ */
+.bbwrap{background:var(--off-white);padding:3.5rem 2rem 0;}
+.bb{
+  max-width:1040px;margin:0 auto;
+  background:var(--charcoal);border-radius:.5rem;
+  padding:2.5rem 3rem;
+  box-shadow:0 20px 80px rgba(42,30,14,.22);
+  position:relative;overflow:hidden;
+}
+.bb::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--amber),var(--gold),var(--amber));
+}
+.bb-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.75rem;flex-wrap:wrap;gap:.75rem;}
+.bb-top h2{
+  font-family:'Cormorant Garamond',serif;font-size:1.55rem;font-weight:600;
+  color:var(--off-white);letter-spacing:.02em;
+}
+.bb-top h2 span{font-style:italic;color:var(--gold);}
+.rate-pill{
+  background:rgba(219,168,74,.15);border:1px solid rgba(219,168,74,.3);
+  color:var(--gold);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;
+  padding:.38rem .95rem;border-radius:2rem;
+}
+.bbf{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:.9rem;align-items:end;}
+.bfl label{display:block;font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(242,232,213,.4);font-weight:500;margin-bottom:.45rem;}
+.bfl input,.bfl select{
+  width:100%;background:rgba(255,255,255,.05);
+  border:1px solid rgba(242,232,213,.14);border-radius:.3rem;
+  padding:.78rem 1rem;font-family:'Jost',sans-serif;font-size:.88rem;
+  color:var(--off-white);outline:none;transition:border-color .2s;
+}
+.bfl input::placeholder{color:rgba(242,232,213,.28);}
+.bfl input:focus,.bfl select:focus{border-color:var(--gold);}
+.bfl select option{background:#2C2416;color:#FAF6EE;}
+.bb-btn{
+  background:linear-gradient(135deg,var(--amber),var(--gold));color:var(--charcoal);
+  border:none;padding:.78rem 2rem;border-radius:.3rem;
+  font-family:'Jost',sans-serif;font-size:.74rem;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;cursor:pointer;white-space:nowrap;
+  box-shadow:0 4px 18px rgba(200,147,42,.35);transition:all .3s;
+}
+.bb-btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(200,147,42,.5);}
+.bbr{margin-top:.9rem;font-size:.85rem;font-weight:500;display:none;padding:.7rem 1rem;border-radius:.3rem;border:1px solid;}
+.bbr.ok{background:rgba(74,122,46,.15);border-color:rgba(74,122,46,.4);color:#7DC45A;}
+.bbr.err{background:rgba(180,60,60,.15);border-color:rgba(180,60,60,.4);color:#F87171;}
+
+/* ══ SECTIONS ══ */
+.sw{padding:6rem 2rem;position:relative;}
+.ctr{max-width:1060px;margin:0 auto;}
+.ew{display:inline-flex;align-items:center;gap:.55rem;margin-bottom:.65rem;}
+.ed{width:24px;height:1px;background:var(--amber);}
+.et{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);font-weight:600;}
+.st{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:600;line-height:1.15;color:var(--forest-dk);}
+.st em{font-style:italic;color:var(--amber);}
+.ss{color:var(--muted);font-size:.93rem;line-height:1.8;font-weight:300;max-width:480px;margin-top:.7rem;}
+
+/* ══ ROOMS ══ */
+.rs{background:var(--linen);}
+.rh{text-align:center;margin-bottom:4rem;}
+.rh .ss{margin:.7rem auto 0;}
+.rg{display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:2.5rem;}
+.rc{
+  background:var(--off-white);border-radius:.65rem;overflow:hidden;
+  border:1px solid var(--border);
+  box-shadow:0 4px 20px rgba(42,30,14,.07);
+  transition:all .4s cubic-bezier(.23,1,.32,1);cursor:pointer;
+}
+.rc:hover{transform:translateY(-8px);box-shadow:0 24px 64px rgba(42,30,14,.18);border-color:var(--amber);}
+
+/* Room thumbnail — rich gradients mimicking the actual room tones */
+.rth{height:265px;position:relative;overflow:hidden;}
+.rth1{background:linear-gradient(155deg,#3D6B1F 0%,#6B4423 35%,#C8932A 70%,#DBA84A 100%);}
+.rth2{background:linear-gradient(155deg,#1A3D0F 0%,#5C3D2E 35%,#8B5E3C 70%,#C8932A 100%);}
+.rth-in{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
+.rth-ico{font-size:6rem;opacity:.2;}
+
+/* Wood grain texture overlay */
+.rth::after{
+  content:'';position:absolute;inset:0;
+  background:repeating-linear-gradient(92deg,transparent,transparent 3px,rgba(255,255,255,.02) 3px,rgba(255,255,255,.02) 4px);
+  pointer-events:none;
+}
+.rth-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(20,14,5,.72) 0%,transparent 55%);}
+.rth-tags{position:absolute;top:1rem;left:1.25rem;right:1.25rem;display:flex;justify-content:space-between;align-items:center;}
+.rth-num{font-family:'Cormorant Garamond',serif;font-size:.78rem;font-weight:700;color:rgba(255,255,255,.5);letter-spacing:.2em;}
+.rbadge{font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.28rem .8rem;border-radius:2rem;border:1px solid;}
+.ba-y{background:rgba(43,74,26,.88);border-color:rgba(74,122,46,.5);color:#C4F09C;}
+.ba-n{background:rgba(155,30,30,.88);border-color:rgba(220,60,60,.4);color:#FFC4C4;}
+.rth-name{position:absolute;bottom:1.25rem;left:1.5rem;font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--off-white);}
+
+.rb{padding:1.5rem 1.75rem 1.75rem;}
+.rmeta{display:flex;gap:1.4rem;margin-bottom:1.2rem;flex-wrap:wrap;}
+.rm{font-size:.78rem;color:var(--muted);display:flex;align-items:center;gap:.3rem;}
+.ams{display:flex;flex-wrap:wrap;gap:.45rem;margin-bottom:1.5rem;}
+.am{
+  font-size:.7rem;letter-spacing:.05em;font-weight:500;
+  background:var(--linen);color:var(--muted);
+  padding:.25rem .65rem;border-radius:.2rem;border:1px solid var(--border);
+}
+.rfoot{display:flex;align-items:center;justify-content:space-between;padding-top:1.2rem;border-top:1px solid var(--border);}
+.rp .amt{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:700;color:var(--amber);line-height:1;}
+.rp .per{font-size:.68rem;color:var(--muted);letter-spacing:.05em;margin-top:.1rem;}
+.btn-res{
+  background:var(--forest);color:var(--off-white);border:none;
+  padding:.68rem 1.65rem;border-radius:.25rem;
+  font-family:'Jost',sans-serif;font-size:.72rem;font-weight:600;
+  letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:all .3s;
+}
+.btn-res:hover{background:var(--sage);transform:translateY(-1px);}
+
+/* ══ AVAILABILITY ══ */
+.as{background:var(--off-white);}
+.al{display:grid;grid-template-columns:1fr 1.1fr;gap:5rem;align-items:start;}
+
+/* Calendar card — dark, premium look */
+.calcard{
+  background:var(--charcoal);border-radius:.65rem;padding:2rem;
+  box-shadow:0 12px 48px rgba(42,30,14,.22);position:relative;overflow:hidden;
+}
+.calcard::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--amber),var(--gold));}
+.cal-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;}
+.cal-mo{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:600;color:var(--off-white);}
+.cal-arrs{display:flex;gap:.45rem;}
+.cal-arr{
+  width:30px;height:30px;border-radius:50%;
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);
+  color:rgba(255,255,255,.65);font-size:.9rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;transition:all .2s;
+}
+.cal-arr:hover{background:var(--amber);color:var(--charcoal);border-color:var(--amber);}
+.cg{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;}
+.cdn{text-align:center;font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(242,232,213,.32);padding:.38rem 0;font-weight:500;}
+.cd{
+  text-align:center;padding:.48rem .1rem;border-radius:.3rem;
+  font-size:.8rem;cursor:pointer;color:rgba(242,232,213,.72);transition:all .15s;
+}
+.cd:hover:not(.ce):not(.cb){background:rgba(219,168,74,.2);color:var(--gold);}
+.ct{background:linear-gradient(135deg,var(--amber),var(--gold)) !important;color:var(--charcoal) !important;font-weight:700;}
+.cb{background:rgba(180,60,60,.2) !important;color:rgba(248,113,113,.65) !important;cursor:not-allowed;text-decoration:line-through;}
+.ce{cursor:default;}
+.cl{display:flex;gap:1.1rem;margin-top:1.2rem;flex-wrap:wrap;}
+.cli{display:flex;align-items:center;gap:.38rem;font-size:.67rem;color:rgba(242,232,213,.42);}
+.cld{width:10px;height:10px;border-radius:2px;}
+
+/* Slots */
+.scard{
+  background:var(--off-white);border:1px solid var(--border);border-radius:.45rem;
+  padding:1.2rem 1.5rem;display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:.8rem;transition:all .25s;box-shadow:0 2px 10px rgba(42,30,14,.05);
+}
+.scard:hover{border-color:var(--amber);box-shadow:0 4px 18px rgba(42,30,14,.1);}
+.sl-n{font-weight:600;font-size:.93rem;color:var(--forest-dk);}
+.sl-i{font-size:.75rem;color:var(--muted);margin-top:.2rem;}
+.sr{display:flex;align-items:center;gap:.8rem;}
+.pill{font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.28rem .8rem;border-radius:2rem;}
+.p-a{background:#D4F5B8;color:#1E5C0A;}
+.p-b{background:#FEE2E2;color:#991B1B;}
+.btn-sb{
+  background:var(--forest);color:var(--off-white);border:none;
+  padding:.42rem 1rem;border-radius:.25rem;font-size:.68rem;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:all .2s;
+}
+.btn-sb:hover{background:var(--sage);}
+
+/* ══ FEATURES ══ */
+.fs{background:var(--charcoal);padding:5.5rem 2rem;position:relative;overflow:hidden;}
+.fs::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 55% 80% at 5% 50%,rgba(74,122,46,.08),transparent 55%),
+             radial-gradient(ellipse 55% 80% at 95% 50%,rgba(200,147,42,.08),transparent 55%);
+}
+.fi{position:relative;z-index:1;}
+.fh{text-align:center;margin-bottom:3.5rem;}
+.fh .st{color:var(--off-white);}
+.fh .et{color:var(--gold);}
+.fh .ed{background:var(--gold);}
+.fh .ew{justify-content:center;}
+.fg2{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:1.4rem;}
+.fc{
+  text-align:center;padding:2rem 1.2rem;
+  border:1px solid rgba(242,232,213,.08);border-radius:.45rem;
+  background:rgba(255,255,255,.03);transition:all .3s;
+  position:relative;overflow:hidden;
+}
+.fc::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--amber),var(--gold));
+  transform:scaleX(0);transform-origin:left;transition:transform .3s;
+}
+.fc:hover{background:rgba(255,255,255,.06);border-color:rgba(219,168,74,.2);}
+.fc:hover::after{transform:scaleX(1);}
+.fi2{font-size:2.2rem;margin-bottom:.95rem;display:block;}
+.ft{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;color:var(--off-white);margin-bottom:.4rem;}
+.fd{font-size:.78rem;color:rgba(242,232,213,.4);line-height:1.6;}
+
+/* ══ BOOKINGS ══ */
+.bks{background:var(--linen);}
+.bkh{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:2.5rem;flex-wrap:wrap;gap:1rem;}
+.btn-nb{
+  background:linear-gradient(135deg,var(--amber),var(--gold));color:var(--charcoal);
+  border:none;padding:.72rem 1.9rem;border-radius:.25rem;
+  font-family:'Jost',sans-serif;font-size:.72rem;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;cursor:pointer;
+  box-shadow:0 4px 18px rgba(200,147,42,.35);transition:all .3s;
+}
+.btn-nb:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(200,147,42,.5);}
+.tbl-wr{overflow-x:auto;border-radius:.45rem;}
+table.bt{
+  width:100%;border-collapse:collapse;min-width:700px;
+  background:var(--off-white);border-radius:.45rem;overflow:hidden;
+  box-shadow:0 4px 22px rgba(42,30,14,.08);
+}
+.bt thead tr{background:var(--charcoal);}
+.bt th{padding:.88rem 1.2rem;text-align:left;font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(242,232,213,.45);font-weight:600;}
+.bt td{padding:.88rem 1.2rem;font-size:.84rem;border-bottom:1px solid var(--linen);vertical-align:middle;}
+.bt tr:last-child td{border-bottom:none;}
+.bt tbody tr:hover td{background:var(--linen);}
+.gn{font-weight:600;color:var(--forest-dk);}
+.gp{font-size:.7rem;color:var(--muted);}
+.ps{font-size:.62rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:.22rem .7rem;border-radius:2rem;display:inline-block;}
+.psc{background:#D4F5B8;color:#1A4A0A;}
+.psx{background:#FEE2E2;color:#991B1B;}
+.btn-can{
+  border:1px solid rgba(180,60,60,.4);color:#B91C1C;
+  padding:.22rem .6rem;border-radius:.25rem;font-size:.65rem;font-weight:600;
+  letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:all .2s;background:none;
+}
+.btn-can:hover{background:#FEE2E2;}
+.erow{text-align:center;color:var(--muted);padding:2.5rem !important;font-style:italic;}
+
+/* ══ MODAL ══ */
+.mbd{display:none;position:fixed;inset:0;z-index:1000;background:rgba(20,14,5,.75);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:1rem;}
+.mbd.open{display:flex;}
+.mbox{
+  background:var(--off-white);border-radius:.65rem;
+  width:100%;max-width:560px;max-height:92vh;overflow-y:auto;
+  position:relative;box-shadow:0 32px 100px rgba(0,0,0,.4);
+  animation:mpop .35s cubic-bezier(.23,1,.32,1) forwards;
+}
+@keyframes mpop{from{opacity:0;transform:scale(.9) translateY(20px);}to{opacity:1;transform:scale(1) translateY(0);}}
+.mh{
+  background:var(--charcoal);padding:2rem;border-radius:.65rem .65rem 0 0;
+  position:relative;border-bottom:2px solid;
+  border-image:linear-gradient(90deg,var(--amber),var(--gold)) 1;
+}
+.mh h2{font-family:'Cormorant Garamond',serif;font-size:1.65rem;font-weight:600;color:var(--off-white);}
+.mh p{font-size:.78rem;color:rgba(242,232,213,.45);margin-top:.2rem;}
+.mcl{
+  position:absolute;top:1rem;right:1rem;
+  background:rgba(255,255,255,.08);border:none;
+  width:32px;height:32px;border-radius:50%;color:rgba(255,255,255,.65);
+  font-size:.95rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;
+}
+.mcl:hover{background:rgba(255,255,255,.16);}
+.mb2{padding:1.75rem 2rem;}
+.fg{margin-bottom:1rem;}
+.fg label{display:block;font-size:.65rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:.4rem;}
+.fg input,.fg select,.fg textarea{
+  width:100%;border:1.5px solid var(--border);border-radius:.3rem;
+  padding:.72rem 1rem;font-family:'Jost',sans-serif;font-size:.88rem;
+  color:var(--text);background:var(--off-white);outline:none;transition:border-color .2s;
+}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--amber);}
+.fg textarea{resize:vertical;min-height:68px;}
+.fr{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;}
+.sbox{
+  background:var(--linen);border:1px solid var(--border);
+  border-radius:.45rem;padding:1.2rem;margin:1.2rem 0;
+}
+.sl{display:flex;justify-content:space-between;align-items:center;font-size:.84rem;color:var(--muted);margin-bottom:.45rem;}
+.sl:last-child{border-top:1px solid var(--border);padding-top:.55rem;margin-top:.55rem;font-weight:700;font-size:.98rem;color:var(--text);}
+.sv{font-weight:500;color:var(--text);}
+.sl:last-child .sv{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:700;color:var(--amber);}
+.btn-cf{
+  width:100%;background:linear-gradient(135deg,var(--forest),var(--sage));
+  color:var(--off-white);border:none;padding:1rem;border-radius:.35rem;
+  font-family:'Jost',sans-serif;font-size:.78rem;font-weight:700;
+  letter-spacing:.15em;text-transform:uppercase;cursor:pointer;
+  box-shadow:0 4px 18px rgba(43,74,26,.4);transition:all .3s;margin-top:.35rem;
+}
+.btn-cf:hover{box-shadow:0 8px 30px rgba(43,74,26,.55);transform:translateY(-1px);}
+
+/* Success */
+.succ{display:none;text-align:center;padding:2.5rem 2rem;}
+.succ.show{display:block;}
+.sring{
+  width:78px;height:78px;border-radius:50%;
+  background:linear-gradient(135deg,var(--sage),var(--forest));
+  display:flex;align-items:center;justify-content:center;font-size:2rem;
+  margin:0 auto 1.5rem;box-shadow:0 8px 30px rgba(43,74,26,.45);
+}
+.succ h3{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:600;color:var(--forest-dk);margin-bottom:.5rem;}
+.succ p{font-size:.88rem;color:var(--muted);line-height:1.75;}
+.sref{
+  display:inline-block;margin-top:1rem;
+  background:var(--linen);border:1px solid var(--border);
+  padding:.45rem 1.2rem;border-radius:.25rem;
+  font-family:'Cormorant Garamond',serif;font-size:.98rem;color:var(--amber);font-weight:600;
+}
+
+/* ══ FOOTER ══ */
+footer{
+  background:var(--forest-dk);color:rgba(242,232,213,.5);
+  padding:4rem 2rem 2rem;text-align:center;position:relative;overflow:hidden;
+}
+footer::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--amber),transparent);}
+.flogo{font-family:'Cormorant Garamond',serif;font-size:1.45rem;font-weight:700;color:var(--off-white);letter-spacing:.08em;}
+.fscr{font-family:'Great Vibes',cursive;font-size:1.15rem;color:var(--gold);display:block;margin:.2rem 0 2rem;}
+.flinks{display:flex;gap:1.85rem;justify-content:center;flex-wrap:wrap;margin-bottom:2rem;}
+.flinks a{color:rgba(242,232,213,.4);text-decoration:none;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;transition:color .2s;}
+.flinks a:hover{color:var(--gold);}
+.fdiv{border:none;border-top:1px solid rgba(242,232,213,.08);margin:1.4rem 0;}
+.fcpy{font-size:.68rem;color:rgba(242,232,213,.22);letter-spacing:.07em;}
+
+/* ══ RESPONSIVE ══ */
+@media(max-width:900px){
+  nav,nav.s{padding:.9rem 1.5rem;}
+  .nl{display:none;}
+  .bbf{grid-template-columns:1fr 1fr;}
+  .bbf .bb-btn{grid-column:span 2;}
+  .al{grid-template-columns:1fr;}
+  .hstats{gap:0;flex-wrap:wrap;}
+  .hstat{min-width:120px;}
+  .bb{padding:2rem 1.5rem;}
+}
+@media(max-width:560px){
+  .bbf{grid-template-columns:1fr;}
+  .bbf .bb-btn{grid-column:1;}
+  .fr{grid-template-columns:1fr;}
+  .hstats{display:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- ═ NAV ═ -->
+<nav id="nav">
+  <a class="nb" href="#">
+    <div class="ni">🌴</div>
+    <div class="nt"><span class="p1">Espacio Norte</span><span class="p2">AirBNB</span></div>
+  </a>
+  <div class="nl">
+    <a href="#rooms">Rooms</a>
+    <a href="#avail">Availability</a>
+    <a href="#bookings">Bookings</a>
+    <a href="#footer">Contact</a>
+  </div>
+  <button class="nc" onclick="openModal()">Book Now</button>
+</nav>
+
+<!-- ═ HERO ═ -->
+<section class="hero">
+  <div class="hbg"></div>
+  <div class="hr1"></div><div class="hr2"></div><div class="hr3"></div>
+  <div class="hpl">🌿</div>
+  <div class="hpr">🌿</div>
+  <div class="hc">
+    <div class="heb">
+      <span class="hebl"></span>
+      <span class="hebt">Premium Staycation · Espacio Norte</span>
+      <span class="hebr"></span>
+    </div>
+    <h1>Your Home<br><em>Away From</em><br>Home</h1>
+    <span class="hscript">AirBNB</span>
+    <p>A beautifully crafted retreat where modern comfort meets warm, tropical living. Two private suites · up to 4 guests each.</p>
+    <div class="hbtns">
+      <button class="btn-gold" onclick="openModal()">Reserve Your Suite</button>
+      <button class="btn-ghost" onclick="document.getElementById('rooms').scrollIntoView({behavior:'smooth'})">View Rooms</button>
+    </div>
+  </div>
+  <div class="hstats">
+    <div class="hstat"><div class="hstat-num">2</div><div class="hstat-lbl">Private Suites</div></div>
+    <div class="hstat"><div class="hstat-num">4</div><div class="hstat-lbl">Guests Per Room</div></div>
+    <div class="hstat"><div class="hstat-num">21</div><div class="hstat-lbl">Hours Per Stay</div></div>
+    <div class="hstat"><div class="hstat-num">₱1,999</div><div class="hstat-lbl">Per Room</div></div>
+  </div>
+  <svg class="hcurve" viewBox="0 0 1440 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,56 C360,10 1080,56 1440,18 L1440,56 L0,56 Z" fill="#FAF6EE"/>
+  </svg>
+</section>
+
+<!-- ═ BOOKING BAR ═ -->
+<div class="bbwrap">
+  <div class="bb">
+    <div class="bb-top">
+      <h2>Check <span>Availability</span></h2>
+      <span class="rate-pill">₱1,999 · 21 hrs per room</span>
+    </div>
+    <div class="bbf">
+      <div class="bfl"><label>Check-in Date</label><input type="date" id="qb-in"></div>
+      <div class="bfl"><label>Check-out Date</label><input type="date" id="qb-out"></div>
+      <div class="bfl"><label>Select Suite</label>
+        <select id="qb-rm">
+          <option value="">— Choose —</option>
+          <option value="1">Suite 1 · Sunset</option>
+          <option value="2">Suite 2 · Oceana</option>
+        </select>
+      </div>
+      <button class="bb-btn" onclick="quickCheck()">Check →</button>
+    </div>
+    <div class="bbr" id="bbr"></div>
+  </div>
+</div>
+
+<!-- ═ ROOMS ═ -->
+<section class="sw rs" id="rooms">
+  <div class="ctr">
+    <div class="rh">
+      <div class="ew" style="justify-content:center"><span class="ed"></span><span class="et">Accommodations</span><span class="ed"></span></div>
+      <h2 class="st" style="text-align:center">Two <em>Exquisite</em> Suites</h2>
+      <p class="ss" style="text-align:center;margin:.7rem auto 0">Thoughtfully designed for warmth and comfort — a true home-away-from-home for up to 4 guests.</p>
+    </div>
+    <div class="rg">
+      <!-- Room 1 -->
+      <div class="rc" onclick="openModal(1)">
+        <div class="rth rth1">
+          <div class="rth-in"><div class="rth-ico">🌅</div></div>
+          <div class="rth-ov"></div>
+          <div class="rth-tags">
+            <span class="rth-num">SUITE 01</span>
+            <span class="rbadge ba-y" id="r1b">Available</span>
+          </div>
+          <div class="rth-name">Sunset Suite</div>
+        </div>
+        <div class="rb">
+          <div class="rmeta">
+            <span class="rm">👥 Up to 4 guests</span>
+            <span class="rm">🛏 King Bed</span>
+            <span class="rm">📐 32 sqm</span>
+          </div>
+          <div class="ams">
+            <span class="am">Air-conditioning</span><span class="am">Smart TV</span>
+            <span class="am">Hot Shower</span><span class="am">Mini Bar</span>
+            <span class="am">Private Bath</span><span class="am">Free Wifi</span>
+          </div>
+          <div class="rfoot">
+            <div class="rp"><div class="amt">₱1,999</div><div class="per">per 21 hours</div></div>
+            <button class="btn-res">Reserve →</button>
+          </div>
+        </div>
+      </div>
+      <!-- Room 2 -->
+      <div class="rc" onclick="openModal(2)">
+        <div class="rth rth2">
+          <div class="rth-in"><div class="rth-ico">🌊</div></div>
+          <div class="rth-ov"></div>
+          <div class="rth-tags">
+            <span class="rth-num">SUITE 02</span>
+            <span class="rbadge ba-y" id="r2b">Available</span>
+          </div>
+          <div class="rth-name">Oceana Suite</div>
+        </div>
+        <div class="rb">
+          <div class="rmeta">
+            <span class="rm">👥 Up to 4 guests</span>
+            <span class="rm">🛏 Queen Bed</span>
+            <span class="rm">📐 30 sqm</span>
+          </div>
+          <div class="ams">
+            <span class="am">Air-conditioning</span><span class="am">Smart TV</span>
+            <span class="am">Hot Shower</span><span class="am">Mini Bar</span>
+            <span class="am">Private Bath</span><span class="am">Free Wifi</span>
+          </div>
+          <div class="rfoot">
+            <div class="rp"><div class="amt">₱1,999</div><div class="per">per 21 hours</div></div>
+            <button class="btn-res">Reserve →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═ AVAILABILITY ═ -->
+<section class="sw as" id="avail">
+  <div class="ctr">
+    <div class="al">
+      <div>
+        <div class="ew"><span class="ed"></span><span class="et">Calendar</span></div>
+        <h2 class="st">Check <em>Open</em><br>Dates</h2>
+        <p class="ss" style="margin-bottom:2rem;">Red-marked dates are fully booked. All other dates are open for reservation.</p>
+        <div class="calcard">
+          <div class="cal-top">
+            <span class="cal-mo" id="cal-lbl">February 2026</span>
+            <div class="cal-arrs">
+              <button class="cal-arr" onclick="prevMo()">‹</button>
+              <button class="cal-arr" onclick="nextMo()">›</button>
+            </div>
+          </div>
+          <div class="cg" id="cg"></div>
+          <div class="cl">
+            <div class="cli"><div class="cld" style="background:var(--amber)"></div>Today</div>
+            <div class="cli"><div class="cld" style="background:rgba(180,60,60,.35);border:1px solid rgba(248,113,113,.4)"></div>Booked</div>
+            <div class="cli"><div class="cld" style="background:rgba(242,232,213,.12);border:1px solid rgba(242,232,213,.2)"></div>Open</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="ew"><span class="ed"></span><span class="et">Room Status</span></div>
+        <h2 class="st">Current<br><em>Availability</em></h2>
+        <p class="ss" style="margin:.7rem 0 2rem">Live status of both suites. Book instantly if your dates are open.</p>
+        <div id="slots"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═ FEATURES ═ -->
+<section class="fs">
+  <div class="ctr fi">
+    <div class="fh">
+      <div class="ew"><span class="ed"></span><span class="et">Why Espacio Norte</span><span class="ed"></span></div>
+      <h2 class="st">A Stay Worth <em>Remembering</em></h2>
+    </div>
+    <div class="fg2">
+      <div class="fc"><span class="fi2">🌴</span><div class="ft">Tropical Escape</div><div class="fd">Nature-surrounded setting with a warm resort-like atmosphere every day.</div></div>
+      <div class="fc"><span class="fi2">🏡</span><div class="ft">Home Comfort</div><div class="fd">Modern interiors, fully furnished — everything you need to feel right at home.</div></div>
+      <div class="fc"><span class="fi2">👨‍👩‍👧‍👦</span><div class="ft">Up to 4 Guests</div><div class="fd">Perfect for families, couples, and barkada getaways.</div></div>
+      <div class="fc"><span class="fi2">⏱</span><div class="ft">21-Hour Rate</div><div class="fd">Generous time so you truly make the most of your stay.</div></div>
+      <div class="fc"><span class="fi2">✨</span><div class="ft">Easy Booking</div><div class="fd">Instant confirmation — book online and check in seamlessly.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═ BOOKINGS ═ -->
+<section class="sw bks" id="bookings">
+  <div class="ctr">
+    <div class="bkh">
+      <div>
+        <div class="ew"><span class="ed"></span><span class="et">Reservations</span></div>
+        <h2 class="st">Manage <em>Bookings</em></h2>
+      </div>
+      <button class="btn-nb" onclick="openModal()">+ New Booking</button>
+    </div>
+    <div class="tbl-wr">
+      <table class="bt">
+        <thead><tr>
+          <th>#</th><th>Guest</th><th>Suite</th><th>Check-in</th>
+          <th>Check-out</th><th>Pax</th><th>Total</th><th>Status</th><th>Action</th>
+        </tr></thead>
+        <tbody id="bktb"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ═ FOOTER ═ -->
+<footer id="footer">
+  <div class="flogo">Espacio Norte</div>
+  <span class="fscr">Your Home Away From Home</span>
+  <div class="flinks">
+    <a href="#">Facebook</a><a href="#">Airbnb Listing</a>
+    <a href="#">Instagram</a><a href="#">WhatsApp</a><a href="tel:+63">Call Us</a>
+  </div>
+  <hr class="fdiv">
+  <p class="fcpy">© 2026 ESPACIO NORTE AIRBNB · ALL RIGHTS RESERVED 🌴</p>
+</footer>
+
+<!-- ═ MODAL ═ -->
+<div class="mbd" id="mbd" onclick="obdc(event)">
+  <div class="mbox">
+    <div class="mh">
+      <button class="mcl" onclick="closeModal()">✕</button>
+      <h2>Reserve Your Suite</h2>
+      <p>Fill in your details — we'll confirm your booking right away.</p>
+    </div>
+    <div id="mf">
+      <div class="mb2">
+        <div class="fr">
+          <div class="fg"><label>First Name *</label><input id="f-fn" type="text" placeholder="Juan"></div>
+          <div class="fg"><label>Last Name *</label><input id="f-ln" type="text" placeholder="Dela Cruz"></div>
+        </div>
+        <div class="fg"><label>Phone Number *</label><input id="f-ph" type="tel" placeholder="+63 9XX XXX XXXX"></div>
+        <div class="fr">
+          <div class="fg"><label>Check-in Date & Time *</label><input id="f-ci" type="datetime-local" onchange="recalc()"></div>
+          <div class="fg"><label>Suite *</label>
+            <select id="f-rm" onchange="recalc()">
+              <option value="">Select Suite</option>
+              <option value="1">Suite 1 · Sunset</option>
+              <option value="2">Suite 2 · Oceana</option>
+            </select>
+          </div>
+        </div>
+        <div class="fg"><label>Number of Guests (max 4) *</label><input id="f-px" type="number" min="1" max="4" value="2"></div>
+        <div class="fg"><label>Special Requests</label><textarea id="f-nt" placeholder="Early check-in, extra towels, celebration setup…"></textarea></div>
+        <div class="sbox">
+          <div class="sl"><span>Rate</span><span class="sv">₱1,999 / 21 hrs</span></div>
+          <div class="sl"><span>Suite</span><span class="sv" id="s-rm">—</span></div>
+          <div class="sl"><span>Check-in</span><span class="sv" id="s-ci">—</span></div>
+          <div class="sl"><span>Check-out (21 hrs later)</span><span class="sv" id="s-co">—</span></div>
+          <div class="sl"><span>Total</span><span class="sv" id="s-tot">₱1,999</span></div>
+        </div>
+        <button class="btn-cf" onclick="confirmBooking()">Confirm Reservation</button>
+      </div>
+    </div>
+    <div class="succ" id="ms">
+      <div class="sring">✓</div>
+      <h3>Booking Confirmed!</h3>
+      <p>Your suite at Espacio Norte has been reserved.<br>We can't wait to host you!</p>
+      <span class="sref" id="s-ref"></span>
+      <button class="btn-cf" style="margin-top:2rem" onclick="closeModal()">Done</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const RATE=1999;
+let bk=JSON.parse(localStorage.getItem('en3')||'[]');
+const save=()=>localStorage.setItem('en3',JSON.stringify(bk));
+
+// Nav scroll
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('s',scrollY>55));
+
+// Calendar
+const MN=['January','February','March','April','May','June','July','August','September','October','November','December'];
+const DN=['Su','Mo','Tu','We','Th','Fr','Sa'];
+let CAL=new Date(2026,1,1);
+function renderCal(){
+  document.getElementById('cal-lbl').textContent=`${MN[CAL.getMonth()]} ${CAL.getFullYear()}`;
+  const g=document.getElementById('cg');
+  g.innerHTML=DN.map(d=>`<div class="cdn">${d}</div>`).join('');
+  const first=new Date(CAL.getFullYear(),CAL.getMonth(),1).getDay();
+  const total=new Date(CAL.getFullYear(),CAL.getMonth()+1,0).getDate();
+  const today=new Date();
+  for(let i=0;i<first;i++)g.innerHTML+=`<div class="cd ce"></div>`;
+  for(let d=1;d<=total;d++){
+    const dt=new Date(CAL.getFullYear(),CAL.getMonth(),d);
+    const isT=dt.toDateString()===today.toDateString();
+    const isB=isBk(dt);
+    g.innerHTML+=`<div class="cd${isT?' ct':isB?' cb':''}">${d}</div>`;
+  }
+  renderSlots();
+}
+function isBk(dt){
+  return bk.some(b=>{
+    if(b.st==='cancelled')return false;
+    return dt>=new Date(b.ci)&&dt<new Date(b.co);
+  });
+}
+function prevMo(){CAL.setMonth(CAL.getMonth()-1);renderCal();}
+function nextMo(){CAL.setMonth(CAL.getMonth()+1);renderCal();}
+
+function renderSlots(){
+  const now=new Date();
+  const rooms=[{id:1,n:'Suite 1 · Sunset'},{id:2,n:'Suite 2 · Oceana'}];
+  let h='';
+  rooms.forEach(r=>{
+    const occ=bk.some(b=>{
+      if(b.rm!=r.id||b.st==='cancelled')return false;
+      return now>=new Date(b.ci)&&now<new Date(b.co);
+    });
+    h+=`<div class="scard">
+      <div><div class="sl-n">${r.n}</div><div class="sl-i">Up to 4 pax · ₱1,999 / 21 hrs</div></div>
+      <div class="sr">
+        <span class="pill ${occ?'p-b':'p-a'}">${occ?'Booked':'Available'}</span>
+        ${!occ?`<button class="btn-sb" onclick="openModal(${r.id})">Book</button>`:''}
+      </div>
+    </div>`;
+    const b=document.getElementById(`r${r.id}b`);
+    if(b){b.textContent=occ?'Booked':'Available';b.className=`rbadge ${occ?'ba-n':'ba-y'}`;}
+  });
+  document.getElementById('slots').innerHTML=h;
+}
+
+function renderTable(){
+  const tb=document.getElementById('bktb');
+  if(!bk.length){tb.innerHTML=`<tr><td class="erow" colspan="9">No bookings yet — be the first to reserve a suite 🌴</td></tr>`;return;}
+  const fmt=d=>new Date(d).toLocaleString('en-PH',{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'});
+  tb.innerHTML=bk.map((b,i)=>`<tr>
+    <td>${i+1}</td>
+    <td><div class="gn">${b.fn} ${b.ln}</div><div class="gp">${b.ph}</div></td>
+    <td>Suite ${b.rm}</td>
+    <td>${fmt(b.ci)}</td><td>${fmt(b.co)}</td>
+    <td>${b.px}</td>
+    <td><strong>₱${RATE.toLocaleString()}</strong></td>
+    <td><span class="ps ${b.st==='confirmed'?'psc':'psx'}">${b.st}</span></td>
+    <td>${b.st!=='cancelled'?`<button class="btn-can" onclick="cancel(${i})">Cancel</button>`:''}</td>
+  </tr>`).join('');
+}
+function cancel(i){if(!confirm('Cancel this booking?'))return;bk[i].st='cancelled';save();renderTable();renderCal();}
+
+// Modal
+function openModal(rm=''){
+  document.getElementById('mbd').classList.add('open');
+  document.getElementById('mf').style.display='block';
+  document.getElementById('ms').classList.remove('show');
+  const n=new Date();n.setMinutes(0,0,0);
+  document.getElementById('f-ci').value=n.toISOString().slice(0,16);
+  if(rm)document.getElementById('f-rm').value=rm;
+  recalc();
+}
+function closeModal(){document.getElementById('mbd').classList.remove('open');}
+function obdc(e){if(e.target===e.currentTarget)closeModal();}
+
+function recalc(){
+  const rv=document.getElementById('f-rm').value;
+  const rn={'1':'Suite 1 · Sunset','2':'Suite 2 · Oceana'};
+  document.getElementById('s-rm').textContent=rv?rn[rv]:'—';
+  const ci=document.getElementById('f-ci').value;
+  if(ci){
+    const d=new Date(ci);const co=new Date(d.getTime()+21*3600000);
+    const fmt=x=>x.toLocaleString('en-PH',{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'});
+    document.getElementById('s-ci').textContent=fmt(d);
+    document.getElementById('s-co').textContent=fmt(co);
+  }
+  document.getElementById('s-tot').textContent=`₱${RATE.toLocaleString()}`;
+}
+
+function confirmBooking(){
+  const fn=document.getElementById('f-fn').value.trim();
+  const ln=document.getElementById('f-ln').value.trim();
+  const ph=document.getElementById('f-ph').value.trim();
+  const ci=document.getElementById('f-ci').value;
+  const rm=document.getElementById('f-rm').value;
+  const px=parseInt(document.getElementById('f-px').value)||1;
+  const nt=document.getElementById('f-nt').value.trim();
+  if(!fn||!ln||!ph||!ci||!rm){alert('Please fill in all required fields.');return;}
+  if(px<1||px>4){alert('Guests must be between 1 and 4.');return;}
+  const cid=new Date(ci),cod=new Date(cid.getTime()+21*3600000);
+  const conflict=bk.some(b=>{
+    if(b.rm!=rm||b.st==='cancelled')return false;
+    return cid<new Date(b.co)&&cod>new Date(b.ci);
+  });
+  if(conflict){alert(`Suite ${rm} is already booked for that time. Please choose a different date or suite.`);return;}
+  const ref='EN-'+Date.now().toString(36).toUpperCase();
+  bk.push({ref,fn,ln,ph,rm,ci:cid.toISOString(),co:cod.toISOString(),px,nt,st:'confirmed'});
+  save();renderTable();renderCal();
+  document.getElementById('mf').style.display='none';
+  document.getElementById('s-ref').textContent=`Reference: ${ref}`;
+  document.getElementById('ms').classList.add('show');
+}
+
+function quickCheck(){
+  const ci=document.getElementById('qb-in').value;
+  const co=document.getElementById('qb-out').value;
+  const rm=document.getElementById('qb-rm').value;
+  const el=document.getElementById('bbr');el.style.display='block';
+  if(!ci||!co||!rm){el.className='bbr err';el.textContent='Please select a date range and suite.';return;}
+  const cid=new Date(ci),cod=new Date(co);
+  const conflict=bk.some(b=>{
+    if(b.rm!=rm||b.st==='cancelled')return false;
+    return cid<new Date(b.co)&&cod>new Date(b.ci);
+  });
+  if(conflict){el.className='bbr err';el.innerHTML='✗  Suite not available for those dates. Try a different date or suite.';}
+  else{el.className='bbr ok';el.innerHTML=`✓  Suite is available! <a href="#" onclick="openModal(${rm});return false;" style="color:var(--gold-pale);text-decoration:underline;font-weight:700;margin-left:.4rem">Book Now →</a>`;}
+}
+
+// Init
+renderCal();renderTable();
+const nd=new Date();nd.setHours(14,0,0,0);
+document.getElementById('qb-in').value=nd.toISOString().slice(0,10);
+const nd2=new Date(nd.getTime()+21*3600000);
+document.getElementById('qb-out').value=nd2.toISOString().slice(0,10);
+</script>
+</body>
+</html>
