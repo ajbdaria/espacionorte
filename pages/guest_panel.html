@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Espacio Norte — My Portal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Jost:wght@300;400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+:root {
+  --linen:      #F2E8D5;
+  --parch:      #EAD9BC;
+  --off:        #FAF6EE;
+  --snow:       #FDFAF6;
+  --forest:     #2B4A1A;
+  --forest-dk:  #1A2E10;
+  --sage:       #4A7A2E;
+  --sage-lt:    #72B048;
+  --amber:      #C8932A;
+  --gold:       #DBA84A;
+  --gold-pale:  #F0D08A;
+  --charcoal:   #2C2416;
+  --text:       #3A2C1A;
+  --muted:      #7A6248;
+  --border:     #D8C9A8;
+  --border-dk:  #C4B08A;
+  --red:        #C0392B;
+  --red-lt:     #FDECEA;
+  --green-lt:   #E3F5E8;
+  --blue:       #1A56A0;
+  --blue-lt:    #E8F0FB;
+  --radius:     .65rem;
+  --shadow:     0 2px 12px rgba(42,28,8,.08), 0 1px 3px rgba(42,28,8,.05);
+  --shadow-lg:  0 12px 48px rgba(42,28,8,.14);
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { font-size:14px; -webkit-font-smoothing:antialiased; scroll-behavior:smooth; }
+
+body {
+  font-family:'Jost', sans-serif;
+  background:var(--linen);
+  color:var(--text);
+  min-height:100vh;
+}
+
+/* ── TEXTURE OVERLAY ── */
+body::before {
+  content:''; position:fixed; inset:0; z-index:0; pointer-events:none;
+  background-image:
+    repeating-linear-gradient(0deg,transparent,transparent 29px,rgba(200,168,100,.05) 29px,rgba(200,168,100,.05) 30px),
+    repeating-linear-gradient(90deg,transparent,transparent 29px,rgba(200,168,100,.03) 29px,rgba(200,168,100,.03) 30px);
+}
+
+/* ═══════════════════════════
+   TOPBAR
+═══════════════════════════ */
+.topbar {
+  position:sticky; top:0; z-index:200;
+  background:rgba(242,232,213,.92);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+  box-shadow:0 1px 12px rgba(42,28,8,.07);
+}
+.topbar-inner {
+  max-width:1120px; margin:0 auto;
+  padding:.85rem 1.5rem;
+  display:flex; align-items:center; gap:1rem;
+}
+.tb-brand {
+  display:flex; align-items:center; gap:.65rem; flex:1;
+}
+.tb-logo {
+  width:36px; height:36px; border-radius:50%;
+  background:linear-gradient(135deg,var(--amber),var(--gold));
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.1rem; box-shadow:0 3px 10px rgba(200,147,42,.35);
+  flex-shrink:0;
+}
+.tb-name {
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.1rem; font-weight:700; color:var(--forest);
+  letter-spacing:.04em; line-height:1;
+}
+.tb-name span {
+  display:block; font-family:'Great Vibes',cursive;
+  font-size:.82rem; color:var(--amber); font-weight:400; margin-top:.05rem;
+}
+.tb-right { display:flex; align-items:center; gap:.75rem; }
+.tb-user {
+  display:flex; align-items:center; gap:.5rem;
+  padding:.38rem .85rem .38rem .5rem;
+  background:var(--off); border:1px solid var(--border);
+  border-radius:2rem;
+}
+.tb-ava {
+  width:26px; height:26px; border-radius:50%;
+  background:linear-gradient(135deg,var(--forest),var(--sage));
+  display:flex; align-items:center; justify-content:center;
+  font-size:.72rem; font-weight:800; color:#fff; flex-shrink:0;
+}
+.tb-uname { font-size:.75rem; font-weight:600; color:var(--text); }
+.tb-role {
+  font-size:.58rem; letter-spacing:.1em; text-transform:uppercase;
+  background:var(--green-lt); color:var(--sage); padding:.1rem .45rem;
+  border-radius:2rem; font-weight:700;
+}
+.btn-logout {
+  background:none; border:1.5px solid var(--border);
+  border-radius:.35rem; padding:.38rem .85rem;
+  font-family:'Jost',sans-serif; font-size:.7rem; font-weight:600;
+  letter-spacing:.08em; text-transform:uppercase; color:var(--muted);
+  cursor:pointer; transition:all .2s;
+}
+.btn-logout:hover { border-color:var(--red); color:var(--red); background:var(--red-lt); }
+
+/* ═══════════════════════════
+   MAIN LAYOUT
+═══════════════════════════ */
+.wrap {
+  max-width:1120px; margin:0 auto;
+  padding:2rem 1.5rem 4rem;
+  position:relative; z-index:1;
+}
+
+/* ── HERO GREETING ── */
+.hero-greeting {
+  margin-bottom:2rem;
+  animation:fadeUp .6s ease both;
+}
+.hero-eyebrow {
+  display:flex; align-items:center; gap:.55rem; margin-bottom:.6rem;
+}
+.hero-line { width:24px; height:1px; background:linear-gradient(90deg,var(--amber),transparent); }
+.hero-eyebrow span { font-size:.6rem; letter-spacing:.2em; text-transform:uppercase; color:var(--amber); font-weight:600; }
+.hero-title {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.8rem,3.5vw,2.8rem); font-weight:600;
+  color:var(--charcoal); line-height:1.15;
+}
+.hero-title em { font-style:italic; color:var(--amber); }
+.hero-sub { font-size:.82rem; color:var(--muted); margin-top:.4rem; font-weight:300; }
+
+/* ── STATUS BANNER (shown when has active/past booking) ── */
+.status-banner {
+  border-radius:var(--radius); padding:1.1rem 1.4rem;
+  display:flex; align-items:center; gap:1rem;
+  margin-bottom:1.75rem; border:1px solid;
+  animation:fadeUp .5s .1s ease both;
+}
+.status-banner.active-stay {
+  background:var(--blue-lt); border-color:#93C5FD;
+}
+.status-banner.checked-out {
+  background:#FEF9C3; border-color:#FCD34D;
+}
+.status-banner.locked {
+  background:var(--red-lt); border-color:#FCA5A5;
+}
+.sb-ico { font-size:1.4rem; flex-shrink:0; }
+.sb-body { flex:1; }
+.sb-title { font-size:.88rem; font-weight:700; color:var(--text); }
+.sb-desc { font-size:.75rem; color:var(--muted); margin-top:.15rem; line-height:1.5; }
+.sb-pill {
+  font-size:.62rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+  padding:.22rem .7rem; border-radius:2rem; white-space:nowrap; flex-shrink:0;
+}
+.sp-blue { background:#DBEAFE; color:#1E40AF; }
+.sp-yellow { background:#FEF9C3; color:#92400E; }
+.sp-red { background:#FEE2E2; color:#B91C1C; }
+.sp-green { background:var(--green-lt); color:var(--sage); }
+
+/* ── GRID ── */
+.grid {
+  display:grid;
+  grid-template-columns:1fr 1.1fr;
+  gap:1.5rem;
+  align-items:start;
+}
+
+/* ═══════════════════════════
+   PANELS / CARDS
+═══════════════════════════ */
+.panel {
+  background:var(--off); border:1px solid var(--border);
+  border-radius:var(--radius); box-shadow:var(--shadow);
+  overflow:hidden;
+}
+.panel-hd {
+  padding:1.15rem 1.4rem; border-bottom:1px solid var(--border);
+  display:flex; align-items:center; justify-content:space-between;
+}
+.ph-left .ph-title { font-size:.88rem; font-weight:700; color:var(--text); }
+.ph-left .ph-sub { font-size:.68rem; color:var(--muted); margin-top:.1rem; }
+.panel-body { padding:1.3rem 1.4rem; }
+
+/* Gold top accent */
+.panel.accented::before {
+  content:''; display:block; height:3px;
+  background:linear-gradient(90deg,var(--amber),var(--gold-pale),transparent);
+}
+
+/* ── BOOKING FORM ── */
+.fg { margin-bottom:1rem; }
+.fg label {
+  display:block; font-size:.62rem; font-weight:600;
+  letter-spacing:.12em; text-transform:uppercase;
+  color:var(--muted); margin-bottom:.4rem;
+}
+.fg input, .fg select, .fg textarea {
+  width:100%; padding:.72rem .9rem;
+  border:1.5px solid var(--border); border-radius:.4rem;
+  font-family:'Jost',sans-serif; font-size:.85rem; color:var(--text);
+  background:var(--linen); outline:none;
+  transition:border-color .2s, box-shadow .2s, background .2s;
+}
+.fg input:focus, .fg select:focus, .fg textarea:focus {
+  border-color:var(--amber); background:var(--off);
+  box-shadow:0 0 0 3px rgba(200,147,42,.1);
+}
+.fg input:disabled, .fg select:disabled, .fg textarea:disabled {
+  background:rgba(242,232,213,.5); color:var(--muted);
+  border-color:var(--border); cursor:not-allowed;
+}
+.fg input[readonly] { background:var(--linen); color:var(--muted); cursor:default; }
+.fg textarea { resize:vertical; min-height:72px; }
+.fg .hint { font-size:.63rem; color:rgba(122,98,72,.5); margin-top:.28rem; line-height:1.5; }
+
+.fg-row { display:grid; grid-template-columns:1fr 1fr; gap:.8rem; }
+
+/* ── SUITE PICKER ── */
+.suite-cards { display:grid; grid-template-columns:1fr 1fr; gap:.65rem; margin-bottom:1rem; }
+.suite-card {
+  border:2px solid var(--border); border-radius:.5rem; padding:.85rem;
+  cursor:pointer; transition:all .22s; background:var(--off); position:relative;
+}
+.suite-card:hover { border-color:var(--amber); background:var(--linen); }
+.suite-card.selected { border-color:var(--forest); background:rgba(43,74,26,.04); }
+.suite-card.unavail { opacity:.45; cursor:not-allowed; }
+.suite-card.unavail:hover { border-color:var(--border); background:var(--off); }
+.sc-check {
+  position:absolute; top:.6rem; right:.6rem;
+  width:18px; height:18px; border-radius:50%;
+  background:var(--forest); color:#fff;
+  font-size:.65rem; display:none;
+  align-items:center; justify-content:center;
+}
+.suite-card.selected .sc-check { display:flex; }
+.sc-ico { font-size:1.2rem; margin-bottom:.35rem; }
+.sc-name { font-size:.8rem; font-weight:700; color:var(--text); }
+.sc-detail { font-size:.65rem; color:var(--muted); margin-top:.12rem; line-height:1.4; }
+.sc-price { font-size:.82rem; font-weight:700; color:var(--amber); margin-top:.3rem; }
+
+/* ── BOOKING SUMMARY BOX ── */
+.summary-box {
+  background:linear-gradient(135deg,var(--forest-dk),var(--forest));
+  border-radius:.5rem; padding:1.1rem 1.2rem; margin:1rem 0;
+}
+.sb-label { font-size:.58rem; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:rgba(255,255,255,.4); margin-bottom:.65rem; }
+.sb-rows { display:grid; grid-template-columns:auto 1fr; gap:.35rem .75rem; align-items:start; }
+.sb-key { font-size:.7rem; color:rgba(255,255,255,.45); }
+.sb-val { font-size:.7rem; font-weight:600; color:rgba(255,255,255,.9); }
+.sb-total-row { grid-column:1/-1; border-top:1px solid rgba(255,255,255,.1); padding-top:.5rem; margin-top:.2rem; display:flex; justify-content:space-between; align-items:center; }
+.sb-total-lbl { font-size:.72rem; color:rgba(255,255,255,.5); font-weight:600; }
+.sb-total-val { font-size:1.3rem; font-weight:800; color:var(--gold); }
+
+/* ── BUTTONS ── */
+.btn {
+  display:inline-flex; align-items:center; justify-content:center; gap:.45rem;
+  border:none; cursor:pointer; font-family:'Jost',sans-serif;
+  font-weight:700; border-radius:.4rem; transition:all .22s;
+  letter-spacing:.08em; text-transform:uppercase;
+}
+.btn-primary {
+  width:100%; padding:.88rem 1.5rem;
+  background:var(--charcoal); color:var(--off);
+  font-size:.74rem; box-shadow:0 6px 24px rgba(26,46,16,.3);
+}
+.btn-primary:hover:not(:disabled) { transform:translateY(-2px); box-shadow:0 10px 32px rgba(26,46,16,.4); }
+.btn-primary:disabled { opacity:.45; cursor:not-allowed; transform:none; }
+.btn-ghost {
+  padding:.5rem 1rem; background:var(--linen); color:var(--muted);
+  border:1px solid var(--border); font-size:.7rem;
+}
+.btn-ghost:hover { border-color:var(--amber); color:var(--amber); }
+.btn-danger {
+  padding:.5rem 1rem; background:var(--red-lt); color:var(--red);
+  border:1px solid #FCA5A5; font-size:.7rem;
+}
+.btn-danger:hover { background:var(--red); color:#fff; }
+
+/* Loading spinner */
+.spinner { width:14px; height:14px; border:2px solid rgba(255,255,255,.25); border-top-color:#fff; border-radius:50%; animation:spin .6s linear infinite; display:none; }
+.btn.loading .spinner { display:inline-block; }
+.btn.loading .btn-lbl { opacity:.65; }
+@keyframes spin { to { transform:rotate(360deg); } }
+
+/* ── LOCKED OVERLAY ── */
+.locked-overlay {
+  display:none;
+  position:absolute; inset:0; z-index:10;
+  background:rgba(242,232,213,.88);
+  backdrop-filter:blur(3px);
+  border-radius:var(--radius);
+  align-items:center; justify-content:center;
+  flex-direction:column; gap:.75rem; text-align:center;
+  padding:2rem;
+}
+.locked-overlay.visible { display:flex; }
+.lock-ico { font-size:2.5rem; opacity:.5; }
+.lock-title { font-family:'Cormorant Garamond',serif; font-size:1.3rem; font-weight:600; color:var(--charcoal); }
+.lock-desc { font-size:.76rem; color:var(--muted); line-height:1.7; max-width:240px; }
+.lock-badge {
+  font-size:.62rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+  background:var(--red-lt); color:var(--red); padding:.25rem .75rem; border-radius:2rem;
+  border:1px solid #FCA5A5;
+}
+
+/* ── BOOKING HISTORY ── */
+.history-empty { text-align:center; padding:2.5rem 1rem; color:var(--muted); }
+.history-empty .hi-ico { font-size:2.2rem; opacity:.25; margin-bottom:.5rem; }
+.history-empty p { font-size:.78rem; }
+
+.bk-card {
+  border:1px solid var(--border); border-radius:.5rem;
+  margin-bottom:.75rem; overflow:hidden; background:var(--snow);
+  transition:box-shadow .2s;
+}
+.bk-card:hover { box-shadow:0 4px 16px rgba(42,28,8,.09); }
+.bk-card:last-child { margin-bottom:0; }
+.bk-hd {
+  padding:.8rem 1rem; display:flex; align-items:center; justify-content:space-between;
+  cursor:pointer; gap:.75rem;
+}
+.bk-ref { font-size:.62rem; font-family:monospace; color:var(--muted); }
+.bk-name { font-size:.85rem; font-weight:700; color:var(--text); }
+.bk-suite { font-size:.7rem; color:var(--muted); margin-top:.08rem; }
+.bk-status-wrap { display:flex; flex-direction:column; align-items:flex-end; gap:.25rem; }
+.bk-chevron { font-size:.7rem; color:var(--muted); transition:transform .2s; }
+.bk-card.expanded .bk-chevron { transform:rotate(180deg); }
+
+.bk-body {
+  display:none; border-top:1px solid var(--border);
+  padding:.9rem 1rem; background:var(--linen);
+}
+.bk-card.expanded .bk-body { display:block; }
+.bk-details { display:grid; grid-template-columns:1fr 1fr; gap:.5rem .9rem; }
+.bd-item {}
+.bd-key { font-size:.6rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-bottom:.15rem; }
+.bd-val { font-size:.78rem; font-weight:600; color:var(--text); }
+.bk-note-row { margin-top:.75rem; padding-top:.65rem; border-top:1px solid var(--border); }
+.bk-note-lbl { font-size:.6rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-bottom:.2rem; }
+.bk-note-val { font-size:.76rem; color:var(--text); font-style:italic; line-height:1.5; }
+
+/* ── PILL ── */
+.pill {
+  font-size:.6rem; font-weight:700; letter-spacing:.06em;
+  text-transform:uppercase; padding:.18rem .6rem;
+  border-radius:2rem; display:inline-block; white-space:nowrap;
+}
+.p-confirmed  { background:#DCFCE7; color:#15803D; }
+.p-pending    { background:#FEF9C3; color:#92400E; }
+.p-checkedin  { background:#DBEAFE; color:#1E40AF; }
+.p-checkedout { background:#F3F4F6; color:#4B5563; }
+.p-cancelled  { background:#FEE2E2; color:#B91C1C; }
+
+/* ── PROFILE CARD ── */
+.profile-grid { display:grid; grid-template-columns:auto 1fr; gap:.55rem .9rem; align-items:center; }
+.prof-key { font-size:.62rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); }
+.prof-val { font-size:.82rem; font-weight:500; color:var(--text); }
+
+/* ── STAY STATS ── */
+.stat-row { display:grid; grid-template-columns:repeat(3,1fr); gap:.65rem; margin-bottom:1.2rem; }
+.stat-box {
+  background:var(--linen); border-radius:.45rem; padding:.8rem .75rem; text-align:center;
+  border:1px solid var(--border);
+}
+.stat-val { font-size:1.5rem; font-weight:800; color:var(--forest); line-height:1; }
+.stat-lbl { font-size:.62rem; color:var(--muted); margin-top:.2rem; }
+
+/* ── TOAST ── */
+.toast {
+  position:fixed; bottom:1.5rem; right:1.5rem; z-index:9999;
+  display:flex; align-items:center; gap:.65rem;
+  background:var(--forest-dk); color:#fff;
+  padding:.8rem 1.2rem; border-radius:.5rem;
+  font-size:.78rem; font-weight:500;
+  box-shadow:var(--shadow-lg); max-width:320px;
+  transform:translateY(60px); opacity:0;
+  transition:all .32s cubic-bezier(.22,1,.36,1);
+  border-left:4px solid var(--gold);
+}
+.toast.show { transform:translateY(0); opacity:1; }
+.toast.t-ok   { border-left-color:var(--sage-lt); }
+.toast.t-err  { border-left-color:var(--red); }
+.toast.t-warn { border-left-color:var(--gold); }
+
+/* ── CONFIRM MODAL ── */
+.modal-bg {
+  display:none; position:fixed; inset:0; z-index:600;
+  background:rgba(42,28,8,.55); backdrop-filter:blur(4px);
+  align-items:center; justify-content:center; padding:1rem;
+}
+.modal-bg.open { display:flex; }
+.modal {
+  background:var(--off); border-radius:var(--radius);
+  width:100%; max-width:420px;
+  box-shadow:0 32px 80px rgba(42,28,8,.28);
+  animation:mpop .28s cubic-bezier(.22,1,.36,1);
+}
+@keyframes mpop { from{opacity:0;transform:scale(.94)translateY(12px);}to{opacity:1;transform:scale(1)translateY(0);} }
+.modal-hd { padding:1.1rem 1.3rem; border-bottom:1px solid var(--border); }
+.modal-hd h3 { font-family:'Cormorant Garamond',serif; font-size:1.2rem; font-weight:600; color:var(--charcoal); }
+.modal-body { padding:1.2rem 1.3rem; font-size:.82rem; color:var(--muted); line-height:1.7; }
+.modal-ft { padding:.9rem 1.3rem; border-top:1px solid var(--border); display:flex; gap:.6rem; justify-content:flex-end; }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);} }
+.anim { animation:fadeUp .5s ease both; }
+.anim-1 { animation-delay:.08s; }
+.anim-2 { animation-delay:.16s; }
+.anim-3 { animation-delay:.24s; }
+
+/* ── RESPONSIVE ── */
+@media(max-width:860px) {
+  .grid { grid-template-columns:1fr; }
+  .suite-cards { grid-template-columns:1fr 1fr; }
+}
+@media(max-width:560px) {
+  .wrap { padding:1.2rem 1rem 3rem; }
+  .fg-row { grid-template-columns:1fr; }
+  .suite-cards { grid-template-columns:1fr; }
+  .bk-details { grid-template-columns:1fr; }
+  .stat-row { grid-template-columns:repeat(3,1fr); }
+  .tb-role { display:none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ TOPBAR ═══════════════ -->
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="tb-brand">
+      <div class="tb-logo">🌴</div>
+      <div class="tb-name">
+        Espacio Norte
+        <span>AirBNB</span>
+      </div>
+    </div>
+    <div class="tb-right">
+      <div class="tb-user">
+        <div class="tb-ava" id="tb-ava">G</div>
+        <span class="tb-uname" id="tb-uname">Guest</span>
+        <span class="tb-role">Guest</span>
+      </div>
+      <button class="btn-logout" onclick="doLogout()">Log Out</button>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════════ MAIN ═══════════════ -->
+<div class="wrap">
+
+  <!-- GREETING -->
+  <div class="hero-greeting anim">
+    <div class="hero-eyebrow">
+      <div class="hero-line"></div>
+      <span>My Portal</span>
+    </div>
+    <h1 class="hero-title">Hello, <em id="greet-name">Guest</em> 👋</h1>
+    <p class="hero-sub">Manage your reservation and view your stay history below.</p>
+  </div>
+
+  <!-- STATUS BANNER (dynamic) -->
+  <div id="status-banner" style="display:none;"></div>
+
+  <!-- GRID -->
+  <div class="grid">
+
+    <!-- ───── LEFT: BOOKING FORM ───── -->
+    <div>
+      <div class="panel accented anim anim-1" style="position:relative;" id="booking-panel">
+
+        <!-- LOCKED OVERLAY -->
+        <div class="locked-overlay" id="lock-overlay">
+          <div class="lock-ico">🔒</div>
+          <div class="lock-title">Booking Closed</div>
+          <p class="lock-desc">You have already completed a stay. Please contact the property to book again or request a re-open from the admin.</p>
+          <div class="lock-badge">Stay Completed</div>
+        </div>
+
+        <div class="panel-hd">
+          <div class="ph-left">
+            <div class="ph-title">Book a Suite</div>
+            <div class="ph-sub">Choose your suite and dates</div>
+          </div>
+          <div id="bk-form-status"></div>
+        </div>
+
+        <div class="panel-body">
+
+          <!-- Suite picker -->
+          <div style="margin-bottom:.8rem;">
+            <div style="font-size:.62rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.55rem;">Choose Your Suite</div>
+            <div class="suite-cards">
+              <div class="suite-card" id="sc-1" onclick="selectSuite(1)">
+                <div class="sc-check">✓</div>
+                <div class="sc-ico">🌅</div>
+                <div class="sc-name">Suite 1 · Sunset</div>
+                <div class="sc-detail">King Bed · Up to 4 guests<br>32 sqm · Private bath</div>
+                <div class="sc-price">₱1,999</div>
+              </div>
+              <div class="suite-card" id="sc-2" onclick="selectSuite(2)">
+                <div class="sc-check">✓</div>
+                <div class="sc-ico">🌊</div>
+                <div class="sc-name">Suite 2 · Oceana</div>
+                <div class="sc-detail">Queen Bed · Up to 4 guests<br>30 sqm · Private bath</div>
+                <div class="sc-price">₱1,999</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="fg-row">
+            <div class="fg">
+              <label>Check-in Date & Time</label>
+              <input type="datetime-local" id="bk-ci" onchange="calcCheckout()">
+            </div>
+            <div class="fg">
+              <label>Check-out (Auto · 21 hrs)</label>
+              <input type="text" id="bk-co" readonly placeholder="Auto calculated">
+            </div>
+          </div>
+
+          <div class="fg">
+            <label>Number of Guests</label>
+            <input type="number" id="bk-pax" min="1" max="4" value="2" onchange="calcCheckout()">
+            <div class="hint">Maximum 4 guests per suite</div>
+          </div>
+
+          <div class="fg">
+            <label>Payment Method</label>
+            <select id="bk-pay">
+              <option value="cash">Cash on Arrival</option>
+              <option value="gcash">GCash</option>
+              <option value="bank">Bank Transfer</option>
+            </select>
+          </div>
+
+          <div class="fg">
+            <label>Special Requests <span style="font-weight:300;text-transform:none;letter-spacing:0;">(optional)</span></label>
+            <textarea id="bk-note" placeholder="e.g. Anniversary setup, early check-in, dietary needs…"></textarea>
+          </div>
+
+          <!-- Summary -->
+          <div class="summary-box" id="bk-summary" style="display:none;">
+            <div class="sb-label">Booking Summary</div>
+            <div class="sb-rows">
+              <span class="sb-key">Suite</span><span class="sb-val" id="sum-suite">—</span>
+              <span class="sb-key">Check-in</span><span class="sb-val" id="sum-ci">—</span>
+              <span class="sb-key">Check-out</span><span class="sb-val" id="sum-co">—</span>
+              <span class="sb-key">Guests</span><span class="sb-val" id="sum-pax">—</span>
+              <span class="sb-key">Payment</span><span class="sb-val" id="sum-pay">—</span>
+            </div>
+            <div class="sb-total-row">
+              <span class="sb-total-lbl">Total Due</span>
+              <span class="sb-total-val">₱1,999</span>
+            </div>
+          </div>
+
+          <div id="bk-err" style="display:none;padding:.65rem .9rem;background:var(--red-lt);border:1px solid #FCA5A5;border-radius:.35rem;font-size:.76rem;color:var(--red);margin-bottom:.85rem;"></div>
+
+          <button class="btn btn-primary" id="bk-btn" onclick="submitBooking()">
+            <div class="spinner"></div>
+            <span class="btn-lbl">Confirm Reservation</span>
+          </button>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- ───── RIGHT: SIDEBAR PANELS ───── -->
+    <div style="display:flex;flex-direction:column;gap:1.25rem;">
+
+      <!-- ACTIVE BOOKING CARD -->
+      <div class="panel anim anim-2" id="active-panel" style="display:none;">
+        <div class="panel-hd">
+          <div class="ph-left">
+            <div class="ph-title">Your Current Reservation</div>
+            <div class="ph-sub">Active booking details</div>
+          </div>
+        </div>
+        <div class="panel-body" id="active-body"></div>
+      </div>
+
+      <!-- STAY STATS -->
+      <div class="panel anim anim-2">
+        <div class="panel-hd">
+          <div class="ph-left">
+            <div class="ph-title">My Stay History</div>
+            <div class="ph-sub">Your reservations at Espacio Norte</div>
+          </div>
+        </div>
+        <div class="panel-body">
+          <div class="stat-row" id="stats-row">
+            <div class="stat-box">
+              <div class="stat-val" id="stat-total">0</div>
+              <div class="stat-lbl">Total Stays</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-val" id="stat-spent">₱0</div>
+              <div class="stat-lbl">Total Spent</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-val" id="stat-nights">0</div>
+              <div class="stat-lbl">Nights</div>
+            </div>
+          </div>
+          <div id="history-list"></div>
+        </div>
+      </div>
+
+      <!-- PROFILE -->
+      <div class="panel anim anim-3">
+        <div class="panel-hd">
+          <div class="ph-left">
+            <div class="ph-title">My Account</div>
+            <div class="ph-sub">Your profile information</div>
+          </div>
+        </div>
+        <div class="panel-body">
+          <div class="profile-grid" id="profile-grid"></div>
+          <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border);">
+            <div style="font-size:.62rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem;">Change Password</div>
+            <div class="fg" style="margin-bottom:.65rem;">
+              <input type="password" id="pw-new" placeholder="New password (min. 6 chars)">
+            </div>
+            <div class="fg" style="margin-bottom:.65rem;">
+              <input type="password" id="pw-conf" placeholder="Confirm new password">
+            </div>
+            <button class="btn btn-ghost" onclick="changePassword()" style="width:100%;padding:.6rem;">Update Password</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast">
+  <span id="toast-ico">ℹ️</span>
+  <span id="toast-msg"></span>
+</div>
+
+<!-- CANCEL CONFIRM MODAL -->
+<div class="modal-bg" id="cancel-modal" onclick="closeCancelModal(event)">
+  <div class="modal">
+    <div class="modal-hd"><h3>Cancel Reservation</h3></div>
+    <div class="modal-body" id="cancel-body"></div>
+    <div class="modal-ft">
+      <button class="btn btn-ghost" onclick="document.getElementById('cancel-modal').classList.remove('open')" style="font-size:.7rem;padding:.5rem 1rem;">Keep Booking</button>
+      <button class="btn btn-danger" onclick="confirmCancel()" style="font-size:.7rem;padding:.5rem 1rem;">Yes, Cancel</button>
+    </div>
+  </div>
+</div>
+
+<script>
+'use strict';
+
+/* ════════════════════════════════
+   CONSTANTS & STATE
+════════════════════════════════ */
+const BK_KEY   = 'en3';
+const USERS_KEY = 'en3_users';
+const RATE     = 1999;
+const M3 = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+let BK    = [];
+let UINFO = null;   // current user object
+let selectedSuite = null;
+let cancelRef = null;
+
+/* ════════════════════════════════
+   BOOT: AUTH CHECK
+════════════════════════════════ */
+(function boot() {
+  // Check session
+  const sess = sessionStorage.getItem('en3_session');
+  const role = sessionStorage.getItem('en3_role');
+  const uname = sessionStorage.getItem('en3_uname');
+  if (!sess || role === 'admin') {
+    // Not logged in or admin logged in — send to login
+    window.location.href = 'login.html';
+    return;
+  }
+  // Load user info
+  const users = JSON.parse(localStorage.getItem(USERS_KEY) || '[]');
+  UINFO = users.find(u => u.username === uname) || { username: uname, name: uname, role: 'guest' };
+  // Load bookings
+  try { BK = JSON.parse(localStorage.getItem(BK_KEY) || '[]'); } catch(e){ BK = []; }
+  // Render UI
+  initUI();
+})();
+
+function initUI() {
+  // Topbar
+  const initials = (UINFO.name || UINFO.username).split(' ').map(w=>w[0]).slice(0,2).join('').toUpperCase();
+  document.getElementById('tb-ava').textContent  = initials;
+  document.getElementById('tb-uname').textContent = UINFO.name || UINFO.username;
+  document.getElementById('greet-name').textContent = (UINFO.name||UINFO.username).split(' ')[0];
+  // Profile
+  renderProfile();
+  // Bookings
+  renderHistory();
+  // Status + lock
+  evaluateStatus();
+  // Default check-in time
+  const def = new Date(); def.setHours(14,0,0,0);
+  document.getElementById('bk-ci').value = def.toISOString().slice(0,16);
+  calcCheckout();
+}
+
+/* ════════════════════════════════
+   MY BOOKINGS (filtered by user)
+════════════════════════════════ */
+function myBookings() {
+  return BK.filter(b => b.guestUser === UINFO.username);
+}
+
+/* Booking states */
+function getMyActiveBooking() {
+  return myBookings().find(b => ['pending','confirmed','checkedin'].includes(b.st));
+}
+function hasCompletedStay() {
+  return myBookings().some(b => b.st === 'checkedout');
+}
+function hasAnyNonCancelled() {
+  return myBookings().some(b => b.st !== 'cancelled');
+}
+
+/* ════════════════════════════════
+   EVALUATE STATUS → LOCK OR NOT
+════════════════════════════════ */
+function evaluateStatus() {
+  const active  = getMyActiveBooking();
+  const doneStay = hasCompletedStay();
+  const banner  = document.getElementById('status-banner');
+  const lockOv  = document.getElementById('lock-overlay');
+  const bkBtn   = document.getElementById('bk-btn');
+  const activePanel = document.getElementById('active-panel');
+
+  // Disable all form inputs if locked
+  const formInputs = document.querySelectorAll('#booking-panel input, #booking-panel select, #booking-panel textarea');
+
+  if (doneStay && !active) {
+    // LOCKED — completed a stay, no active booking
+    lockOv.classList.add('visible');
+    formInputs.forEach(el => el.disabled = true);
+    bkBtn.disabled = true;
+    document.querySelectorAll('.suite-card').forEach(c=>c.style.pointerEvents='none');
+
+    banner.style.display = 'block';
+    banner.innerHTML = `
+      <div class="status-banner locked">
+        <div class="sb-ico">🔒</div>
+        <div class="sb-body">
+          <div class="sb-title">Booking Locked</div>
+          <div class="sb-desc">Your stay has been completed. New bookings are disabled. Please contact the property to make another reservation.</div>
+        </div>
+        <span class="pill sp-red">Stay Done</span>
+      </div>`;
+
+    activePanel.style.display = 'none';
+
+  } else if (active) {
+    // HAS AN ACTIVE BOOKING
+    lockOv.classList.remove('visible');
+    formInputs.forEach(el => el.disabled = true);
+    bkBtn.disabled = true;
+    document.querySelectorAll('.suite-card').forEach(c=>c.style.pointerEvents='none');
+
+    const statusLabel = {pending:'Awaiting Confirmation',confirmed:'Confirmed',checkedin:'Currently Checked In'};
+    const statusClass = {pending:'sp-yellow',confirmed:'sp-green',checkedin:'sp-blue'};
+    const bannerClass = {pending:'checked-out',confirmed:'checked-out',checkedin:'active-stay'};
+
+    banner.style.display = 'block';
+    banner.innerHTML = `
+      <div class="status-banner ${bannerClass[active.st]||''}">
+        <div class="sb-ico">${active.st==='checkedin'?'🏠':'📅'}</div>
+        <div class="sb-body">
+          <div class="sb-title">You have an active reservation — ${active.st==='checkedin'?'you\'re currently checked in!':'waiting for your check-in.'}</div>
+          <div class="sb-desc">Suite ${active.rm} · Check-in: ${fmtFull(active.ci)} · ${active.px} guest${active.px>1?'s':''}</div>
+        </div>
+        <span class="pill ${statusClass[active.st]||'sp-yellow'}">${statusLabel[active.st]||active.st}</span>
+      </div>`;
+
+    // Show active booking card
+    activePanel.style.display = 'block';
+    renderActiveBooking(active);
+
+  } else {
+    // FREE TO BOOK
+    lockOv.classList.remove('visible');
+    formInputs.forEach(el => el.disabled = false);
+    bkBtn.disabled = false;
+    document.querySelectorAll('.suite-card').forEach(c=>c.style.pointerEvents='auto');
+    banner.style.display = 'none';
+    activePanel.style.display = 'none';
+  }
+}
+
+/* ════════════════════════════════
+   ACTIVE BOOKING DETAIL CARD
+════════════════════════════════ */
+function renderActiveBooking(b) {
+  const canCancel = ['pending','confirmed'].includes(b.st);
+  const stNames = {1:'Suite 1 · Sunset',2:'Suite 2 · Oceana'};
+  document.getElementById('active-body').innerHTML = `
+    <div class="bk-details" style="margin-bottom:.9rem;">
+      <div class="bd-item"><div class="bd-key">Reference</div><div class="bd-val" style="font-family:monospace;font-size:.76rem;">${b.ref}</div></div>
+      <div class="bd-item"><div class="bd-key">Status</div><div class="bd-val">${pill(b.st)}</div></div>
+      <div class="bd-item"><div class="bd-key">Suite</div><div class="bd-val">${stNames[b.rm]||'Suite '+b.rm}</div></div>
+      <div class="bd-item"><div class="bd-key">Guests</div><div class="bd-val">${b.px} person${b.px>1?'s':''}</div></div>
+      <div class="bd-item"><div class="bd-key">Check-in</div><div class="bd-val">${fmtFull(b.ci)}</div></div>
+      <div class="bd-item"><div class="bd-key">Check-out</div><div class="bd-val">${fmtFull(b.co)}</div></div>
+      <div class="bd-item"><div class="bd-key">Payment</div><div class="bd-val" style="text-transform:capitalize;">${b.pay}</div></div>
+      <div class="bd-item"><div class="bd-key">Total</div><div class="bd-val" style="color:var(--amber);font-weight:800;">₱${RATE.toLocaleString()}</div></div>
+    </div>
+    ${b.nt?`<div class="bk-note-row"><div class="bk-note-lbl">Special Request</div><div class="bk-note-val">"${b.nt}"</div></div>`:''}
+    ${canCancel?`<div style="margin-top:.9rem;padding-top:.75rem;border-top:1px solid var(--border);"><button class="btn btn-danger" style="width:100%;padding:.62rem;" onclick="openCancelModal('${b.ref}')">Cancel This Reservation</button></div>`:''}
+  `;
+}
+
+/* ════════════════════════════════
+   RENDER HISTORY
+════════════════════════════════ */
+function renderHistory() {
+  const mine = myBookings().sort((a,b)=>new Date(b.ci)-new Date(a.ci));
+  const completed = mine.filter(b=>b.st==='checkedout');
+  const spent = completed.length * RATE;
+
+  document.getElementById('stat-total').textContent  = completed.length;
+  document.getElementById('stat-spent').textContent  = completed.length ? `₱${(spent).toLocaleString()}` : '₱0';
+  document.getElementById('stat-nights').textContent = completed.length; // 1 booking = ~1 night stay
+
+  const wrap = document.getElementById('history-list');
+  if (!mine.length) {
+    wrap.innerHTML = `<div class="history-empty"><div class="hi-ico">🌴</div><p>No reservations yet.<br>Book your first stay above!</p></div>`;
+    return;
+  }
+
+  wrap.innerHTML = mine.map(b => {
+    const stNames = {1:'Suite 1 · Sunset',2:'Suite 2 · Oceana'};
+    return `
+    <div class="bk-card" id="bkc-${b.ref}">
+      <div class="bk-hd" onclick="toggleBkCard('${b.ref}')">
+        <div>
+          <div class="bk-ref">${b.ref}</div>
+          <div class="bk-name">${fmtDate(b.ci)}</div>
+          <div class="bk-suite">${stNames[b.rm]||'Suite '+b.rm} · ${b.px} guest${b.px>1?'s':''}</div>
+        </div>
+        <div class="bk-status-wrap">
+          ${pill(b.st)}
+          <span class="bk-chevron">▼</span>
+        </div>
+      </div>
+      <div class="bk-body">
+        <div class="bk-details">
+          <div class="bd-item"><div class="bd-key">Check-in</div><div class="bd-val">${fmtFull(b.ci)}</div></div>
+          <div class="bd-item"><div class="bd-key">Check-out</div><div class="bd-val">${fmtFull(b.co)}</div></div>
+          <div class="bd-item"><div class="bd-key">Payment</div><div class="bd-val" style="text-transform:capitalize;">${b.pay||'—'}</div></div>
+          <div class="bd-item"><div class="bd-key">Total</div><div class="bd-val" style="color:var(--amber);font-weight:800;">₱${RATE.toLocaleString()}</div></div>
+        </div>
+        ${b.nt?`<div class="bk-note-row"><div class="bk-note-lbl">Notes</div><div class="bk-note-val">"${b.nt}"</div></div>`:''}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function toggleBkCard(ref) {
+  const card = document.getElementById('bkc-'+ref);
+  if (card) card.classList.toggle('expanded');
+}
+
+/* ════════════════════════════════
+   RENDER PROFILE
+════════════════════════════════ */
+function renderProfile() {
+  document.getElementById('profile-grid').innerHTML = `
+    <span class="prof-key">Name</span><span class="prof-val">${UINFO.name||'—'}</span>
+    <span class="prof-key">Username</span><span class="prof-val">@${UINFO.username}</span>
+    <span class="prof-key">Role</span><span class="prof-val">Guest</span>
+    <span class="prof-key">Joined</span><span class="prof-val">${UINFO.created?fmtDate(UINFO.created):'—'}</span>
+  `;
+}
+
+/* ════════════════════════════════
+   SUITE PICKER
+════════════════════════════════ */
+function selectSuite(num) {
+  if (document.getElementById('sc-'+num).classList.contains('unavail')) return;
+  selectedSuite = num;
+  document.querySelectorAll('.suite-card').forEach(c=>c.classList.remove('selected'));
+  document.getElementById('sc-'+num).classList.add('selected');
+  updateSummary();
+}
+
+/* ════════════════════════════════
+   CHECKOUT CALC & SUMMARY
+════════════════════════════════ */
+function calcCheckout() {
+  const ci = document.getElementById('bk-ci').value;
+  if (!ci) { document.getElementById('bk-co').value=''; return; }
+  const d = new Date(ci);
+  const co = new Date(d.getTime() + 21*3600000);
+  document.getElementById('bk-co').value = co.toLocaleString('en-PH',{month:'short',day:'numeric',year:'numeric',hour:'2-digit',minute:'2-digit'});
+  updateSummary();
+}
+
+function updateSummary() {
+  const ci  = document.getElementById('bk-ci').value;
+  const pax = document.getElementById('bk-pax').value;
+  const pay = document.getElementById('bk-pay').value;
+  const box = document.getElementById('bk-summary');
+
+  if (!ci || !selectedSuite) { box.style.display='none'; return; }
+  box.style.display = 'block';
+  const d  = new Date(ci);
+  const co = new Date(d.getTime()+21*3600000);
+  const sNames = {1:'Suite 1 · Sunset (King)',2:'Suite 2 · Oceana (Queen)'};
+  const pNames = {cash:'Cash on Arrival',gcash:'GCash',bank:'Bank Transfer'};
+  document.getElementById('sum-suite').textContent = sNames[selectedSuite];
+  document.getElementById('sum-ci').textContent    = fmtFull(d);
+  document.getElementById('sum-co').textContent    = fmtFull(co);
+  document.getElementById('sum-pax').textContent   = pax+' guest'+(pax>1?'s':'');
+  document.getElementById('sum-pay').textContent   = pNames[pay]||pay;
+}
+
+/* ════════════════════════════════
+   SUBMIT BOOKING
+════════════════════════════════ */
+function submitBooking() {
+  const ci  = document.getElementById('bk-ci').value;
+  const pax = parseInt(document.getElementById('bk-pax').value)||1;
+  const pay = document.getElementById('bk-pay').value;
+  const nt  = document.getElementById('bk-note').value.trim();
+  const btn = document.getElementById('bk-btn');
+
+  hideErr();
+
+  if (!selectedSuite) { showErr('Please select a suite.'); return; }
+  if (!ci) { showErr('Please select your check-in date and time.'); return; }
+  if (pax < 1 || pax > 4) { showErr('Number of guests must be between 1 and 4.'); return; }
+
+  const cid = new Date(ci);
+  if (cid < new Date()) { showErr('Check-in date must be in the future.'); return; }
+
+  const cod = new Date(cid.getTime()+21*3600000);
+
+  // Check conflict
+  const conflict = BK.some(b => {
+    if (b.rm != selectedSuite || b.st === 'cancelled') return false;
+    return cid < new Date(b.co) && cod > new Date(b.ci);
+  });
+  if (conflict) { showErr(`Suite ${selectedSuite} is already booked for those dates. Please choose another time or suite.`); return; }
+
+  // Check already has active booking
+  if (getMyActiveBooking()) { showErr('You already have an active booking.'); return; }
+
+  btn.classList.add('loading'); btn.disabled = true;
+  btn.querySelector('.btn-lbl').textContent = 'Reserving…';
+
+  setTimeout(() => {
+    const ref = 'EN-'+Date.now().toString(36).toUpperCase();
+    const newBk = {
+      ref, fn: UINFO.name.split(' ')[0]||UINFO.username,
+      ln: UINFO.name.split(' ').slice(1).join(' ')||'',
+      ph: UINFO.phone||'—', em: UINFO.email||'',
+      rm: String(selectedSuite), ci:cid.toISOString(), co:cod.toISOString(),
+      px:pax, st:'pending', nt, pay,
+      guestUser: UINFO.username, // LINK to user account
+      created: new Date().toISOString()
+    };
+    BK.push(newBk);
+    localStorage.setItem(BK_KEY, JSON.stringify(BK));
+
+    // Log
+    try {
+      const log = JSON.parse(localStorage.getItem('en3_log')||'[]');
+      log.unshift({type:'ok', msg:`Guest "${UINFO.username}" booked Suite ${selectedSuite} · ${fmtFull(cid)}`, time:new Date().toISOString()});
+      localStorage.setItem('en3_log', JSON.stringify(log.slice(0,200)));
+    } catch(e){}
+
+    btn.classList.remove('loading'); btn.disabled = false;
+    btn.querySelector('.btn-lbl').textContent = 'Confirm Reservation';
+
+    showToast('Reservation submitted! Awaiting admin confirmation.','🏠','t-ok');
+    renderHistory();
+    evaluateStatus();
+    // Clear form
+    selectedSuite = null;
+    document.querySelectorAll('.suite-card').forEach(c=>c.classList.remove('selected'));
+    document.getElementById('bk-note').value = '';
+  }, 900);
+}
+
+/* ════════════════════════════════
+   CANCEL BOOKING
+════════════════════════════════ */
+function openCancelModal(ref) {
+  cancelRef = ref;
+  const b = BK.find(x=>x.ref===ref);
+  if (!b) return;
+  document.getElementById('cancel-body').innerHTML = `
+    Are you sure you want to cancel your reservation for <strong>Suite ${b.rm}</strong> on <strong>${fmtDate(b.ci)}</strong>?
+    <br><br>
+    <span style="font-size:.75rem;color:var(--red);">This action cannot be undone.</span>`;
+  document.getElementById('cancel-modal').classList.add('open');
+}
+function closeCancelModal(e) { if (e.target===e.currentTarget) document.getElementById('cancel-modal').classList.remove('open'); }
+function confirmCancel() {
+  if (!cancelRef) return;
+  const idx = BK.findIndex(b=>b.ref===cancelRef);
+  if (idx < 0) return;
+  BK[idx].st = 'cancelled';
+  localStorage.setItem(BK_KEY, JSON.stringify(BK));
+  try {
+    const log = JSON.parse(localStorage.getItem('en3_log')||'[]');
+    log.unshift({type:'warn', msg:`Guest "${UINFO.username}" cancelled booking ${cancelRef}`, time:new Date().toISOString()});
+    localStorage.setItem('en3_log', JSON.stringify(log.slice(0,200)));
+  } catch(e){}
+  document.getElementById('cancel-modal').classList.remove('open');
+  showToast('Reservation cancelled.','❌','t-warn');
+  renderHistory();
+  evaluateStatus();
+  cancelRef = null;
+}
+
+/* ════════════════════════════════
+   CHANGE PASSWORD
+════════════════════════════════ */
+function changePassword() {
+  const pw1 = document.getElementById('pw-new').value;
+  const pw2 = document.getElementById('pw-conf').value;
+  if (!pw1 || pw1.length < 6) { showToast('Password must be at least 6 characters.','⚠️','t-warn'); return; }
+  if (pw1 !== pw2) { showToast('Passwords do not match.','⚠️','t-warn'); return; }
+  const users = JSON.parse(localStorage.getItem(USERS_KEY)||'[]');
+  const idx = users.findIndex(u=>u.username===UINFO.username);
+  if (idx >= 0) { users[idx].password = pw1; localStorage.setItem(USERS_KEY,JSON.stringify(users)); }
+  document.getElementById('pw-new').value = '';
+  document.getElementById('pw-conf').value = '';
+  showToast('Password updated successfully!','✅','t-ok');
+}
+
+/* ════════════════════════════════
+   LOGOUT
+════════════════════════════════ */
+function doLogout() {
+  sessionStorage.removeItem('en3_session');
+  sessionStorage.removeItem('en3_role');
+  sessionStorage.removeItem('en3_uname');
+  window.location.href = 'login.html';
+}
+
+/* ════════════════════════════════
+   HELPERS
+════════════════════════════════ */
+function pill(st) {
+  const m = {confirmed:'p-confirmed Confirmed',pending:'p-pending Pending',checkedin:'p-checkedin Checked In',checkedout:'p-checkedout Checked Out',cancelled:'p-cancelled Cancelled'};
+  const parts = (m[st]||'p-pending '+st).split(' ');
+  return `<span class="pill ${parts[0]}">${parts.slice(1).join(' ')||st}</span>`;
+}
+function fmtFull(iso) { return new Date(iso).toLocaleString('en-PH',{month:'short',day:'numeric',year:'numeric',hour:'2-digit',minute:'2-digit'}); }
+function fmtDate(iso) { return new Date(iso).toLocaleDateString('en-PH',{month:'long',day:'numeric',year:'numeric'}); }
+
+let toastTimer;
+function showToast(msg, ico='ℹ️', cls='') {
+  const t=document.getElementById('toast');
+  document.getElementById('toast-ico').textContent=ico;
+  document.getElementById('toast-msg').textContent=msg;
+  t.className='toast show '+(cls||'');
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>t.classList.remove('show'),3800);
+}
+function showErr(msg) {
+  const e=document.getElementById('bk-err');
+  e.textContent=msg; e.style.display='block';
+}
+function hideErr() { document.getElementById('bk-err').style.display='none'; }
+</script>
+</body>
+</html>
