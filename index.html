@@ -90,7 +90,7 @@ nav.scrolled {
 .hero { min-height:100vh; position:relative; display:flex; flex-direction:column; align-items:center; justify-content:center; overflow:hidden; }
 .hero-bg {
   position:absolute; inset:0; z-index:0;
-  background: linear-gradient(to bottom, rgba(14,26,8,.45) 0%, rgba(14,26,8,.15) 45%, rgba(14,26,8,.72) 100%), url('/assets/images/index.jpg') center center / cover no-repeat;
+  background: linear-gradient(to bottom, rgba(14,26,8,.45) 0%, rgba(14,26,8,.15) 45%, rgba(14,26,8,.72) 100%), url('assets/images/index.jpg') center center / cover no-repeat;
   transform:scale(1.06);
   animation:heroZoom 18s ease-in-out infinite alternate;
 }
@@ -575,9 +575,9 @@ footer::before { content:''; position:absolute; top:0; left:0; right:0; height:2
     <a href="#avail">Availability</a>
     <a href="#location">Location</a>
     <a href="#footer">Contact</a>
-  </div>
+  </div>hero-bg
   <div class="nav-actions">
-    <button class="btn-login" onclick="window.location.href='/pages/login.html'">Login</button>
+    <button class="btn-login" onclick="window.location.href='pages/login.html'">Login</button>
     <button class="btn-booknow" onclick="openModal()">Book Now</button>
   </div>
 </nav>
