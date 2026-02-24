@@ -44,7 +44,6 @@ body {
   min-height:100vh;
 }
 
-/* ── TEXTURE OVERLAY ── */
 body::before {
   content:''; position:fixed; inset:0; z-index:0; pointer-events:none;
   background-image:
@@ -52,9 +51,7 @@ body::before {
     repeating-linear-gradient(90deg,transparent,transparent 29px,rgba(200,168,100,.03) 29px,rgba(200,168,100,.03) 30px);
 }
 
-/* ═══════════════════════════
-   TOPBAR
-═══════════════════════════ */
+/* ── TOPBAR ── */
 .topbar {
   position:sticky; top:0; z-index:200;
   background:rgba(242,232,213,.92);
@@ -67,9 +64,7 @@ body::before {
   padding:.85rem 1.5rem;
   display:flex; align-items:center; gap:1rem;
 }
-.tb-brand {
-  display:flex; align-items:center; gap:.65rem; flex:1;
-}
+.tb-brand { display:flex; align-items:center; gap:.65rem; flex:1; }
 .tb-logo {
   width:36px; height:36px; border-radius:50%;
   background:linear-gradient(135deg,var(--amber),var(--gold));
@@ -114,23 +109,15 @@ body::before {
 }
 .btn-logout:hover { border-color:var(--red); color:var(--red); background:var(--red-lt); }
 
-/* ═══════════════════════════
-   MAIN LAYOUT
-═══════════════════════════ */
+/* ── LAYOUT ── */
 .wrap {
   max-width:1120px; margin:0 auto;
   padding:2rem 1.5rem 4rem;
   position:relative; z-index:1;
 }
 
-/* ── HERO GREETING ── */
-.hero-greeting {
-  margin-bottom:2rem;
-  animation:fadeUp .6s ease both;
-}
-.hero-eyebrow {
-  display:flex; align-items:center; gap:.55rem; margin-bottom:.6rem;
-}
+.hero-greeting { margin-bottom:2rem; animation:fadeUp .6s ease both; }
+.hero-eyebrow { display:flex; align-items:center; gap:.55rem; margin-bottom:.6rem; }
 .hero-line { width:24px; height:1px; background:linear-gradient(90deg,var(--amber),transparent); }
 .hero-eyebrow span { font-size:.6rem; letter-spacing:.2em; text-transform:uppercase; color:var(--amber); font-weight:600; }
 .hero-title {
@@ -141,22 +128,16 @@ body::before {
 .hero-title em { font-style:italic; color:var(--amber); }
 .hero-sub { font-size:.82rem; color:var(--muted); margin-top:.4rem; font-weight:300; }
 
-/* ── STATUS BANNER (shown when has active/past booking) ── */
 .status-banner {
   border-radius:var(--radius); padding:1.1rem 1.4rem;
   display:flex; align-items:center; gap:1rem;
   margin-bottom:1.75rem; border:1px solid;
   animation:fadeUp .5s .1s ease both;
 }
-.status-banner.active-stay {
-  background:var(--blue-lt); border-color:#93C5FD;
-}
-.status-banner.checked-out {
-  background:#FEF9C3; border-color:#FCD34D;
-}
-.status-banner.locked {
-  background:var(--red-lt); border-color:#FCA5A5;
-}
+.status-banner.active-stay { background:var(--blue-lt); border-color:#93C5FD; }
+.status-banner.checked-out { background:#FEF9C3; border-color:#FCD34D; }
+.status-banner.locked { background:var(--red-lt); border-color:#FCA5A5; }
+.status-banner.profile-incomplete { background:#FFF7ED; border-color:#FCD34D; }
 .sb-ico { font-size:1.4rem; flex-shrink:0; }
 .sb-body { flex:1; }
 .sb-title { font-size:.88rem; font-weight:700; color:var(--text); }
@@ -165,12 +146,12 @@ body::before {
   font-size:.62rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
   padding:.22rem .7rem; border-radius:2rem; white-space:nowrap; flex-shrink:0;
 }
-.sp-blue { background:#DBEAFE; color:#1E40AF; }
+.sp-blue   { background:#DBEAFE; color:#1E40AF; }
 .sp-yellow { background:#FEF9C3; color:#92400E; }
-.sp-red { background:#FEE2E2; color:#B91C1C; }
-.sp-green { background:var(--green-lt); color:var(--sage); }
+.sp-red    { background:#FEE2E2; color:#B91C1C; }
+.sp-green  { background:var(--green-lt); color:var(--sage); }
+.sp-orange { background:#FFF7ED; color:#9A3412; }
 
-/* ── GRID ── */
 .grid {
   display:grid;
   grid-template-columns:1fr 1.1fr;
@@ -178,9 +159,7 @@ body::before {
   align-items:start;
 }
 
-/* ═══════════════════════════
-   PANELS / CARDS
-═══════════════════════════ */
+/* ── PANELS ── */
 .panel {
   background:var(--off); border:1px solid var(--border);
   border-radius:var(--radius); box-shadow:var(--shadow);
@@ -193,14 +172,41 @@ body::before {
 .ph-left .ph-title { font-size:.88rem; font-weight:700; color:var(--text); }
 .ph-left .ph-sub { font-size:.68rem; color:var(--muted); margin-top:.1rem; }
 .panel-body { padding:1.3rem 1.4rem; }
-
-/* Gold top accent */
 .panel.accented::before {
   content:''; display:block; height:3px;
   background:linear-gradient(90deg,var(--amber),var(--gold-pale),transparent);
 }
 
-/* ── BOOKING FORM ── */
+/* ── PROFILE COMPLETION ALERT (inside profile panel) ── */
+.profile-alert {
+  display:flex; align-items:flex-start; gap:.75rem;
+  background:#FFF7ED; border:1px solid #FCD34D;
+  border-radius:.45rem; padding:.85rem 1rem; margin-bottom:1rem;
+}
+.pa-ico { font-size:1.1rem; flex-shrink:0; margin-top:.05rem; }
+.pa-body {}
+.pa-title { font-size:.78rem; font-weight:700; color:#9A3412; }
+.pa-desc { font-size:.7rem; color:#B45309; margin-top:.15rem; line-height:1.5; }
+
+/* Profile completion progress */
+.profile-progress { margin-bottom:1.1rem; }
+.pp-label { display:flex; justify-content:space-between; align-items:center; margin-bottom:.4rem; }
+.pp-text { font-size:.66rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); }
+.pp-pct { font-size:.72rem; font-weight:800; color:var(--amber); }
+.pp-bar { height:5px; background:var(--border); border-radius:3px; overflow:hidden; }
+.pp-fill { height:100%; border-radius:3px; transition:width .5s ease; background:linear-gradient(90deg,var(--amber),var(--sage-lt)); }
+.pp-fill.complete { background:linear-gradient(90deg,var(--sage),var(--sage-lt)); }
+
+/* Required field badge */
+.req-badge {
+  font-size:.55rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+  background:#FEF9C3; color:#92400E; padding:.1rem .45rem;
+  border-radius:2rem; border:1px solid #FCD34D; margin-left:.4rem;
+  vertical-align:middle;
+}
+.req-badge.done { background:var(--green-lt); color:var(--sage); border-color:#86EFAC; }
+
+/* ── FORM ── */
 .fg { margin-bottom:1rem; }
 .fg label {
   display:block; font-size:.62rem; font-weight:600;
@@ -225,7 +231,7 @@ body::before {
 .fg input[readonly] { background:var(--linen); color:var(--muted); cursor:default; }
 .fg textarea { resize:vertical; min-height:72px; }
 .fg .hint { font-size:.63rem; color:rgba(122,98,72,.5); margin-top:.28rem; line-height:1.5; }
-
+.fg input.field-missing { border-color:#FCA5A5; background:#FEF2F2; }
 .fg-row { display:grid; grid-template-columns:1fr 1fr; gap:.8rem; }
 
 /* ── SUITE PICKER ── */
@@ -251,7 +257,7 @@ body::before {
 .sc-detail { font-size:.65rem; color:var(--muted); margin-top:.12rem; line-height:1.4; }
 .sc-price { font-size:.82rem; font-weight:700; color:var(--amber); margin-top:.3rem; }
 
-/* ── BOOKING SUMMARY BOX ── */
+/* ── BOOKING SUMMARY ── */
 .summary-box {
   background:linear-gradient(135deg,var(--forest-dk),var(--forest));
   border-radius:.5rem; padding:1.1rem 1.2rem; margin:1rem 0;
@@ -288,8 +294,14 @@ body::before {
   border:1px solid #FCA5A5; font-size:.7rem;
 }
 .btn-danger:hover { background:var(--red); color:#fff; }
+.btn-amber {
+  width:100%; padding:.72rem 1.2rem;
+  background:linear-gradient(135deg,var(--amber),var(--gold));
+  color:#fff; font-size:.74rem;
+  box-shadow:0 4px 16px rgba(200,147,42,.35);
+}
+.btn-amber:hover:not(:disabled) { transform:translateY(-2px); box-shadow:0 8px 24px rgba(200,147,42,.45); }
 
-/* Loading spinner */
 .spinner { width:14px; height:14px; border:2px solid rgba(255,255,255,.25); border-top-color:#fff; border-radius:50%; animation:spin .6s linear infinite; display:none; }
 .btn.loading .spinner { display:inline-block; }
 .btn.loading .btn-lbl { opacity:.65; }
@@ -297,14 +309,12 @@ body::before {
 
 /* ── LOCKED OVERLAY ── */
 .locked-overlay {
-  display:none;
-  position:absolute; inset:0; z-index:10;
+  display:none; position:absolute; inset:0; z-index:10;
   background:rgba(242,232,213,.88);
   backdrop-filter:blur(3px);
   border-radius:var(--radius);
   align-items:center; justify-content:center;
-  flex-direction:column; gap:.75rem; text-align:center;
-  padding:2rem;
+  flex-direction:column; gap:.75rem; text-align:center; padding:2rem;
 }
 .locked-overlay.visible { display:flex; }
 .lock-ico { font-size:2.5rem; opacity:.5; }
@@ -312,9 +322,15 @@ body::before {
 .lock-desc { font-size:.76rem; color:var(--muted); line-height:1.7; max-width:240px; }
 .lock-badge {
   font-size:.62rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
-  background:var(--red-lt); color:var(--red); padding:.25rem .75rem; border-radius:2rem;
-  border:1px solid #FCA5A5;
+  padding:.25rem .75rem; border-radius:2rem; border:1px solid;
 }
+.lock-badge.lb-red { background:var(--red-lt); color:var(--red); border-color:#FCA5A5; }
+.lock-badge.lb-amber { background:#FFF7ED; color:#9A3412; border-color:#FCD34D; }
+.lock-cta {
+  font-size:.72rem; font-weight:700; color:var(--amber);
+  text-decoration:underline; cursor:pointer; text-underline-offset:3px;
+}
+.lock-cta:hover { color:var(--forest); }
 
 /* ── BOOKING HISTORY ── */
 .history-empty { text-align:center; padding:2.5rem 1rem; color:var(--muted); }
@@ -328,24 +344,16 @@ body::before {
 }
 .bk-card:hover { box-shadow:0 4px 16px rgba(42,28,8,.09); }
 .bk-card:last-child { margin-bottom:0; }
-.bk-hd {
-  padding:.8rem 1rem; display:flex; align-items:center; justify-content:space-between;
-  cursor:pointer; gap:.75rem;
-}
+.bk-hd { padding:.8rem 1rem; display:flex; align-items:center; justify-content:space-between; cursor:pointer; gap:.75rem; }
 .bk-ref { font-size:.62rem; font-family:monospace; color:var(--muted); }
 .bk-name { font-size:.85rem; font-weight:700; color:var(--text); }
 .bk-suite { font-size:.7rem; color:var(--muted); margin-top:.08rem; }
 .bk-status-wrap { display:flex; flex-direction:column; align-items:flex-end; gap:.25rem; }
 .bk-chevron { font-size:.7rem; color:var(--muted); transition:transform .2s; }
 .bk-card.expanded .bk-chevron { transform:rotate(180deg); }
-
-.bk-body {
-  display:none; border-top:1px solid var(--border);
-  padding:.9rem 1rem; background:var(--linen);
-}
+.bk-body { display:none; border-top:1px solid var(--border); padding:.9rem 1rem; background:var(--linen); }
 .bk-card.expanded .bk-body { display:block; }
 .bk-details { display:grid; grid-template-columns:1fr 1fr; gap:.5rem .9rem; }
-.bd-item {}
 .bd-key { font-size:.6rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-bottom:.15rem; }
 .bd-val { font-size:.78rem; font-weight:600; color:var(--text); }
 .bk-note-row { margin-top:.75rem; padding-top:.65rem; border-top:1px solid var(--border); }
@@ -364,12 +372,18 @@ body::before {
 .p-checkedout { background:#F3F4F6; color:#4B5563; }
 .p-cancelled  { background:#FEE2E2; color:#B91C1C; }
 
-/* ── PROFILE CARD ── */
-.profile-grid { display:grid; grid-template-columns:auto 1fr; gap:.55rem .9rem; align-items:center; }
-.prof-key { font-size:.62rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); }
-.prof-val { font-size:.82rem; font-weight:500; color:var(--text); }
+/* ── PROFILE SECTION ── */
+.profile-form-section { margin-bottom:1.2rem; }
+.pfs-title {
+  font-size:.62rem; font-weight:700; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--muted);
+  margin-bottom:.75rem; padding-bottom:.5rem;
+  border-bottom:1px solid var(--border);
+  display:flex; align-items:center; gap:.5rem;
+}
+.pfs-title .pfs-check { font-size:.9rem; }
 
-/* ── STAY STATS ── */
+/* ── STAT ROW ── */
 .stat-row { display:grid; grid-template-columns:repeat(3,1fr); gap:.65rem; margin-bottom:1.2rem; }
 .stat-box {
   background:var(--linen); border-radius:.45rem; padding:.8rem .75rem; text-align:center;
@@ -395,7 +409,7 @@ body::before {
 .toast.t-err  { border-left-color:var(--red); }
 .toast.t-warn { border-left-color:var(--gold); }
 
-/* ── CONFIRM MODAL ── */
+/* ── MODAL ── */
 .modal-bg {
   display:none; position:fixed; inset:0; z-index:600;
   background:rgba(42,28,8,.55); backdrop-filter:blur(4px);
@@ -422,10 +436,7 @@ body::before {
 .anim-3 { animation-delay:.24s; }
 
 /* ── RESPONSIVE ── */
-@media(max-width:860px) {
-  .grid { grid-template-columns:1fr; }
-  .suite-cards { grid-template-columns:1fr 1fr; }
-}
+@media(max-width:860px) { .grid { grid-template-columns:1fr; } }
 @media(max-width:560px) {
   .wrap { padding:1.2rem 1rem 3rem; }
   .fg-row { grid-template-columns:1fr; }
@@ -438,7 +449,7 @@ body::before {
 </head>
 <body>
 
-<!-- ═══════════════ TOPBAR ═══════════════ -->
+<!-- TOPBAR -->
 <header class="topbar">
   <div class="topbar-inner">
     <div class="tb-brand">
@@ -459,7 +470,7 @@ body::before {
   </div>
 </header>
 
-<!-- ═══════════════ MAIN ═══════════════ -->
+<!-- MAIN -->
 <div class="wrap">
 
   <!-- GREETING -->
@@ -472,22 +483,31 @@ body::before {
     <p class="hero-sub">Manage your reservation and view your stay history below.</p>
   </div>
 
-  <!-- STATUS BANNER (dynamic) -->
+  <!-- STATUS BANNER -->
   <div id="status-banner" style="display:none;"></div>
 
   <!-- GRID -->
   <div class="grid">
 
-    <!-- ───── LEFT: BOOKING FORM ───── -->
+    <!-- LEFT: BOOKING FORM -->
     <div>
       <div class="panel accented anim anim-1" style="position:relative;" id="booking-panel">
 
-        <!-- LOCKED OVERLAY -->
-        <div class="locked-overlay" id="lock-overlay">
+        <!-- LOCKED OVERLAY (profile incomplete) -->
+        <div class="locked-overlay" id="lock-overlay-profile">
+          <div class="lock-ico">📋</div>
+          <div class="lock-title">Complete Your Profile</div>
+          <p class="lock-desc">Please fill in your contact details in <strong>My Account</strong> before making a reservation.</p>
+          <div class="lock-badge lb-amber">Profile Incomplete</div>
+          <span class="lock-cta" onclick="scrollToProfile()">Go to My Account ↓</span>
+        </div>
+
+        <!-- LOCKED OVERLAY (stay completed) -->
+        <div class="locked-overlay" id="lock-overlay-done">
           <div class="lock-ico">🔒</div>
           <div class="lock-title">Booking Closed</div>
-          <p class="lock-desc">You have already completed a stay. Please contact the property to book again or request a re-open from the admin.</p>
-          <div class="lock-badge">Stay Completed</div>
+          <p class="lock-desc">You have already completed a stay. Please contact the property to book again.</p>
+          <div class="lock-badge lb-red">Stay Completed</div>
         </div>
 
         <div class="panel-hd">
@@ -500,7 +520,6 @@ body::before {
 
         <div class="panel-body">
 
-          <!-- Suite picker -->
           <div style="margin-bottom:.8rem;">
             <div style="font-size:.62rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.55rem;">Choose Your Suite</div>
             <div class="suite-cards">
@@ -552,7 +571,6 @@ body::before {
             <textarea id="bk-note" placeholder="e.g. Anniversary setup, early check-in, dietary needs…"></textarea>
           </div>
 
-          <!-- Summary -->
           <div class="summary-box" id="bk-summary" style="display:none;">
             <div class="sb-label">Booking Summary</div>
             <div class="sb-rows">
@@ -579,7 +597,7 @@ body::before {
       </div>
     </div>
 
-    <!-- ───── RIGHT: SIDEBAR PANELS ───── -->
+    <!-- RIGHT: SIDEBAR -->
     <div style="display:flex;flex-direction:column;gap:1.25rem;">
 
       <!-- ACTIVE BOOKING CARD -->
@@ -593,7 +611,7 @@ body::before {
         <div class="panel-body" id="active-body"></div>
       </div>
 
-      <!-- STAY STATS -->
+      <!-- STAY STATS & HISTORY -->
       <div class="panel anim anim-2">
         <div class="panel-hd">
           <div class="ph-left">
@@ -602,7 +620,7 @@ body::before {
           </div>
         </div>
         <div class="panel-body">
-          <div class="stat-row" id="stats-row">
+          <div class="stat-row">
             <div class="stat-box">
               <div class="stat-val" id="stat-total">0</div>
               <div class="stat-lbl">Total Stays</div>
@@ -620,17 +638,143 @@ body::before {
         </div>
       </div>
 
-      <!-- PROFILE -->
-      <div class="panel anim anim-3">
+      <!-- MY ACCOUNT / PROFILE -->
+      <div class="panel anim anim-3" id="profile-panel">
         <div class="panel-hd">
           <div class="ph-left">
             <div class="ph-title">My Account</div>
-            <div class="ph-sub">Your profile information</div>
+            <div class="ph-sub" id="profile-panel-sub">Complete your profile to enable booking</div>
           </div>
+          <div id="profile-complete-badge"></div>
         </div>
         <div class="panel-body">
-          <div class="profile-grid" id="profile-grid"></div>
-          <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border);">
+
+          <!-- Profile completion progress bar -->
+          <div class="profile-progress" id="profile-progress">
+            <div class="pp-label">
+              <span class="pp-text">Profile Completion</span>
+              <span class="pp-pct" id="progress-pct">0%</span>
+            </div>
+            <div class="pp-bar"><div class="pp-fill" id="progress-fill" style="width:0%"></div></div>
+          </div>
+
+          <!-- Incomplete alert -->
+          <div class="profile-alert" id="profile-alert" style="display:none;">
+            <div class="pa-ico">⚠️</div>
+            <div class="pa-body">
+              <div class="pa-title">Profile incomplete — booking disabled</div>
+              <div class="pa-desc">Fill in all required fields marked <strong>Required</strong> below and click Save to unlock booking.</div>
+            </div>
+          </div>
+
+          <!-- ACCOUNT INFO (readonly) -->
+          <div class="profile-form-section">
+            <div class="pfs-title"><span class="pfs-check">🔐</span> Account Info</div>
+            <div class="fg">
+              <label>Full Name</label>
+              <input type="text" id="prof-fullname" readonly>
+            </div>
+            <div class="fg-row">
+              <div class="fg">
+                <label>Username</label>
+                <input type="text" id="prof-username" readonly>
+              </div>
+              <div class="fg">
+                <label>Joined</label>
+                <input type="text" id="prof-joined" readonly>
+              </div>
+            </div>
+          </div>
+
+          <!-- CONTACT DETAILS (editable, required) -->
+          <div class="profile-form-section">
+            <div class="pfs-title" id="contact-section-title"><span class="pfs-check" id="contact-icon">📞</span> Contact Details</div>
+
+            <div class="fg">
+              <label>Phone Number <span class="req-badge" id="badge-phone">Required</span></label>
+              <input type="tel" id="prof-phone" placeholder="e.g. 09XX XXX XXXX" oninput="onProfileInput()">
+            </div>
+
+            <div class="fg">
+              <label>Email Address <span class="req-badge" id="badge-email">Required</span></label>
+              <input type="email" id="prof-email" placeholder="e.g. you@email.com" oninput="onProfileInput()">
+            </div>
+          </div>
+
+          <!-- ADDRESS (editable, required) -->
+          <div class="profile-form-section">
+            <div class="pfs-title" id="address-section-title"><span class="pfs-check" id="address-icon">📍</span> Address</div>
+
+            <div class="fg">
+              <label>Home Address <span class="req-badge" id="badge-address">Required</span></label>
+              <input type="text" id="prof-address" placeholder="Street, Barangay, City" oninput="onProfileInput()">
+            </div>
+
+            <div class="fg-row">
+              <div class="fg">
+                <label>City / Municipality</label>
+                <input type="text" id="prof-city" placeholder="e.g. Cebu City" oninput="onProfileInput()">
+              </div>
+              <div class="fg">
+                <label>Province / Region</label>
+                <input type="text" id="prof-region" placeholder="e.g. Cebu" oninput="onProfileInput()">
+              </div>
+            </div>
+          </div>
+
+          <!-- EMERGENCY CONTACT (editable, required) -->
+          <div class="profile-form-section">
+            <div class="pfs-title" id="emergency-section-title"><span class="pfs-check" id="emergency-icon">🚨</span> Emergency Contact</div>
+
+            <div class="fg-row">
+              <div class="fg">
+                <label>Contact Name <span class="req-badge" id="badge-ecname">Required</span></label>
+                <input type="text" id="prof-ecname" placeholder="Full name" oninput="onProfileInput()">
+              </div>
+              <div class="fg">
+                <label>Relationship</label>
+                <input type="text" id="prof-ecrel" placeholder="e.g. Spouse, Parent" oninput="onProfileInput()">
+              </div>
+            </div>
+
+            <div class="fg">
+              <label>Contact Phone <span class="req-badge" id="badge-ecphone">Required</span></label>
+              <input type="tel" id="prof-ecphone" placeholder="e.g. 09XX XXX XXXX" oninput="onProfileInput()">
+            </div>
+          </div>
+
+          <!-- GOVERNMENT ID (optional but shown) -->
+          <div class="profile-form-section">
+            <div class="pfs-title"><span class="pfs-check">🪪</span> Valid ID <span style="font-weight:300;font-size:.58rem;text-transform:none;letter-spacing:0;">(optional)</span></div>
+            <div class="fg-row">
+              <div class="fg">
+                <label>ID Type</label>
+                <select id="prof-idtype" oninput="onProfileInput()">
+                  <option value="">Select ID type</option>
+                  <option value="PhilSys">PhilSys ID</option>
+                  <option value="Driver's License">Driver's License</option>
+                  <option value="Passport">Passport</option>
+                  <option value="Voter's ID">Voter's ID</option>
+                  <option value="SSS/GSIS">SSS / GSIS</option>
+                  <option value="PhilHealth">PhilHealth</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              <div class="fg">
+                <label>ID Number</label>
+                <input type="text" id="prof-idnum" placeholder="ID number" oninput="onProfileInput()">
+              </div>
+            </div>
+          </div>
+
+          <!-- SAVE BUTTON -->
+          <button class="btn btn-amber" id="save-profile-btn" onclick="saveProfile()">
+            <span>💾</span>
+            <span class="btn-lbl">Save Profile</span>
+          </button>
+
+          <!-- CHANGE PASSWORD -->
+          <div style="margin-top:1.2rem;padding-top:1rem;border-top:1px solid var(--border);">
             <div style="font-size:.62rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem;">Change Password</div>
             <div class="fg" style="margin-bottom:.65rem;">
               <input type="password" id="pw-new" placeholder="New password (min. 6 chars)">
@@ -640,6 +784,7 @@ body::before {
             </div>
             <button class="btn btn-ghost" onclick="changePassword()" style="width:100%;padding:.6rem;">Update Password</button>
           </div>
+
         </div>
       </div>
 
@@ -653,7 +798,7 @@ body::before {
   <span id="toast-msg"></span>
 </div>
 
-<!-- CANCEL CONFIRM MODAL -->
+<!-- CANCEL MODAL -->
 <div class="modal-bg" id="cancel-modal" onclick="closeCancelModal(event)">
   <div class="modal">
     <div class="modal-hd"><h3>Cancel Reservation</h3></div>
@@ -668,151 +813,273 @@ body::before {
 <script>
 'use strict';
 
-/* ════════════════════════════════
-   CONSTANTS & STATE
-════════════════════════════════ */
-const BK_KEY   = 'en3';
+const BK_KEY    = 'en3';
 const USERS_KEY = 'en3_users';
-const RATE     = 1999;
-const M3 = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const RATE      = 1999;
 
 let BK    = [];
-let UINFO = null;   // current user object
+let UINFO = null;
 let selectedSuite = null;
-let cancelRef = null;
+let cancelRef     = null;
 
-/* ════════════════════════════════
-   BOOT: AUTH CHECK
-════════════════════════════════ */
+// Required profile fields to unlock booking
+const REQUIRED_FIELDS = ['phone','email','address','ecname','ecphone'];
+
+/* ══════════ BOOT ══════════ */
 (function boot() {
-  // Check session
-  const sess = sessionStorage.getItem('en3_session');
-  const role = sessionStorage.getItem('en3_role');
+  const sess  = sessionStorage.getItem('en3_session');
+  const role  = sessionStorage.getItem('en3_role');
   const uname = sessionStorage.getItem('en3_uname');
-  if (!sess || role === 'admin') {
-    // Not logged in or admin logged in — send to login
-    window.location.href = 'login.html';
-    return;
-  }
-  // Load user info
+  if (!sess || role === 'admin') { window.location.href = 'login.html'; return; }
   const users = JSON.parse(localStorage.getItem(USERS_KEY) || '[]');
   UINFO = users.find(u => u.username === uname) || { username: uname, name: uname, role: 'guest' };
-  // Load bookings
   try { BK = JSON.parse(localStorage.getItem(BK_KEY) || '[]'); } catch(e){ BK = []; }
-  // Render UI
   initUI();
 })();
 
 function initUI() {
-  // Topbar
   const initials = (UINFO.name || UINFO.username).split(' ').map(w=>w[0]).slice(0,2).join('').toUpperCase();
-  document.getElementById('tb-ava').textContent  = initials;
+  document.getElementById('tb-ava').textContent   = initials;
   document.getElementById('tb-uname').textContent = UINFO.name || UINFO.username;
   document.getElementById('greet-name').textContent = (UINFO.name||UINFO.username).split(' ')[0];
-  // Profile
-  renderProfile();
-  // Bookings
+  renderProfileForm();
   renderHistory();
-  // Status + lock
   evaluateStatus();
-  // Default check-in time
   const def = new Date(); def.setHours(14,0,0,0);
   document.getElementById('bk-ci').value = def.toISOString().slice(0,16);
   calcCheckout();
 }
 
-/* ════════════════════════════════
-   MY BOOKINGS (filtered by user)
-════════════════════════════════ */
-function myBookings() {
-  return BK.filter(b => b.guestUser === UINFO.username);
+/* ══════════ PROFILE COMPLETION CHECK ══════════ */
+function isProfileComplete() {
+  return REQUIRED_FIELDS.every(f => {
+    const v = (UINFO[f] || '').trim();
+    return v.length > 0;
+  });
 }
 
-/* Booking states */
-function getMyActiveBooking() {
-  return myBookings().find(b => ['pending','confirmed','checkedin'].includes(b.st));
-}
-function hasCompletedStay() {
-  return myBookings().some(b => b.st === 'checkedout');
-}
-function hasAnyNonCancelled() {
-  return myBookings().some(b => b.st !== 'cancelled');
+function getCompletionPercent() {
+  const done = REQUIRED_FIELDS.filter(f => (UINFO[f]||'').trim().length > 0).length;
+  return Math.round((done / REQUIRED_FIELDS.length) * 100);
 }
 
-/* ════════════════════════════════
-   EVALUATE STATUS → LOCK OR NOT
-════════════════════════════════ */
+/* ══════════ RENDER PROFILE FORM ══════════ */
+function renderProfileForm() {
+  document.getElementById('prof-fullname').value = UINFO.name || '';
+  document.getElementById('prof-username').value = '@' + UINFO.username;
+  document.getElementById('prof-joined').value   = UINFO.created ? fmtDate(UINFO.created) : 'N/A';
+  document.getElementById('prof-phone').value    = UINFO.phone   || '';
+  document.getElementById('prof-email').value    = UINFO.email   || '';
+  document.getElementById('prof-address').value  = UINFO.address || '';
+  document.getElementById('prof-city').value     = UINFO.city    || '';
+  document.getElementById('prof-region').value   = UINFO.region  || '';
+  document.getElementById('prof-ecname').value   = UINFO.ecname  || '';
+  document.getElementById('prof-ecrel').value    = UINFO.ecrel   || '';
+  document.getElementById('prof-ecphone').value  = UINFO.ecphone || '';
+  document.getElementById('prof-idtype').value   = UINFO.idtype  || '';
+  document.getElementById('prof-idnum').value    = UINFO.idnum   || '';
+  updateProfileUI();
+}
+
+/* ══════════ LIVE PROFILE UI UPDATE ══════════ */
+function onProfileInput() {
+  updateProfileUI();
+}
+
+function updateProfileUI() {
+  const pct = getCompletionPercent();
+  const complete = pct === 100;
+
+  // Progress bar
+  document.getElementById('progress-pct').textContent = pct + '%';
+  const fill = document.getElementById('progress-fill');
+  fill.style.width = pct + '%';
+  fill.className = 'pp-fill' + (complete ? ' complete' : '');
+
+  // Alert box
+  document.getElementById('profile-alert').style.display = complete ? 'none' : 'block';
+
+  // Panel subtitle
+  document.getElementById('profile-panel-sub').textContent = complete
+    ? '✅ Profile complete — booking enabled'
+    : 'Complete your profile to enable booking';
+
+  // Badge on panel header
+  document.getElementById('profile-complete-badge').innerHTML = complete
+    ? '<span class="pill p-confirmed">Complete</span>'
+    : `<span class="pill p-pending">${pct}% Done</span>`;
+
+  // Per-field badges (using current INPUT values, not UINFO)
+  updateFieldBadge('badge-phone',   document.getElementById('prof-phone').value);
+  updateFieldBadge('badge-email',   document.getElementById('prof-email').value);
+  updateFieldBadge('badge-address', document.getElementById('prof-address').value);
+  updateFieldBadge('badge-ecname',  document.getElementById('prof-ecname').value);
+  updateFieldBadge('badge-ecphone', document.getElementById('prof-ecphone').value);
+
+  // Section icons
+  const phoneOk   = document.getElementById('prof-phone').value.trim().length > 0;
+  const emailOk   = document.getElementById('prof-email').value.trim().length > 0;
+  const addressOk = document.getElementById('prof-address').value.trim().length > 0;
+  const ecnameOk  = document.getElementById('prof-ecname').value.trim().length > 0;
+  const ecphoneOk = document.getElementById('prof-ecphone').value.trim().length > 0;
+
+  document.getElementById('contact-icon').textContent  = (phoneOk && emailOk)   ? '✅' : '📞';
+  document.getElementById('address-icon').textContent  = addressOk              ? '✅' : '📍';
+  document.getElementById('emergency-icon').textContent = (ecnameOk && ecphoneOk) ? '✅' : '🚨';
+}
+
+function updateFieldBadge(id, val) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const filled = (val||'').trim().length > 0;
+  el.textContent = filled ? 'Done ✓' : 'Required';
+  el.className   = 'req-badge' + (filled ? ' done' : '');
+}
+
+/* ══════════ SAVE PROFILE ══════════ */
+function saveProfile() {
+  const phone   = document.getElementById('prof-phone').value.trim();
+  const email   = document.getElementById('prof-email').value.trim();
+  const address = document.getElementById('prof-address').value.trim();
+  const city    = document.getElementById('prof-city').value.trim();
+  const region  = document.getElementById('prof-region').value.trim();
+  const ecname  = document.getElementById('prof-ecname').value.trim();
+  const ecrel   = document.getElementById('prof-ecrel').value.trim();
+  const ecphone = document.getElementById('prof-ecphone').value.trim();
+  const idtype  = document.getElementById('prof-idtype').value;
+  const idnum   = document.getElementById('prof-idnum').value.trim();
+
+  // Highlight missing required fields
+  const missing = [];
+  if (!phone)   { missing.push('Phone Number');   highlightMissing('prof-phone'); }
+  if (!email)   { missing.push('Email Address');  highlightMissing('prof-email'); }
+  if (!address) { missing.push('Home Address');   highlightMissing('prof-address'); }
+  if (!ecname)  { missing.push('Emergency Contact Name');  highlightMissing('prof-ecname'); }
+  if (!ecphone) { missing.push('Emergency Contact Phone'); highlightMissing('prof-ecphone'); }
+
+  if (missing.length > 0) {
+    showToast('Please fill in: ' + missing.slice(0,2).join(', ') + (missing.length>2?'…':''), '⚠️', 't-warn');
+    return;
+  }
+
+  // Save to localStorage
+  const users = JSON.parse(localStorage.getItem(USERS_KEY) || '[]');
+  const idx = users.findIndex(u => u.username === UINFO.username);
+  const updated = {
+    ...UINFO,
+    phone, email, address, city, region,
+    ecname, ecrel, ecphone, idtype, idnum
+  };
+  UINFO = updated;
+  if (idx >= 0) { users[idx] = updated; }
+  else { users.push(updated); }
+  localStorage.setItem(USERS_KEY, JSON.stringify(users));
+
+  showToast('Profile saved! You can now make a booking. 🎉', '✅', 't-ok');
+  updateProfileUI();
+  evaluateStatus();
+}
+
+function highlightMissing(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.classList.add('field-missing');
+  el.addEventListener('input', () => el.classList.remove('field-missing'), { once: true });
+}
+
+/* ══════════ EVALUATE STATUS / LOCKING ══════════ */
 function evaluateStatus() {
-  const active  = getMyActiveBooking();
-  const doneStay = hasCompletedStay();
-  const banner  = document.getElementById('status-banner');
-  const lockOv  = document.getElementById('lock-overlay');
-  const bkBtn   = document.getElementById('bk-btn');
+  const active    = getMyActiveBooking();
+  const doneStay  = hasCompletedStay();
+  const profDone  = isProfileComplete();
+  const banner    = document.getElementById('status-banner');
+  const lockProf  = document.getElementById('lock-overlay-profile');
+  const lockDone  = document.getElementById('lock-overlay-done');
+  const bkBtn     = document.getElementById('bk-btn');
   const activePanel = document.getElementById('active-panel');
+  const formInputs  = document.querySelectorAll('#booking-panel input, #booking-panel select, #booking-panel textarea');
 
-  // Disable all form inputs if locked
-  const formInputs = document.querySelectorAll('#booking-panel input, #booking-panel select, #booking-panel textarea');
+  // Reset overlays
+  lockProf.classList.remove('visible');
+  lockDone.classList.remove('visible');
 
   if (doneStay && !active) {
-    // LOCKED — completed a stay, no active booking
-    lockOv.classList.add('visible');
+    // Completed stay — fully locked
+    lockDone.classList.add('visible');
     formInputs.forEach(el => el.disabled = true);
     bkBtn.disabled = true;
-    document.querySelectorAll('.suite-card').forEach(c=>c.style.pointerEvents='none');
-
+    document.querySelectorAll('.suite-card').forEach(c => c.style.pointerEvents='none');
     banner.style.display = 'block';
     banner.innerHTML = `
       <div class="status-banner locked">
         <div class="sb-ico">🔒</div>
         <div class="sb-body">
           <div class="sb-title">Booking Locked</div>
-          <div class="sb-desc">Your stay has been completed. New bookings are disabled. Please contact the property to make another reservation.</div>
+          <div class="sb-desc">Your stay has been completed. Contact the property to make another reservation.</div>
         </div>
         <span class="pill sp-red">Stay Done</span>
       </div>`;
-
     activePanel.style.display = 'none';
 
   } else if (active) {
-    // HAS AN ACTIVE BOOKING
-    lockOv.classList.remove('visible');
+    // Has active booking — form locked but show reservation
+    lockProf.classList.remove('visible');
+    lockDone.classList.remove('visible');
     formInputs.forEach(el => el.disabled = true);
     bkBtn.disabled = true;
-    document.querySelectorAll('.suite-card').forEach(c=>c.style.pointerEvents='none');
-
+    document.querySelectorAll('.suite-card').forEach(c => c.style.pointerEvents='none');
     const statusLabel = {pending:'Awaiting Confirmation',confirmed:'Confirmed',checkedin:'Currently Checked In'};
     const statusClass = {pending:'sp-yellow',confirmed:'sp-green',checkedin:'sp-blue'};
     const bannerClass = {pending:'checked-out',confirmed:'checked-out',checkedin:'active-stay'};
-
     banner.style.display = 'block';
     banner.innerHTML = `
       <div class="status-banner ${bannerClass[active.st]||''}">
         <div class="sb-ico">${active.st==='checkedin'?'🏠':'📅'}</div>
         <div class="sb-body">
-          <div class="sb-title">You have an active reservation — ${active.st==='checkedin'?'you\'re currently checked in!':'waiting for your check-in.'}</div>
+          <div class="sb-title">You have an active reservation${active.st==='checkedin'?' — you\'re checked in!':' — waiting for your check-in.'}</div>
           <div class="sb-desc">Suite ${active.rm} · Check-in: ${fmtFull(active.ci)} · ${active.px} guest${active.px>1?'s':''}</div>
         </div>
         <span class="pill ${statusClass[active.st]||'sp-yellow'}">${statusLabel[active.st]||active.st}</span>
       </div>`;
-
-    // Show active booking card
     activePanel.style.display = 'block';
     renderActiveBooking(active);
 
+  } else if (!profDone) {
+    // Profile incomplete — overlay on booking form
+    lockProf.classList.add('visible');
+    formInputs.forEach(el => el.disabled = true);
+    bkBtn.disabled = true;
+    document.querySelectorAll('.suite-card').forEach(c => c.style.pointerEvents='none');
+    banner.style.display = 'block';
+    banner.innerHTML = `
+      <div class="status-banner profile-incomplete">
+        <div class="sb-ico">📋</div>
+        <div class="sb-body">
+          <div class="sb-title">Complete your profile to unlock booking</div>
+          <div class="sb-desc">Please fill in your contact details, address, and emergency contact in <strong>My Account</strong> below, then click Save.</div>
+        </div>
+        <span class="sb-pill sp-orange">Action Required</span>
+      </div>`;
+    activePanel.style.display = 'none';
+
   } else {
-    // FREE TO BOOK
-    lockOv.classList.remove('visible');
+    // All clear — free to book
+    lockProf.classList.remove('visible');
+    lockDone.classList.remove('visible');
     formInputs.forEach(el => el.disabled = false);
     bkBtn.disabled = false;
-    document.querySelectorAll('.suite-card').forEach(c=>c.style.pointerEvents='auto');
+    document.querySelectorAll('.suite-card').forEach(c => c.style.pointerEvents='auto');
     banner.style.display = 'none';
     activePanel.style.display = 'none';
   }
 }
 
-/* ════════════════════════════════
-   ACTIVE BOOKING DETAIL CARD
-════════════════════════════════ */
+/* ══════════ MY BOOKINGS ══════════ */
+function myBookings() { return BK.filter(b => b.guestUser === UINFO.username); }
+function getMyActiveBooking() { return myBookings().find(b => ['pending','confirmed','checkedin'].includes(b.st)); }
+function hasCompletedStay()   { return myBookings().some(b => b.st === 'checkedout'); }
+
+/* ══════════ ACTIVE BOOKING DETAIL ══════════ */
 function renderActiveBooking(b) {
   const canCancel = ['pending','confirmed'].includes(b.st);
   const stNames = {1:'Suite 1 · Sunset',2:'Suite 2 · Oceana'};
@@ -832,24 +1099,20 @@ function renderActiveBooking(b) {
   `;
 }
 
-/* ════════════════════════════════
-   RENDER HISTORY
-════════════════════════════════ */
+/* ══════════ HISTORY ══════════ */
 function renderHistory() {
-  const mine = myBookings().sort((a,b)=>new Date(b.ci)-new Date(a.ci));
-  const completed = mine.filter(b=>b.st==='checkedout');
+  const mine = myBookings().sort((a,b) => new Date(b.ci)-new Date(a.ci));
+  const completed = mine.filter(b => b.st==='checkedout');
   const spent = completed.length * RATE;
-
   document.getElementById('stat-total').textContent  = completed.length;
-  document.getElementById('stat-spent').textContent  = completed.length ? `₱${(spent).toLocaleString()}` : '₱0';
-  document.getElementById('stat-nights').textContent = completed.length; // 1 booking = ~1 night stay
+  document.getElementById('stat-spent').textContent  = completed.length ? `₱${spent.toLocaleString()}` : '₱0';
+  document.getElementById('stat-nights').textContent = completed.length;
 
   const wrap = document.getElementById('history-list');
   if (!mine.length) {
-    wrap.innerHTML = `<div class="history-empty"><div class="hi-ico">🌴</div><p>No reservations yet.<br>Book your first stay above!</p></div>`;
+    wrap.innerHTML = `<div class="history-empty"><div class="hi-ico">🌴</div><p>No reservations yet.<br>Complete your profile and book your first stay!</p></div>`;
     return;
   }
-
   wrap.innerHTML = mine.map(b => {
     const stNames = {1:'Suite 1 · Sunset',2:'Suite 2 · Oceana'};
     return `
@@ -860,10 +1123,7 @@ function renderHistory() {
           <div class="bk-name">${fmtDate(b.ci)}</div>
           <div class="bk-suite">${stNames[b.rm]||'Suite '+b.rm} · ${b.px} guest${b.px>1?'s':''}</div>
         </div>
-        <div class="bk-status-wrap">
-          ${pill(b.st)}
-          <span class="bk-chevron">▼</span>
-        </div>
+        <div class="bk-status-wrap">${pill(b.st)}<span class="bk-chevron">▼</span></div>
       </div>
       <div class="bk-body">
         <div class="bk-details">
@@ -883,37 +1143,20 @@ function toggleBkCard(ref) {
   if (card) card.classList.toggle('expanded');
 }
 
-/* ════════════════════════════════
-   RENDER PROFILE
-════════════════════════════════ */
-function renderProfile() {
-  document.getElementById('profile-grid').innerHTML = `
-    <span class="prof-key">Name</span><span class="prof-val">${UINFO.name||'—'}</span>
-    <span class="prof-key">Username</span><span class="prof-val">@${UINFO.username}</span>
-    <span class="prof-key">Role</span><span class="prof-val">Guest</span>
-    <span class="prof-key">Joined</span><span class="prof-val">${UINFO.created?fmtDate(UINFO.created):'—'}</span>
-  `;
-}
-
-/* ════════════════════════════════
-   SUITE PICKER
-════════════════════════════════ */
+/* ══════════ SUITE PICKER ══════════ */
 function selectSuite(num) {
   if (document.getElementById('sc-'+num).classList.contains('unavail')) return;
   selectedSuite = num;
-  document.querySelectorAll('.suite-card').forEach(c=>c.classList.remove('selected'));
+  document.querySelectorAll('.suite-card').forEach(c => c.classList.remove('selected'));
   document.getElementById('sc-'+num).classList.add('selected');
   updateSummary();
 }
 
-/* ════════════════════════════════
-   CHECKOUT CALC & SUMMARY
-════════════════════════════════ */
+/* ══════════ CHECKOUT & SUMMARY ══════════ */
 function calcCheckout() {
   const ci = document.getElementById('bk-ci').value;
   if (!ci) { document.getElementById('bk-co').value=''; return; }
-  const d = new Date(ci);
-  const co = new Date(d.getTime() + 21*3600000);
+  const co = new Date(new Date(ci).getTime() + 21*3600000);
   document.getElementById('bk-co').value = co.toLocaleString('en-PH',{month:'short',day:'numeric',year:'numeric',hour:'2-digit',minute:'2-digit'});
   updateSummary();
 }
@@ -923,7 +1166,6 @@ function updateSummary() {
   const pax = document.getElementById('bk-pax').value;
   const pay = document.getElementById('bk-pay').value;
   const box = document.getElementById('bk-summary');
-
   if (!ci || !selectedSuite) { box.style.display='none'; return; }
   box.style.display = 'block';
   const d  = new Date(ci);
@@ -937,35 +1179,26 @@ function updateSummary() {
   document.getElementById('sum-pay').textContent   = pNames[pay]||pay;
 }
 
-/* ════════════════════════════════
-   SUBMIT BOOKING
-════════════════════════════════ */
+/* ══════════ SUBMIT BOOKING ══════════ */
 function submitBooking() {
+  if (!isProfileComplete()) { showToast('Please complete your profile first!','⚠️','t-warn'); scrollToProfile(); return; }
   const ci  = document.getElementById('bk-ci').value;
   const pax = parseInt(document.getElementById('bk-pax').value)||1;
   const pay = document.getElementById('bk-pay').value;
   const nt  = document.getElementById('bk-note').value.trim();
   const btn = document.getElementById('bk-btn');
-
   hideErr();
-
   if (!selectedSuite) { showErr('Please select a suite.'); return; }
   if (!ci) { showErr('Please select your check-in date and time.'); return; }
   if (pax < 1 || pax > 4) { showErr('Number of guests must be between 1 and 4.'); return; }
-
   const cid = new Date(ci);
   if (cid < new Date()) { showErr('Check-in date must be in the future.'); return; }
-
   const cod = new Date(cid.getTime()+21*3600000);
-
-  // Check conflict
   const conflict = BK.some(b => {
     if (b.rm != selectedSuite || b.st === 'cancelled') return false;
     return cid < new Date(b.co) && cod > new Date(b.ci);
   });
   if (conflict) { showErr(`Suite ${selectedSuite} is already booked for those dates. Please choose another time or suite.`); return; }
-
-  // Check already has active booking
   if (getMyActiveBooking()) { showErr('You already have an active booking.'); return; }
 
   btn.classList.add('loading'); btn.disabled = true;
@@ -974,48 +1207,41 @@ function submitBooking() {
   setTimeout(() => {
     const ref = 'EN-'+Date.now().toString(36).toUpperCase();
     const newBk = {
-      ref, fn: UINFO.name.split(' ')[0]||UINFO.username,
+      ref,
+      fn: UINFO.name.split(' ')[0]||UINFO.username,
       ln: UINFO.name.split(' ').slice(1).join(' ')||'',
       ph: UINFO.phone||'—', em: UINFO.email||'',
       rm: String(selectedSuite), ci:cid.toISOString(), co:cod.toISOString(),
       px:pax, st:'pending', nt, pay,
-      guestUser: UINFO.username, // LINK to user account
+      guestUser: UINFO.username,
       created: new Date().toISOString()
     };
     BK.push(newBk);
     localStorage.setItem(BK_KEY, JSON.stringify(BK));
-
-    // Log
     try {
       const log = JSON.parse(localStorage.getItem('en3_log')||'[]');
       log.unshift({type:'ok', msg:`Guest "${UINFO.username}" booked Suite ${selectedSuite} · ${fmtFull(cid)}`, time:new Date().toISOString()});
       localStorage.setItem('en3_log', JSON.stringify(log.slice(0,200)));
     } catch(e){}
-
     btn.classList.remove('loading'); btn.disabled = false;
     btn.querySelector('.btn-lbl').textContent = 'Confirm Reservation';
-
     showToast('Reservation submitted! Awaiting admin confirmation.','🏠','t-ok');
     renderHistory();
     evaluateStatus();
-    // Clear form
     selectedSuite = null;
-    document.querySelectorAll('.suite-card').forEach(c=>c.classList.remove('selected'));
+    document.querySelectorAll('.suite-card').forEach(c => c.classList.remove('selected'));
     document.getElementById('bk-note').value = '';
   }, 900);
 }
 
-/* ════════════════════════════════
-   CANCEL BOOKING
-════════════════════════════════ */
+/* ══════════ CANCEL ══════════ */
 function openCancelModal(ref) {
   cancelRef = ref;
   const b = BK.find(x=>x.ref===ref);
   if (!b) return;
   document.getElementById('cancel-body').innerHTML = `
     Are you sure you want to cancel your reservation for <strong>Suite ${b.rm}</strong> on <strong>${fmtDate(b.ci)}</strong>?
-    <br><br>
-    <span style="font-size:.75rem;color:var(--red);">This action cannot be undone.</span>`;
+    <br><br><span style="font-size:.75rem;color:var(--red);">This action cannot be undone.</span>`;
   document.getElementById('cancel-modal').classList.add('open');
 }
 function closeCancelModal(e) { if (e.target===e.currentTarget) document.getElementById('cancel-modal').classList.remove('open'); }
@@ -1037,9 +1263,7 @@ function confirmCancel() {
   cancelRef = null;
 }
 
-/* ════════════════════════════════
-   CHANGE PASSWORD
-════════════════════════════════ */
+/* ══════════ CHANGE PASSWORD ══════════ */
 function changePassword() {
   const pw1 = document.getElementById('pw-new').value;
   const pw2 = document.getElementById('pw-conf').value;
@@ -1053,9 +1277,7 @@ function changePassword() {
   showToast('Password updated successfully!','✅','t-ok');
 }
 
-/* ════════════════════════════════
-   LOGOUT
-════════════════════════════════ */
+/* ══════════ LOGOUT ══════════ */
 function doLogout() {
   sessionStorage.removeItem('en3_session');
   sessionStorage.removeItem('en3_role');
@@ -1063,9 +1285,10 @@ function doLogout() {
   window.location.href = 'login.html';
 }
 
-/* ════════════════════════════════
-   HELPERS
-════════════════════════════════ */
+/* ══════════ HELPERS ══════════ */
+function scrollToProfile() {
+  document.getElementById('profile-panel').scrollIntoView({ behavior:'smooth', block:'start' });
+}
 function pill(st) {
   const m = {confirmed:'p-confirmed Confirmed',pending:'p-pending Pending',checkedin:'p-checkedin Checked In',checkedout:'p-checkedout Checked Out',cancelled:'p-cancelled Cancelled'};
   const parts = (m[st]||'p-pending '+st).split(' ');
@@ -1083,11 +1306,8 @@ function showToast(msg, ico='ℹ️', cls='') {
   clearTimeout(toastTimer);
   toastTimer=setTimeout(()=>t.classList.remove('show'),3800);
 }
-function showErr(msg) {
-  const e=document.getElementById('bk-err');
-  e.textContent=msg; e.style.display='block';
-}
-function hideErr() { document.getElementById('bk-err').style.display='none'; }
+function showErr(msg) { const e=document.getElementById('bk-err'); e.textContent=msg; e.style.display='block'; }
+function hideErr()    { document.getElementById('bk-err').style.display='none'; }
 </script>
 </body>
 </html>
