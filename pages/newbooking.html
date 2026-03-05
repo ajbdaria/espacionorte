@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Espacio Norte — New Booking</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --forest:    #2B4A1A;
+  --forest-dk: #1A2E10;
+  --sage:      #4A7A2E;
+  --sage-lt:   #72B048;
+  --amber:     #C8932A;
+  --gold:      #DBA84A;
+  --linen:     #F5EFE2;
+  --parch:     #EDE0C8;
+  --snow:      #FDFAF6;
+  --panel:     #FFFFFF;
+  --border:    #E6DDD0;
+  --text:      #1C1712;
+  --text2:     #584A38;
+  --text3:     #9B8872;
+  --text4:     #BFB09C;
+  --green:     #1D6A2B;
+  --green-lt:  #E3F5E8;
+  --red:       #C0392B;
+  --red-lt:    #FDECEA;
+  --blue:      #1A56A0;
+  --sb:        240px;
+  --topbar:    56px;
+  --radius:    10px;
+  --shadow:    0 1px 4px rgba(0,0,0,.06), 0 4px 16px rgba(0,0,0,.06);
+  --shadow-lg: 0 8px 40px rgba(0,0,0,.14);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{font-size:14px;scroll-behavior:smooth;}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--linen);color:var(--text);min-height:100vh;display:flex;overflow-x:hidden;}
+
+::-webkit-scrollbar{width:5px;height:5px;}
+::-webkit-scrollbar-track{background:var(--linen);}
+::-webkit-scrollbar-thumb{background:var(--parch);border-radius:3px;}
+::-webkit-scrollbar-thumb:hover{background:var(--amber);}
+
+/* ════ SIDEBAR OVERLAY (mobile) ════ */
+.sb-overlay{
+  display:none;position:fixed;inset:0;z-index:290;
+  background:rgba(0,0,0,.45);backdrop-filter:blur(2px);
+}
+.sb-overlay.visible{ display:block; }
+
+/* ════ SIDEBAR ════ */
+.sb{
+  width:var(--sb);min-height:100vh;position:fixed;top:0;left:0;bottom:0;z-index:300;
+  background:var(--forest-dk);display:flex;flex-direction:column;
+  transition:transform .28s cubic-bezier(.23,1,.32,1);
+  box-shadow:4px 0 24px rgba(0,0,0,.18);
+  transform:translateX(0);
+}
+.sb-brand{
+  padding:1.2rem 1.25rem 1rem;border-bottom:1px solid rgba(255,255,255,.07);
+  display:flex;align-items:center;gap:.75rem;
+}
+.sb-logo{
+  width:40px;height:40px;border-radius:10px;flex-shrink:0;
+  background:linear-gradient(135deg,var(--amber),var(--gold));
+  display:flex;align-items:center;justify-content:center;font-size:1.25rem;
+  box-shadow:0 4px 12px rgba(200,147,42,.4);
+}
+.sb-brand-text strong{display:block;font-size:.88rem;font-weight:800;color:#fff;letter-spacing:.01em;}
+.sb-brand-text small{display:block;font-size:.62rem;color:rgba(255,255,255,.35);letter-spacing:.1em;text-transform:uppercase;margin-top:.1rem;}
+.sb-close-btn{
+  display:none;margin-left:auto;background:rgba(255,255,255,.08);border:none;
+  width:30px;height:30px;border-radius:50%;color:rgba(255,255,255,.6);
+  font-size:1rem;cursor:pointer;align-items:center;justify-content:center;
+  transition:background .2s;flex-shrink:0;
+}
+.sb-close-btn:hover{background:rgba(255,255,255,.2);}
+.sb-group-label{
+  font-size:.58rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(255,255,255,.22);padding:.7rem 1.25rem .3rem;
+}
+.sb-item{
+  display:flex;align-items:center;gap:.65rem;padding:.58rem 1.25rem;
+  font-size:.8rem;font-weight:500;color:rgba(255,255,255,.55);
+  border:none;background:none;width:100%;text-align:left;cursor:pointer;
+  border-left:3px solid transparent;transition:all .17s;
+}
+.sb-item:hover{color:rgba(255,255,255,.9);background:rgba(255,255,255,.05);}
+.sb-item.active{color:#fff;background:rgba(219,168,74,.13);border-left-color:var(--gold);font-weight:600;}
+.sb-item .ico{width:18px;text-align:center;font-size:.95rem;flex-shrink:0;}
+.sb-item .lbl{flex:1;}
+.sb-item .badge{
+  font-size:.58rem;font-weight:800;background:var(--red);color:#fff;
+  padding:.12rem .45rem;border-radius:2rem;min-width:18px;text-align:center;
+}
+.sb-footer{margin-top:auto;border-top:1px solid rgba(255,255,255,.07);padding:1rem 1.25rem;}
+.sb-user{display:flex;align-items:center;gap:.65rem;}
+.sb-avatar{
+  width:34px;height:34px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(135deg,var(--amber),var(--gold));
+  display:flex;align-items:center;justify-content:center;
+  font-size:.85rem;font-weight:800;color:var(--forest-dk);
+}
+.sb-user-info .name{font-size:.8rem;font-weight:700;color:#fff;}
+.sb-user-info .role{font-size:.62rem;color:rgba(255,255,255,.35);margin-top:.05rem;}
+.sb-logout{margin-left:auto;background:none;border:none;cursor:pointer;color:rgba(255,255,255,.3);font-size:.9rem;transition:color .2s;padding:.2rem;}
+.sb-logout:hover{color:var(--red-lt);}
+
+/* ════ MAIN AREA ════ */
+.main{margin-left:var(--sb);flex:1;display:flex;flex-direction:column;min-height:100vh;transition:margin-left .28s cubic-bezier(.23,1,.32,1);}
+
+/* ── TOPBAR ── */
+.topbar{
+  height:var(--topbar);background:var(--panel);border-bottom:1px solid var(--border);
+  display:flex;align-items:center;padding:0 1.25rem;gap:.75rem;
+  position:sticky;top:0;z-index:200;box-shadow:0 1px 8px rgba(0,0,0,.05);
+}
+.hamburger{
+  display:none;width:36px;height:36px;border-radius:.45rem;
+  background:var(--linen);border:1px solid var(--border);
+  align-items:center;justify-content:center;
+  cursor:pointer;font-size:1.1rem;flex-shrink:0;transition:all .2s;
+}
+.hamburger:hover{background:var(--parch);border-color:var(--amber);}
+.topbar-breadcrumb{display:flex;align-items:center;gap:.5rem;flex:1;min-width:0;}
+.topbar-breadcrumb .page-name{font-size:.92rem;font-weight:700;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.topbar-actions{display:flex;align-items:center;gap:.6rem;flex-shrink:0;}
+.top-chip{
+  display:flex;align-items:center;gap:.4rem;background:var(--linen);border:1px solid var(--border);
+  padding:.35rem .8rem;border-radius:.45rem;font-size:.72rem;color:var(--text2);white-space:nowrap;
+}
+.top-icon-btn{
+  width:34px;height:34px;border-radius:.45rem;background:var(--linen);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:.95rem;transition:all .2s;position:relative;
+}
+.top-icon-btn:hover{background:var(--parch);border-color:var(--amber);}
+.notif-dot{position:absolute;top:5px;right:5px;width:7px;height:7px;border-radius:50%;background:var(--red);border:2px solid var(--panel);}
+.btn-view-site{
+  background:var(--forest);color:#fff;border:none;padding:.38rem 1rem;border-radius:.45rem;
+  font-family:'Plus Jakarta Sans',sans-serif;font-size:.73rem;font-weight:700;
+  cursor:pointer;transition:all .2s;white-space:nowrap;display:flex;align-items:center;gap:.35rem;
+}
+.btn-view-site:hover{background:var(--sage);}
+
+/* ── CONTENT ── */
+.content{padding:1.5rem;flex:1;min-width:0;}
+.page{animation:fadeIn .2s ease;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+
+/* ════ SHARED COMPONENTS ════ */
+.panel{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);}
+.panel-hd{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 1.4rem;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:.5rem;}
+.panel-hd-left .ph-title{font-size:.9rem;font-weight:700;color:var(--text);}
+.panel-hd-left .ph-sub{font-size:.7rem;color:var(--text3);margin-top:.12rem;}
+.panel-body{padding:1.25rem 1.4rem;}
+
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;gap:.4rem;border:none;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;transition:all .2s;border-radius:.45rem;white-space:nowrap;}
+.btn-sm{font-size:.72rem;padding:.35rem .8rem;}
+.btn-lg{font-size:.82rem;padding:.65rem 1.4rem;}
+.btn-primary{background:linear-gradient(135deg,var(--forest),var(--sage));color:#fff;box-shadow:0 2px 12px rgba(43,74,26,.3);}
+.btn-primary:hover{box-shadow:0 4px 20px rgba(43,74,26,.45);transform:translateY(-1px);}
+.btn-ghost{background:var(--linen);color:var(--text2);border:1px solid var(--border);}
+.btn-ghost:hover{border-color:var(--amber);background:var(--parch);}
+
+/* ── FORMS ── */
+.fg{margin-bottom:.9rem;}
+.fg label{display:block;font-size:.68rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--text2);margin-bottom:.38rem;}
+.fg input,.fg select,.fg textarea{width:100%;border:1.5px solid var(--border);border-radius:.45rem;padding:.62rem .9rem;font-family:'Plus Jakarta Sans',sans-serif;font-size:.82rem;color:var(--text);background:var(--snow);outline:none;transition:border-color .2s;}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--amber);background:#fff;}
+.fg input[readonly]{background:var(--linen);color:var(--text2);}
+.fg textarea{resize:vertical;min-height:76px;}
+.fg select option{background:#fff;}
+.fg .fg-hint{font-size:.65rem;color:var(--text4);margin-top:.28rem;}
+.fg-row{display:grid;grid-template-columns:1fr 1fr;gap:.85rem;}
+
+/* ── SECTION LABEL ── */
+.section-label{font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--text3);padding:.8rem 0 .5rem;border-bottom:1px solid var(--border);margin-bottom:.9rem;}
+
+/* ── NOTIFICATIONS ── */
+.notif-dropdown{position:absolute;top:calc(100% + 8px);right:0;width:300px;background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow-lg);z-index:500;display:none;}
+.notif-dropdown.open{display:block;}
+.notif-hd{display:flex;align-items:center;justify-content:space-between;padding:.9rem 1.1rem;border-bottom:1px solid var(--border);}
+.notif-hd span{font-size:.82rem;font-weight:700;}
+.notif-item{padding:.8rem 1.1rem;border-bottom:1px solid var(--linen);cursor:pointer;transition:background .15s;}
+.notif-item:hover{background:var(--linen);}
+.notif-item:last-child{border-bottom:none;}
+.notif-item-title{font-size:.78rem;font-weight:600;color:var(--text);}
+.notif-item-time{font-size:.67rem;color:var(--text3);margin-top:.1rem;}
+.notif-item.unread{border-left:3px solid var(--amber);}
+
+/* ── TOAST ── */
+.toast{position:fixed;bottom:1.5rem;right:1.5rem;z-index:9999;display:flex;align-items:center;gap:.7rem;background:var(--forest-dk);color:#fff;padding:.85rem 1.3rem;border-radius:.6rem;font-size:.8rem;font-weight:500;max-width:320px;box-shadow:var(--shadow-lg);transform:translateY(80px);opacity:0;transition:all .35s cubic-bezier(.23,1,.32,1);border-left:4px solid var(--gold);}
+.toast.show{transform:translateY(0);opacity:1;}
+.toast.t-ok{border-left-color:var(--sage-lt);}
+.toast.t-err{border-left-color:var(--red);}
+
+/* ════ RESPONSIVE ════ */
+@media(min-width:769px){
+  .sb{ transform:translateX(0) !important; }
+  .main{ margin-left:var(--sb) !important; }
+  .hamburger{ display:none !important; }
+  .sb-overlay{ display:none !important; }
+  .sb-close-btn{ display:none !important; }
+}
+@media(max-width:768px){
+  :root{ --sb:240px; }
+  .sb{ transform:translateX(-100%);position:fixed;top:0;left:0;bottom:0;z-index:300;width:var(--sb); }
+  .sb.open{ transform:translateX(0); }
+  .main{ margin-left:0 !important;width:100%; }
+  .hamburger{ display:flex !important; }
+  .sb-close-btn{ display:flex !important; }
+  .top-chip{ display:none; }
+  .content{ padding:1rem .75rem; }
+  .fg-row{ grid-template-columns:1fr; }
+  .btn-view-site{ font-size:.65rem;padding:.35rem .65rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="sb-overlay" id="sb-overlay" onclick="closeSidebar()"></div>
+
+<!-- ════ SIDEBAR ════ -->
+<aside class="sb" id="sidebar">
+  <div class="sb-brand">
+    <div class="sb-logo">🌴</div>
+    <div class="sb-brand-text">
+      <strong>Espacio Norte</strong>
+      <small>Admin Panel</small>
+    </div>
+    <button class="sb-close-btn" onclick="closeSidebar()">✕</button>
+  </div>
+
+  <nav style="flex:1;overflow-y:auto;padding:.5rem 0;">
+    <div class="sb-group-label">Overview</div>
+    <button class="sb-item" data-page="dashboard"><span class="ico">📊</span><span class="lbl">Dashboard</span></button>
+    <button class="sb-item" data-page="analytics"><span class="ico">📈</span><span class="lbl">Analytics & Reports</span></button>
+
+    <div class="sb-group-label">Reservations</div>
+    <button class="sb-item" data-page="bookings"><span class="ico">📅</span><span class="lbl">All Bookings</span><span class="badge" id="sb-pending-badge" style="display:none">0</span></button>
+    <button class="sb-item active" data-page="new-booking"><span class="ico">➕</span><span class="lbl">New Booking</span></button>
+    <button class="sb-item" data-page="calendar"><span class="ico">🗓️</span><span class="lbl">Booking Calendar</span></button>
+    <button class="sb-item" data-page="guests"><span class="ico">👥</span><span class="lbl">Guest Directory</span></button>
+
+    <div class="sb-group-label">Property</div>
+    <button class="sb-item" data-page="rooms"><span class="ico">🏠</span><span class="lbl">Room Management</span></button>
+    <button class="sb-item" data-page="pricing"><span class="ico">💰</span><span class="lbl">Pricing & Rules</span></button>
+
+    <div class="sb-group-label">System</div>
+    <button class="sb-item" data-page="activity"><span class="ico">🕐</span><span class="lbl">Activity Log</span></button>
+    <button class="sb-item" data-page="settings"><span class="ico">⚙️</span><span class="lbl">Settings</span></button>
+  </nav>
+
+  <div class="sb-footer">
+    <div class="sb-user">
+      <div class="sb-avatar">A</div>
+      <div class="sb-user-info">
+        <div class="name" id="admin-display-name">Admin</div>
+        <div class="role">Property Manager</div>
+      </div>
+      <button class="sb-logout" onclick="logout()" title="Log out">⎋</button>
+    </div>
+  </div>
+</aside>
+
+<!-- ════ MAIN ════ -->
+<div class="main" id="main">
+
+  <!-- TOPBAR -->
+  <header class="topbar">
+    <button class="hamburger" id="hamburger" onclick="openSidebar()">☰</button>
+    <div class="topbar-breadcrumb">
+      <span class="page-name">New Booking</span>
+    </div>
+    <div class="topbar-actions">
+      <div class="top-chip">📅 <span id="today-label"></span></div>
+      <div style="position:relative;">
+        <div class="top-icon-btn" onclick="toggleNotifs()" id="notif-btn">
+          🔔<div class="notif-dot" id="notif-dot"></div>
+        </div>
+        <div class="notif-dropdown" id="notif-panel">
+          <div class="notif-hd"><span>Notifications</span><button class="btn btn-sm btn-ghost" onclick="clearNotifs()">Clear all</button></div>
+          <div id="notif-list"></div>
+        </div>
+      </div>
+      <button class="btn-view-site" onclick="window.open('index.html','_blank')">🌐 View Site</button>
+    </div>
+  </header>
+
+  <!-- ════ CONTENT ════ -->
+  <div class="content">
+    <div class="page" id="page-new-booking">
+      <div style="max-width:680px;">
+        <div class="panel">
+          <div class="panel-hd">
+            <div class="panel-hd-left">
+              <div class="ph-title">Create New Booking</div>
+              <div class="ph-sub">Fields marked * are required</div>
+            </div>
+          </div>
+          <div class="panel-body">
+            <div class="section-label">👤 Guest Information</div>
+            <div class="fg-row">
+              <div class="fg"><label>First Name *</label><input type="text" id="nb-fn" placeholder="Juan"></div>
+              <div class="fg"><label>Last Name *</label><input type="text" id="nb-ln" placeholder="Dela Cruz"></div>
+            </div>
+            <div class="fg-row">
+              <div class="fg"><label>Phone Number *</label><input type="tel" id="nb-ph" placeholder="+63 9XX XXX XXXX"></div>
+              <div class="fg"><label>Email (optional)</label><input type="email" id="nb-em" placeholder="guest@email.com"></div>
+            </div>
+            <div class="fg"><label>Facebook / Messenger</label><input type="text" id="nb-fb" placeholder="Facebook name or link"></div>
+
+            <div class="section-label">🏠 Reservation Details</div>
+            <div class="fg-row">
+              <div class="fg"><label>Suite *</label>
+                <select id="nb-rm" onchange="nbCalc()">
+                  <option value="">— Select Suite —</option>
+                  <option value="1">Suite 1 · Sterling (King Bed)</option>
+                  <option value="2">Suite 2 · Habi (Queen Bed)</option>
+                </select>
+              </div>
+              <div class="fg"><label>Number of Guests *</label>
+                <input type="number" id="nb-px" min="1" max="4" value="2">
+                <div class="fg-hint">Maximum 4 guests per suite</div>
+              </div>
+            </div>
+            <div class="fg-row">
+              <div class="fg"><label>Check-in Date & Time *</label><input type="datetime-local" id="nb-ci" onchange="nbCalc()"></div>
+              <div class="fg"><label>Check-out (Auto +21 hrs)</label><input type="text" id="nb-co" readonly placeholder="Calculated automatically"></div>
+            </div>
+
+            <div class="section-label">💳 Payment & Notes</div>
+            <div class="fg-row">
+              <div class="fg"><label>Payment Method</label>
+                <select id="nb-pay">
+                  <option value="cash">Cash on Arrival</option>
+                  <option value="gcash">GCash</option>
+                  <option value="bank">Bank Transfer</option>
+                  <option value="paid">Already Paid</option>
+                </select>
+              </div>
+              <div class="fg"><label>Booking Status</label>
+                <select id="nb-st">
+                  <option value="confirmed">Confirmed</option>
+                  <option value="pending">Pending (awaiting payment)</option>
+                </select>
+              </div>
+            </div>
+            <div class="fg"><label>Special Requests / Notes</label>
+              <textarea id="nb-note" placeholder="e.g. Anniversary celebration, early check-in, extra towels…"></textarea>
+            </div>
+
+            <div style="background:linear-gradient(135deg,var(--forest-dk),var(--forest));border-radius:.55rem;padding:1.1rem 1.25rem;margin:.5rem 0 1.25rem;">
+              <div style="font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:.7rem;">BOOKING SUMMARY</div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:.4rem .5rem;">
+                <div style="font-size:.72rem;color:rgba(255,255,255,.5);">Suite</div><div style="font-size:.72rem;font-weight:600;color:#fff;" id="nbs-rm">—</div>
+                <div style="font-size:.72rem;color:rgba(255,255,255,.5);">Check-in</div><div style="font-size:.72rem;font-weight:600;color:#fff;" id="nbs-ci">—</div>
+                <div style="font-size:.72rem;color:rgba(255,255,255,.5);">Check-out</div><div style="font-size:.72rem;font-weight:600;color:#fff;" id="nbs-co">—</div>
+                <div style="font-size:.75rem;font-weight:700;color:rgba(255,255,255,.6);border-top:1px solid rgba(255,255,255,.1);padding-top:.4rem;margin-top:.2rem;">Total Due</div>
+                <div style="font-size:1.1rem;font-weight:800;color:var(--gold);border-top:1px solid rgba(255,255,255,.1);padding-top:.4rem;margin-top:.2rem;" id="nbs-tot">₱1,999</div>
+              </div>
+            </div>
+
+            <div style="display:flex;gap:.7rem;flex-wrap:wrap;">
+              <button class="btn btn-primary btn-lg" onclick="submitNewBooking()">✓ Confirm Reservation</button>
+              <button class="btn btn-ghost btn-lg" onclick="clearNBForm()">Clear Form</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"><span id="toast-ico">ℹ️</span><span id="toast-msg"></span></div>
+
+<script>
+'use strict';
+const BK_KEY='en3', LOG_KEY='en3_log', CFG_KEY='en3_cfg', RATE=1999;
+let BK=[], LOG=[], CFG={}, notifs=[];
+
+/* ── SIDEBAR TOGGLE ── */
+function openSidebar(){
+  document.getElementById('sidebar').classList.add('open');
+  document.getElementById('sb-overlay').classList.add('visible');
+  document.body.style.overflow='hidden';
+}
+function closeSidebar(){
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('sb-overlay').classList.remove('visible');
+  document.body.style.overflow='';
+}
+document.querySelectorAll('.sb-item').forEach(btn=>{
+  btn.addEventListener('click',()=>{ if(window.innerWidth<=768) closeSidebar(); });
+});
+
+/* ── INIT ── */
+function init(){
+  loadAll();
+  setTopbarDate();
+  renderPendingBadge();
+  renderNotifs();
+  // Set default check-in to today at 14:00
+  const defDt=new Date(); defDt.setHours(14,0,0,0);
+  const nbCi=g('nb-ci'); if(nbCi) nbCi.value=defDt.toISOString().slice(0,16);
+  nbCalc();
+}
+
+function loadAll(){
+  try{ BK=JSON.parse(localStorage.getItem(BK_KEY)||'[]'); }catch(e){ BK=[]; }
+  try{ LOG=JSON.parse(localStorage.getItem(LOG_KEY)||'[]'); }catch(e){ LOG=[]; }
+  try{ CFG=JSON.parse(localStorage.getItem(CFG_KEY)||'{}'); }catch(e){ CFG={}; }
+  document.getElementById('admin-display-name').textContent=CFG.adminName||'Admin';
+}
+
+function saveAll(){
+  localStorage.setItem(BK_KEY, JSON.stringify(BK));
+  localStorage.setItem(LOG_KEY, JSON.stringify(LOG));
+  localStorage.setItem(CFG_KEY, JSON.stringify(CFG));
+}
+
+/* ── NEW BOOKING ── */
+function nbCalc(){
+  const rm=g('nb-rm').value;
+  const ci=g('nb-ci').value;
+  const rn={'1':'Suite 1 · Sterling','2':'Suite 2 · Habi'};
+  setText('nbs-rm', rm ? rn[rm] : '—');
+  if(ci){
+    const d=new Date(ci), co=new Date(d.getTime()+21*3600000);
+    g('nb-co').value=co.toLocaleString('en-PH',{month:'short',day:'numeric',year:'numeric',hour:'2-digit',minute:'2-digit'});
+    setText('nbs-ci', fmtFull(d));
+    setText('nbs-co', fmtFull(co));
+  } else {
+    setText('nbs-ci','—'); setText('nbs-co','—');
+  }
+}
+
+function submitNewBooking(){
+  const fn=g('nb-fn').value.trim(), ln=g('nb-ln').value.trim(), ph=g('nb-ph').value.trim();
+  const ci=g('nb-ci').value, rm=g('nb-rm').value, px=parseInt(g('nb-px').value)||1;
+  const nt=g('nb-note').value.trim(), pay=g('nb-pay').value, st=g('nb-st').value;
+  const em=g('nb-em').value.trim(), fb=g('nb-fb').value.trim();
+  if(!fn||!ln||!ph||!ci||!rm){ showToast('Please fill all required fields','⚠️','t-err'); return; }
+  if(px<1||px>4){ showToast('Guests must be 1–4','⚠️','t-err'); return; }
+  const cid=new Date(ci), cod=new Date(cid.getTime()+21*3600000);
+  const conflict=BK.some(b=>{ if(b.rm!=rm||b.st==='cancelled') return false; return cid<new Date(b.co)&&cod>new Date(b.ci); });
+  if(conflict){ showToast(`Suite ${rm} already booked at that time.`,'❌','t-err'); return; }
+  const ref='EN-'+Date.now().toString(36).toUpperCase();
+  BK.push({ref,fn,ln,ph,em,fb,rm,ci:cid.toISOString(),co:cod.toISOString(),px,nt,pay,st,created:new Date().toISOString()});
+  LOG.unshift({type:'ok',msg:`New booking created — ${fn} ${ln} (Suite ${rm}, ${fmtShort(cid)})`,time:new Date().toISOString()});
+  addNotif(`New booking: ${fn} ${ln} — Suite ${rm}`);
+  saveAll();
+  renderPendingBadge();
+  clearNBForm();
+  showToast(`Booking confirmed for ${fn} ${ln}!`,'✅','t-ok');
+}
+
+function clearNBForm(){
+  ['nb-fn','nb-ln','nb-ph','nb-em','nb-fb','nb-ci','nb-co','nb-note'].forEach(id=>{ const el=g(id); if(el) el.value=''; });
+  g('nb-rm').value=''; g('nb-px').value=2; g('nb-pay').value='cash'; g('nb-st').value='confirmed';
+  ['nbs-rm','nbs-ci','nbs-co'].forEach(id=>setText(id,'—'));
+}
+
+/* ── PENDING BADGE ── */
+function renderPendingBadge(){ const n=BK.filter(b=>b.st==='pending').length; const b=document.getElementById('sb-pending-badge'); b.textContent=n; b.style.display=n>0?'inline':'none'; }
+
+/* ── NOTIFICATIONS ── */
+function addNotif(msg){ notifs.unshift({msg,time:new Date().toISOString(),read:false}); renderNotifs(); }
+function renderNotifs(){
+  const wrap=document.getElementById('notif-list'); if(!wrap) return;
+  const dot=document.getElementById('notif-dot');
+  const unread=notifs.filter(n=>!n.read).length;
+  dot.style.display=unread>0?'block':'none';
+  if(!notifs.length){ wrap.innerHTML=`<div style="padding:1.2rem;text-align:center;font-size:.8rem;color:var(--text3);">No notifications</div>`; return; }
+  wrap.innerHTML=notifs.slice(0,8).map(n=>`<div class="notif-item${!n.read?' unread':''}"><div class="notif-item-title">${n.msg}</div><div class="notif-item-time">${fmtAgo(n.time)}</div></div>`).join('');
+}
+function toggleNotifs(){ document.getElementById('notif-panel').classList.toggle('open'); notifs.forEach(n=>n.read=true); renderNotifs(); }
+function clearNotifs(){ notifs=[]; renderNotifs(); document.getElementById('notif-panel').classList.remove('open'); }
+document.addEventListener('click',e=>{ if(!document.getElementById('notif-btn').contains(e.target)) document.getElementById('notif-panel').classList.remove('open'); });
+
+/* ── TOAST ── */
+let toastTimer;
+function showToast(msg,ico='ℹ️',cls=''){ const t=document.getElementById('toast'); document.getElementById('toast-ico').textContent=ico; document.getElementById('toast-msg').textContent=msg; t.className='toast show '+(cls||''); clearTimeout(toastTimer); toastTimer=setTimeout(()=>t.classList.remove('show'),3500); }
+
+/* ── HELPERS ── */
+function g(id){ return document.getElementById(id); }
+function setText(id,v){ const el=document.getElementById(id); if(el) el.textContent=v; }
+function fmtFull(d){ return (d instanceof Date ? d : new Date(d)).toLocaleString('en-PH',{month:'short',day:'numeric',year:'numeric',hour:'2-digit',minute:'2-digit'}); }
+function fmtShort(d){ return (d instanceof Date ? d : new Date(d)).toLocaleString('en-PH',{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'}); }
+function fmtAgo(iso){ const diff=(Date.now()-new Date(iso))/1000; if(diff<60) return'just now'; if(diff<3600) return`${Math.round(diff/60)}m ago`; if(diff<86400) return`${Math.round(diff/3600)}h ago`; return new Date(iso).toLocaleDateString('en-PH',{month:'short',day:'numeric'}); }
+function setTopbarDate(){ const d=new Date(); const el=document.getElementById('today-label'); if(el) el.textContent=d.toLocaleDateString('en-PH',{weekday:'short',month:'long',day:'numeric',year:'numeric'}); }
+function logout(){ if(confirm('Log out of admin panel?')) showToast('Logged out','👋'); }
+
+/* ── START ── */
+init();
+</script>
+</body>
+</html>

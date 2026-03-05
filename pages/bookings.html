@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Espacio Norte — Dashboard</title>
+<title>Espacio Norte — All Bookings</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -161,12 +161,6 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--linen);color:va
 /* ── CONTENT ── */
 .content{padding:1.5rem;flex:1;min-width:0;}
 
-/* ── LAYOUT ── */
-.row{display:grid;gap:1.1rem;margin-bottom:1.1rem;}
-.row.cols-4{grid-template-columns:repeat(4,1fr);}
-.row.cols-2{grid-template-columns:repeat(2,1fr);}
-.row.cols-2-1{grid-template-columns:1.6fr 1fr;}
-
 /* ── PANEL ── */
 .panel{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);}
 .panel-hd{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 1.4rem;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:.5rem;}
@@ -175,48 +169,20 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--linen);color:va
 .panel-hd-actions{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;}
 .panel-body{padding:1.25rem 1.4rem;}
 
-/* ── STAT CARDS ── */
-.stat-card{
-  background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);
-  padding:1.15rem 1.3rem;box-shadow:var(--shadow);position:relative;overflow:hidden;
-  transition:box-shadow .2s,transform .2s;cursor:default;
-}
-.stat-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-1px);}
-.stat-card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:10px 10px 0 0;}
-.sc-green::after{background:linear-gradient(90deg,var(--green),var(--sage-lt));}
-.sc-amber::after{background:linear-gradient(90deg,var(--amber),var(--gold));}
-.sc-blue::after{background:linear-gradient(90deg,var(--blue),#4A8FD4);}
-.sc-red::after{background:linear-gradient(90deg,var(--red),#E07070);}
-.sc-purple::after{background:linear-gradient(90deg,#7C3AED,#A855F7);}
-.sc-teal::after{background:linear-gradient(90deg,#0D9488,#34D399);}
-.sc-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:.7rem;}
-.sc-icon{width:40px;height:40px;border-radius:.6rem;display:flex;align-items:center;justify-content:center;font-size:1.1rem;}
-.sci-green{background:var(--green-lt);}
-.sci-amber{background:#FEF3E2;}
-.sci-blue{background:var(--blue-lt);}
-.sci-red{background:var(--red-lt);}
-.sc-trend{font-size:.65rem;font-weight:700;padding:.18rem .5rem;border-radius:2rem;display:flex;align-items:center;gap:.2rem;}
-.trend-up{background:var(--green-lt);color:var(--green);}
-.trend-dn{background:var(--red-lt);color:var(--red);}
-.trend-neu{background:var(--linen);color:var(--text3);}
-.sc-val{font-size:1.75rem;font-weight:800;color:var(--text);line-height:1;margin-bottom:.25rem;}
-.sc-label{font-size:.7rem;font-weight:500;color:var(--text3);}
-.sc-sub{font-size:.65rem;color:var(--text4);margin-top:.15rem;}
-
 /* ── BUTTONS ── */
 .btn{display:inline-flex;align-items:center;gap:.4rem;border:none;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;transition:all .2s;border-radius:.45rem;white-space:nowrap;}
 .btn-sm{font-size:.72rem;padding:.35rem .8rem;}
 .btn-md{font-size:.78rem;padding:.5rem 1.1rem;}
 .btn-primary{background:linear-gradient(135deg,var(--forest),var(--sage));color:#fff;box-shadow:0 2px 12px rgba(43,74,26,.3);}
 .btn-primary:hover{box-shadow:0 4px 20px rgba(43,74,26,.45);transform:translateY(-1px);}
-.btn-amber{background:linear-gradient(135deg,var(--amber),var(--gold));color:var(--forest-dk);box-shadow:0 2px 12px rgba(200,147,42,.3);}
-.btn-amber:hover{box-shadow:0 4px 20px rgba(200,147,42,.45);transform:translateY(-1px);}
 .btn-ghost{background:var(--linen);color:var(--text2);border:1px solid var(--border);}
 .btn-ghost:hover{border-color:var(--amber);background:var(--parch);}
+.btn-danger{background:var(--red-lt);color:var(--red);border:1px solid #FCA5A5;}
+.btn-danger:hover{background:var(--red);color:#fff;}
 
 /* ── TABLES ── */
 .tbl-wrap{overflow-x:auto;border-radius:0 0 var(--radius) var(--radius);}
-table.tbl{width:100%;border-collapse:collapse;min-width:500px;}
+table.tbl{width:100%;border-collapse:collapse;min-width:700px;}
 .tbl th{font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);padding:.62rem 1rem;text-align:left;background:var(--linen);border-bottom:2px solid var(--border);white-space:nowrap;}
 .tbl td{font-size:.8rem;padding:.68rem 1rem;border-bottom:1px solid var(--linen);vertical-align:middle;color:var(--text);}
 .tbl tr:last-child td{border-bottom:none;}
@@ -229,63 +195,6 @@ table.tbl{width:100%;border-collapse:collapse;min-width:500px;}
 .p-checkedin{background:#DBEAFE;color:#1E40AF;}
 .p-checkedout{background:#F3F4F6;color:#4B5563;}
 .p-cancelled{background:#FEE2E2;color:#B91C1C;}
-.p-available{background:#DCFCE7;color:#15803D;}
-.p-occupied{background:#FEE2E2;color:#B91C1C;}
-
-/* ── BAR CHART ── */
-.chart-bars{display:flex;align-items:flex-end;gap:6px;height:160px;}
-.bar-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:.3rem;}
-.bar-track{width:100%;flex:1;background:var(--linen);border-radius:.3rem .3rem 0 0;display:flex;align-items:flex-end;position:relative;cursor:pointer;}
-.bar-fill{width:100%;min-height:3px;border-radius:.3rem .3rem 0 0;background:linear-gradient(to top,var(--forest),var(--sage));transition:height .7s cubic-bezier(.23,1,.32,1);position:relative;}
-.bar-fill.peak{background:linear-gradient(to top,var(--amber),var(--gold));}
-.bar-fill:hover::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);background:var(--text);color:#fff;font-size:.62rem;font-weight:600;padding:.18rem .45rem;border-radius:.25rem;white-space:nowrap;pointer-events:none;z-index:10;}
-.bar-lbl{font-size:.6rem;color:var(--text3);font-weight:600;text-align:center;}
-
-/* ── DONUT ── */
-.donut-container{display:flex;align-items:center;gap:1.5rem;}
-.donut-legend{flex:1;}
-.dl-row{display:flex;align-items:center;gap:.5rem;margin-bottom:.55rem;}
-.dl-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
-.dl-name{font-size:.75rem;color:var(--text2);flex:1;}
-.dl-val{font-size:.75rem;font-weight:700;color:var(--text);}
-
-/* ── ROOM CARD LIVE ── */
-.room-card-live{border-radius:.6rem;padding:1rem 1.1rem;border:1.5px solid var(--border);transition:all .2s;}
-.room-card-live.occ{border-color:#FCA5A5;background:#FFF8F8;}
-.room-card-live.avail{border-color:#86EFAC;background:#F0FDF4;}
-.rcl-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:.6rem;}
-.rcl-name{font-size:.85rem;font-weight:700;color:var(--text);}
-.rcl-body .rcl-guest{font-size:.78rem;font-weight:600;color:var(--text);margin-bottom:.15rem;}
-.rcl-body .rcl-info{font-size:.7rem;color:var(--text3);}
-.rcl-progress{height:5px;background:var(--border);border-radius:3px;margin-top:.75rem;}
-.rcl-progress-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--amber),var(--gold));}
-
-/* ── UPCOMING ITEM ── */
-.upc-item{display:flex;gap:.8rem;padding:.75rem 0;border-bottom:1px solid var(--linen);}
-.upc-item:last-child{border-bottom:none;}
-.upc-date-box{width:42px;flex-shrink:0;text-align:center;background:var(--linen);border-radius:.4rem;padding:.4rem .2rem;}
-.upc-dd{font-size:1.1rem;font-weight:800;color:var(--forest);line-height:1;}
-.upc-mo{font-size:.55rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);}
-.upc-info{flex:1;min-width:0;}
-.upc-name{font-size:.8rem;font-weight:700;color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
-.upc-meta{font-size:.7rem;color:var(--text3);margin-top:.1rem;}
-
-/* ── MODAL ── */
-.modal-bg{display:none;position:fixed;inset:0;z-index:600;background:rgba(20,14,5,.65);backdrop-filter:blur(5px);align-items:center;justify-content:center;padding:1rem;}
-.modal-bg.open{display:flex;}
-.modal{background:var(--panel);border-radius:var(--radius);width:100%;max-width:720px;max-height:92vh;overflow-y:auto;box-shadow:0 32px 100px rgba(0,0,0,.35);animation:mpop .3s cubic-bezier(.23,1,.32,1);}
-@keyframes mpop{from{opacity:0;transform:scale(.93) translateY(16px);}to{opacity:1;transform:scale(1) translateY(0);}}
-.modal-hd{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 1.4rem;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--panel);z-index:1;}
-.modal-hd h3{font-size:.95rem;font-weight:800;color:var(--text);}
-.modal-body{padding:1.4rem;}
-.modal-ft{padding:1rem 1.4rem;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:.6rem;flex-wrap:wrap;}
-.modal-close-btn{width:30px;height:30px;border-radius:50%;background:var(--linen);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.85rem;color:var(--text3);transition:all .2s;}
-.modal-close-btn:hover{background:var(--red-lt);color:var(--red);}
-
-/* ── EMPTY STATE ── */
-.empty{text-align:center;padding:2rem 1rem;color:var(--text3);}
-.empty-ico{font-size:2rem;opacity:.3;margin-bottom:.5rem;}
-.empty p{font-size:.82rem;}
 
 /* ── NOTIFICATIONS ── */
 .notif-dropdown{position:absolute;top:calc(100% + 8px);right:0;width:300px;background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow-lg);z-index:500;display:none;}
@@ -306,6 +215,22 @@ table.tbl{width:100%;border-collapse:collapse;min-width:500px;}
 .toast.t-err{border-left-color:var(--red);}
 .toast.t-warn{border-left-color:var(--gold);}
 
+/* ── MODAL ── */
+.modal-bg{display:none;position:fixed;inset:0;z-index:600;background:rgba(20,14,5,.65);backdrop-filter:blur(5px);align-items:center;justify-content:center;padding:1rem;}
+.modal-bg.open{display:flex;}
+.modal{background:var(--panel);border-radius:var(--radius);width:100%;max-width:720px;max-height:92vh;overflow-y:auto;box-shadow:0 32px 100px rgba(0,0,0,.35);animation:mpop .3s cubic-bezier(.23,1,.32,1);}
+@keyframes mpop{from{opacity:0;transform:scale(.93) translateY(16px);}to{opacity:1;transform:scale(1) translateY(0);}}
+.modal-hd{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 1.4rem;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--panel);z-index:1;}
+.modal-hd h3{font-size:.95rem;font-weight:800;color:var(--text);}
+.modal-body{padding:1.4rem;}
+.modal-ft{padding:1rem 1.4rem;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:.6rem;flex-wrap:wrap;}
+.modal-close-btn{width:30px;height:30px;border-radius:50%;background:var(--linen);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.85rem;color:var(--text3);transition:all .2s;}
+.modal-close-btn:hover{background:var(--red-lt);color:var(--red);}
+
+/* ── EMPTY STATE ── */
+.empty{text-align:center;padding:3rem 1.5rem;color:var(--text3);}
+.empty p{font-size:.82rem;}
+
 /* ════ RESPONSIVE ════ */
 @media(min-width:769px){
   .sb{ transform:translateX(0) !important; }
@@ -323,17 +248,7 @@ table.tbl{width:100%;border-collapse:collapse;min-width:500px;}
   .sb-close-btn{ display:flex !important; }
   .top-chip{ display:none; }
   .content{ padding:1rem .75rem; }
-  .row.cols-4,
-  .row.cols-2,
-  .row.cols-2-1{ grid-template-columns:1fr; }
   .btn-view-site{ font-size:.65rem; padding:.35rem .65rem; }
-}
-@media(min-width:769px) and (max-width:1100px){
-  .row.cols-4{ grid-template-columns:repeat(2,1fr); }
-  .row.cols-2-1{ grid-template-columns:1fr; }
-}
-@media(min-width:769px) and (max-width:860px){
-  .row.cols-2{ grid-template-columns:1fr; }
 }
 </style>
 </head>
@@ -354,11 +269,11 @@ table.tbl{width:100%;border-collapse:collapse;min-width:500px;}
 
   <nav style="flex:1;overflow-y:auto;padding:.5rem 0;">
     <div class="sb-group-label">Overview</div>
-    <a href="admin_dashboard.html" class="sb-item active"><span class="ico">📊</span><span class="lbl">Dashboard</span></a>
+    <a href="admin_dashboard.html" class="sb-item"><span class="ico">📊</span><span class="lbl">Dashboard</span></a>
     <a href="admin_analytics.html" class="sb-item"><span class="ico">📈</span><span class="lbl">Analytics & Reports</span></a>
 
     <div class="sb-group-label">Reservations</div>
-    <a href="bookings.html" class="sb-item">
+    <a href="admin_bookings.html" class="sb-item active">
       <span class="ico">📅</span><span class="lbl">All Bookings</span>
       <span class="badge" id="sb-pending-badge" style="display:none">0</span>
     </a>
@@ -393,7 +308,7 @@ table.tbl{width:100%;border-collapse:collapse;min-width:500px;}
   <header class="topbar">
     <button class="hamburger" id="hamburger" onclick="openSidebar()">☰</button>
     <div class="topbar-breadcrumb">
-      <span class="page-name">Dashboard</span>
+      <span class="page-name">All Bookings</span>
     </div>
     <div class="topbar-actions">
       <div class="top-chip">📅 <span id="today-label"></span></div>
@@ -414,119 +329,61 @@ table.tbl{width:100%;border-collapse:collapse;min-width:500px;}
   </header>
 
   <div class="content">
-
-    <!-- STAT CARDS -->
-    <div class="row cols-4">
-      <div class="stat-card sc-green">
-        <div class="sc-top"><div class="sc-icon sci-green">💰</div><span class="sc-trend trend-up" id="rev-trend">+0%</span></div>
-        <div class="sc-val" id="d-rev">₱0</div>
-        <div class="sc-label">Revenue This Month</div>
-        <div class="sc-sub" id="d-rev-sub">vs last month</div>
+    <div class="panel">
+      <div class="panel-hd">
+        <div class="panel-hd-left">
+          <div class="ph-title">All Reservations</div>
+          <div class="ph-sub">Click a row to view details</div>
+        </div>
+        <div class="panel-hd-actions">
+          <a href="admin_new_booking.html" class="btn btn-primary btn-md">➕ New Booking</a>
+        </div>
       </div>
-      <div class="stat-card sc-amber">
-        <div class="sc-top"><div class="sc-icon sci-amber">📅</div><span class="sc-trend" id="bk-trend">—</span></div>
-        <div class="sc-val" id="d-bk">0</div>
-        <div class="sc-label">Total Bookings</div>
-        <div class="sc-sub" id="d-bk-sub">all time</div>
+      <div class="panel-body" style="padding-bottom:.5rem;">
+        <div style="display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;">
+          <div style="position:relative;flex:1;min-width:160px;">
+            <input type="text" id="bk-search" placeholder="🔍 Search name, phone, ref..." oninput="filterBookings()"
+              style="width:100%;border:1.5px solid var(--border);border-radius:.45rem;padding:.55rem .9rem;font-family:'Plus Jakarta Sans',sans-serif;font-size:.8rem;outline:none;background:var(--snow);">
+          </div>
+          <select id="bk-status" onchange="filterBookings()" style="border:1.5px solid var(--border);border-radius:.45rem;padding:.55rem .75rem;font-family:'Plus Jakarta Sans',sans-serif;font-size:.78rem;outline:none;background:var(--snow);">
+            <option value="">All Status</option>
+            <option value="pending">Pending</option>
+            <option value="confirmed">Confirmed</option>
+            <option value="checkedin">Checked In</option>
+            <option value="checkedout">Checked Out</option>
+            <option value="cancelled">Cancelled</option>
+          </select>
+          <select id="bk-room" onchange="filterBookings()" style="border:1.5px solid var(--border);border-radius:.45rem;padding:.55rem .75rem;font-family:'Plus Jakarta Sans',sans-serif;font-size:.78rem;outline:none;background:var(--snow);">
+            <option value="">All Suites</option>
+            <option value="1">Suite 1</option>
+            <option value="2">Suite 2</option>
+          </select>
+          <select id="bk-month" onchange="filterBookings()" style="border:1.5px solid var(--border);border-radius:.45rem;padding:.55rem .75rem;font-family:'Plus Jakarta Sans',sans-serif;font-size:.78rem;outline:none;background:var(--snow);">
+            <option value="">All Months</option>
+            <option value="0">January</option><option value="1">February</option><option value="2">March</option>
+            <option value="3">April</option><option value="4">May</option><option value="5">June</option>
+            <option value="6">July</option><option value="7">August</option><option value="8">September</option>
+            <option value="9">October</option><option value="10">November</option><option value="11">December</option>
+          </select>
+          <button class="btn btn-ghost btn-sm" onclick="clearFilters()">✕ Clear</button>
+        </div>
+        <div style="font-size:.7rem;color:var(--text3);margin-top:.6rem;" id="bk-count"></div>
       </div>
-      <div class="stat-card sc-blue">
-        <div class="sc-top"><div class="sc-icon sci-blue">🏠</div><span class="sc-trend trend-neu" id="occ-trend">Live</span></div>
-        <div class="sc-val" id="d-occ">0%</div>
-        <div class="sc-label">Current Occupancy</div>
-        <div class="sc-sub" id="d-occ-sub">rooms in use now</div>
-      </div>
-      <div class="stat-card sc-red">
-        <div class="sc-top"><div class="sc-icon sci-red">⏳</div><span class="sc-trend trend-neu" style="background:#FEF9C3;color:#92400E">Action</span></div>
-        <div class="sc-val" id="d-pend">0</div>
-        <div class="sc-label">Pending Bookings</div>
-        <div class="sc-sub">need confirmation</div>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr>
+            <th>Ref #</th><th>Guest</th><th>Suite</th><th>Check-in</th><th>Check-out</th>
+            <th>Pax</th><th>Total</th><th>Payment</th><th>Status</th><th>Actions</th>
+          </tr></thead>
+          <tbody id="bk-tbody"></tbody>
+        </table>
       </div>
     </div>
-
-    <!-- CHART + DONUT + LIVE ROOMS -->
-    <div class="row cols-2-1">
-      <div class="panel">
-        <div class="panel-hd">
-          <div class="panel-hd-left">
-            <div class="ph-title">Monthly Bookings Overview</div>
-            <div class="ph-sub">Last 12 months</div>
-          </div>
-          <div class="panel-hd-actions">
-            <select class="btn btn-sm btn-ghost" id="chart-year" onchange="renderBarChart()" style="cursor:pointer;padding:.3rem .6rem;font-size:.72rem;">
-              <option>2026</option><option>2025</option>
-            </select>
-          </div>
-        </div>
-        <div class="panel-body">
-          <div style="display:flex;align-items:flex-end;gap:.5rem;">
-            <div style="display:flex;flex-direction:column;justify-content:space-between;height:160px;font-size:.58rem;color:var(--text4);text-align:right;padding-bottom:1.4rem;margin-right:.3rem;flex-shrink:0;" id="y-axis"></div>
-            <div class="chart-bars" id="bar-chart" style="flex:1;"></div>
-          </div>
-        </div>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:1.1rem;">
-        <div class="panel">
-          <div class="panel-hd"><div class="panel-hd-left"><div class="ph-title">Booking Split</div><div class="ph-sub">By suite this month</div></div></div>
-          <div class="panel-body">
-            <div class="donut-container">
-              <svg width="90" height="90" viewBox="0 0 90 90">
-                <circle cx="45" cy="45" r="35" fill="none" stroke="var(--linen)" stroke-width="12"/>
-                <circle id="donut-r1" cx="45" cy="45" r="35" fill="none" stroke="var(--forest)" stroke-width="12" stroke-dasharray="220 0" stroke-dashoffset="55" transform="rotate(-90 45 45)" style="transition:all .7s;"/>
-                <circle id="donut-r2" cx="45" cy="45" r="35" fill="none" stroke="var(--amber)" stroke-width="12" stroke-dasharray="0 220" stroke-dashoffset="55" transform="rotate(-90 45 45)" style="transition:all .7s;"/>
-              </svg>
-              <div class="donut-legend">
-                <div class="dl-row"><div class="dl-dot" style="background:var(--forest)"></div><div class="dl-name">Suite 1 · Sterling</div><div class="dl-val" id="donut-v1">0</div></div>
-                <div class="dl-row"><div class="dl-dot" style="background:var(--amber)"></div><div class="dl-name">Suite 2 · Habi</div><div class="dl-val" id="donut-v2">0</div></div>
-                <div class="dl-row"><div class="dl-dot" style="background:var(--red)"></div><div class="dl-name">Cancelled</div><div class="dl-val" id="donut-vc">0</div></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="panel">
-          <div class="panel-hd"><div class="panel-hd-left"><div class="ph-title">Live Room Status</div></div></div>
-          <div class="panel-body" id="live-rooms" style="display:grid;gap:.7rem;"></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- RECENT BOOKINGS + UPCOMING + QUICK ACTIONS -->
-    <div class="row cols-2">
-      <div class="panel">
-        <div class="panel-hd">
-          <div class="panel-hd-left"><div class="ph-title">Recent Bookings</div></div>
-          <div class="panel-hd-actions"><a href="admin_bookings.html" class="btn btn-sm btn-ghost">View All →</a></div>
-        </div>
-        <div class="tbl-wrap">
-          <table class="tbl">
-            <thead><tr><th>Guest</th><th>Suite</th><th>Check-in</th><th>Status</th><th></th></tr></thead>
-            <tbody id="dash-recent"></tbody>
-          </table>
-        </div>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:1.1rem;">
-        <div class="panel">
-          <div class="panel-hd"><div class="panel-hd-left"><div class="ph-title">Upcoming Check-ins</div><div class="ph-sub">Next 5 arrivals</div></div></div>
-          <div class="panel-body" id="dash-upcoming"></div>
-        </div>
-        <div class="panel">
-          <div class="panel-hd"><div class="panel-hd-left"><div class="ph-title">Quick Actions</div></div></div>
-          <div class="panel-body" style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;">
-            <a href="admin_new_booking.html" class="btn btn-primary btn-md" style="justify-content:center;">➕ New Booking</a>
-            <button class="btn btn-amber btn-md" onclick="exportCSV()" style="justify-content:center;">📥 Export CSV</button>
-            <a href="admin_calendar.html" class="btn btn-ghost btn-md" style="justify-content:center;">🗓️ Calendar</a>
-            <a href="admin_analytics.html" class="btn btn-ghost btn-md" style="justify-content:center;">📊 Reports</a>
-            <a href="admin_guests.html" class="btn btn-ghost btn-md" style="justify-content:center;">👥 Guests</a>
-            <button class="btn btn-ghost btn-md" onclick="window.print()" style="justify-content:center;">🖨️ Print</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
   </div>
 </div>
 
 <!-- BOOKING DETAIL MODAL -->
-<div class="modal-bg" id="bk-modal" onclick="if(event.target===this)this.classList.remove('open')">
+<div class="modal-bg" id="bk-modal" onclick="closeBkModal(event)">
   <div class="modal">
     <div class="modal-hd">
       <h3 id="bk-modal-title">Booking Details</h3>
@@ -543,7 +400,7 @@ table.tbl{width:100%;border-collapse:collapse;min-width:500px;}
 <script>
 'use strict';
 const BK_KEY = 'en3', LOG_KEY = 'en3_log', CFG_KEY = 'en3_cfg', RATE = 1999;
-const M3 = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const MFull = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 let BK = [], LOG = [], CFG = {}, notifs = [];
 
 /* ── INIT ── */
@@ -554,15 +411,9 @@ function init() {
   document.getElementById('admin-display-name').textContent = CFG.adminName || 'Admin';
   seedIfEmpty();
   setTopbarDate();
-  renderDashStatsBar();
-  renderBarChart();
-  renderDonut();
-  renderLiveRooms();
-  renderDashRecent();
-  renderDashUpcoming();
   renderPendingBadge();
   renderNotifs();
-  setInterval(() => { renderLiveRooms(); renderDashStatsBar(); }, 30000);
+  filterBookings();
 }
 
 function saveAll() {
@@ -604,9 +455,9 @@ function seedIfEmpty() {
     mkBk('Ara','Santos','+63 912 111 1234','2',-90,14,2,'cancelled','Changed plans'),
   ];
   LOG = [
-    { type:'ok',   msg:'Admin logged in',                              time: new Date(Date.now() - 3 * 60000).toISOString() },
-    { type:'ok',   msg:'New booking created — Nina Ramos (Suite 1)',   time: new Date(Date.now() - 2 * 60000).toISOString() },
-    { type:'warn', msg:'Booking set to Pending — awaiting payment',    time: new Date(Date.now() -     60000).toISOString() },
+    { type: 'ok',   msg: 'Admin logged in',                              time: new Date(Date.now() - 3 * 60000).toISOString() },
+    { type: 'ok',   msg: 'New booking created — Nina Ramos (Suite 1)',   time: new Date(Date.now() - 2 * 60000).toISOString() },
+    { type: 'warn', msg: 'Booking set to Pending — awaiting payment',    time: new Date(Date.now() -     60000).toISOString() },
   ];
   saveAll();
 }
@@ -626,120 +477,77 @@ document.querySelectorAll('.sb-item').forEach(btn => {
   btn.addEventListener('click', () => { if (window.innerWidth <= 768) closeSidebar(); });
 });
 
-/* ── DASHBOARD STATS ── */
-function renderDashStatsBar() {
-  const now = new Date();
-  const thisMonth = BK.filter(b => { const d = new Date(b.ci); return d.getMonth() === now.getMonth() && d.getFullYear() === now.getFullYear() && b.st !== 'cancelled'; });
-  const lastMonth = BK.filter(b => { const d = new Date(b.ci); const lm = new Date(now.getFullYear(), now.getMonth() - 1, 1); return d.getMonth() === lm.getMonth() && d.getFullYear() === lm.getFullYear() && b.st !== 'cancelled'; });
-  const pending = BK.filter(b => b.st === 'pending');
-  const occ = [1, 2].filter(r => isOccupied(r, now)).length;
-  const rev = thisMonth.length * RATE, revL = lastMonth.length * RATE;
-  const revDiff = revL > 0 ? Math.round(((rev - revL) / revL) * 100) : 0;
-  setText('d-rev', `₱${rev.toLocaleString()}`);
-  setText('d-bk', BK.filter(b => b.st !== 'cancelled').length);
-  setText('d-occ', Math.round((occ / 2) * 100) + '%');
-  setText('d-pend', pending.length);
-  setText('d-rev-sub', `vs ₱${revL.toLocaleString()} last month`);
-  setText('d-bk-sub', `${thisMonth.length} this month`);
-  setText('d-occ-sub', occ === 0 ? 'Both rooms free' : occ === 1 ? '1 of 2 rooms in use' : 'Both rooms occupied');
-  const rt = document.getElementById('rev-trend');
-  rt.textContent = (revDiff >= 0 ? '+' : '') + revDiff + '%';
-  rt.className = 'sc-trend ' + (revDiff >= 0 ? 'trend-up' : 'trend-dn');
-  const bt = document.getElementById('bk-trend');
-  bt.textContent = pending.length > 0 ? `${pending.length} pending` : '✓ All clear';
-  bt.className = 'sc-trend ' + (pending.length > 0 ? 'trend-neu' : 'trend-up');
-  if (pending.length > 0) { bt.style.background = '#FEF9C3'; bt.style.color = '#92400E'; }
-  else { bt.style.background = ''; bt.style.color = ''; }
-  renderPendingBadge();
-}
-
-/* ── RECENT BOOKINGS TABLE ── */
-function renderDashRecent() {
-  const list = [...BK].filter(b => b.st !== 'cancelled').sort((a, b) => new Date(b.ci) - new Date(a.ci)).slice(0, 6);
-  const tb = document.getElementById('dash-recent');
-  if (!list.length) { tb.innerHTML = `<tr><td colspan="5" style="text-align:center;padding:2rem;color:var(--text4);font-style:italic;">No bookings yet</td></tr>`; return; }
-  tb.innerHTML = list.map(b => `
-    <tr onclick="openBkModal('${b.ref}')" style="cursor:pointer;">
-      <td><div style="font-weight:600;font-size:.8rem;">${b.fn} ${b.ln}</div><div style="font-size:.68rem;color:var(--text3);">${b.ph}</div></td>
+/* ── BOOKINGS ── */
+function filterBookings() {
+  const q = (document.getElementById('bk-search')?.value || '').toLowerCase();
+  const st = document.getElementById('bk-status')?.value || '';
+  const rm = document.getElementById('bk-room')?.value || '';
+  const mo = document.getElementById('bk-month')?.value;
+  let list = [...BK];
+  if (q)  list = list.filter(b => `${b.fn} ${b.ln} ${b.ph} ${b.ref}`.toLowerCase().includes(q));
+  if (st) list = list.filter(b => b.st === st);
+  if (rm) list = list.filter(b => b.rm == rm);
+  if (mo !== '' && mo !== undefined) list = list.filter(b => new Date(b.ci).getMonth() == parseInt(mo));
+  list.sort((a, b) => new Date(b.ci) - new Date(a.ci));
+  document.getElementById('bk-count').textContent = `Showing ${list.length} of ${BK.length} bookings`;
+  const tb = document.getElementById('bk-tbody');
+  if (!list.length) {
+    tb.innerHTML = `<tr><td colspan="10" style="padding:2.5rem;text-align:center;color:var(--text4);font-style:italic;">No bookings match your filters</td></tr>`;
+    return;
+  }
+  tb.innerHTML = list.map(b => {
+    const idx = BK.findIndex(x => x.ref === b.ref);
+    return `<tr onclick="openBkModal('${b.ref}')" style="cursor:pointer;">
+      <td style="font-family:monospace;font-size:.68rem;color:var(--text3);">${b.ref}</td>
+      <td><div style="font-weight:600;">${b.fn} ${b.ln}</div><div style="font-size:.68rem;color:var(--text3);">${b.ph}</div></td>
       <td>Suite ${b.rm}</td>
-      <td style="font-size:.73rem;white-space:nowrap;">${fmtShort(b.ci)}</td>
+      <td style="white-space:nowrap;font-size:.75rem;">${fmtShort(b.ci)}</td>
+      <td style="white-space:nowrap;font-size:.75rem;">${fmtShort(b.co)}</td>
+      <td>${b.px}</td>
+      <td style="font-weight:700;">₱${RATE.toLocaleString()}</td>
+      <td style="font-size:.73rem;text-transform:capitalize;">${b.pay || '—'}</td>
       <td>${pill(b.st)}</td>
-      <td><button class="btn btn-sm btn-ghost" onclick="event.stopPropagation();openBkModal('${b.ref}')">View</button></td>
-    </tr>`).join('');
-}
-
-/* ── UPCOMING CHECK-INS ── */
-function renderDashUpcoming() {
-  const now = new Date();
-  const list = BK.filter(b => b.st !== 'cancelled' && new Date(b.ci) > now).sort((a, b) => new Date(a.ci) - new Date(b.ci)).slice(0, 5);
-  const wrap = document.getElementById('dash-upcoming');
-  if (!list.length) { wrap.innerHTML = `<div class="empty"><div class="empty-ico">📭</div><p>No upcoming check-ins</p></div>`; return; }
-  wrap.innerHTML = list.map(b => {
-    const d = new Date(b.ci);
-    return `<div class="upc-item" onclick="openBkModal('${b.ref}')" style="cursor:pointer;">
-      <div class="upc-date-box"><div class="upc-dd">${d.getDate()}</div><div class="upc-mo">${M3[d.getMonth()]}</div></div>
-      <div class="upc-info"><div class="upc-name">${b.fn} ${b.ln}</div><div class="upc-meta">Suite ${b.rm} · ${b.px} guest${b.px > 1 ? 's' : ''} · ${fmtTime(b.ci)}</div></div>
-      ${pill(b.st)}
-    </div>`;
+      <td onclick="event.stopPropagation();">
+        <div style="display:flex;gap:.3rem;">
+          ${b.st === 'pending' || b.st === 'confirmed' ? `<button class="btn btn-sm" style="background:var(--green-lt);color:var(--green);border:1px solid #86EFAC;" onclick="doCheckIn(${idx})">✓ In</button>` : ''}
+          ${b.st === 'checkedin' ? `<button class="btn btn-sm" style="background:var(--blue-lt);color:var(--blue);border:1px solid #93C5FD;" onclick="doCheckOut(${idx})">Out</button>` : ''}
+          ${b.st !== 'cancelled' && b.st !== 'checkedout' ? `<button class="btn btn-sm btn-danger" onclick="doCancel(${idx})">✕</button>` : ''}
+        </div>
+      </td>
+    </tr>`;
   }).join('');
 }
 
-/* ── LIVE ROOMS ── */
-function renderLiveRooms() {
-  const now = new Date();
-  const wrap = document.getElementById('live-rooms'); if (!wrap) return;
-  wrap.innerHTML = [1, 2].map(r => {
-    const occ = isOccupied(r, now);
-    const cur = BK.find(b => b.rm == r && b.st !== 'cancelled' && now >= new Date(b.ci) && now < new Date(b.co));
-    const names = { 1:'Sterling', 2:'Habi' };
-    const pct = occ && cur ? Math.min(100, Math.round(((now - new Date(cur.ci)) / (new Date(cur.co) - new Date(cur.ci))) * 100)) : 0;
-    return `<div class="room-card-live ${occ ? 'occ' : 'avail'}">
-      <div class="rcl-head"><div class="rcl-name">Suite ${r} · ${names[r]}</div>${occ ? '<span class="pill p-occupied">Occupied</span>' : '<span class="pill p-available">Available</span>'}</div>
-      <div class="rcl-body">${occ && cur
-        ? `<div class="rcl-guest">👤 ${cur.fn} ${cur.ln}</div><div class="rcl-info">Check-out: ${fmtShort(cur.co)} · ${cur.px} guest${cur.px > 1 ? 's' : ''}</div><div class="rcl-progress"><div class="rcl-progress-fill" style="width:${pct}%"></div></div>`
-        : `<div class="rcl-info" style="color:var(--green);font-weight:600;">✓ Ready for new guests</div>`
-      }</div>
-    </div>`;
-  }).join('');
+function clearFilters() {
+  ['bk-search','bk-status','bk-room','bk-month'].forEach(id => {
+    const el = document.getElementById(id); if (el) el.value = '';
+  });
+  filterBookings();
 }
 
-/* ── DONUT CHART ── */
-function renderDonut() {
-  const now = new Date();
-  const r1 = BK.filter(b => b.rm == '1' && b.st !== 'cancelled' && new Date(b.ci).getMonth() === now.getMonth()).length;
-  const r2 = BK.filter(b => b.rm == '2' && b.st !== 'cancelled' && new Date(b.ci).getMonth() === now.getMonth()).length;
-  const canc = BK.filter(b => new Date(b.ci).getMonth() === now.getMonth() && b.st === 'cancelled').length;
-  const total = r1 + r2 || 1; const circ = 220;
-  const d1 = Math.round((r1 / total) * circ), d2 = Math.round((r2 / total) * circ);
-  document.getElementById('donut-r1').setAttribute('stroke-dasharray', `${d1} ${circ - d1}`);
-  document.getElementById('donut-r2').setAttribute('stroke-dasharray', `${d2} ${circ - d2}`);
-  document.getElementById('donut-r2').setAttribute('stroke-dashoffset', 55 - d1);
-  setText('donut-v1', r1); setText('donut-v2', r2); setText('donut-vc', canc);
+function doCheckIn(i) {
+  if (!confirm(`Check in ${BK[i].fn} ${BK[i].ln}?`)) return;
+  BK[i].st = 'checkedin';
+  addLog('ok', `${BK[i].fn} ${BK[i].ln} checked in — Suite ${BK[i].rm}`);
+  saveAll(); filterBookings(); renderPendingBadge();
+  showToast(`${BK[i].fn} ${BK[i].ln} checked in!`, '🏠', 't-ok');
+}
+function doCheckOut(i) {
+  if (!confirm(`Check out ${BK[i].fn} ${BK[i].ln}?`)) return;
+  BK[i].st = 'checkedout';
+  addLog('ok', `${BK[i].fn} ${BK[i].ln} checked out — Suite ${BK[i].rm}`);
+  saveAll(); filterBookings(); renderPendingBadge();
+  showToast(`${BK[i].fn} ${BK[i].ln} checked out`, '👋', 't-ok');
+}
+function doCancel(i) {
+  if (!confirm(`Cancel booking for ${BK[i].fn} ${BK[i].ln}?`)) return;
+  BK[i].st = 'cancelled';
+  addLog('warn', `Booking cancelled — ${BK[i].fn} ${BK[i].ln} (${BK[i].ref})`);
+  addNotif(`Booking for ${BK[i].fn} ${BK[i].ln} was cancelled`, 'red');
+  saveAll(); filterBookings(); renderPendingBadge();
+  showToast('Booking cancelled', '❌', 't-err');
 }
 
-/* ── BAR CHART ── */
-function renderBarChart() {
-  const year = parseInt(document.getElementById('chart-year')?.value || new Date().getFullYear());
-  const counts = M3.map((_, i) => BK.filter(b => { const d = new Date(b.ci); return d.getFullYear() === year && d.getMonth() === i && b.st !== 'cancelled'; }).length);
-  const max = Math.max(...counts, 1);
-  const wrap = document.getElementById('bar-chart');
-  const ya = document.getElementById('y-axis');
-  if (!wrap) return;
-  ya.innerHTML = [max, Math.round(max / 2), 0].map(v => `<span>${v}</span>`).join('');
-  const now = new Date();
-  wrap.innerHTML = counts.map((c, i) => {
-    const pct = (c / max) * 100, isPeak = c === max && c > 0;
-    const isNow = i === now.getMonth() && year === now.getFullYear();
-    return `<div class="bar-col">
-      <div class="bar-track" style="height:140px;">
-        <div class="bar-fill${isPeak ? ' peak' : ''}" style="height:${pct}%;" data-tip="${M3[i]}: ${c} booking${c !== 1 ? 's' : ''}"></div>
-      </div>
-      <div class="bar-lbl" style="${isNow ? 'color:var(--amber);font-weight:700;' : ''}">${M3[i]}</div>
-    </div>`;
-  }).join('');
-}
-
-/* ── BOOKING MODAL ── */
 function openBkModal(ref) {
   const b = BK.find(x => x.ref === ref); if (!b) return;
   const idx = BK.indexOf(b);
@@ -750,6 +558,7 @@ function openBkModal(ref) {
         <div style="font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:.3rem;">Guest</div>
         <div style="font-weight:700;font-size:.9rem;">${b.fn} ${b.ln}</div>
         <div style="font-size:.75rem;color:var(--text2);margin-top:.18rem;">📞 ${b.ph}</div>
+        ${b.email ? `<div style="font-size:.73rem;color:var(--text2);">✉️ ${b.email}</div>` : ''}
         ${b.fb ? `<div style="font-size:.73rem;color:var(--text2);">📘 ${b.fb}</div>` : ''}
       </div>
       <div style="background:var(--linen);border-radius:.5rem;padding:.9rem;">
@@ -771,53 +580,18 @@ function openBkModal(ref) {
       <div>${pill(b.st)}</div>
       <div style="font-size:1.3rem;font-weight:800;color:var(--gold);">₱${RATE.toLocaleString()}</div>
     </div>
-    ${b.nt ? `<div style="background:#FFFBEB;border:1px solid #FCD34D;border-radius:.45rem;padding:.8rem 1rem;font-size:.8rem;line-height:1.6;"><span style="font-weight:700;">💬 Notes:</span> ${b.nt}</div>` : ''}
-    <div style="font-size:.68rem;color:var(--text4);margin-top:.6rem;">Reference: ${b.ref}</div>`;
+    ${b.nt ? `<div style="background:#FFFBEB;border:1px solid #FCD34D;border-radius:.45rem;padding:.8rem 1rem;margin-bottom:.75rem;font-size:.8rem;line-height:1.6;"><span style="font-weight:700;">💬 Notes:</span> ${b.nt}</div>` : ''}
+    <div style="font-size:.68rem;color:var(--text4);">Reference: ${b.ref}</div>`;
   document.getElementById('bk-modal-ft').innerHTML = `
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
       ${b.st === 'pending' || b.st === 'confirmed' ? `<button class="btn btn-primary btn-md" onclick="doCheckIn(${idx});document.getElementById('bk-modal').classList.remove('open')">✓ Check In</button>` : ''}
       ${b.st === 'checkedin' ? `<button class="btn btn-md" style="background:var(--blue-lt);color:var(--blue);" onclick="doCheckOut(${idx});document.getElementById('bk-modal').classList.remove('open')">🚪 Check Out</button>` : ''}
-      ${b.st !== 'cancelled' && b.st !== 'checkedout' ? `<button class="btn btn-md" style="background:var(--red-lt);color:var(--red);border:1px solid #FCA5A5;" onclick="doCancel(${idx});document.getElementById('bk-modal').classList.remove('open')">✕ Cancel</button>` : ''}
-      <a href="admin_bookings.html" class="btn btn-ghost btn-md">Open in Bookings</a>
+      ${b.st !== 'cancelled' && b.st !== 'checkedout' ? `<button class="btn btn-danger btn-md" onclick="doCancel(${idx});document.getElementById('bk-modal').classList.remove('open')">✕ Cancel</button>` : ''}
       <button class="btn btn-ghost btn-md" onclick="document.getElementById('bk-modal').classList.remove('open')">Close</button>
     </div>`;
   document.getElementById('bk-modal').classList.add('open');
 }
-
-/* ── CHECK IN / OUT / CANCEL ── */
-function doCheckIn(i) {
-  if (!confirm(`Check in ${BK[i].fn} ${BK[i].ln}?`)) return;
-  BK[i].st = 'checkedin';
-  addLog('ok', `${BK[i].fn} ${BK[i].ln} checked in — Suite ${BK[i].rm}`);
-  saveAll(); renderDashStatsBar(); renderDashRecent(); renderLiveRooms();
-  showToast(`${BK[i].fn} ${BK[i].ln} checked in!`, '🏠', 't-ok');
-}
-function doCheckOut(i) {
-  if (!confirm(`Check out ${BK[i].fn} ${BK[i].ln}?`)) return;
-  BK[i].st = 'checkedout';
-  addLog('ok', `${BK[i].fn} ${BK[i].ln} checked out — Suite ${BK[i].rm}`);
-  saveAll(); renderDashStatsBar(); renderDashRecent(); renderLiveRooms();
-  showToast(`${BK[i].fn} ${BK[i].ln} checked out`, '👋', 't-ok');
-}
-function doCancel(i) {
-  if (!confirm(`Cancel booking for ${BK[i].fn} ${BK[i].ln}?`)) return;
-  BK[i].st = 'cancelled';
-  addLog('warn', `Booking cancelled — ${BK[i].fn} ${BK[i].ln} (${BK[i].ref})`);
-  saveAll(); renderDashStatsBar(); renderDashRecent(); renderLiveRooms(); renderDonut();
-  showToast('Booking cancelled', '❌', 't-err');
-}
-
-/* ── CSV EXPORT ── */
-function exportCSV() {
-  const MFull = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-  const rows = [['Ref','First Name','Last Name','Phone','Email','Suite','Check-in','Check-out','Pax','Total','Payment','Status','Notes','Created']];
-  BK.forEach(b => rows.push([b.ref, b.fn, b.ln, b.ph, b.em||'', 'Suite '+b.rm, fmtFull(b.ci), fmtFull(b.co), b.px, RATE, b.pay||'', b.st, b.nt||'', b.created ? fmtFull(b.created) : '']));
-  const csv = rows.map(r => r.map(c => `"${String(c||'').replace(/"/g,'""')}"`).join(',')).join('\n');
-  const a = document.createElement('a'); a.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv);
-  a.download = `espacio-norte-bookings-${new Date().toISOString().slice(0,10)}.csv`; a.click();
-  addLog('ok', 'Bookings exported to CSV');
-  showToast('CSV exported!', '📥', 't-ok');
-}
+function closeBkModal(e) { if (e.target === e.currentTarget) document.getElementById('bk-modal').classList.remove('open'); }
 
 /* ── ACTIVITY LOG ── */
 function addLog(type, msg) {
@@ -827,6 +601,7 @@ function addLog(type, msg) {
 }
 
 /* ── NOTIFICATIONS ── */
+function addNotif(msg, type = 'info') { notifs.unshift({ msg, type, time: new Date().toISOString(), read: false }); renderNotifs(); }
 function renderNotifs() {
   const wrap = document.getElementById('notif-list'); if (!wrap) return;
   const dot = document.getElementById('notif-dot');
@@ -861,11 +636,8 @@ function showToast(msg, ico = 'ℹ️', cls = '') {
 }
 
 /* ── HELPERS ── */
-function setText(id, v) { const el = document.getElementById(id); if (el) el.textContent = v; }
-function isOccupied(rm, dt) { return BK.some(b => { if (b.rm != rm || b.st === 'cancelled') return false; return dt >= new Date(b.ci) && dt < new Date(b.co); }); }
 function fmtFull(iso) { return new Date(iso).toLocaleString('en-PH', { month:'short', day:'numeric', year:'numeric', hour:'2-digit', minute:'2-digit' }); }
 function fmtShort(iso) { return new Date(iso).toLocaleString('en-PH', { month:'short', day:'numeric', hour:'2-digit', minute:'2-digit' }); }
-function fmtTime(iso) { return new Date(iso).toLocaleTimeString('en-PH', { hour:'2-digit', minute:'2-digit' }); }
 function fmtAgo(iso) {
   const diff = (Date.now() - new Date(iso)) / 1000;
   if (diff < 60) return 'just now';
