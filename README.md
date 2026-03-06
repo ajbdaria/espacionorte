@@ -22,8 +22,3 @@ The project is deployed using Firebase Hosting for fast and secure global delive
 - Admin Dashboard (Static UI)
 - Firebase Hosting Deployment
 - Organized Asset Structure
-
-
-
-
-## 📂 Project Structure

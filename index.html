@@ -33,73 +33,37 @@ body { font-family:'Jost',sans-serif; background:var(--off-white); color:var(--t
 ::-webkit-scrollbar-thumb { background:var(--amber); border-radius:3px; }
 
 /* ══ NAV ══ */
-nav {
-  position:fixed; top:0; left:0; right:0; z-index:900;
-  display:flex; align-items:center; justify-content:space-between;
-  padding:1.4rem 4rem; transition:all .4s;
-}
-nav.scrolled {
-  background:rgba(26,22,14,.96); backdrop-filter:blur(18px);
-  padding:.9rem 4rem; box-shadow:0 4px 40px rgba(0,0,0,.28);
-}
+nav { position:fixed; top:0; left:0; right:0; z-index:900; display:flex; align-items:center; justify-content:space-between; padding:1.4rem 4rem; transition:all .4s; }
+nav.scrolled { background:rgba(26,22,14,.96); backdrop-filter:blur(18px); padding:.9rem 4rem; box-shadow:0 4px 40px rgba(0,0,0,.28); }
 .nav-brand { display:flex; align-items:center; gap:.9rem; text-decoration:none; }
-.nav-logo {
-  width:48px; height:48px; border-radius:50%; padding:3px;
-  background:linear-gradient(135deg,var(--gold),var(--amber));
-  box-shadow:0 0 20px rgba(200,147,42,.5);
-  overflow:hidden; flex-shrink:0;
-}
+.nav-logo { width:48px; height:48px; border-radius:50%; padding:3px; background:linear-gradient(135deg,var(--gold),var(--amber)); box-shadow:0 0 20px rgba(200,147,42,.5); overflow:hidden; flex-shrink:0; }
 .nav-logo img { width:100%; height:100%; object-fit:cover; border-radius:50%; border:2px solid rgba(255,255,255,.15); display:block; }
 .nav-name .n1 { display:block; font-family:'Cormorant Garamond',serif; font-size:1.05rem; font-weight:700; color:#fff; letter-spacing:.06em; }
 .nav-name .n2 { display:block; font-family:'Great Vibes',cursive; font-size:.9rem; color:var(--gold); }
 .nav-links { display:flex; gap:2.4rem; }
-.nav-links a {
-  color:rgba(255,255,255,.72); text-decoration:none; font-size:.74rem;
-  font-weight:500; letter-spacing:.14em; text-transform:uppercase;
-  position:relative; transition:color .2s;
-}
-.nav-links a::after {
-  content:''; position:absolute; bottom:-4px; left:0; right:0; height:1px;
-  background:var(--gold); transform:scaleX(0); transform-origin:right; transition:transform .3s;
-}
+.nav-links a { color:rgba(255,255,255,.72); text-decoration:none; font-size:.74rem; font-weight:500; letter-spacing:.14em; text-transform:uppercase; position:relative; transition:color .2s; }
+.nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; right:0; height:1px; background:var(--gold); transform:scaleX(0); transform-origin:right; transition:transform .3s; }
 .nav-links a:hover { color:#fff; }
 .nav-links a:hover::after { transform:scaleX(1); transform-origin:left; }
 .nav-actions { display:flex; align-items:center; gap:.9rem; }
-.btn-login {
-  background:transparent; color:var(--gold); border:1.5px solid var(--gold);
-  padding:.52rem 1.45rem; border-radius:.3rem;
-  font-family:'Jost',sans-serif; font-size:.72rem; font-weight:600;
-  letter-spacing:.12em; text-transform:uppercase; cursor:pointer;
-  position:relative; overflow:hidden; transition:all .3s;
-}
+.btn-login { background:transparent; color:var(--gold); border:1.5px solid var(--gold); padding:.52rem 1.45rem; border-radius:.3rem; font-family:'Jost',sans-serif; font-size:.72rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; cursor:pointer; position:relative; overflow:hidden; transition:all .3s; }
 .btn-login::before { content:''; position:absolute; top:0; left:-100%; width:100%; height:100%; background:linear-gradient(120deg,transparent,rgba(255,255,255,.22),transparent); transition:.55s; }
 .btn-login:hover { background:var(--gold); color:var(--charcoal); box-shadow:0 6px 22px rgba(200,147,42,.5); transform:translateY(-2px); }
 .btn-login:hover::before { left:100%; }
-.btn-booknow {
-  background:linear-gradient(135deg,var(--amber),var(--gold)); color:var(--charcoal);
-  border:none; padding:.55rem 1.6rem; border-radius:.3rem;
-  font-family:'Jost',sans-serif; font-size:.72rem; font-weight:700;
-  letter-spacing:.12em; text-transform:uppercase; cursor:pointer;
-  box-shadow:0 4px 18px rgba(200,147,42,.4); transition:all .3s; position:relative; overflow:hidden;
-}
+.btn-booknow { background:linear-gradient(135deg,var(--amber),var(--gold)); color:var(--charcoal); border:none; padding:.55rem 1.6rem; border-radius:.3rem; font-family:'Jost',sans-serif; font-size:.72rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; cursor:pointer; box-shadow:0 4px 18px rgba(200,147,42,.4); transition:all .3s; position:relative; overflow:hidden; }
 .btn-booknow::before { content:''; position:absolute; top:0; left:-100%; width:100%; height:100%; background:linear-gradient(120deg,transparent,rgba(255,255,255,.28),transparent); transition:.55s; }
 .btn-booknow:hover { transform:translateY(-2px); box-shadow:0 8px 28px rgba(200,147,42,.55); }
 .btn-booknow:hover::before { left:100%; }
 
 /* ══ HERO ══ */
 .hero { min-height:100vh; position:relative; display:flex; flex-direction:column; align-items:center; justify-content:center; overflow:hidden; }
-.hero-bg {
-  position:absolute; inset:0; z-index:0;
-  background: linear-gradient(to bottom, rgba(14,26,8,.45) 0%, rgba(14,26,8,.15) 45%, rgba(14,26,8,.72) 100%), url('assets/images/index.jpg') center center / cover no-repeat;
-  transform:scale(1.06);
-  animation:heroZoom 18s ease-in-out infinite alternate;
-}
-@keyframes heroZoom { from { transform:scale(1.06) translateY(0); } to { transform:scale(1.12) translateY(-2%); } }
+.hero-bg { position:absolute; inset:0; z-index:0; background:linear-gradient(to bottom,rgba(14,26,8,.45) 0%,rgba(14,26,8,.15) 45%,rgba(14,26,8,.72) 100%),url('assets/images/index.jpg') center center/cover no-repeat; transform:scale(1.06); animation:heroZoom 18s ease-in-out infinite alternate; }
+@keyframes heroZoom { from{transform:scale(1.06) translateY(0);} to{transform:scale(1.12) translateY(-2%);} }
 .shaft { position:absolute; top:-30%; width:1px; height:170%; pointer-events:none; z-index:1; }
 .sh1 { right:22%; background:linear-gradient(to bottom,transparent,rgba(219,168,74,.12),transparent); transform:rotate(-10deg); }
 .sh2 { right:27%; background:linear-gradient(to bottom,transparent,rgba(219,168,74,.07),transparent); transform:rotate(-10deg); }
 .sh3 { right:18%; background:linear-gradient(to bottom,transparent,rgba(219,168,74,.05),transparent); transform:rotate(-10deg); }
-.hero::before { content:''; position:absolute; inset:0; z-index:1; background:radial-gradient(ellipse 85% 85% at 50% 50%, transparent 55%, rgba(14,20,8,.5) 100%); pointer-events:none; }
+.hero::before { content:''; position:absolute; inset:0; z-index:1; background:radial-gradient(ellipse 85% 85% at 50% 50%,transparent 55%,rgba(14,20,8,.5) 100%); pointer-events:none; }
 .hero-content { position:relative; z-index:2; text-align:center; padding:2rem 1.5rem; max-width:860px; }
 .hero-tag { display:inline-flex; align-items:center; gap:.75rem; margin-bottom:2rem; opacity:0; animation:fup .8s .1s ease forwards; }
 .tag-line { width:38px; height:1px; }
@@ -126,7 +90,7 @@ nav.scrolled {
 .scroll-cue { position:absolute; bottom:5.5rem; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:.5rem; z-index:2; opacity:0; animation:fup .8s 1.6s ease forwards; }
 .scroll-cue span { font-size:.58rem; letter-spacing:.2em; text-transform:uppercase; color:rgba(242,232,213,.35); }
 .scroll-line { width:1px; height:40px; background:linear-gradient(to bottom,rgba(219,168,74,.5),transparent); animation:scrollPulse 2s ease-in-out infinite; }
-@keyframes scrollPulse { 0%,100% { opacity:.5; transform:scaleY(1); } 50% { opacity:1; transform:scaleY(1.3); } }
+@keyframes scrollPulse { 0%,100%{opacity:.5;transform:scaleY(1);} 50%{opacity:1;transform:scaleY(1.3);} }
 .stats-bar { position:absolute; bottom:0; left:0; right:0; z-index:2; display:flex; justify-content:center; background:rgba(20,16,8,.9); backdrop-filter:blur(12px); border-top:1px solid rgba(219,168,74,.15); opacity:0; animation:fup .9s 1.3s ease forwards; }
 .stat { flex:1; max-width:220px; text-align:center; padding:1.5rem 1rem; border-right:1px solid rgba(219,168,74,.1); transition:background .25s; }
 .stat:last-child { border-right:none; }
@@ -147,9 +111,9 @@ nav.scrolled {
 .rate-pill { background:rgba(219,168,74,.14); border:1px solid rgba(219,168,74,.28); color:var(--gold); font-size:.68rem; letter-spacing:.1em; text-transform:uppercase; padding:.38rem 1rem; border-radius:2rem; }
 .bb-fields { display:grid; grid-template-columns:1fr 1fr 1fr auto; gap:.9rem; align-items:end; }
 .bb-field label { display:block; font-size:.62rem; letter-spacing:.14em; text-transform:uppercase; color:rgba(242,232,213,.38); font-weight:600; margin-bottom:.45rem; }
-.bb-field input, .bb-field select { width:100%; background:rgba(255,255,255,.05); border:1px solid rgba(242,232,213,.12); border-radius:.3rem; padding:.78rem 1rem; font-family:'Jost',sans-serif; font-size:.88rem; color:var(--off-white); outline:none; transition:border-color .2s; }
+.bb-field input,.bb-field select { width:100%; background:rgba(255,255,255,.05); border:1px solid rgba(242,232,213,.12); border-radius:.3rem; padding:.78rem 1rem; font-family:'Jost',sans-serif; font-size:.88rem; color:var(--off-white); outline:none; transition:border-color .2s; }
 .bb-field input::placeholder { color:rgba(242,232,213,.25); }
-.bb-field input:focus, .bb-field select:focus { border-color:var(--gold); }
+.bb-field input:focus,.bb-field select:focus { border-color:var(--gold); }
 .bb-field select option { background:#2C2416; color:#FAF6EE; }
 .bb-submit { background:linear-gradient(135deg,var(--amber),var(--gold)); color:var(--charcoal); border:none; padding:.78rem 2rem; border-radius:.3rem; font-family:'Jost',sans-serif; font-size:.73rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; cursor:pointer; white-space:nowrap; box-shadow:0 4px 18px rgba(200,147,42,.35); transition:all .3s; }
 .bb-submit:hover { transform:translateY(-2px); box-shadow:0 8px 28px rgba(200,147,42,.5); }
@@ -167,14 +131,24 @@ nav.scrolled {
 .section-title em { font-style:italic; color:var(--amber); }
 .section-sub { color:var(--muted); font-size:.92rem; line-height:1.85; font-weight:300; max-width:500px; margin-top:.7rem; }
 
-/* ══ ROOMS ══ */
+/* ══════════════════════════════════════════
+   ROOMS SECTION
+══════════════════════════════════════════ */
 .rooms-section { background:var(--linen); }
 .rooms-header { text-align:center; margin-bottom:4.5rem; }
 .rooms-header .section-sub { margin:.7rem auto 0; text-align:center; }
-.rooms-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(380px,1fr)); gap:2.5rem; }
-.room-card { background:var(--off-white); border-radius:.75rem; overflow:hidden; border:1px solid var(--border-lt); box-shadow:0 6px 28px rgba(42,30,14,.07); transition:all .45s cubic-bezier(.23,1,.32,1); cursor:pointer; }
-.room-card:hover { transform:translateY(-10px); box-shadow:0 28px 72px rgba(42,30,14,.18); border-color:var(--amber); }
-.room-img { height:280px; position:relative; overflow:hidden; }
+
+/* Stack cards so the gallery drawer sits naturally below each */
+.rooms-grid { display:flex; flex-direction:column; gap:2.5rem; }
+
+/* ── Card shell ── */
+.room-card { background:var(--off-white); border-radius:.75rem; overflow:hidden; border:1px solid var(--border-lt); box-shadow:0 6px 28px rgba(42,30,14,.07); transition:box-shadow .45s cubic-bezier(.23,1,.32,1),transform .45s cubic-bezier(.23,1,.32,1); }
+.room-card:hover { transform:translateY(-5px); box-shadow:0 22px 65px rgba(42,30,14,.15); }
+
+/* ── Top row: image | info ── */
+.room-card-top { display:grid; grid-template-columns:1.05fr 1fr; }
+
+.room-img { height:300px; position:relative; overflow:hidden; }
 .room-img img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .6s cubic-bezier(.23,1,.32,1); }
 .room-card:hover .room-img img { transform:scale(1.06); }
 .room-img-overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(20,14,5,.78) 0%,transparent 55%); }
@@ -184,16 +158,83 @@ nav.scrolled {
 .badge-avail { background:rgba(43,74,26,.88); border-color:rgba(74,122,46,.5); color:#C4F09C; }
 .badge-taken { background:rgba(155,30,30,.88); border-color:rgba(220,60,60,.4); color:#FFC4C4; }
 .room-name-on-img { position:absolute; bottom:1.3rem; left:1.5rem; font-family:'Cormorant Garamond',serif; font-size:1.55rem; font-weight:600; color:var(--off-white); text-shadow:0 2px 12px rgba(0,0,0,.4); }
-.room-body { padding:1.6rem 1.85rem 1.85rem; }
+
+.room-body { padding:1.6rem 1.85rem 1.85rem; display:flex; flex-direction:column; justify-content:space-between; border-left:1px solid var(--border-lt); }
 .room-meta { display:flex; gap:1.4rem; margin-bottom:1.2rem; flex-wrap:wrap; }
 .room-meta-item { font-size:.77rem; color:var(--muted); display:flex; align-items:center; gap:.3rem; }
-.room-amenities { display:flex; flex-wrap:wrap; gap:.45rem; margin-bottom:1.6rem; }
-.amenity { font-size:.68rem; letter-spacing:.04em; font-weight:500; background:var(--linen); color:var(--muted); padding:.25rem .68rem; border-radius:.2rem; border:1px solid var(--border); }
-.room-footer { display:flex; align-items:center; justify-content:space-between; padding-top:1.2rem; border-top:1px solid var(--border-lt); }
+.room-amenities { display:flex; flex-wrap:wrap; gap:.45rem; margin-bottom:1.3rem; }
+.amenity { font-size:.68rem; letter-spacing:.04em; font-weight:500; background:var(--linen); color:var(--muted); padding:.25rem .68rem; border-radius:.2rem; border:1px solid var(--border); transition:all .18s; }
+.amenity:hover { background:var(--parchment); color:var(--forest); border-color:var(--amber); }
+
+.room-footer { display:flex; align-items:center; justify-content:space-between; padding-top:1.2rem; border-top:1px solid var(--border-lt); margin-top:auto; }
 .room-price .price-amt { font-family:'Cormorant Garamond',serif; font-size:2.1rem; font-weight:700; color:var(--amber); line-height:1; }
 .room-price .price-per { font-size:.66rem; color:var(--muted); letter-spacing:.05em; margin-top:.1rem; }
+.room-footer-btns { display:flex; gap:.55rem; align-items:center; flex-wrap:wrap; }
+
 .btn-reserve { background:var(--forest); color:var(--off-white); border:none; padding:.72rem 1.7rem; border-radius:.25rem; font-family:'Jost',sans-serif; font-size:.7rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; cursor:pointer; transition:all .3s; }
 .btn-reserve:hover { background:var(--sage); transform:translateY(-2px); box-shadow:0 6px 20px rgba(43,74,26,.35); }
+
+/* Tour / Gallery toggle button */
+.btn-tour { background:transparent; color:var(--amber); border:1.5px solid var(--amber); padding:.7rem 1.1rem; border-radius:.25rem; font-family:'Jost',sans-serif; font-size:.7rem; font-weight:600; letter-spacing:.11em; text-transform:uppercase; cursor:pointer; transition:all .28s; display:flex; align-items:center; gap:.38rem; white-space:nowrap; }
+.btn-tour:hover,.btn-tour.active { background:var(--amber); color:var(--charcoal); }
+.btn-tour .t-arr { display:inline-block; transition:transform .3s; font-style:normal; }
+.btn-tour.active .t-arr { transform:rotate(90deg); }
+
+/* ══════════════════════════════
+   GALLERY DRAWER
+══════════════════════════════ */
+.gallery-drawer {
+  max-height:0; overflow:hidden;
+  transition:max-height .55s cubic-bezier(.23,1,.32,1), opacity .3s ease;
+  opacity:0;
+  border-top:0px solid var(--border-lt);
+  background:var(--off-white);
+}
+.gallery-drawer.open {
+  max-height:580px; opacity:1;
+  border-top:1px solid var(--border-lt);
+}
+.gallery-inner { padding:1.75rem 2rem 2.2rem; }
+
+/* Tab strip */
+.g-tabs { display:flex; gap:.35rem; flex-wrap:wrap; margin-bottom:1.5rem; padding-bottom:1.1rem; border-bottom:1px solid var(--border-lt); }
+.g-tab { display:flex; align-items:center; gap:.38rem; padding:.45rem 1rem; border-radius:.3rem; font-family:'Jost',sans-serif; font-size:.68rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase; background:var(--linen); color:var(--muted); border:1px solid var(--border); cursor:pointer; transition:all .2s; white-space:nowrap; }
+.g-tab:hover { background:var(--parchment); color:var(--forest); border-color:var(--amber); }
+.g-tab.active { background:var(--charcoal); color:var(--gold); border-color:var(--charcoal); box-shadow:0 3px 12px rgba(44,36,22,.25); }
+.g-tab-ico { font-size:.9rem; }
+
+/* Panes */
+.g-pane { display:none; animation:gpIn .3s ease; }
+.g-pane.active { display:block; }
+@keyframes gpIn { from{opacity:0;transform:translateY(8px);} to{opacity:1;transform:translateY(0);} }
+
+/* Photo grid pane */
+.g-photos { display:grid; grid-template-columns:1.6fr 1fr; gap:.85rem; }
+.g-main { border-radius:.5rem; overflow:hidden; height:240px; cursor:zoom-in; position:relative; }
+.g-main img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .5s cubic-bezier(.23,1,.32,1); }
+.g-main:hover img { transform:scale(1.04); }
+.g-main-label { position:absolute; bottom:0; left:0; right:0; padding:.5rem .9rem; background:linear-gradient(to top,rgba(20,14,5,.72),transparent); font-family:'Cormorant Garamond',serif; font-size:.88rem; font-weight:600; color:rgba(250,246,238,.85); font-style:italic; }
+.g-thumbs { display:flex; flex-direction:column; gap:.65rem; }
+.g-thumb { border-radius:.4rem; overflow:hidden; flex:1; min-height:0; cursor:zoom-in; }
+.g-thumb img { width:100%; height:100%; min-height:80px; object-fit:cover; display:block; transition:transform .4s; }
+.g-thumb:hover img { transform:scale(1.06); }
+
+/* Amenity card grid */
+.g-amen-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(185px,1fr)); gap:.8rem; }
+.g-amen-card { background:var(--linen); border:1px solid var(--border); border-radius:.5rem; padding:1rem 1.1rem; display:flex; align-items:flex-start; gap:.8rem; transition:all .22s; }
+.g-amen-card:hover { border-color:var(--amber); background:var(--off-white); box-shadow:0 4px 16px rgba(42,30,14,.09); transform:translateY(-2px); }
+.g-amen-ico { width:36px; height:36px; flex-shrink:0; border-radius:.38rem; background:rgba(200,147,42,.1); border:1px solid rgba(200,147,42,.2); display:flex; align-items:center; justify-content:center; font-size:1.05rem; }
+.g-amen-title { font-size:.82rem; font-weight:700; color:var(--forest-dk); margin-bottom:.15rem; }
+.g-amen-desc { font-size:.72rem; color:var(--muted); line-height:1.5; }
+
+/* Lightbox */
+.lb-overlay { display:none; position:fixed; inset:0; z-index:1100; background:rgba(10,7,2,.94); backdrop-filter:blur(16px); align-items:center; justify-content:center; padding:1.5rem; }
+.lb-overlay.open { display:flex; }
+.lb-box { position:relative; max-width:900px; width:100%; }
+.lb-box img { width:100%; max-height:84vh; object-fit:contain; border-radius:.45rem; display:block; box-shadow:0 24px 80px rgba(0,0,0,.65); }
+.lb-close { position:absolute; top:-2rem; right:0; background:none; border:none; color:rgba(255,255,255,.5); font-size:1.4rem; font-weight:300; cursor:pointer; transition:color .2s; line-height:1; }
+.lb-close:hover { color:#fff; }
+.lb-cap { text-align:center; margin-top:.9rem; font-family:'Cormorant Garamond',serif; font-size:1rem; color:rgba(242,232,213,.45); font-style:italic; }
 
 /* ══ EXPERIENCE STRIP ══ */
 .experience-section { padding:0; overflow:hidden; position:relative; }
@@ -206,7 +247,7 @@ nav.scrolled {
 .exp-panel-content { position:absolute; bottom:2rem; left:2rem; right:2rem; }
 .exp-panel-tag { font-size:.58rem; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); font-weight:600; margin-bottom:.5rem; }
 .exp-panel-title { font-family:'Cormorant Garamond',serif; font-size:1.6rem; font-weight:600; color:#fff; line-height:1.2; }
-.exp-panel-desc { font-size:.75rem; color:rgba(255,255,255,.6); line-height:1.7; margin-top:.5rem; font-weight:300; max-height:0; overflow:hidden; transition:max-height .4s ease, opacity .4s; opacity:0; }
+.exp-panel-desc { font-size:.75rem; color:rgba(255,255,255,.6); line-height:1.7; margin-top:.5rem; font-weight:300; max-height:0; overflow:hidden; transition:max-height .4s ease,opacity .4s; opacity:0; }
 .exp-panel:hover .exp-panel-desc { max-height:80px; opacity:1; }
 
 /* ══ AVAILABILITY ══ */
@@ -242,7 +283,7 @@ nav.scrolled {
 
 /* ══ FEATURES ══ */
 .features-section { background:var(--charcoal); padding:6rem 2rem; position:relative; overflow:hidden; }
-.features-section::before { content:''; position:absolute; inset:0; background: radial-gradient(ellipse 55% 80% at 5% 50%, rgba(74,122,46,.08), transparent 55%), radial-gradient(ellipse 55% 80% at 95% 50%, rgba(200,147,42,.08), transparent 55%); }
+.features-section::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 55% 80% at 5% 50%,rgba(74,122,46,.08),transparent 55%),radial-gradient(ellipse 55% 80% at 95% 50%,rgba(200,147,42,.08),transparent 55%); }
 .features-inner { position:relative; z-index:1; }
 .features-header { text-align:center; margin-bottom:4rem; }
 .features-header .section-title { color:var(--off-white); }
@@ -270,116 +311,31 @@ nav.scrolled {
 .trust-logo { font-family:'Cormorant Garamond',serif; font-size:1.1rem; font-weight:700; color:var(--muted); letter-spacing:.06em; opacity:.5; transition:opacity .2s; }
 .trust-logo:hover { opacity:.9; }
 
-/* ══════════════════════════════════
-   LOCATION SECTION  ← NEW
-══════════════════════════════════ */
-.location-section {
-  background: var(--charcoal);
-  padding: 7rem 2rem;
-  position: relative;
-  overflow: hidden;
-}
-.location-section::before {
-  content: '';
-  position: absolute; inset: 0;
-  background:
-    radial-gradient(ellipse 60% 70% at 10% 50%, rgba(74,122,46,.07), transparent 55%),
-    radial-gradient(ellipse 60% 70% at 90% 50%, rgba(200,147,42,.07), transparent 55%);
-}
-.location-inner {
-  position: relative; z-index: 1;
-  max-width: 1080px; margin: 0 auto;
-  display: grid; grid-template-columns: 1fr 1.45fr; gap: 5rem; align-items: center;
-}
-.location-text .eyebrow-text { color: var(--gold); }
-.location-text .eyebrow-dash { background: var(--gold); }
-.location-text .section-title { color: var(--off-white); }
-.location-text .section-title em { color: var(--gold); }
-.location-text .section-sub { color: rgba(242,232,213,.45); max-width:420px; margin-top:.9rem; }
-.location-details {
-  margin-top: 2.2rem;
-  display: flex; flex-direction: column; gap: .9rem;
-}
-.loc-detail {
-  display: flex; align-items: flex-start; gap: 1rem;
-  padding: 1rem 1.2rem;
-  background: rgba(255,255,255,.04);
-  border: 1px solid rgba(219,168,74,.1);
-  border-radius: .45rem;
-  transition: all .28s;
-}
-.loc-detail:hover {
-  background: rgba(219,168,74,.07);
-  border-color: rgba(219,168,74,.25);
-  transform: translateX(4px);
-}
-.loc-detail-icon {
-  width: 36px; height: 36px; flex-shrink: 0;
-  background: rgba(219,168,74,.12);
-  border: 1px solid rgba(219,168,74,.2);
-  border-radius: .35rem;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1rem; margin-top: .05rem;
-}
-.loc-detail-label {
-  font-size: .6rem; letter-spacing: .18em; text-transform: uppercase;
-  color: var(--gold); font-weight: 600; margin-bottom: .22rem;
-}
-.loc-detail-value {
-  font-size: .88rem; color: rgba(242,232,213,.72); line-height: 1.55;
-}
-.btn-directions {
-  display: inline-flex; align-items: center; gap: .6rem;
-  margin-top: 1.8rem;
-  background: linear-gradient(135deg,var(--amber),var(--gold));
-  color: var(--charcoal);
-  border: none; padding: .85rem 1.9rem; border-radius: .3rem;
-  font-family: 'Jost',sans-serif; font-size: .73rem; font-weight: 700;
-  letter-spacing: .12em; text-transform: uppercase; cursor: pointer;
-  text-decoration: none;
-  box-shadow: 0 6px 24px rgba(200,147,42,.38); transition: all .3s;
-  position: relative; overflow: hidden;
-}
-.btn-directions::before {
-  content:''; position:absolute; top:0; left:-100%; width:100%; height:100%;
-  background:linear-gradient(120deg,transparent,rgba(255,255,255,.28),transparent); transition:.55s;
-}
-.btn-directions:hover { transform: translateY(-2px); box-shadow: 0 10px 34px rgba(200,147,42,.55); }
+/* ══ LOCATION ══ */
+.location-section { background:var(--charcoal); padding:7rem 2rem; position:relative; overflow:hidden; }
+.location-section::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 60% 70% at 10% 50%,rgba(74,122,46,.07),transparent 55%),radial-gradient(ellipse 60% 70% at 90% 50%,rgba(200,147,42,.07),transparent 55%); }
+.location-inner { position:relative; z-index:1; max-width:1080px; margin:0 auto; display:grid; grid-template-columns:1fr 1.45fr; gap:5rem; align-items:center; }
+.location-text .eyebrow-text { color:var(--gold); }
+.location-text .eyebrow-dash { background:var(--gold); }
+.location-text .section-title { color:var(--off-white); }
+.location-text .section-title em { color:var(--gold); }
+.location-text .section-sub { color:rgba(242,232,213,.45); max-width:420px; margin-top:.9rem; }
+.location-details { margin-top:2.2rem; display:flex; flex-direction:column; gap:.9rem; }
+.loc-detail { display:flex; align-items:flex-start; gap:1rem; padding:1rem 1.2rem; background:rgba(255,255,255,.04); border:1px solid rgba(219,168,74,.1); border-radius:.45rem; transition:all .28s; }
+.loc-detail:hover { background:rgba(219,168,74,.07); border-color:rgba(219,168,74,.25); transform:translateX(4px); }
+.loc-detail-icon { width:36px; height:36px; flex-shrink:0; background:rgba(219,168,74,.12); border:1px solid rgba(219,168,74,.2); border-radius:.35rem; display:flex; align-items:center; justify-content:center; font-size:1rem; margin-top:.05rem; }
+.loc-detail-label { font-size:.6rem; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); font-weight:600; margin-bottom:.22rem; }
+.loc-detail-value { font-size:.88rem; color:rgba(242,232,213,.72); line-height:1.55; }
+.btn-directions { display:inline-flex; align-items:center; gap:.6rem; margin-top:1.8rem; background:linear-gradient(135deg,var(--amber),var(--gold)); color:var(--charcoal); border:none; padding:.85rem 1.9rem; border-radius:.3rem; font-family:'Jost',sans-serif; font-size:.73rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; cursor:pointer; text-decoration:none; box-shadow:0 6px 24px rgba(200,147,42,.38); transition:all .3s; position:relative; overflow:hidden; }
+.btn-directions::before { content:''; position:absolute; top:0; left:-100%; width:100%; height:100%; background:linear-gradient(120deg,transparent,rgba(255,255,255,.28),transparent); transition:.55s; }
+.btn-directions:hover { transform:translateY(-2px); box-shadow:0 10px 34px rgba(200,147,42,.55); }
 .btn-directions:hover::before { left:100%; }
-
-/* Map embed wrapper */
-.map-wrap {
-  border-radius: .7rem;
-  overflow: hidden;
-  box-shadow: 0 20px 70px rgba(0,0,0,.45);
-  border: 1px solid rgba(219,168,74,.18);
-  position: relative;
-}
-.map-wrap::before {
-  content: '';
-  position: absolute; inset: 0; z-index: 1; pointer-events: none;
-  border-radius: .7rem;
-  box-shadow: inset 0 0 0 1px rgba(219,168,74,.15);
-}
-.map-wrap iframe {
-  display: block; width: 100%; height: 440px; border: none;
-  filter: sepia(25%) hue-rotate(10deg) brightness(.9) saturate(1.1);
-}
-/* small pin badge over map */
-.map-pin-badge {
-  position: absolute; top: 1.1rem; left: 1.1rem; z-index: 2;
-  background: rgba(20,16,8,.88); backdrop-filter:blur(10px);
-  border: 1px solid rgba(219,168,74,.28);
-  border-radius: .4rem;
-  padding: .55rem .9rem;
-  display: flex; align-items: center; gap: .5rem;
-}
+.map-wrap { border-radius:.7rem; overflow:hidden; box-shadow:0 20px 70px rgba(0,0,0,.45); border:1px solid rgba(219,168,74,.18); position:relative; }
+.map-wrap::before { content:''; position:absolute; inset:0; z-index:1; pointer-events:none; border-radius:.7rem; box-shadow:inset 0 0 0 1px rgba(219,168,74,.15); }
+.map-wrap iframe { display:block; width:100%; height:440px; border:none; filter:sepia(25%) hue-rotate(10deg) brightness(.9) saturate(1.1); }
+.map-pin-badge { position:absolute; top:1.1rem; left:1.1rem; z-index:2; background:rgba(20,16,8,.88); backdrop-filter:blur(10px); border:1px solid rgba(219,168,74,.28); border-radius:.4rem; padding:.55rem .9rem; display:flex; align-items:center; gap:.5rem; }
 .map-pin-badge span:first-child { font-size:1rem; }
-.map-pin-badge span:last-child {
-  font-family:'Cormorant Garamond',serif;
-  font-size:.88rem; font-weight:600; color:var(--off-white); letter-spacing:.04em;
-}
-
+.map-pin-badge span:last-child { font-family:'Cormorant Garamond',serif; font-size:.88rem; font-weight:600; color:var(--off-white); letter-spacing:.04em; }
 
 /* ══ FOOTER ══ */
 footer { background:var(--forest-dk); color:rgba(242,232,213,.45); padding:5rem 2rem 2.5rem; text-align:center; position:relative; overflow:hidden; }
@@ -406,8 +362,8 @@ footer::before { content:''; position:absolute; top:0; left:0; right:0; height:2
 .modal-body { padding:1.8rem 2rem; }
 .form-group { margin-bottom:1.1rem; }
 .form-group label { display:block; font-size:.63rem; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); font-weight:600; margin-bottom:.42rem; }
-.form-group input, .form-group select, .form-group textarea { width:100%; border:1.5px solid var(--border); border-radius:.3rem; padding:.75rem 1rem; font-family:'Jost',sans-serif; font-size:.88rem; color:var(--text); background:var(--off-white); outline:none; transition:border-color .2s; }
-.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color:var(--amber); }
+.form-group input,.form-group select,.form-group textarea { width:100%; border:1.5px solid var(--border); border-radius:.3rem; padding:.75rem 1rem; font-family:'Jost',sans-serif; font-size:.88rem; color:var(--text); background:var(--off-white); outline:none; transition:border-color .2s; }
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus { border-color:var(--amber); }
 .form-group textarea { resize:vertical; min-height:72px; }
 .form-row { display:grid; grid-template-columns:1fr 1fr; gap:.9rem; }
 .booking-summary { background:var(--linen); border:1px solid var(--border); border-radius:.45rem; padding:1.2rem; margin:1.2rem 0; }
@@ -426,97 +382,20 @@ footer::before { content:''; position:absolute; top:0; left:0; right:0; height:2
 .modal-success p  { font-size:.88rem; color:var(--muted); line-height:1.75; }
 .ref-tag { display:inline-block; margin-top:1rem; background:var(--linen); border:1px solid var(--border); padding:.5rem 1.3rem; border-radius:.25rem; font-family:'Cormorant Garamond',serif; font-size:1rem; color:var(--amber); font-weight:600; }
 
-/* ══════════════════════════════════
-   SCROLL NAV BUTTONS  ← NEW
-══════════════════════════════════ */
-.scroll-nav {
-  position: fixed;
-  right: 1.5rem;
-  bottom: 2rem;
-  z-index: 800;
-  display: flex;
-  flex-direction: column;
-  gap: .55rem;
-  opacity: 0;
-  transform: translateX(24px);
-  transition: opacity .4s, transform .4s;
-  pointer-events: none;
-}
-.scroll-nav.visible {
-  opacity: 1;
-  transform: translateX(0);
-  pointer-events: all;
-}
-.scroll-btn {
-  width: 46px; height: 46px;
-  border-radius: .45rem;
-  border: none; cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.15rem;
-  position: relative;
-  overflow: hidden;
-  transition: transform .22s, box-shadow .22s;
-}
-/* Up button — forest green */
-.scroll-btn-up {
-  background: linear-gradient(145deg, var(--forest), var(--sage));
-  color: var(--off-white);
-  box-shadow: 0 6px 22px rgba(43,74,26,.45);
-}
-.scroll-btn-up:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 32px rgba(43,74,26,.6);
-}
-/* Down button — amber/gold */
-.scroll-btn-down {
-  background: linear-gradient(145deg, var(--amber), var(--gold));
-  color: var(--charcoal);
-  box-shadow: 0 6px 22px rgba(200,147,42,.4);
-}
-.scroll-btn-down:hover {
-  transform: translateY(3px);
-  box-shadow: 0 12px 32px rgba(200,147,42,.55);
-}
-/* Shimmer on hover */
-.scroll-btn::before {
-  content: '';
-  position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
-  background: linear-gradient(120deg,transparent,rgba(255,255,255,.28),transparent);
-  transition: .45s;
-}
-.scroll-btn:hover::before { left: 100%; }
-/* Progress ring SVG */
-.scroll-btn svg {
-  position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
-  transform: rotate(-90deg);
-  pointer-events: none;
-}
-.scroll-btn svg circle {
-  fill: none;
-  stroke: rgba(255,255,255,.35);
-  stroke-width: 2.5;
-  stroke-dasharray: 168;
-  stroke-dashoffset: 168;
-  stroke-linecap: round;
-  transition: stroke-dashoffset .1s linear;
-}
-/* Tooltip labels */
-.scroll-btn::after {
-  content: attr(data-tip);
-  position: absolute; right: calc(100% + .6rem);
-  background: rgba(20,16,8,.9); backdrop-filter: blur(8px);
-  color: var(--gold-pale);
-  font-family: 'Jost', sans-serif;
-  font-size: .6rem; font-weight: 600;
-  letter-spacing: .12em; text-transform: uppercase;
-  padding: .3rem .7rem; border-radius: .25rem;
-  white-space: nowrap;
-  border: 1px solid rgba(219,168,74,.18);
-  opacity: 0; pointer-events: none;
-  transition: opacity .2s;
-}
-.scroll-btn:hover::after { opacity: 1; }
+/* ══ SCROLL NAV ══ */
+.scroll-nav { position:fixed; right:1.5rem; bottom:2rem; z-index:800; display:flex; flex-direction:column; gap:.55rem; opacity:0; transform:translateX(24px); transition:opacity .4s,transform .4s; pointer-events:none; }
+.scroll-nav.visible { opacity:1; transform:translateX(0); pointer-events:all; }
+.scroll-btn { width:46px; height:46px; border-radius:.45rem; border:none; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:1.15rem; position:relative; overflow:hidden; transition:transform .22s,box-shadow .22s; }
+.scroll-btn-up { background:linear-gradient(145deg,var(--forest),var(--sage)); color:var(--off-white); box-shadow:0 6px 22px rgba(43,74,26,.45); }
+.scroll-btn-up:hover { transform:translateY(-3px); box-shadow:0 12px 32px rgba(43,74,26,.6); }
+.scroll-btn-down { background:linear-gradient(145deg,var(--amber),var(--gold)); color:var(--charcoal); box-shadow:0 6px 22px rgba(200,147,42,.4); }
+.scroll-btn-down:hover { transform:translateY(3px); box-shadow:0 12px 32px rgba(200,147,42,.55); }
+.scroll-btn::before { content:''; position:absolute; top:0; left:-100%; width:100%; height:100%; background:linear-gradient(120deg,transparent,rgba(255,255,255,.28),transparent); transition:.45s; }
+.scroll-btn:hover::before { left:100%; }
+.scroll-btn svg { position:absolute; top:0; left:0; width:100%; height:100%; transform:rotate(-90deg); pointer-events:none; }
+.scroll-btn svg circle { fill:none; stroke:rgba(255,255,255,.35); stroke-width:2.5; stroke-dasharray:168; stroke-dashoffset:168; stroke-linecap:round; transition:stroke-dashoffset .1s linear; }
+.scroll-btn::after { content:attr(data-tip); position:absolute; right:calc(100% + .6rem); background:rgba(20,16,8,.9); backdrop-filter:blur(8px); color:var(--gold-pale); font-family:'Jost',sans-serif; font-size:.6rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; padding:.3rem .7rem; border-radius:.25rem; white-space:nowrap; border:1px solid rgba(219,168,74,.18); opacity:0; pointer-events:none; transition:opacity .2s; }
+.scroll-btn:hover::after { opacity:1; }
 
 /* ══ RESPONSIVE ══ */
 @media (max-width:960px) {
@@ -530,38 +409,50 @@ footer::before { content:''; position:absolute; top:0; left:0; right:0; height:2
   .exp-strip { grid-template-columns:1fr; height:auto; }
   .exp-panel { height:240px; }
   .location-inner { grid-template-columns:1fr; gap:3rem; }
-  .map-wrap iframe { height: 320px; }
+  .map-wrap iframe { height:320px; }
+  /* room card stacks on mobile */
+  .room-card-top { grid-template-columns:1fr; }
+  .room-img { height:240px; }
+  .room-body { border-left:none; border-top:1px solid var(--border-lt); }
+  /* gallery adjustments */
+  .g-photos { grid-template-columns:1fr; }
+  .g-main { height:200px; }
+  .g-thumbs { flex-direction:row; }
+  .g-thumb { height:100px; }
+  .gallery-drawer.open { max-height:900px; }
+  .g-amen-grid { grid-template-columns:1fr 1fr; }
 }
 @media (max-width:600px) {
   .bb-fields { grid-template-columns:1fr; }
   .bb-fields .bb-submit { grid-column:1; }
   .form-row { grid-template-columns:1fr; }
   .stats-bar { display:none; }
-  .rooms-grid { grid-template-columns:1fr; }
   .scroll-nav { right:.9rem; bottom:1.4rem; }
+  .g-amen-grid { grid-template-columns:1fr; }
+  .room-footer-btns { flex-wrap:wrap; gap:.4rem; }
+  .g-tabs { gap:.25rem; }
+  .g-tab { font-size:.62rem; padding:.38rem .75rem; }
 }
 </style>
 </head>
 <body>
 
-<!-- ═══ SCROLL NAV BUTTONS ═══ -->
+<!-- SCROLL NAV -->
 <div class="scroll-nav" id="scrollNav">
   <button class="scroll-btn scroll-btn-up" id="btnUp" data-tip="Top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-    <svg viewBox="0 0 46 46"><circle id="prog-up" cx="23" cy="23" r="20"/></svg>
-    ↑
+    <svg viewBox="0 0 46 46"><circle id="prog-up" cx="23" cy="23" r="20"/></svg>↑
   </button>
   <button class="scroll-btn scroll-btn-down" id="btnDown" data-tip="Bottom" onclick="window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})">
-    <svg viewBox="0 0 46 46"><circle id="prog-down" cx="23" cy="23" r="20"/></svg>
-    ↓
+    <svg viewBox="0 0 46 46"><circle id="prog-down" cx="23" cy="23" r="20"/></svg>↓
   </button>
 </div>
 
-<!-- ═══ NAV ═══ -->
+<!-- NAV -->
 <nav id="nav">
   <a class="nav-brand" href="#">
     <div class="nav-logo">
       <img src="assets/images/logo.jpg" alt="Espacio Norte"
-        onerror="this.parentElement.style.background='linear-gradient(135deg,#2B4A1A,#4A7A2E)'; this.style.display='none';">
+        onerror="this.parentElement.style.background='linear-gradient(135deg,#2B4A1A,#4A7A2E)';this.style.display='none';">
     </div>
     <div class="nav-name">
       <span class="n1">Espacio Norte</span>
@@ -580,9 +471,9 @@ footer::before { content:''; position:absolute; top:0; left:0; right:0; height:2
   </div>
 </nav>
 
-<!-- ═══ HERO ═══ -->
+<!-- HERO -->
 <section class="hero">
-  <div class="hero-bg" id="hero-bg"></div>
+  <div class="hero-bg"></div>
   <div class="shaft sh1"></div>
   <div class="shaft sh2"></div>
   <div class="shaft sh3"></div>
@@ -600,19 +491,13 @@ footer::before { content:''; position:absolute; top:0; left:0; right:0; height:2
       <span class="word">Home</span>
     </h1>
     <span class="hero-script">AirBNB</span>
-    <p class="hero-desc">
-      A beautifully crafted retreat where modern comfort meets warm, tropical living.<br>
-      Two private suites · up to 4 guests each.
-    </p>
+    <p class="hero-desc">A beautifully crafted retreat where modern comfort meets warm, tropical living.<br>Two private suites · up to 4 guests each.</p>
     <div class="hero-btns">
       <button class="btn-gold" onclick="openModal()">Reserve Your Suite</button>
       <button class="btn-ghost" onclick="document.getElementById('rooms').scrollIntoView({behavior:'smooth'})">Explore Rooms</button>
     </div>
   </div>
-  <div class="scroll-cue">
-    <span>Scroll</span>
-    <div class="scroll-line"></div>
-  </div>
+  <div class="scroll-cue"><span>Scroll</span><div class="scroll-line"></div></div>
   <div class="stats-bar">
     <div class="stat"><div class="stat-num">2</div><div class="stat-lbl">Private Suites</div></div>
     <div class="stat"><div class="stat-num">4</div><div class="stat-lbl">Guests Per Room</div></div>
@@ -624,7 +509,7 @@ footer::before { content:''; position:absolute; top:0; left:0; right:0; height:2
   </svg>
 </section>
 
-<!-- ═══ BOOKING BAR ═══ -->
+<!-- BOOKING BAR -->
 <div class="booking-wrap">
   <div class="booking-box">
     <div class="bb-header">
@@ -648,7 +533,9 @@ footer::before { content:''; position:absolute; top:0; left:0; right:0; height:2
   </div>
 </div>
 
-<!-- ═══ ROOMS ═══ -->
+<!-- ═══════════════════════════════════════
+     ROOMS SECTION  (updated with gallery)
+═══════════════════════════════════════ -->
 <section class="section rooms-section" id="rooms">
   <div class="container">
     <div class="rooms-header">
@@ -658,86 +545,326 @@ footer::before { content:''; position:absolute; top:0; left:0; right:0; height:2
         <span class="eyebrow-dash"></span>
       </div>
       <h2 class="section-title" style="text-align:center">Two <em>Exquisite</em> Suites</h2>
-      <p class="section-sub" style="text-align:center; margin:.7rem auto 0">
-        Thoughtfully designed for warmth and comfort — a true home-away-from-home for up to 4 guests.
+      <p class="section-sub" style="text-align:center;margin:.7rem auto 0">
+        Thoughtfully designed for warmth and comfort — a true home-away-from-home for up to 4 guests.<br>
+        <span style="font-size:.8rem;color:var(--amber);font-weight:500;display:inline-block;margin-top:.4rem;">
+          Tap <em style="font-style:normal;font-weight:700;">Tour Room</em> to browse photos of each space ↓
+        </span>
       </p>
     </div>
+
     <div class="rooms-grid">
-      <div class="room-card" onclick="openModal(1)">
-        <div class="room-img">
-          <img src="assets/images/sterling.jpg" alt="Sterling" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(155deg,#3D6B1F,#C8932A)';">
-          <div class="room-img-overlay"></div>
-          <div class="room-img-tag">
-            <span class="room-num">SUITE 01</span>
-            <span class="room-badge badge-avail" id="r1b">Available</span>
-          </div>
-          <div class="room-name-on-img">Sterling</div>
-        </div>
-        <div class="room-body">
-          <div class="room-meta">
-            <span class="room-meta-item">👥 Up to 4 guests</span>
-            <span class="room-meta-item">🛏 King Bed</span>
-            <span class="room-meta-item">📐 32 sqm</span>
-          </div>
-          <div class="room-amenities">
-            <span class="amenity">Air-conditioning</span>
-            <span class="amenity">Smart TV</span>
-            <span class="amenity">Hot Shower</span>
-            <span class="amenity">Mini Bar</span>
-            <span class="amenity">Private Bath</span>
-            <span class="amenity">Free Wifi</span>
-          </div>
-          <div class="room-footer">
-            <div class="room-price">
-              <div class="price-amt">₱1,999</div>
-              <div class="price-per">per 21 hours</div>
+
+      <!-- ══ SUITE 1 · STERLING ══ -->
+      <div class="room-card">
+        <div class="room-card-top">
+          <!-- Photo -->
+          <div class="room-img">
+            <img src="assets/images/sterling.jpg" alt="Sterling"
+              onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(155deg,#3D6B1F,#C8932A)';">
+            <div class="room-img-overlay"></div>
+            <div class="room-img-tag">
+              <span class="room-num">SUITE 01</span>
+              <span class="room-badge badge-avail" id="r1b">Available</span>
             </div>
-            <button class="btn-reserve">Reserve →</button>
+            <div class="room-name-on-img">Sterling</div>
           </div>
-        </div>
-      </div>
-      <div class="room-card" onclick="openModal(2)">
-        <div class="room-img">
-          <img src="assets/images/habi.jpg" alt="Habi" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(155deg,#1A3D0F,#C8932A)';">
-          <div class="room-img-overlay"></div>
-          <div class="room-img-tag">
-            <span class="room-num">SUITE 02</span>
-            <span class="room-badge badge-avail" id="r2b">Available</span>
-          </div>
-          <div class="room-name-on-img">Habi</div>
-        </div>
-        <div class="room-body">
-          <div class="room-meta">
-            <span class="room-meta-item">👥 Up to 4 guests</span>
-            <span class="room-meta-item">🛏 Queen Bed</span>
-            <span class="room-meta-item">📐 30 sqm</span>
-          </div>
-          <div class="room-amenities">
-            <span class="amenity">Air-conditioning</span>
-            <span class="amenity">Smart TV</span>
-            <span class="amenity">Hot Shower</span>
-            <span class="amenity">Mini Bar</span>
-            <span class="amenity">Private Bath</span>
-            <span class="amenity">Free Wifi</span>
-          </div>
-          <div class="room-footer">
-            <div class="room-price">
-              <div class="price-amt">₱1,999</div>
-              <div class="price-per">per 21 hours</div>
+          <!-- Info -->
+          <div class="room-body">
+            <div>
+              <div class="room-meta">
+                <span class="room-meta-item">👥 Up to 4 guests</span>
+                <span class="room-meta-item">🛏 King Bed</span>
+                <span class="room-meta-item">📐 32 sqm</span>
+              </div>
+              <div class="room-amenities">
+                <span class="amenity">❄️ Air-con</span>
+                <span class="amenity">📺 Smart TV</span>
+                <span class="amenity">🚿 Hot Shower</span>
+                <span class="amenity">🍹 Mini Bar</span>
+                <span class="amenity">🛁 Private Bath</span>
+                <span class="amenity">📶 Free WiFi</span>
+              </div>
+              <p style="font-size:.8rem;color:var(--muted);line-height:1.75;margin-bottom:1rem;">
+                A warm king-bed suite with rich tropical interiors — perfect for couples, families, or small groups seeking a genuine home-like retreat.
+              </p>
             </div>
-            <button class="btn-reserve">Reserve →</button>
+            <div class="room-footer">
+              <div class="room-price">
+                <div class="price-amt">₱1,999</div>
+                <div class="price-per">per 21 hours</div>
+              </div>
+              <div class="room-footer-btns">
+                <button class="btn-tour" id="tour-1" onclick="toggleGallery(1)">
+                  🖼 Tour Room <em class="t-arr">›</em>
+                </button>
+                <button class="btn-reserve" onclick="openModal(1)">Reserve →</button>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
+
+        <!-- ── GALLERY DRAWER ── -->
+        <div class="gallery-drawer" id="gdrawer-1">
+          <div class="gallery-inner">
+
+            <!-- Tab strip -->
+            <div class="g-tabs" id="gtabs-1">
+              <button class="g-tab active" onclick="switchTab(1,'bedroom',this)"><span class="g-tab-ico">🛏</span>Bedroom</button>
+              <button class="g-tab" onclick="switchTab(1,'bathroom',this)"><span class="g-tab-ico">🚿</span>Bathroom / CR</button>
+              <button class="g-tab" onclick="switchTab(1,'living',this)"><span class="g-tab-ico">🛋</span>Living Area</button>
+              <button class="g-tab" onclick="switchTab(1,'dining',this)"><span class="g-tab-ico">🍽</span>Dining Area</button>
+              <button class="g-tab" onclick="switchTab(1,'amenities',this)"><span class="g-tab-ico">✨</span>All Amenities</button>
+            </div>
+
+            <!-- Bedroom -->
+            <div class="g-pane active" id="gpane-1-bedroom">
+              <div class="g-photos">
+                <div class="g-main" onclick="openLb('assets/images/sterling_bedroom.jpg','Sterling — Master Bedroom')">
+                  <img src="assets/images/sterling_bedroom.jpg" alt="Bedroom">
+                  <div class="g-main-label">Master Bedroom · King Bed</div>
+                </div>
+                <div class="g-thumbs">
+                  <div class="g-thumb" onclick="openLb('assets/images/sterling_bedroom2.jpg','Sterling — Bed Detail')">
+                    <img src="assets/images/sterling_bedroom2.jpg" alt="Bed">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Bathroom / CR -->
+            <div class="g-pane" id="gpane-1-bathroom">
+              <div class="g-photos">
+                <div class="g-main" onclick="openLb('assets/images/bathroom.jpg','Sterling — Private Bathroom')">
+                  <img src="assets/images/bathroom.jpg" alt="Bathroom"
+                    onerror="this.parentElement.style.background='linear-gradient(135deg,#2B4A1A,#1A2E10)';this.style.display='none';">
+                  <div class="g-main-label">Private Bathroom · Hot Shower</div>
+                </div>
+                <div class="g-thumbs">
+                  <div class="g-thumb" onclick="openLb('','Sterling — Fixtures')">
+                    <img src=" " alt="Fixtures"
+                      onerror="this.parentElement.style.background='#1A2E10';this.style.display='none';">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Living Area -->
+            <div class="g-pane" id="gpane-1-living">
+              <div class="g-photos">
+                <div class="g-main" onclick="openLb('assets/images/sterling_living.jpg','Sterling — Living Room')">
+                  <img src="assets/images/sterling_living.jpg" alt="Living Room"
+                    onerror="this.parentElement.style.background='linear-gradient(135deg,#C8932A,#2B4A1A)';this.style.display='none';">
+                  <div class="g-main-label">Cozy Living Room · Smart TV</div>
+                </div>
+                <div class="g-thumbs">
+                  <div class="g-thumb" onclick="openLb('assets/images/livingroom.jpg','Sterling — Lounge')">
+                    <img src="assets/images/sterling_living3.jpg" alt="Lounge"
+                      onerror="this.parentElement.style.background='#2B4A1A';this.style.display='none';">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Dining Area -->
+            <div class="g-pane" id="gpane-1-dining">
+              <div class="g-photos">
+                <div class="g-main" onclick="openLb('assets/images/dinning.jpg','Sterling — Dining Area')">
+                  <img src="assets/images/dinning.jpg" alt="Dining Area"
+                    onerror="this.parentElement.style.background='linear-gradient(135deg,#8B5E3C,#2B4A1A)';this.style.display='none';">
+                  <div class="g-main-label">Dining Area · Mini Bar</div>
+                </div>
+                <div class="g-thumbs">
+                  <div class="g-thumb" onclick="openLb('assets/images/sterling_dining2.jpg','Sterling — Dining Table')">
+                    <img src="assets/images/sterling_dining2.jpg" alt="Table"
+                      onerror="this.parentElement.style.background='#2B4A1A';this.style.display='none';">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- All Amenities -->
+            <div class="g-pane" id="gpane-1-amenities">
+              <div class="g-amen-grid">
+                <div class="g-amen-card"><div class="g-amen-ico">❄️</div><div><div class="g-amen-title">Air-conditioning</div><div class="g-amen-desc">Full inverter A/C — stay cool any time of day or night.</div></div></div>
+                <div class="g-amen-card"><div class="g-amen-ico">📺</div><div><div class="g-amen-title">Smart TV</div><div class="g-amen-desc">Stream Netflix, YouTube & more on the big screen via WiFi.</div></div></div>
+                <div class="g-amen-card"><div class="g-amen-ico">🚿</div><div><div class="g-amen-title">Hot Shower</div><div class="g-amen-desc">Instant hot water with strong pressure — always ready.</div></div></div>
+                <div class="g-amen-card"><div class="g-amen-ico">🍹</div><div><div class="g-amen-title">Mini Bar</div><div class="g-amen-desc">Stocked mini-fridge and refreshment setup for your stay.</div></div></div>
+                <div class="g-amen-card"><div class="g-amen-ico">🛁</div><div><div class="g-amen-title">Private CR / Bathroom</div><div class="g-amen-desc">Fully private — linens, towels & toiletries included.</div></div></div>
+                <div class="g-amen-card"><div class="g-amen-ico">📶</div><div><div class="g-amen-title">Free WiFi</div><div class="g-amen-desc">High-speed internet throughout — work or stream easily.</div></div></div>
+                <div class="g-amen-card"><div class="g-amen-ico">🛏</div><div><div class="g-amen-title">King Bed</div><div class="g-amen-desc">Premium king-sized mattress with hotel-quality fresh linens.</div></div></div>
+                <div class="g-amen-card"><div class="g-amen-ico">🍽</div><div><div class="g-amen-title">Dining Area</div><div class="g-amen-desc">Dedicated dining space — perfect for meals as a group.</div></div></div>
+                <div class="g-amen-card"><div class="g-amen-ico">🅿️</div><div><div class="g-amen-title">Free Parking</div><div class="g-amen-desc">Secure on-site parking available for all guests.</div></div></div>
+              </div>
+            </div>
+
+          </div>
+        </div><!-- /gdrawer-1 -->
+      </div><!-- /room-card 1 -->
+
+
+      <!-- ══ SUITE 2 · HABI ══ -->
+      <div class="room-card">
+        <div class="room-card-top">
+          <div class="room-img">
+            <img src="assets/images/habi.jpg" alt="Habi"
+              onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(155deg,#1A3D0F,#C8932A)';">
+            <div class="room-img-overlay"></div>
+            <div class="room-img-tag">
+              <span class="room-num">SUITE 02</span>
+              <span class="room-badge badge-avail" id="r2b">Available</span>
+            </div>
+            <div class="room-name-on-img">Habi</div>
+          </div>
+          <div class="room-body">
+            <div>
+              <div class="room-meta">
+                <span class="room-meta-item">👥 Up to 4 guests</span>
+                <span class="room-meta-item">🛏 Queen Bed</span>
+                <span class="room-meta-item">📐 30 sqm</span>
+              </div>
+              <div class="room-amenities">
+                <span class="amenity">❄️ Air-con</span>
+                <span class="amenity">📺 Smart TV</span>
+                <span class="amenity">🚿 Hot Shower</span>
+                <span class="amenity">🍹 Mini Bar</span>
+                <span class="amenity">🛁 Private Bath</span>
+                <span class="amenity">📶 Free WiFi</span>
+              </div>
+              <p style="font-size:.8rem;color:var(--muted);line-height:1.75;margin-bottom:1rem;">
+                A serene queen-bed suite bathed in natural light with lush tropical touches — quiet, cozy, and beautifully crafted for a memorable escape.
+              </p>
+            </div>
+            <div class="room-footer">
+              <div class="room-price">
+                <div class="price-amt">₱1,999</div>
+                <div class="price-per">per 21 hours</div>
+              </div>
+              <div class="room-footer-btns">
+                <button class="btn-tour" id="tour-2" onclick="toggleGallery(2)">
+                  🖼 Tour Room <em class="t-arr">›</em>
+                </button>
+                <button class="btn-reserve" onclick="openModal(2)">Reserve →</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── GALLERY DRAWER ── -->
+        <div class="gallery-drawer" id="gdrawer-2">
+          <div class="gallery-inner">
+
+            <div class="g-tabs" id="gtabs-2">
+              <button class="g-tab active" onclick="switchTab(2,'bedroom',this)"><span class="g-tab-ico">🛏</span>Bedroom</button>
+              <button class="g-tab" onclick="switchTab(2,'bathroom',this)"><span class="g-tab-ico">🚿</span>Bathroom / CR</button>
+              <button class="g-tab" onclick="switchTab(2,'living',this)"><span class="g-tab-ico">🛋</span>Living Area</button>
+              <button class="g-tab" onclick="switchTab(2,'dining',this)"><span class="g-tab-ico">🍽</span>Dining Area</button>
+              <button class="g-tab" onclick="switchTab(2,'amenities',this)"><span class="g-tab-ico">✨</span>All Amenities</button>
+            </div>
+
+            <!-- Bedroom -->
+            <div class="g-pane active" id="gpane-2-bedroom">
+              <div class="g-photos">
+                <div class="g-main" onclick="openLb('assets/images/habi_bedroom','Habi — Master Bedroom')">
+                  <img src="assets/images/habi_bedroom.jpg" alt="Bedroom">
+                  <div class="g-main-label">Master Bedroom · Queen Bed</div>
+                </div>
+                <div class="g-thumbs">
+                  <div class="g-thumb" onclick="openLb('assets/images/habi_bedroom2','Habi — Bed Detail')">
+                    <img src="assets/images/habi_bedroom2.jpg" alt="Bed">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Bathroom / CR -->
+            <div class="g-pane" id="gpane-2-bathroom">
+              <div class="g-photos">
+                <div class="g-main" onclick="openLb('assets/images/bathroom.jpg','Habi — Private Bathroom')">
+                  <img src="assets/images/bathroom.jpg" alt="Bathroom"
+                    onerror="this.parentElement.style.background='linear-gradient(135deg,#2B4A1A,#1A2E10)';this.style.display='none';">
+                  <div class="g-main-label">Private Bathroom · Hot Shower</div>
+                </div>
+                <div class="g-thumbs">
+                  <div class="g-thumb" onclick="openLb('assets/images/bathroom.jpg','Habi — Shower')">
+                    <img src="assets/images/bathroom.jpg" alt="Shower"
+                      onerror="this.parentElement.style.background='#2B4A1A';this.style.display='none';">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Living Area -->
+            <div class="g-pane" id="gpane-2-living">
+              <div class="g-photos">
+                <div class="g-main" onclick="openLb('assets/images/habi_living2.jpg','Habi — Living Room')">
+                  <img src="assets/images/habi_living2.jpg" alt="Living Room"
+                    onerror="this.parentElement.style.background='linear-gradient(135deg,#C8932A,#2B4A1A)';this.style.display='none';">
+                  <div class="g-main-label">Cozy Living Room · Smart TV</div>
+                </div>
+                <div class="g-thumbs">
+                  <div class="g-thumb" onclick="openLb('assets/images/habi_living3.jpg','Habi — Lounge')">
+                    <img src="assets/images/habi_living3.jpg" alt="Lounge"
+                      onerror="this.parentElement.style.background='#2B4A1A';this.style.display='none';">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Dining Area -->
+            <div class="g-pane" id="gpane-2-dining">
+              <div class="g-photos">
+                <div class="g-main" onclick="openLb('assets/images/habi_dining.jpg','Habi — Dining Area')">
+                  <img src="assets/images/habi_dining.jpg" alt="Dining Area"
+                    onerror="this.parentElement.style.background='linear-gradient(135deg,#8B5E3C,#2B4A1A)';this.style.display='none';">
+                  <div class="g-main-label">Dining Area · Mini Bar</div>
+                </div>
+                <div class="g-thumbs">
+                  <div class="g-thumb" onclick="openLb('assets/images/habi_dining2.jpg','Habi — Dining Table')">
+                    <img src="assets/images/habi_dining2.jpg" alt="Table"
+                      onerror="this.parentElement.style.background='#2B4A1A';this.style.display='none';">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- All Amenities -->
+            <div class="g-pane" id="gpane-2-amenities">
+              <div class="g-amen-grid">
+                <div class="g-amen-card"><div class="g-amen-ico">❄️</div><div><div class="g-amen-title">Air-conditioning</div><div class="g-amen-desc">Full inverter A/C — stay cool any time of day or night.</div></div></div>
+                <div class="g-amen-card"><div class="g-amen-ico">📺</div><div><div class="g-amen-title">Smart TV</div><div class="g-amen-desc">Stream Netflix, YouTube & more on the big screen via WiFi.</div></div></div>
+                <div class="g-amen-card"><div class="g-amen-ico">🚿</div><div><div class="g-amen-title">Hot Shower</div><div class="g-amen-desc">Instant hot water with strong pressure — always ready.</div></div></div>
+                <div class="g-amen-card"><div class="g-amen-ico">🍹</div><div><div class="g-amen-title">Mini Bar</div><div class="g-amen-desc">Stocked mini-fridge and refreshment setup for your stay.</div></div></div>
+                <div class="g-amen-card"><div class="g-amen-ico">🛁</div><div><div class="g-amen-title">Private CR / Bathroom</div><div class="g-amen-desc">Fully private — linens, towels & toiletries included.</div></div></div>
+                <div class="g-amen-card"><div class="g-amen-ico">📶</div><div><div class="g-amen-title">Free WiFi</div><div class="g-amen-desc">High-speed internet throughout — work or stream easily.</div></div></div>
+                <div class="g-amen-card"><div class="g-amen-ico">🛏</div><div><div class="g-amen-title">Queen Bed</div><div class="g-amen-desc">Premium queen-sized mattress with hotel-quality fresh linens.</div></div></div>
+                <div class="g-amen-card"><div class="g-amen-ico">🍽</div><div><div class="g-amen-title">Dining Area</div><div class="g-amen-desc">Dedicated dining space — perfect for meals as a group.</div></div></div>
+                <div class="g-amen-card"><div class="g-amen-ico">🅿️</div><div><div class="g-amen-title">Free Parking</div><div class="g-amen-desc">Secure on-site parking available for all guests.</div></div></div>
+              </div>
+            </div>
+
+          </div>
+        </div><!-- /gdrawer-2 -->
+      </div><!-- /room-card 2 -->
+
+    </div><!-- /rooms-grid -->
   </div>
 </section>
 
-<!-- ═══ EXPERIENCE IMAGE STRIP ═══ -->
+<!-- LIGHTBOX -->
+<div class="lb-overlay" id="lb" onclick="closeLb()">
+  <div class="lb-box" onclick="event.stopPropagation()">
+    <button class="lb-close" onclick="closeLb()">✕</button>
+    <img id="lb-img" src="" alt="">
+    <div class="lb-cap" id="lb-cap"></div>
+  </div>
+</div>
+
+<!-- EXPERIENCE STRIP -->
 <div class="experience-section">
   <div class="exp-strip">
     <div class="exp-panel">
-      <img src="https://images.unsplash.com/photo-1540518614846-7eded433c457?w=700&q=80&auto=format&fit=crop" alt="Cozy Living">
+      <img src="/assets/images/livingroom.jpg" alt="Cozy Living">
       <div class="exp-panel-overlay"></div>
       <div class="exp-panel-content">
         <div class="exp-panel-tag">The Ambiance</div>
@@ -746,7 +873,7 @@ footer::before { content:''; position:absolute; top:0; left:0; right:0; height:2
       </div>
     </div>
     <div class="exp-panel">
-      <img src="https://images.unsplash.com/photo-1584738766473-61c083514bf4?w=700&q=80&auto=format&fit=crop" alt="Private Bath">
+      <img src="/assets/images/bathroom.jpg" alt="Private Bath">
       <div class="exp-panel-overlay"></div>
       <div class="exp-panel-content">
         <div class="exp-panel-tag">The Comfort</div>
@@ -755,18 +882,18 @@ footer::before { content:''; position:absolute; top:0; left:0; right:0; height:2
       </div>
     </div>
     <div class="exp-panel">
-      <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=700&q=80&auto=format&fit=crop" alt="Tropical Setting">
+      <img src="/assets/images/dinning.jpg" alt="Tropical Setting">
       <div class="exp-panel-overlay"></div>
       <div class="exp-panel-content">
         <div class="exp-panel-tag">The Setting</div>
-        <div class="exp-panel-title">Tropical Surroundings</div>
+        <div class="exp-panel-title">Dining Area</div>
         <div class="exp-panel-desc">Nature-surrounded property — lush, quiet, and beautifully serene.</div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ═══ AVAILABILITY ═══ -->
+<!-- AVAILABILITY -->
 <section class="section avail-section" id="avail">
   <div class="container">
     <div class="avail-grid">
@@ -800,7 +927,7 @@ footer::before { content:''; position:absolute; top:0; left:0; right:0; height:2
   </div>
 </section>
 
-<!-- ═══ FEATURES ═══ -->
+<!-- FEATURES -->
 <section class="features-section">
   <div class="container features-inner">
     <div class="features-header">
@@ -817,17 +944,14 @@ footer::before { content:''; position:absolute; top:0; left:0; right:0; height:2
   </div>
 </section>
 
-<!-- ═══ TRUST / TESTIMONIAL ═══ -->
+<!-- TRUST -->
 <section class="trust-section">
   <div class="trust-inner">
-    <div class="eyebrow" style="justify-content:center; margin-bottom:1.5rem">
+    <div class="eyebrow" style="justify-content:center;margin-bottom:1.5rem">
       <span class="eyebrow-dash"></span><span class="eyebrow-text">Guest Love</span><span class="eyebrow-dash"></span>
     </div>
     <div class="trust-stars">★★★★★</div>
-    <p class="trust-quote">
-      "Espacio Norte felt like a <em>real home</em> — warm, beautifully decorated, and absolutely peaceful.
-      We didn't want to leave."
-    </p>
+    <p class="trust-quote">"Espacio Norte felt like a <em>real home</em> — warm, beautifully decorated, and absolutely peaceful. We didn't want to leave."</p>
     <div class="trust-source">— Maria & Family · Verified Guest</div>
     <div class="trust-divider"></div>
     <div class="trust-logos">
@@ -838,18 +962,13 @@ footer::before { content:''; position:absolute; top:0; left:0; right:0; height:2
   </div>
 </section>
 
-<!-- ═══ LOCATION SECTION ← NEW ═══ -->
+<!-- LOCATION -->
 <section class="location-section" id="location">
   <div class="location-inner">
     <div class="location-text">
-      <div class="eyebrow">
-        <span class="eyebrow-dash"></span>
-        <span class="eyebrow-text">Find Us</span>
-      </div>
+      <div class="eyebrow"><span class="eyebrow-dash"></span><span class="eyebrow-text">Find Us</span></div>
       <h2 class="section-title">Our <em>Location</em></h2>
-      <p class="section-sub">
-        Nestled in a serene corner of the city — easy to reach, blissfully peaceful once you arrive.
-      </p>
+      <p class="section-sub">Nestled in a serene corner of the city — easy to reach, blissfully peaceful once you arrive.</p>
       <div class="location-details">
         <div class="loc-detail">
           <div class="loc-detail-icon">📍</div>
@@ -880,34 +999,19 @@ footer::before { content:''; position:absolute; top:0; left:0; right:0; height:2
           </div>
         </div>
       </div>
-      <a
-        class="btn-directions"
-        href="https://www.google.com/maps/search/Espacio+Norte"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <a class="btn-directions" href="https://www.google.com/maps/search/Espacio+Norte" target="_blank" rel="noopener noreferrer">
         <span>📍</span> Open in Google Maps
       </a>
     </div>
-
-    <!-- Map embed -->
     <div class="map-wrap">
-      <div class="map-pin-badge">
-        <span>📍</span>
-        <span>Espacio Norte AirBNB</span>
-      </div>
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d123456!2d121.0!3d14.5!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sEspacio+Norte!5e0!3m2!1sen!2sph!4v1700000000000!5m2!1sen!2sph&q=Espacio+Norte"
-        allowfullscreen=""
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-        title="Espacio Norte Location"
-      ></iframe>
+      <div class="map-pin-badge"><span>📍</span><span>Espacio Norte AirBNB</span></div>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d123456!2d121.0!3d14.5!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sEspacio+Norte!5e0!3m2!1sen!2sph!4v1700000000000!5m2!1sen!2sph&q=Espacio+Norte"
+        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Espacio Norte Location"></iframe>
     </div>
   </div>
 </section>
 
-<!-- ═══ FOOTER ═══ -->
+<!-- FOOTER -->
 <footer id="footer">
   <div class="footer-logo">Espacio Norte</div>
   <span class="footer-script">Your Home Away From Home</span>
@@ -923,7 +1027,7 @@ footer::before { content:''; position:absolute; top:0; left:0; right:0; height:2
   <p class="footer-copy">© 2026 ESPACIO NORTE AIRBNB · ALL RIGHTS RESERVED</p>
 </footer>
 
-<!-- ═══ BOOKING MODAL ═══ -->
+<!-- BOOKING MODAL -->
 <div class="modal-overlay" id="modal" onclick="closeModalOuter(event)">
   <div class="modal-box">
     <div class="modal-head">
@@ -972,57 +1076,100 @@ footer::before { content:''; position:absolute; top:0; left:0; right:0; height:2
 </div>
 
 <script>
+'use strict';
 const RATE = 1999;
 let bk = JSON.parse(localStorage.getItem('en3') || '[]');
 const save = () => localStorage.setItem('en3', JSON.stringify(bk));
 
-// ── Nav scroll ──
+/* ── Nav scroll ── */
 window.addEventListener('scroll', () => {
   document.getElementById('nav').classList.toggle('scrolled', scrollY > 55);
 });
 
-// ── Scroll nav buttons ──
-(function() {
+/* ── Scroll nav progress rings ── */
+(function () {
   const nav = document.getElementById('scrollNav');
   const ringUp   = document.getElementById('prog-up');
   const ringDown = document.getElementById('prog-down');
-  const CIRC = 2 * Math.PI * 20; // r=20 → ~125.66
-
-  function updateScrollNav() {
-    const scrolled = window.scrollY;
-    const maxScroll = document.body.scrollHeight - window.innerHeight;
-    const pct = maxScroll > 0 ? scrolled / maxScroll : 0;
-
-    // Show after 100px
-    nav.classList.toggle('visible', scrolled > 100);
-
-    // Progress rings
+  const CIRC = 2 * Math.PI * 20;
+  function upd() {
+    const s = window.scrollY, max = document.body.scrollHeight - window.innerHeight;
+    const pct = max > 0 ? s / max : 0;
+    nav.classList.toggle('visible', s > 100);
     ringUp.style.strokeDashoffset   = CIRC * (1 - pct);
     ringDown.style.strokeDashoffset = CIRC * pct;
   }
-
-  window.addEventListener('scroll', updateScrollNav, { passive: true });
-  updateScrollNav();
+  window.addEventListener('scroll', upd, { passive: true });
+  upd();
 })();
 
-// ── Calendar ──
+/* ══════════════════════
+   GALLERY DRAWER
+══════════════════════ */
+const PANE_NAMES = ['bedroom', 'bathroom', 'living', 'dining', 'amenities'];
+
+function toggleGallery(roomId) {
+  const drawer = document.getElementById('gdrawer-' + roomId);
+  const btn    = document.getElementById('tour-' + roomId);
+  const isOpen = drawer.classList.contains('open');
+  if (isOpen) {
+    drawer.classList.remove('open');
+    btn.classList.remove('active');
+  } else {
+    drawer.classList.add('open');
+    btn.classList.add('active');
+    // Smooth-scroll drawer into view after transition begins
+    setTimeout(() => drawer.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 80);
+  }
+}
+
+function switchTab(roomId, tabName, el) {
+  // Deactivate all tabs in this room
+  document.querySelectorAll('#gtabs-' + roomId + ' .g-tab').forEach(t => t.classList.remove('active'));
+  // Hide all panes for this room
+  PANE_NAMES.forEach(n => {
+    const p = document.getElementById('gpane-' + roomId + '-' + n);
+    if (p) p.classList.remove('active');
+  });
+  // Activate clicked
+  el.classList.add('active');
+  const target = document.getElementById('gpane-' + roomId + '-' + tabName);
+  if (target) target.classList.add('active');
+}
+
+/* ── Lightbox ── */
+function openLb(src, caption) {
+  document.getElementById('lb-img').src = src;
+  document.getElementById('lb-cap').textContent = caption || '';
+  document.getElementById('lb').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLb() {
+  document.getElementById('lb').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { closeLb(); closeModal(); }
+});
+
+/* ── Calendar ── */
 const MN = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 const DN = ['Su','Mo','Tu','We','Th','Fr','Sa'];
 let CAL = new Date(2026, 1, 1);
 
 function renderCal() {
-  document.getElementById('cal-lbl').textContent = `${MN[CAL.getMonth()]} ${CAL.getFullYear()}`;
+  document.getElementById('cal-lbl').textContent = MN[CAL.getMonth()] + ' ' + CAL.getFullYear();
   const g = document.getElementById('cg');
-  g.innerHTML = DN.map(d => `<div class="cal-day-name">${d}</div>`).join('');
+  g.innerHTML = DN.map(d => '<div class="cal-day-name">' + d + '</div>').join('');
   const first = new Date(CAL.getFullYear(), CAL.getMonth(), 1).getDay();
-  const total = new Date(CAL.getFullYear(), CAL.getMonth()+1, 0).getDate();
+  const total = new Date(CAL.getFullYear(), CAL.getMonth() + 1, 0).getDate();
   const today = new Date();
-  for (let i = 0; i < first; i++) g.innerHTML += `<div class="cal-day cal-empty"></div>`;
+  for (let i = 0; i < first; i++) g.innerHTML += '<div class="cal-day cal-empty"></div>';
   for (let d = 1; d <= total; d++) {
     const dt = new Date(CAL.getFullYear(), CAL.getMonth(), d);
     const isT = dt.toDateString() === today.toDateString();
     const isB = isBooked(dt);
-    g.innerHTML += `<div class="cal-day${isT?' cal-today':isB?' cal-booked':''}">${d}</div>`;
+    g.innerHTML += '<div class="cal-day' + (isT ? ' cal-today' : isB ? ' cal-booked' : '') + '">' + d + '</div>';
   }
   renderSlots();
 }
@@ -1033,40 +1180,28 @@ function isBooked(dt) {
     return dt >= new Date(b.ci) && dt < new Date(b.co);
   });
 }
-
-function prevMo() { CAL.setMonth(CAL.getMonth()-1); renderCal(); }
-function nextMo() { CAL.setMonth(CAL.getMonth()+1); renderCal(); }
+function prevMo() { CAL.setMonth(CAL.getMonth() - 1); renderCal(); }
+function nextMo() { CAL.setMonth(CAL.getMonth() + 1); renderCal(); }
 
 function renderSlots() {
   const now = new Date();
-  const rooms = [{id:1,n:'Suite 1 · Sterling'},{id:2,n:'Suite 2 · Habi'}];
+  const rooms = [{ id: 1, n: 'Suite 1 · Sterling' }, { id: 2, n: 'Suite 2 · Habi' }];
   let h = '';
   rooms.forEach(r => {
     const occ = bk.some(b => {
       if (b.rm != r.id || b.st === 'cancelled') return false;
       return now >= new Date(b.ci) && now < new Date(b.co);
     });
-    h += `<div class="slot-card">
-      <div>
-        <div class="slot-name">${r.n}</div>
-        <div class="slot-info">Up to 4 pax · ₱1,999 / 21 hrs</div>
-      </div>
-      <div class="slot-right">
-        <span class="pill ${occ ? 'pill-taken' : 'pill-avail'}">${occ ? 'Booked' : 'Available'}</span>
-        ${!occ ? `<button class="btn-slot-book" onclick="openModal(${r.id})">Book</button>` : ''}
-      </div>
-    </div>`;
-    const badge = document.getElementById(`r${r.id}b`);
-    if (badge) {
-      badge.textContent = occ ? 'Booked' : 'Available';
-      badge.className = `room-badge ${occ ? 'badge-taken' : 'badge-avail'}`;
-    }
+    h += '<div class="slot-card"><div><div class="slot-name">' + r.n + '</div><div class="slot-info">Up to 4 pax · ₱1,999 / 21 hrs</div></div><div class="slot-right"><span class="pill ' + (occ ? 'pill-taken' : 'pill-avail') + '">' + (occ ? 'Booked' : 'Available') + '</span>' + (!occ ? '<button class="btn-slot-book" onclick="openModal(' + r.id + ')">Book</button>' : '') + '</div></div>';
+    const badge = document.getElementById('r' + r.id + 'b');
+    if (badge) { badge.textContent = occ ? 'Booked' : 'Available'; badge.className = 'room-badge ' + (occ ? 'badge-taken' : 'badge-avail'); }
   });
   document.getElementById('slots').innerHTML = h;
 }
 
-// ── Modal ──
-function openModal(rm='') {
+/* ── Modal ── */
+function openModal(rm) {
+  rm = rm || '';
   document.getElementById('modal').classList.add('open');
   document.getElementById('modal-form').style.display = 'block';
   document.getElementById('modal-success').classList.remove('show');
@@ -1080,17 +1215,16 @@ function closeModalOuter(e) { if (e.target === e.currentTarget) closeModal(); }
 
 function recalc() {
   const rv = document.getElementById('f-rm').value;
-  const rn = {'1':'Suite 1 · Sterling','2':'Suite 2 · Habi'};
+  const rn = { '1': 'Suite 1 · Sterling', '2': 'Suite 2 · Habi' };
   document.getElementById('s-rm').textContent = rv ? rn[rv] : '—';
   const ci = document.getElementById('f-ci').value;
   if (ci) {
-    const d = new Date(ci);
-    const co = new Date(d.getTime() + 21 * 3600000);
-    const fmt = x => x.toLocaleString('en-PH', {month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'});
+    const d = new Date(ci), co = new Date(d.getTime() + 21 * 3600000);
+    const fmt = x => x.toLocaleString('en-PH', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
     document.getElementById('s-ci').textContent = fmt(d);
     document.getElementById('s-co').textContent = fmt(co);
   }
-  document.getElementById('s-tot').textContent = `₱${RATE.toLocaleString()}`;
+  document.getElementById('s-tot').textContent = '₱' + RATE.toLocaleString();
 }
 
 function confirmBooking() {
@@ -1101,19 +1235,19 @@ function confirmBooking() {
   const rm = document.getElementById('f-rm').value;
   const px = parseInt(document.getElementById('f-px').value) || 1;
   const nt = document.getElementById('f-nt').value.trim();
-  if (!fn||!ln||!ph||!ci||!rm) { alert('Please fill in all required fields.'); return; }
+  if (!fn || !ln || !ph || !ci || !rm) { alert('Please fill in all required fields.'); return; }
   if (px < 1 || px > 4) { alert('Guests must be between 1 and 4.'); return; }
   const cid = new Date(ci), cod = new Date(cid.getTime() + 21 * 3600000);
   const conflict = bk.some(b => {
     if (b.rm != rm || b.st === 'cancelled') return false;
     return cid < new Date(b.co) && cod > new Date(b.ci);
   });
-  if (conflict) { alert(`Suite ${rm} is already booked for that time. Please choose a different date or suite.`); return; }
+  if (conflict) { alert('Suite ' + rm + ' is already booked for that time. Please choose a different date or suite.'); return; }
   const ref = 'EN-' + Date.now().toString(36).toUpperCase();
-  bk.push({ref, fn, ln, ph, rm, ci:cid.toISOString(), co:cod.toISOString(), px, nt, st:'confirmed'});
+  bk.push({ ref, fn, ln, ph, rm, ci: cid.toISOString(), co: cod.toISOString(), px, nt, st: 'confirmed' });
   save(); renderCal();
   document.getElementById('modal-form').style.display = 'none';
-  document.getElementById('s-ref').textContent = `Reference: ${ref}`;
+  document.getElementById('s-ref').textContent = 'Reference: ' + ref;
   document.getElementById('modal-success').classList.add('show');
 }
 
@@ -1123,27 +1257,27 @@ function quickCheck() {
   const rm = document.getElementById('qb-rm').value;
   const el = document.getElementById('bb-result');
   el.style.display = 'block';
-  if (!ci||!co||!rm) { el.className='bb-result err'; el.textContent='Please select a date range and suite.'; return; }
+  if (!ci || !co || !rm) { el.className = 'bb-result err'; el.textContent = 'Please select a date range and suite.'; return; }
   const cid = new Date(ci), cod = new Date(co);
   const conflict = bk.some(b => {
     if (b.rm != rm || b.st === 'cancelled') return false;
     return cid < new Date(b.co) && cod > new Date(b.ci);
   });
   if (conflict) {
-    el.className='bb-result err';
-    el.innerHTML='✗&nbsp; Suite not available for those dates. Try a different date or suite.';
+    el.className = 'bb-result err';
+    el.innerHTML = '✗&nbsp; Suite not available for those dates. Try a different date or suite.';
   } else {
-    el.className='bb-result ok';
-    el.innerHTML=`✓&nbsp; Suite is available! <a href="#" onclick="openModal(${rm});return false;" style="color:var(--gold-pale);text-decoration:underline;font-weight:700;margin-left:.4rem">Book Now →</a>`;
+    el.className = 'bb-result ok';
+    el.innerHTML = '✓&nbsp; Suite is available! <a href="#" onclick="openModal(' + rm + ');return false;" style="color:var(--gold-pale);text-decoration:underline;font-weight:700;margin-left:.4rem">Book Now →</a>';
   }
 }
 
-// ── Init ──
+/* ── Init ── */
 renderCal();
-const nd = new Date(); nd.setHours(14,0,0,0);
-document.getElementById('qb-in').value = nd.toISOString().slice(0,10);
-const nd2 = new Date(nd.getTime() + 21*3600000);
-document.getElementById('qb-out').value = nd2.toISOString().slice(0,10);
+const nd = new Date(); nd.setHours(14, 0, 0, 0);
+document.getElementById('qb-in').value = nd.toISOString().slice(0, 10);
+const nd2 = new Date(nd.getTime() + 21 * 3600000);
+document.getElementById('qb-out').value = nd2.toISOString().slice(0, 10);
 </script>
 </body>
 </html>
