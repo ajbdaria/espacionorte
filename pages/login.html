@@ -510,57 +510,40 @@ function checkUserAvail() {
 }
 
 /* ── REGISTER ── */
-function doRegister() {
-  const name = document.getElementById('rg-name').value.trim();
-  const user = document.getElementById('rg-user').value.trim();
-  const pass = document.getElementById('rg-pass').value;
-  const btn  = document.getElementById('reg-btn');
+async function doRegister(){
 
-  clearRegErr();
-  document.getElementById('reg-ok').classList.remove('show');
+  const name = document.getElementById("rg-name").value;
+  const user = document.getElementById("rg-user").value;
+  const pass = document.getElementById("rg-pass").value;
 
-  // Minimal validation
-  if (!name)  { showRegErr('Please enter your full name.'); document.getElementById('rg-name').classList.add('err-f'); return; }
-  if (!user)  { showRegErr('Please choose a username.'); document.getElementById('rg-user').classList.add('err-f'); return; }
-  if (user.length < 3) { showRegErr('Username must be at least 3 characters.'); document.getElementById('rg-user').classList.add('err-f'); return; }
-  if (!pass || pass.length < 6) { showRegErr('Password must be at least 6 characters.'); document.getElementById('rg-pass').classList.add('err-f'); return; }
+  try{
 
-  // Check username taken
-  const users = JSON.parse(localStorage.getItem('en3_users') || '[]');
-  const adminUser = localStorage.getItem('en3_username') || 'admin';
-  if (user === adminUser || users.some(u => u.username === user)) {
-    showRegErr('That username is already taken. Please choose another.');
-    document.getElementById('rg-user').classList.add('err-f');
-    return;
+    const res = await fetch("/api/register",{
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json"
+      },
+      body:JSON.stringify({
+        name:name,
+        username:user,
+        password:pass
+      })
+    });
+
+    const data = await res.json();
+
+    if(data.success){
+      document.getElementById("reg-ok").classList.add("show");
+      setTimeout(()=>switchTab("login"),1500);
+    }else{
+      showRegErr(data.message);
+    }
+
+  }catch(err){
+    showRegErr("Server error");
   }
 
-  btn.classList.add('loading'); btn.disabled = true;
-  btn.querySelector('.btn-lbl').textContent = 'Creating…';
-
-  setTimeout(() => {
-    users.push({ username: user, password: pass, name, role: 'guest', created: new Date().toISOString() });
-    localStorage.setItem('en3_users', JSON.stringify(users));
-
-    // Log it
-    try {
-      const log = JSON.parse(localStorage.getItem('en3_log') || '[]');
-      log.unshift({ type: 'ok', msg: `New guest account created: "${user}" (${name})`, time: new Date().toISOString() });
-      localStorage.setItem('en3_log', JSON.stringify(log.slice(0, 200)));
-    } catch(e) {}
-
-    btn.classList.remove('loading'); btn.disabled = false;
-    btn.querySelector('.btn-lbl').textContent = 'Create Account';
-    document.getElementById('reg-ok').classList.add('show');
-    document.getElementById('rg-name').value = '';
-    document.getElementById('rg-user').value = '';
-    document.getElementById('rg-pass').value = '';
-    document.getElementById('pw-strength').style.display = 'none';
-
-    // Auto-switch to login after brief pause
-    setTimeout(() => switchTab('login'), 1800);
-  }, 800);
 }
-
 function showRegErr(msg) { const b=document.getElementById('reg-err'); b.textContent=msg; b.classList.remove('show'); void b.offsetWidth; b.classList.add('show'); }
 function clearRegErr() {
   document.getElementById('reg-err').classList.remove('show');
@@ -568,66 +551,60 @@ function clearRegErr() {
 }
 
 /* ── LOGIN ── */
-function doLogin() {
+async function doLogin() {
+
   const user = document.getElementById('li-user').value.trim();
   const pass = document.getElementById('li-pass').value;
-  const btn  = document.getElementById('login-btn');
-  clearLoginErr();
 
   if (!user || !pass) {
-    showLoginErr(!user && !pass ? 'Please enter your username and password.' : !user ? 'Please enter your username.' : 'Please enter your password.');
-    if (!user) document.getElementById('li-user').classList.add('err-f');
-    if (!pass) document.getElementById('li-pass').classList.add('err-f');
+    showLoginErr("Please enter username and password");
     return;
   }
 
-  btn.classList.add('loading'); btn.disabled = true;
-  btn.querySelector('.btn-lbl').textContent = 'Signing in…';
+  const btn = document.getElementById("login-btn");
+  btn.classList.add("loading");
 
-  setTimeout(() => {
-    // Check admin credentials
-    const adminUser = localStorage.getItem('en3_username') || 'admin';
-    const adminPass = localStorage.getItem('en3_password') || 'admin123';
-    const isAdmin   = user === adminUser && pass === adminPass;
+  try {
 
-    // Check guest accounts
-    const users = JSON.parse(localStorage.getItem('en3_users') || '[]');
-    const guestMatch = users.find(u => u.username === user && u.password === pass);
+    const res = await fetch("/api/login", {
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json"
+      },
+      body: JSON.stringify({
+        username:user,
+        password:pass
+      })
+    });
 
-    if (isAdmin || guestMatch) {
-      sessionStorage.setItem('en3_session', 'true');
-      sessionStorage.setItem('en3_role', isAdmin ? 'admin' : 'guest');
-      sessionStorage.setItem('en3_uname', user);
+    const data = await res.json();
 
-      if (document.getElementById('li-remember').checked) {
-        localStorage.setItem('en3_saved_user', user);
-      } else {
-        localStorage.removeItem('en3_saved_user');
+    if(data.success){
+
+      sessionStorage.setItem("en3_session","true");
+      sessionStorage.setItem("en3_role",data.role);
+      sessionStorage.setItem("en3_uname",data.username);
+
+      if(data.role === "admin"){
+        window.location.href = "admin_dashboard.html";
+      }else{
+        window.location.href = "/users/guest_panel.html";
       }
 
-      try {
-        const log = JSON.parse(localStorage.getItem('en3_log') || '[]');
-        log.unshift({ type:'ok', msg:`"${user}" signed in as ${isAdmin?'admin':'guest'}`, time:new Date().toISOString() });
-        localStorage.setItem('en3_log', JSON.stringify(log.slice(0,200)));
-      } catch(e){}
+    }else{
 
-      btn.querySelector('.btn-lbl').textContent = '✓ Access granted';
-      btn.style.background = 'linear-gradient(135deg,#1A5C26,#2B8040)';
+      showLoginErr("Invalid username or password");
 
-      setTimeout(() => {
-        window.location.href = isAdmin ? 'admin_dashboard.html' : '/../users/guest_panel.html';
-      }, 650);
-
-    } else {
-      btn.classList.remove('loading'); btn.disabled = false;
-      btn.querySelector('.btn-lbl').textContent = 'Sign In';
-      document.getElementById('li-pass').value = '';
-      showLoginErr('Incorrect username or password. Please try again.');
-      document.getElementById('li-user').classList.add('err-f');
-      document.getElementById('li-pass').classList.add('err-f');
-      document.getElementById('li-pass').focus();
     }
-  }, 900);
+
+  } catch(err){
+
+    showLoginErr("Server error");
+
+  }
+
+  btn.classList.remove("loading");
+
 }
 
 function showLoginErr(msg) { const b=document.getElementById('login-err'); b.textContent=msg; b.classList.remove('show'); void b.offsetWidth; b.classList.add('show'); }
