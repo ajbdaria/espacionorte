@@ -1,17 +1,16 @@
-import express from "express";
 import { MongoClient } from "mongodb";
 import bcrypt from "bcryptjs";
 
-const router = express.Router();
+const client = new MongoClient(process.env.MONGODB_URI);
 
-router.post("/register", async (req, res) => {
+export default async function handler(req, res) {
 
-  // ✅ Client created here, AFTER dotenv has loaded
-  const client = new MongoClient(process.env.MONGODB_URI);
+  if (req.method !== "POST") {
+    return res.status(405).json({ message: "Method not allowed" });
+  }
 
   const { name, username, password } = req.body;
 
-  // Basic validation
   if (!name || !username || !password) {
     return res.status(400).json({ success: false, message: "All fields are required" });
   }
@@ -25,13 +24,11 @@ router.post("/register", async (req, res) => {
     await client.connect();
     const db = client.db("espacionorte");
 
-    // Check if username already taken
     const existing = await db.collection("users").findOne({ username });
     if (existing) {
       return res.status(400).json({ success: false, message: "Username already taken" });
     }
 
-    // Hash password before saving
     const hashedPassword = await bcrypt.hash(password, 10);
 
     await db.collection("users").insertOne({
@@ -55,6 +52,4 @@ router.post("/register", async (req, res) => {
 
   }
 
-});
-
-export default router;
+}
