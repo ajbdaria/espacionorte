@@ -267,7 +267,7 @@ async function init() {
 async function loadBookings() {
   document.getElementById('cal-loading').style.display = 'flex';
   try {
-    const res = await fetch('/api/bookings');
+    const res = await fetch('/api/Bookings');
     if (!res.ok) throw new Error('Failed to fetch');
     BK = await res.json();
     renderPendingBadge();
