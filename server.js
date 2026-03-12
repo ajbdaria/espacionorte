@@ -3,7 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import loginRoute from './api/login.js';
 import registerRoute from './api/register.js';
-import bookingRoute from './api/booking.js';
+import bookingRoute from './api/Bookings.js';
 
 dotenv.config();
 
