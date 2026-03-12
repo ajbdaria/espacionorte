@@ -7,186 +7,76 @@
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --forest:    #2B4A1A;
-  --forest-dk: #1A2E10;
-  --sage:      #4A7A2E;
-  --sage-lt:   #72B048;
-  --amber:     #C8932A;
-  --gold:      #DBA84A;
-  --linen:     #F5EFE2;
-  --parch:     #EDE0C8;
-  --snow:      #FDFAF6;
-  --panel:     #FFFFFF;
-  --border:    #E6DDD0;
-  --text:      #1C1712;
-  --text2:     #584A38;
-  --text3:     #9B8872;
-  --text4:     #BFB09C;
-  --green:     #1D6A2B;
-  --green-lt:  #E3F5E8;
-  --red:       #C0392B;
-  --red-lt:    #FDECEA;
-  --blue:      #1A56A0;
-  --sb:        240px;
-  --topbar:    56px;
-  --radius:    10px;
-  --shadow:    0 1px 4px rgba(0,0,0,.06), 0 4px 16px rgba(0,0,0,.06);
-  --shadow-lg: 0 8px 40px rgba(0,0,0,.14);
+  --forest:#2B4A1A;--forest-dk:#1A2E10;--sage:#4A7A2E;--sage-lt:#72B048;
+  --amber:#C8932A;--gold:#DBA84A;--linen:#F5EFE2;--parch:#EDE0C8;
+  --snow:#FDFAF6;--panel:#FFFFFF;--border:#E6DDD0;--text:#1C1712;
+  --text2:#584A38;--text3:#9B8872;--text4:#BFB09C;--green:#1D6A2B;
+  --green-lt:#E3F5E8;--red:#C0392B;--red-lt:#FDECEA;--blue:#1A56A0;
+  --sb:240px;--topbar:56px;--radius:10px;
+  --shadow:0 1px 4px rgba(0,0,0,.06),0 4px 16px rgba(0,0,0,.06);
+  --shadow-lg:0 8px 40px rgba(0,0,0,.14);
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 html{font-size:14px;scroll-behavior:smooth;}
 body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--linen);color:var(--text);min-height:100vh;display:flex;overflow-x:hidden;}
-
 ::-webkit-scrollbar{width:5px;height:5px;}
 ::-webkit-scrollbar-track{background:var(--linen);}
 ::-webkit-scrollbar-thumb{background:var(--parch);border-radius:3px;}
 ::-webkit-scrollbar-thumb:hover{background:var(--amber);}
-
-/* ════ SIDEBAR OVERLAY (mobile) ════ */
-.sb-overlay{
-  display:none;position:fixed;inset:0;z-index:290;
-  background:rgba(0,0,0,.45);backdrop-filter:blur(2px);
-}
-.sb-overlay.visible{ display:block; }
-
-/* ════ SIDEBAR ════ */
-.sb{
-  width:var(--sb);min-height:100vh;position:fixed;top:0;left:0;bottom:0;z-index:300;
-  background:var(--forest-dk);display:flex;flex-direction:column;
-  transition:transform .28s cubic-bezier(.23,1,.32,1);
-  box-shadow:4px 0 24px rgba(0,0,0,.18);
-  transform:translateX(0);
-}
-.sb-brand{
-  padding:1.2rem 1.25rem 1rem;border-bottom:1px solid rgba(255,255,255,.07);
-  display:flex;align-items:center;gap:.75rem;
-}
-.sb-logo{
-  width:40px;height:40px;border-radius:10px;flex-shrink:0;
-  background:linear-gradient(135deg,var(--amber),var(--gold));
-  display:flex;align-items:center;justify-content:center;font-size:1.25rem;
-  box-shadow:0 4px 12px rgba(200,147,42,.4);
-}
+.sb-overlay{display:none;position:fixed;inset:0;z-index:290;background:rgba(0,0,0,.45);backdrop-filter:blur(2px);}
+.sb-overlay.visible{display:block;}
+.sb{width:var(--sb);min-height:100vh;position:fixed;top:0;left:0;bottom:0;z-index:300;background:var(--forest-dk);display:flex;flex-direction:column;transition:transform .28s cubic-bezier(.23,1,.32,1);box-shadow:4px 0 24px rgba(0,0,0,.18);}
+.sb-brand{padding:1.2rem 1.25rem 1rem;border-bottom:1px solid rgba(255,255,255,.07);display:flex;align-items:center;gap:.75rem;}
+.sb-logo{width:40px;height:40px;border-radius:10px;flex-shrink:0;background:linear-gradient(135deg,var(--amber),var(--gold));display:flex;align-items:center;justify-content:center;font-size:1.25rem;box-shadow:0 4px 12px rgba(200,147,42,.4);}
 .sb-brand-text strong{display:block;font-size:.88rem;font-weight:800;color:#fff;letter-spacing:.01em;}
 .sb-brand-text small{display:block;font-size:.62rem;color:rgba(255,255,255,.35);letter-spacing:.1em;text-transform:uppercase;margin-top:.1rem;}
-.sb-close-btn{
-  display:none;margin-left:auto;background:rgba(255,255,255,.08);border:none;
-  width:30px;height:30px;border-radius:50%;color:rgba(255,255,255,.6);
-  font-size:1rem;cursor:pointer;align-items:center;justify-content:center;
-  transition:background .2s;flex-shrink:0;
-}
+.sb-close-btn{display:none;margin-left:auto;background:rgba(255,255,255,.08);border:none;width:30px;height:30px;border-radius:50%;color:rgba(255,255,255,.6);font-size:1rem;cursor:pointer;align-items:center;justify-content:center;transition:background .2s;flex-shrink:0;}
 .sb-close-btn:hover{background:rgba(255,255,255,.2);}
-.sb-group-label{
-  font-size:.58rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
-  color:rgba(255,255,255,.22);padding:.7rem 1.25rem .3rem;
-}
-.sb-item{
-  display:flex;align-items:center;gap:.65rem;padding:.58rem 1.25rem;
-  font-size:.8rem;font-weight:500;color:rgba(255,255,255,.55);
-  border:none;background:none;width:100%;text-align:left;cursor:pointer;
-  border-left:3px solid transparent;transition:all .17s;
-  text-decoration:none;
-}
+.sb-group-label{font-size:.58rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.22);padding:.7rem 1.25rem .3rem;}
+.sb-item{display:flex;align-items:center;gap:.65rem;padding:.58rem 1.25rem;font-size:.8rem;font-weight:500;color:rgba(255,255,255,.55);border:none;background:none;width:100%;text-align:left;cursor:pointer;border-left:3px solid transparent;transition:all .17s;text-decoration:none;}
 .sb-item:hover{color:rgba(255,255,255,.9);background:rgba(255,255,255,.05);}
 .sb-item.active{color:#fff;background:rgba(219,168,74,.13);border-left-color:var(--gold);font-weight:600;}
 .sb-item .ico{width:18px;text-align:center;font-size:.95rem;flex-shrink:0;}
 .sb-item .lbl{flex:1;}
-.sb-item .badge{
-  font-size:.58rem;font-weight:800;background:var(--red);color:#fff;
-  padding:.12rem .45rem;border-radius:2rem;min-width:18px;text-align:center;
-}
-.sb-footer{
-  margin-top:auto;border-top:1px solid rgba(255,255,255,.07);padding:1rem 1.25rem;
-}
+.sb-item .badge{font-size:.58rem;font-weight:800;background:var(--red);color:#fff;padding:.12rem .45rem;border-radius:2rem;min-width:18px;text-align:center;}
+.sb-footer{margin-top:auto;border-top:1px solid rgba(255,255,255,.07);padding:1rem 1.25rem;}
 .sb-user{display:flex;align-items:center;gap:.65rem;}
-.sb-avatar{
-  width:34px;height:34px;border-radius:50%;flex-shrink:0;
-  background:linear-gradient(135deg,var(--amber),var(--gold));
-  display:flex;align-items:center;justify-content:center;
-  font-size:.85rem;font-weight:800;color:var(--forest-dk);
-}
+.sb-avatar{width:34px;height:34px;border-radius:50%;flex-shrink:0;background:linear-gradient(135deg,var(--amber),var(--gold));display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:800;color:var(--forest-dk);}
 .sb-user-info .name{font-size:.8rem;font-weight:700;color:#fff;}
 .sb-user-info .role{font-size:.62rem;color:rgba(255,255,255,.35);margin-top:.05rem;}
-.sb-logout{
-  margin-left:auto;background:none;border:none;cursor:pointer;
-  color:rgba(255,255,255,.3);font-size:.9rem;transition:color .2s;padding:.2rem;
-}
+.sb-logout{margin-left:auto;background:none;border:none;cursor:pointer;color:rgba(255,255,255,.3);font-size:.9rem;transition:color .2s;padding:.2rem;}
 .sb-logout:hover{color:var(--red-lt);}
-
-/* ════ MAIN ════ */
-.main{
-  margin-left:var(--sb);flex:1;display:flex;flex-direction:column;min-height:100vh;
-  transition:margin-left .28s cubic-bezier(.23,1,.32,1);
-}
-
-/* ── TOPBAR ── */
-.topbar{
-  height:var(--topbar);background:var(--panel);border-bottom:1px solid var(--border);
-  display:flex;align-items:center;padding:0 1.25rem;gap:.75rem;
-  position:sticky;top:0;z-index:200;box-shadow:0 1px 8px rgba(0,0,0,.05);
-}
-.hamburger{
-  display:none;width:36px;height:36px;border-radius:.45rem;
-  background:var(--linen);border:1px solid var(--border);
-  align-items:center;justify-content:center;
-  cursor:pointer;font-size:1.1rem;flex-shrink:0;transition:all .2s;
-}
+.main{margin-left:var(--sb);flex:1;display:flex;flex-direction:column;min-height:100vh;}
+.topbar{height:var(--topbar);background:var(--panel);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 1.25rem;gap:.75rem;position:sticky;top:0;z-index:200;box-shadow:0 1px 8px rgba(0,0,0,.05);}
+.hamburger{display:none;width:36px;height:36px;border-radius:.45rem;background:var(--linen);border:1px solid var(--border);align-items:center;justify-content:center;cursor:pointer;font-size:1.1rem;flex-shrink:0;transition:all .2s;}
 .hamburger:hover{background:var(--parch);border-color:var(--amber);}
 .topbar-breadcrumb{display:flex;align-items:center;gap:.5rem;flex:1;min-width:0;}
 .topbar-breadcrumb .page-name{font-size:.92rem;font-weight:700;color:var(--text);}
 .topbar-actions{display:flex;align-items:center;gap:.6rem;flex-shrink:0;}
-.top-chip{
-  display:flex;align-items:center;gap:.4rem;
-  background:var(--linen);border:1px solid var(--border);
-  padding:.35rem .8rem;border-radius:.45rem;font-size:.72rem;color:var(--text2);white-space:nowrap;
-}
-.top-icon-btn{
-  width:34px;height:34px;border-radius:.45rem;background:var(--linen);
-  border:1px solid var(--border);display:flex;align-items:center;justify-content:center;
-  cursor:pointer;font-size:.95rem;transition:all .2s;position:relative;
-}
-.top-icon-btn:hover{background:var(--parch);border-color:var(--amber);}
-.notif-dot{
-  position:absolute;top:5px;right:5px;width:7px;height:7px;
-  border-radius:50%;background:var(--red);border:2px solid var(--panel);
-}
-.btn-view-site{
-  background:var(--forest);color:#fff;border:none;padding:.38rem 1rem;border-radius:.45rem;
-  font-family:'Plus Jakarta Sans',sans-serif;font-size:.73rem;font-weight:700;
-  cursor:pointer;transition:all .2s;white-space:nowrap;display:flex;align-items:center;gap:.35rem;
-}
+.top-chip{display:flex;align-items:center;gap:.4rem;background:var(--linen);border:1px solid var(--border);padding:.35rem .8rem;border-radius:.45rem;font-size:.72rem;color:var(--text2);white-space:nowrap;}
+.btn-view-site{background:var(--forest);color:#fff;border:none;padding:.38rem 1rem;border-radius:.45rem;font-family:'Plus Jakarta Sans',sans-serif;font-size:.73rem;font-weight:700;cursor:pointer;transition:all .2s;white-space:nowrap;display:flex;align-items:center;gap:.35rem;}
 .btn-view-site:hover{background:var(--sage);}
-
-/* ── CONTENT ── */
 .content{padding:1.5rem;flex:1;min-width:0;}
-
-/* ── LAYOUT ── */
 .row{display:grid;gap:1.1rem;margin-bottom:1.1rem;}
 .row.cols-3-1{grid-template-columns:2fr 1fr;}
-
-/* ── PANEL ── */
 .panel{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);}
 .panel-hd{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 1.4rem;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:.5rem;}
 .panel-hd-left .ph-title{font-size:.9rem;font-weight:700;color:var(--text);}
 .panel-hd-left .ph-sub{font-size:.7rem;color:var(--text3);margin-top:.12rem;}
 .panel-hd-actions{display:flex;align-items:center;gap:.5rem;}
 .panel-body{padding:1.25rem 1.4rem;}
-
-/* ── BUTTONS ── */
 .btn{display:inline-flex;align-items:center;gap:.4rem;border:none;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;transition:all .2s;border-radius:.45rem;white-space:nowrap;}
 .btn-sm{font-size:.72rem;padding:.35rem .8rem;}
+.btn-md{font-size:.78rem;padding:.5rem 1.1rem;}
 .btn-ghost{background:var(--linen);color:var(--text2);border:1px solid var(--border);}
 .btn-ghost:hover{border-color:var(--amber);background:var(--parch);}
-
-/* ── STATUS PILLS ── */
+.btn-primary{background:linear-gradient(135deg,var(--forest),var(--sage));color:#fff;}
 .pill{font-size:.62rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.2rem .65rem;border-radius:2rem;display:inline-block;white-space:nowrap;}
 .p-confirmed{background:#DCFCE7;color:#15803D;}
 .p-pending{background:#FEF9C3;color:#92400E;}
 .p-checkedin{background:#DBEAFE;color:#1E40AF;}
 .p-checkedout{background:#F3F4F6;color:#4B5563;}
 .p-cancelled{background:#FEE2E2;color:#B91C1C;}
-
-/* ── CALENDAR ── */
 .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;}
 .cal-nav{width:28px;height:28px;border-radius:50%;background:var(--linen);border:1px solid var(--border);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.8rem;transition:all .2s;}
 .cal-nav:hover{background:var(--amber);color:#fff;border-color:var(--amber);}
@@ -195,28 +85,11 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--linen);color:va
 .cal-day{text-align:center;padding:.42rem .1rem;border-radius:.3rem;font-size:.75rem;cursor:pointer;transition:all .15s;color:var(--text);}
 .cal-day:hover:not(.cal-empty):not(.cal-full){background:var(--linen);}
 .cal-today{background:var(--amber)!important;color:#fff!important;font-weight:700;}
-.cal-full{background:#FEE2E2!important;color:#B91C1C!important;cursor:default;}
+.cal-full{background:#FEE2E2!important;color:#B91C1C!important;}
 .cal-partial{background:#FEF9C3!important;color:#92400E!important;}
 .cal-empty{cursor:default;}
 .cal-past{color:var(--text4);}
-
-/* ── NOTIFICATIONS ── */
-.notif-dropdown{position:absolute;top:calc(100% + 8px);right:0;width:300px;background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow-lg);z-index:500;display:none;}
-.notif-dropdown.open{display:block;}
-.notif-hd{display:flex;align-items:center;justify-content:space-between;padding:.9rem 1.1rem;border-bottom:1px solid var(--border);}
-.notif-hd span{font-size:.82rem;font-weight:700;}
-.notif-item{padding:.8rem 1.1rem;border-bottom:1px solid var(--linen);cursor:pointer;transition:background .15s;}
-.notif-item:hover{background:var(--linen);}
-.notif-item:last-child{border-bottom:none;}
-.notif-item-title{font-size:.78rem;font-weight:600;color:var(--text);}
-.notif-item-time{font-size:.67rem;color:var(--text3);margin-top:.1rem;}
-.notif-item.unread{border-left:3px solid var(--amber);}
-
-/* ── TOAST ── */
-.toast{position:fixed;bottom:1.5rem;right:1.5rem;z-index:9999;display:flex;align-items:center;gap:.7rem;background:var(--forest-dk);color:#fff;padding:.85rem 1.3rem;border-radius:.6rem;font-size:.8rem;font-weight:500;max-width:320px;box-shadow:var(--shadow-lg);transform:translateY(80px);opacity:0;transition:all .35s cubic-bezier(.23,1,.32,1);border-left:4px solid var(--gold);}
-.toast.show{transform:translateY(0);opacity:1;}
-
-/* ── MODAL ── */
+.cal-selected{outline:2px solid var(--forest);outline-offset:1px;}
 .modal-bg{display:none;position:fixed;inset:0;z-index:600;background:rgba(20,14,5,.65);backdrop-filter:blur(5px);align-items:center;justify-content:center;padding:1rem;}
 .modal-bg.open{display:flex;}
 .modal{background:var(--panel);border-radius:var(--radius);width:100%;max-width:720px;max-height:92vh;overflow-y:auto;box-shadow:0 32px 100px rgba(0,0,0,.35);animation:mpop .3s cubic-bezier(.23,1,.32,1);}
@@ -227,42 +100,24 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--linen);color:va
 .modal-ft{padding:1rem 1.4rem;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:.6rem;flex-wrap:wrap;}
 .modal-close-btn{width:30px;height:30px;border-radius:50%;background:var(--linen);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.85rem;color:var(--text3);transition:all .2s;}
 .modal-close-btn:hover{background:var(--red-lt);color:var(--red);}
-
-/* ── EMPTY STATE ── */
 .empty{text-align:center;padding:2rem 1rem;color:var(--text3);}
 .empty-ico{font-size:2rem;opacity:.3;margin-bottom:.5rem;}
 .empty p{font-size:.8rem;}
-
-/* ════ RESPONSIVE ════ */
-@media(min-width:769px){
-  .sb{ transform:translateX(0) !important; }
-  .main{ margin-left:var(--sb) !important; }
-  .hamburger{ display:none !important; }
-  .sb-overlay{ display:none !important; }
-  .sb-close-btn{ display:none !important; }
-}
-@media(max-width:768px){
-  :root{ --sb:240px; }
-  .sb{ transform:translateX(-100%); position:fixed;top:0;left:0;bottom:0;z-index:300;width:var(--sb); }
-  .sb.open{ transform:translateX(0); }
-  .main{ margin-left:0 !important; width:100%; }
-  .hamburger{ display:flex !important; }
-  .sb-close-btn{ display:flex !important; }
-  .top-chip{ display:none; }
-  .content{ padding:1rem .75rem; }
-  .row.cols-3-1{ grid-template-columns:1fr; }
-  .btn-view-site{ font-size:.65rem; padding:.35rem .65rem; }
-}
-@media(min-width:769px) and (max-width:1100px){
-  .row.cols-3-1{ grid-template-columns:1fr; }
-}
+.toast{position:fixed;bottom:1.5rem;right:1.5rem;z-index:9999;display:flex;align-items:center;gap:.7rem;background:var(--forest-dk);color:#fff;padding:.85rem 1.3rem;border-radius:.6rem;font-size:.8rem;font-weight:500;max-width:320px;box-shadow:var(--shadow-lg);transform:translateY(80px);opacity:0;transition:all .35s cubic-bezier(.23,1,.32,1);border-left:4px solid var(--gold);}
+.toast.show{transform:translateY(0);opacity:1;}
+.toast.t-err{border-left-color:var(--red);}
+.toast.t-ok{border-left-color:var(--sage-lt);}
+/* Loading */
+.loading-overlay{position:absolute;inset:0;background:rgba(255,255,255,.7);display:flex;align-items:center;justify-content:center;border-radius:var(--radius);z-index:10;font-size:.82rem;color:var(--text3);}
+@media(min-width:769px){.sb{transform:translateX(0)!important;}.main{margin-left:var(--sb)!important;}.hamburger{display:none!important;}.sb-overlay{display:none!important;}.sb-close-btn{display:none!important;}}
+@media(max-width:768px){:root{--sb:240px;}.sb{transform:translateX(-100%);position:fixed;top:0;left:0;bottom:0;z-index:300;}.sb.open{transform:translateX(0);}.main{margin-left:0!important;width:100%;}.hamburger{display:flex!important;}.sb-close-btn{display:flex!important;}.top-chip{display:none;}.content{padding:1rem .75rem;}.row.cols-3-1{grid-template-columns:1fr;}.btn-view-site{font-size:.65rem;padding:.35rem .65rem;}}
+@media(min-width:769px) and (max-width:1100px){.row.cols-3-1{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
 
 <div class="sb-overlay" id="sb-overlay" onclick="closeSidebar()"></div>
 
-<!-- ════ SIDEBAR ════ -->
 <aside class="sb" id="sidebar">
   <div class="sb-brand">
     <div class="sb-logo">🌴</div>
@@ -272,12 +127,10 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--linen);color:va
     </div>
     <button class="sb-close-btn" onclick="closeSidebar()">✕</button>
   </div>
-
   <nav style="flex:1;overflow-y:auto;padding:.5rem 0;">
     <div class="sb-group-label">Overview</div>
     <a href="admin_dashboard.html" class="sb-item"><span class="ico">📊</span><span class="lbl">Dashboard</span></a>
     <a href="admin_analytics.html" class="sb-item"><span class="ico">📈</span><span class="lbl">Analytics & Reports</span></a>
-
     <div class="sb-group-label">Reservations</div>
     <a href="bookings.html" class="sb-item">
       <span class="ico">📅</span><span class="lbl">All Bookings</span>
@@ -286,19 +139,16 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--linen);color:va
     <a href="newbooking.html" class="sb-item"><span class="ico">➕</span><span class="lbl">New Booking</span></a>
     <a href="calendar.html" class="sb-item active"><span class="ico">🗓️</span><span class="lbl">Booking Calendar</span></a>
     <a href="guest.html" class="sb-item"><span class="ico">👥</span><span class="lbl">Guest Directory</span></a>
-
     <div class="sb-group-label">Property</div>
     <a href="rooms.html" class="sb-item"><span class="ico">🏠</span><span class="lbl">Room Management</span></a>
     <a href="rules_pricing.html" class="sb-item"><span class="ico">💰</span><span class="lbl">Pricing & Rules</span></a>
-
     <div class="sb-group-label">System</div>
     <a href="logs.html" class="sb-item"><span class="ico">🕐</span><span class="lbl">Activity Log</span></a>
     <a href="configuration.html" class="sb-item"><span class="ico">⚙️</span><span class="lbl">Settings</span></a>
   </nav>
-
   <div class="sb-footer">
     <div class="sb-user">
-      <div class="sb-avatar">A</div>
+      <div class="sb-avatar" id="admin-avatar">A</div>
       <div class="sb-user-info">
         <div class="name" id="admin-display-name">Admin</div>
         <div class="role">Property Manager</div>
@@ -308,40 +158,29 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--linen);color:va
   </div>
 </aside>
 
-<!-- ════ MAIN ════ -->
 <div class="main" id="main">
-
   <header class="topbar">
-    <button class="hamburger" id="hamburger" onclick="openSidebar()">☰</button>
+    <button class="hamburger" onclick="openSidebar()">☰</button>
     <div class="topbar-breadcrumb">
       <span class="page-name">Booking Calendar</span>
     </div>
     <div class="topbar-actions">
       <div class="top-chip">📅 <span id="today-label"></span></div>
-      <div style="position:relative;">
-        <div class="top-icon-btn" onclick="toggleNotifs()" id="notif-btn">
-          🔔<div class="notif-dot" id="notif-dot" style="display:none"></div>
-        </div>
-        <div class="notif-dropdown" id="notif-panel">
-          <div class="notif-hd">
-            <span>Notifications</span>
-            <button class="btn btn-sm btn-ghost" onclick="clearNotifs()">Clear all</button>
-          </div>
-          <div id="notif-list"></div>
-        </div>
-      </div>
-      <button class="btn-view-site" onclick="window.open('index.html','_blank')">🌐 View Site</button>
+      <button class="btn btn-sm btn-ghost" onclick="loadBookings()" title="Refresh">🔄</button>
+      <button class="btn-view-site" onclick="window.open('../index.html','_blank')">🌐 View Site</button>
     </div>
   </header>
 
   <div class="content">
     <div class="row cols-3-1">
+
       <!-- Calendar Panel -->
-      <div class="panel">
+      <div class="panel" style="position:relative;">
+        <div id="cal-loading" class="loading-overlay" style="display:none;">Loading…</div>
         <div class="panel-hd">
           <div class="panel-hd-left">
             <div class="ph-title">Booking Calendar</div>
-            <div class="ph-sub">Color-coded room occupancy</div>
+            <div class="ph-sub">Color-coded room occupancy — live from database</div>
           </div>
           <div class="panel-hd-actions">
             <button class="cal-nav" onclick="prevCalMonth()">‹</button>
@@ -365,6 +204,7 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--linen);color:va
         <div class="panel">
           <div class="panel-hd">
             <div class="panel-hd-left"><div class="ph-title">Selected Date</div></div>
+            <a href="newbooking.html" class="btn btn-sm btn-primary">➕ Book</a>
           </div>
           <div class="panel-body" id="cal-day-detail">
             <div class="empty"><div class="empty-ico">📅</div><p>Click a date to see bookings</p></div>
@@ -374,7 +214,9 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--linen);color:va
           <div class="panel-hd">
             <div class="panel-hd-left"><div class="ph-title">Month Summary</div></div>
           </div>
-          <div class="panel-body" id="cal-month-summary"></div>
+          <div class="panel-body" id="cal-month-summary">
+            <div class="empty"><p>Loading…</p></div>
+          </div>
         </div>
       </div>
     </div>
@@ -393,137 +235,161 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--linen);color:va
   </div>
 </div>
 
-<!-- TOAST -->
 <div class="toast" id="toast"><span id="toast-ico">ℹ️</span><span id="toast-msg"></span></div>
 
 <script>
 'use strict';
-const BK_KEY = 'en3', LOG_KEY = 'en3_log', CFG_KEY = 'en3_cfg', RATE = 1999;
+
+const RATE = 1999;
 const MFull = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-const M3 = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 const D3 = ['Su','Mo','Tu','We','Th','Fr','Sa'];
-let BK = [], LOG = [], CFG = {}, calDate = new Date(), notifs = [];
+
+let BK = [];
+let calDate = new Date();
+let selectedDay = null;
+
+/* ── AUTH CHECK ── */
+const role = sessionStorage.getItem('en3_role');
+const uname = sessionStorage.getItem('en3_uname');
+if (!role || role !== 'admin') {
+  window.location.href = '/pages/login.html';
+}
 
 /* ── INIT ── */
-function init() {
-  try { BK = JSON.parse(localStorage.getItem(BK_KEY) || '[]'); } catch(e) { BK = []; }
-  try { LOG = JSON.parse(localStorage.getItem(LOG_KEY) || '[]'); } catch(e) { LOG = []; }
-  try { CFG = JSON.parse(localStorage.getItem(CFG_KEY) || '{}'); } catch(e) { CFG = {}; }
-  document.getElementById('admin-display-name').textContent = CFG.adminName || 'Admin';
-  seedIfEmpty();
+async function init() {
   setTopbarDate();
-  renderPendingBadge();
-  renderNotifs();
-  renderCalendar();
-  renderCalMonthSummary();
+  document.getElementById('admin-display-name').textContent = uname || 'Admin';
+  document.getElementById('admin-avatar').textContent = (uname || 'A')[0].toUpperCase();
+  await loadBookings();
 }
 
-function saveAll() {
-  localStorage.setItem(BK_KEY, JSON.stringify(BK));
-  localStorage.setItem(LOG_KEY, JSON.stringify(LOG));
-  localStorage.setItem(CFG_KEY, JSON.stringify(CFG));
+/* ── LOAD BOOKINGS FROM API ── */
+async function loadBookings() {
+  document.getElementById('cal-loading').style.display = 'flex';
+  try {
+    const res = await fetch('/api/bookings');
+    if (!res.ok) throw new Error('Failed to fetch');
+    BK = await res.json();
+    renderPendingBadge();
+    renderCalendar();
+    renderCalMonthSummary();
+    // Re-render selected day if one was selected
+    if (selectedDay !== null) showCalDay(selectedDay);
+  } catch (err) {
+    console.error(err);
+    showToast('Failed to load bookings', '❌', 't-err');
+  } finally {
+    document.getElementById('cal-loading').style.display = 'none';
+  }
 }
 
-/* ── SEED DATA ── */
-function dayFromNow(d, h = 14) { const dt = new Date(); dt.setDate(dt.getDate() + d); dt.setHours(h, 0, 0, 0); return dt; }
-function mkBk(fn, ln, ph, rm, dOff, h, px, st, note = '', pay = 'cash') {
-  const ci = dayFromNow(dOff, h), co = new Date(ci.getTime() + 21 * 3600000);
-  return { ref: 'EN-' + Math.random().toString(36).slice(2, 8).toUpperCase(), fn, ln, ph, rm, ci: ci.toISOString(), co: co.toISOString(), px, st, nt: note, pay, created: new Date().toISOString() };
-}
-function seedIfEmpty() {
-  if (BK.length > 0) return;
-  BK = [
-    mkBk('Maria','Santos','+63 912 345 6789','1',-60,14,3,'checkedout','Anniversary setup'),
-    mkBk('Jose','Reyes','+63 917 111 2222','2',-55,12,2,'checkedout','','gcash'),
-    mkBk('Ana','Cruz','+63 918 222 3333','1',-48,14,4,'checkedout','Late check-in'),
-    mkBk('Mark','Lopez','+63 919 333 4444','2',-40,15,2,'checkedout'),
-    mkBk('Grace','Tan','+63 920 444 5555','1',-33,14,3,'checkedout','','bank'),
-    mkBk('Carlo','Mendez','+63 921 555 6666','2',-28,16,2,'checkedout'),
-    mkBk('Liza','Bautista','+63 922 666 7777','1',-22,13,4,'checkedout'),
-    mkBk('Paolo','Garcia','+63 923 777 8888','2',-17,14,2,'checkedout','','gcash'),
-    mkBk('Rhea','Flores','+63 924 888 9999','1',-10,14,3,'checkedout'),
-    mkBk('Ian','Villanueva','+63 925 999 0000','2',-5,12,2,'checkedout'),
-    mkBk('Bea','Santos','+63 926 000 1111','1',-3,14,4,'checkedout','Birthday celebration','paid'),
-    mkBk('Rex','Aquino','+63 927 111 2222','2',-1,15,2,'checkedout'),
-    mkBk('Nina','Ramos','+63 928 222 3333','1',0,14,3,'confirmed','Arriving by bus'),
-    mkBk('Dan','Pascual','+63 929 333 4444','2',0,16,2,'confirmed'),
-    mkBk('Tina','Navarro','+63 930 444 5555','1',2,13,4,'confirmed','Need extra bed if possible'),
-    mkBk('Vic','Santiago','+63 931 555 6666','2',3,14,2,'pending','Awaiting GCash payment'),
-    mkBk('Rose','Padilla','+63 932 666 7777','1',5,14,3,'confirmed','','bank'),
-    mkBk('Ed','Aguilar','+63 933 777 8888','2',7,15,2,'pending'),
-    mkBk('Cy','Soriano','+63 934 888 9999','1',10,14,4,'confirmed'),
-    mkBk('Mia','Torres','+63 935 999 0000','2',12,14,2,'confirmed','','gcash'),
-    mkBk('Leo','Dela Cruz','+63 936 000 1111','1',15,14,3,'confirmed'),
-    mkBk('Ara','Santos','+63 912 111 1234','2',-90,14,2,'cancelled','Changed plans'),
-  ];
-  LOG = [
-    { type: 'ok',   msg: 'Admin logged in',                              time: new Date(Date.now() - 3 * 60000).toISOString() },
-    { type: 'ok',   msg: 'New booking created — Nina Ramos (Suite 1)',   time: new Date(Date.now() - 2 * 60000).toISOString() },
-    { type: 'warn', msg: 'Booking set to Pending — awaiting payment',    time: new Date(Date.now() -     60000).toISOString() },
-  ];
-  saveAll();
-}
-
-/* ── SIDEBAR TOGGLE ── */
-function openSidebar() {
-  document.getElementById('sidebar').classList.add('open');
-  document.getElementById('sb-overlay').classList.add('visible');
-  document.body.style.overflow = 'hidden';
-}
-function closeSidebar() {
-  document.getElementById('sidebar').classList.remove('open');
-  document.getElementById('sb-overlay').classList.remove('visible');
-  document.body.style.overflow = '';
-}
-document.querySelectorAll('.sb-item').forEach(btn => {
-  btn.addEventListener('click', () => { if (window.innerWidth <= 768) closeSidebar(); });
-});
-
-/* ── CALENDAR ── */
+/* ── CALENDAR RENDER ── */
 function renderCalendar() {
-  const wrap = document.getElementById('cal-grid'); if (!wrap) return;
+  const wrap = document.getElementById('cal-grid');
+  if (!wrap) return;
   document.getElementById('cal-month-lbl').textContent = `${MFull[calDate.getMonth()]} ${calDate.getFullYear()}`;
   const first = new Date(calDate.getFullYear(), calDate.getMonth(), 1).getDay();
   const days = new Date(calDate.getFullYear(), calDate.getMonth() + 1, 0).getDate();
   const now = new Date();
+
   wrap.innerHTML = D3.map(d => `<div class="cal-dname">${d}</div>`).join('');
   for (let i = 0; i < first; i++) wrap.innerHTML += `<div class="cal-day cal-empty"></div>`;
+
   for (let d = 1; d <= days; d++) {
     const dt = new Date(calDate.getFullYear(), calDate.getMonth(), d);
-    const isT = dt.toDateString() === now.toDateString();
-    const occ1 = isOccupied(1, dt), occ2 = isOccupied(2, dt);
-    const isPast = dt < now && !isT;
+    const isToday = dt.toDateString() === now.toDateString();
+    const occ1 = isOccupied(1, dt);
+    const occ2 = isOccupied(2, dt);
+    const isPast = dt < now && !isToday;
+    const isSelected = selectedDay === d;
+
     let cls = 'cal-day';
-    if (isT) cls += ' cal-today';
+    if (isToday) cls += ' cal-today';
     else if (occ1 && occ2) cls += ' cal-full';
     else if (occ1 || occ2) cls += ' cal-partial';
     else if (isPast) cls += ' cal-past';
-    wrap.innerHTML += `<div class="${cls}" onclick="showCalDay(${d})">${d}</div>`;
+    if (isSelected && !isToday) cls += ' cal-selected';
+
+    // Show dots for bookings
+    const dayBks = BK.filter(b => b.st !== 'cancelled' && new Date(b.ci) <= dt && new Date(b.co) > dt);
+    const dotHtml = dayBks.length > 0
+      ? `<div style="display:flex;justify-content:center;gap:2px;margin-top:2px;">${dayBks.slice(0,2).map(b => `<div style="width:4px;height:4px;border-radius:50%;background:${b.rm==1?'var(--forest)':'var(--amber)'}"></div>`).join('')}</div>`
+      : '';
+
+    wrap.innerHTML += `<div class="${cls}" onclick="showCalDay(${d})" style="padding:.3rem .1rem;">
+      <div>${d}</div>${dotHtml}
+    </div>`;
   }
 }
-function prevCalMonth() { calDate.setMonth(calDate.getMonth() - 1); renderCalendar(); renderCalMonthSummary(); }
-function nextCalMonth() { calDate.setMonth(calDate.getMonth() + 1); renderCalendar(); renderCalMonthSummary(); }
 
+function prevCalMonth() {
+  calDate.setMonth(calDate.getMonth() - 1);
+  selectedDay = null;
+  renderCalendar();
+  renderCalMonthSummary();
+  document.getElementById('cal-day-detail').innerHTML = `<div class="empty"><div class="empty-ico">📅</div><p>Click a date to see bookings</p></div>`;
+}
+
+function nextCalMonth() {
+  calDate.setMonth(calDate.getMonth() + 1);
+  selectedDay = null;
+  renderCalendar();
+  renderCalMonthSummary();
+  document.getElementById('cal-day-detail').innerHTML = `<div class="empty"><div class="empty-ico">📅</div><p>Click a date to see bookings</p></div>`;
+}
+
+/* ── SHOW DAY DETAIL ── */
 function showCalDay(d) {
+  selectedDay = d;
+  renderCalendar(); // re-render to show selected state
+
   const dt = new Date(calDate.getFullYear(), calDate.getMonth(), d);
   const dayBks = BK.filter(b => b.st !== 'cancelled' && new Date(b.ci) <= dt && new Date(b.co) > dt);
   const wrap = document.getElementById('cal-day-detail');
-  wrap.innerHTML = `<div style="font-size:.78rem;font-weight:700;margin-bottom:.9rem;">${MFull[dt.getMonth()]} ${d}, ${dt.getFullYear()}</div>`;
-  if (!dayBks.length) { wrap.innerHTML += `<div style="font-size:.8rem;color:var(--text3);font-style:italic;">No bookings on this date</div>`; return; }
+
+  wrap.innerHTML = `<div style="font-size:.78rem;font-weight:700;margin-bottom:.9rem;color:var(--text);">
+    ${MFull[dt.getMonth()]} ${d}, ${dt.getFullYear()}
+  </div>`;
+
+  if (!dayBks.length) {
+    wrap.innerHTML += `
+      <div style="text-align:center;padding:1rem 0;color:var(--text3);">
+        <div style="font-size:1.5rem;opacity:.3;margin-bottom:.4rem;">🏖️</div>
+        <div style="font-size:.8rem;font-style:italic;">No bookings — both suites available</div>
+      </div>`;
+    return;
+  }
+
   dayBks.forEach(b => {
-    wrap.innerHTML += `<div onclick="openBkModal('${b.ref}')" style="background:var(--linen);border-radius:.45rem;padding:.75rem .9rem;margin-bottom:.5rem;cursor:pointer;border:1px solid var(--border);">
-      <div style="font-weight:700;font-size:.82rem;">${b.fn} ${b.ln}</div>
-      <div style="font-size:.73rem;color:var(--text3);margin-top:.15rem;">Suite ${b.rm} · ${b.px} guests · ${pill(b.st)}</div>
-    </div>`;
+    const names = { '1': 'Sterling', '2': 'Habi' };
+    wrap.innerHTML += `
+      <div onclick="openBkModal('${b.ref}')" style="background:var(--linen);border-radius:.45rem;padding:.75rem .9rem;margin-bottom:.5rem;cursor:pointer;border:1px solid var(--border);transition:border-color .15s;"
+        onmouseover="this.style.borderColor='var(--amber)'" onmouseout="this.style.borderColor='var(--border)'">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.3rem;">
+          <div style="font-weight:700;font-size:.82rem;">${b.fn} ${b.ln}</div>
+          ${pill(b.st)}
+        </div>
+        <div style="font-size:.72rem;color:var(--text3);">
+          🏠 Suite ${b.rm} · ${names[b.rm] || ''} &nbsp;·&nbsp; 👥 ${b.px} guest${b.px > 1 ? 's' : ''}
+        </div>
+        <div style="font-size:.7rem;color:var(--text4);margin-top:.2rem;">
+          In: ${fmtShort(b.ci)} → Out: ${fmtShort(b.co)}
+        </div>
+      </div>`;
   });
 }
 
+/* ── MONTH SUMMARY ── */
 function renderCalMonthSummary() {
-  const wrap = document.getElementById('cal-month-summary'); if (!wrap) return;
+  const wrap = document.getElementById('cal-month-summary');
+  if (!wrap) return;
   const bks = BK.filter(b => {
     const d = new Date(b.ci);
-    return d.getMonth() === calDate.getMonth() && d.getFullYear() === calDate.getFullYear() && b.st !== 'cancelled';
+    return d.getMonth() === calDate.getMonth() &&
+           d.getFullYear() === calDate.getFullYear() &&
+           b.st !== 'cancelled';
   });
+  const pending = bks.filter(b => b.st === 'pending').length;
   wrap.innerHTML = `
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;">
       <div style="background:var(--linen);border-radius:.4rem;padding:.7rem;text-align:center;">
@@ -536,18 +402,20 @@ function renderCalMonthSummary() {
       </div>
       <div style="background:var(--linen);border-radius:.4rem;padding:.7rem;text-align:center;">
         <div style="font-size:1.3rem;font-weight:800;color:var(--blue);">${bks.filter(b => b.rm == 1).length}</div>
-        <div style="font-size:.65rem;color:var(--text3);">Suite 1</div>
+        <div style="font-size:.65rem;color:var(--text3);">Suite 1 · Sterling</div>
       </div>
       <div style="background:var(--linen);border-radius:.4rem;padding:.7rem;text-align:center;">
         <div style="font-size:1.3rem;font-weight:800;color:var(--sage);">${bks.filter(b => b.rm == 2).length}</div>
-        <div style="font-size:.65rem;color:var(--text3);">Suite 2</div>
+        <div style="font-size:.65rem;color:var(--text3);">Suite 2 · Habi</div>
       </div>
-    </div>`;
+    </div>
+    ${pending > 0 ? `<div style="margin-top:.8rem;padding:.6rem .8rem;background:#FEF9C3;border:1px solid #FCD34D;border-radius:.4rem;font-size:.74rem;color:#92400E;font-weight:600;">⏳ ${pending} booking${pending>1?'s':''} awaiting confirmation</div>` : ''}`;
 }
 
-/* ── BOOKING MODAL (read-only view) ── */
+/* ── BOOKING MODAL ── */
 function openBkModal(ref) {
-  const b = BK.find(x => x.ref === ref); if (!b) return;
+  const b = BK.find(x => x.ref === ref);
+  if (!b) return;
   document.getElementById('bk-modal-title').textContent = `Booking · ${b.ref}`;
   document.getElementById('bk-modal-body').innerHTML = `
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:1rem;">
@@ -576,34 +444,69 @@ function openBkModal(ref) {
       <div>${pill(b.st)}</div>
       <div style="font-size:1.3rem;font-weight:800;color:var(--gold);">₱${RATE.toLocaleString()}</div>
     </div>
-    ${b.nt ? `<div style="background:#FFFBEB;border:1px solid #FCD34D;border-radius:.45rem;padding:.8rem 1rem;font-size:.8rem;line-height:1.6;"><span style="font-weight:700;">💬 Notes:</span> ${b.nt}</div>` : ''}`;
+    ${b.nt ? `<div style="background:#FFFBEB;border:1px solid #FCD34D;border-radius:.45rem;padding:.8rem 1rem;font-size:.8rem;line-height:1.6;"><span style="font-weight:700;">💬 Notes:</span> ${b.nt}</div>` : ''}
+    <div style="font-size:.68rem;color:var(--text4);margin-top:.6rem;">Reference: ${b.ref}</div>`;
+
   document.getElementById('bk-modal-ft').innerHTML = `
-    <a href="admin_bookings.html" class="btn btn-ghost btn-md" style="font-size:.78rem;padding:.5rem 1.1rem;">Open in Bookings</a>
-    <button class="btn btn-ghost btn-md" onclick="document.getElementById('bk-modal').classList.remove('open')">Close</button>`;
+    <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
+      ${b.st === 'pending' || b.st === 'confirmed' ? `<button class="btn btn-primary btn-md" onclick="updateStatus('${b.ref}','checkedin')">✓ Check In</button>` : ''}
+      ${b.st === 'checkedin' ? `<button class="btn btn-md" style="background:var(--blue-lt);color:var(--blue);" onclick="updateStatus('${b.ref}','checkedout')">🚪 Check Out</button>` : ''}
+      ${b.st !== 'cancelled' && b.st !== 'checkedout' ? `<button class="btn btn-md" style="background:var(--red-lt);color:var(--red);border:1px solid #FCA5A5;" onclick="updateStatus('${b.ref}','cancelled')">✕ Cancel</button>` : ''}
+      <a href="bookings.html" class="btn btn-ghost btn-md">Open in Bookings</a>
+      <button class="btn btn-ghost btn-md" onclick="document.getElementById('bk-modal').classList.remove('open')">Close</button>
+    </div>`;
   document.getElementById('bk-modal').classList.add('open');
 }
 
-/* ── NOTIFICATIONS ── */
-function renderNotifs() {
-  const wrap = document.getElementById('notif-list'); if (!wrap) return;
-  const dot = document.getElementById('notif-dot');
-  const unread = notifs.filter(n => !n.read).length;
-  dot.style.display = unread > 0 ? 'block' : 'none';
-  if (!notifs.length) { wrap.innerHTML = `<div style="padding:1.2rem;text-align:center;font-size:.8rem;color:var(--text3);">No notifications</div>`; return; }
-  wrap.innerHTML = notifs.slice(0, 8).map(n => `
-    <div class="notif-item${!n.read ? ' unread' : ''}">
-      <div class="notif-item-title">${n.msg}</div>
-      <div class="notif-item-time">${fmtAgo(n.time)}</div>
-    </div>`).join('');
+/* ── UPDATE STATUS ── */
+async function updateStatus(ref, newStatus) {
+  const labels = { checkedin: 'Check in', checkedout: 'Check out', cancelled: 'Cancel' };
+  if (!confirm(`${labels[newStatus]} this booking?`)) return;
+  document.getElementById('bk-modal').classList.remove('open');
+  try {
+    const res = await fetch('/api/Bookings', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ref, st: newStatus })
+    });
+    const data = await res.json();
+    if (data.success) {
+      showToast(`Booking updated!`, '✅', 't-ok');
+      await loadBookings();
+    } else {
+      showToast('Update failed', '❌', 't-err');
+    }
+  } catch (err) {
+    showToast('Server error', '❌', 't-err');
+  }
 }
-function toggleNotifs() { document.getElementById('notif-panel').classList.toggle('open'); notifs.forEach(n => n.read = true); renderNotifs(); }
-function clearNotifs() { notifs = []; renderNotifs(); document.getElementById('notif-panel').classList.remove('open'); }
-document.addEventListener('click', e => { if (!document.getElementById('notif-btn').contains(e.target)) document.getElementById('notif-panel').classList.remove('open'); });
 
+/* ── PENDING BADGE ── */
 function renderPendingBadge() {
   const n = BK.filter(b => b.st === 'pending').length;
   const b = document.getElementById('sb-pending-badge');
-  b.textContent = n; b.style.display = n > 0 ? 'inline' : 'none';
+  b.textContent = n;
+  b.style.display = n > 0 ? 'inline' : 'none';
+}
+
+/* ── SIDEBAR ── */
+function openSidebar() {
+  document.getElementById('sidebar').classList.add('open');
+  document.getElementById('sb-overlay').classList.add('visible');
+  document.body.style.overflow = 'hidden';
+}
+function closeSidebar() {
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('sb-overlay').classList.remove('visible');
+  document.body.style.overflow = '';
+}
+
+/* ── LOGOUT ── */
+function logout() {
+  if (confirm('Log out?')) {
+    sessionStorage.clear();
+    window.location.href = '/pages/login.html';
+  }
 }
 
 /* ── TOAST ── */
@@ -612,33 +515,30 @@ function showToast(msg, ico = 'ℹ️', cls = '') {
   const t = document.getElementById('toast');
   document.getElementById('toast-ico').textContent = ico;
   document.getElementById('toast-msg').textContent = msg;
-  t.className = 'toast show ' + (cls || '');
+  t.className = 'toast show ' + cls;
   clearTimeout(toastTimer);
   toastTimer = setTimeout(() => t.classList.remove('show'), 3500);
 }
 
 /* ── HELPERS ── */
-function isOccupied(rm, dt) { return BK.some(b => { if (b.rm != rm || b.st === 'cancelled') return false; return dt >= new Date(b.ci) && dt < new Date(b.co); }); }
+function isOccupied(rm, dt) {
+  return BK.some(b => {
+    if (b.rm != rm || b.st === 'cancelled') return false;
+    return dt >= new Date(b.ci) && dt < new Date(b.co);
+  });
+}
 function fmtFull(iso) { return new Date(iso).toLocaleString('en-PH', { month:'short', day:'numeric', year:'numeric', hour:'2-digit', minute:'2-digit' }); }
-function fmtAgo(iso) {
-  const diff = (Date.now() - new Date(iso)) / 1000;
-  if (diff < 60) return 'just now';
-  if (diff < 3600) return `${Math.round(diff / 60)}m ago`;
-  if (diff < 86400) return `${Math.round(diff / 3600)}h ago`;
-  return new Date(iso).toLocaleDateString('en-PH', { month:'short', day:'numeric' });
+function fmtShort(iso) { return new Date(iso).toLocaleString('en-PH', { month:'short', day:'numeric', hour:'2-digit', minute:'2-digit' }); }
+function setTopbarDate() {
+  const el = document.getElementById('today-label');
+  if (el) el.textContent = new Date().toLocaleDateString('en-PH', { weekday:'short', month:'long', day:'numeric', year:'numeric' });
 }
 function pill(st) {
   const m = { confirmed:'p-confirmed Confirmed', pending:'p-pending Pending', checkedin:'p-checkedin Checked In', checkedout:'p-checkedout Checked Out', cancelled:'p-cancelled Cancelled' };
   const parts = (m[st] || 'p-pending ' + st).split(' ');
   return `<span class="pill ${parts[0]}">${parts.slice(1).join(' ') || st}</span>`;
 }
-function setTopbarDate() {
-  const el = document.getElementById('today-label');
-  if (el) el.textContent = new Date().toLocaleDateString('en-PH', { weekday:'short', month:'long', day:'numeric', year:'numeric' });
-}
-function logout() { if (confirm('Log out of admin panel?')) showToast('Logged out', '👋'); }
 
-/* ── START ── */
 init();
 </script>
 </body>

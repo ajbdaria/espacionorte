@@ -7,46 +7,25 @@
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
-  --forest:    #2B4A1A;
-  --forest-dk: #1A2E10;
-  --sage:      #4A7A2E;
-  --sage-lt:   #72B048;
-  --amber:     #C8932A;
-  --gold:      #DBA84A;
-  --linen:     #F5EFE2;
-  --parch:     #EDE0C8;
-  --snow:      #FDFAF6;
-  --panel:     #FFFFFF;
-  --border:    #E6DDD0;
-  --text:      #1C1712;
-  --text2:     #584A38;
-  --text3:     #9B8872;
-  --text4:     #BFB09C;
-  --green:     #1D6A2B;
-  --green-lt:  #E3F5E8;
-  --red:       #C0392B;
-  --red-lt:    #FDECEA;
-  --blue:      #1A56A0;
-  --blue-lt:   #E8F0FB;
-  --sb:        240px;
-  --topbar:    56px;
-  --radius:    10px;
-  --shadow:    0 1px 4px rgba(0,0,0,.06), 0 4px 16px rgba(0,0,0,.06);
-  --shadow-lg: 0 8px 40px rgba(0,0,0,.14);
+  --forest:#2B4A1A;--forest-dk:#1A2E10;--sage:#4A7A2E;--sage-lt:#72B048;
+  --amber:#C8932A;--gold:#DBA84A;--linen:#F5EFE2;--parch:#EDE0C8;
+  --snow:#FDFAF6;--panel:#FFFFFF;--border:#E6DDD0;--text:#1C1712;
+  --text2:#584A38;--text3:#9B8872;--text4:#BFB09C;--green:#1D6A2B;
+  --green-lt:#E3F5E8;--red:#C0392B;--red-lt:#FDECEA;--blue:#1A56A0;--blue-lt:#E8F0FB;
+  --sb:240px;--topbar:56px;--radius:10px;
+  --shadow:0 1px 4px rgba(0,0,0,.06),0 4px 16px rgba(0,0,0,.06);
+  --shadow-lg:0 8px 40px rgba(0,0,0,.14);
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 html{font-size:14px;scroll-behavior:smooth;}
 body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--linen);color:var(--text);min-height:100vh;display:flex;overflow-x:hidden;}
-
 ::-webkit-scrollbar{width:5px;height:5px;}
 ::-webkit-scrollbar-track{background:var(--linen);}
 ::-webkit-scrollbar-thumb{background:var(--parch);border-radius:3px;}
 ::-webkit-scrollbar-thumb:hover{background:var(--amber);}
-
 .sb-overlay{display:none;position:fixed;inset:0;z-index:290;background:rgba(0,0,0,.45);backdrop-filter:blur(2px);}
 .sb-overlay.visible{display:block;}
-
-.sb{width:var(--sb);min-height:100vh;position:fixed;top:0;left:0;bottom:0;z-index:300;background:var(--forest-dk);display:flex;flex-direction:column;transition:transform .28s cubic-bezier(.23,1,.32,1);box-shadow:4px 0 24px rgba(0,0,0,.18);transform:translateX(0);}
+.sb{width:var(--sb);min-height:100vh;position:fixed;top:0;left:0;bottom:0;z-index:300;background:var(--forest-dk);display:flex;flex-direction:column;transition:transform .28s cubic-bezier(.23,1,.32,1);box-shadow:4px 0 24px rgba(0,0,0,.18);}
 .sb-brand{padding:1.2rem 1.25rem 1rem;border-bottom:1px solid rgba(255,255,255,.07);display:flex;align-items:center;gap:.75rem;}
 .sb-logo{width:40px;height:40px;border-radius:10px;flex-shrink:0;background:linear-gradient(135deg,var(--amber),var(--gold));display:flex;align-items:center;justify-content:center;font-size:1.25rem;box-shadow:0 4px 12px rgba(200,147,42,.4);}
 .sb-brand-text strong{display:block;font-size:.88rem;font-weight:800;color:#fff;letter-spacing:.01em;}
@@ -67,38 +46,25 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--linen);color:va
 .sb-user-info .role{font-size:.62rem;color:rgba(255,255,255,.35);margin-top:.05rem;}
 .sb-logout{margin-left:auto;background:none;border:none;cursor:pointer;color:rgba(255,255,255,.3);font-size:.9rem;transition:color .2s;padding:.2rem;}
 .sb-logout:hover{color:var(--red-lt);}
-
-.main{margin-left:var(--sb);flex:1;display:flex;flex-direction:column;min-height:100vh;transition:margin-left .28s cubic-bezier(.23,1,.32,1);}
-
+.main{margin-left:var(--sb);flex:1;display:flex;flex-direction:column;min-height:100vh;}
 .topbar{height:var(--topbar);background:var(--panel);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 1.25rem;gap:.75rem;position:sticky;top:0;z-index:200;box-shadow:0 1px 8px rgba(0,0,0,.05);}
 .hamburger{display:none;width:36px;height:36px;border-radius:.45rem;background:var(--linen);border:1px solid var(--border);align-items:center;justify-content:center;cursor:pointer;font-size:1.1rem;flex-shrink:0;transition:all .2s;}
 .hamburger:hover{background:var(--parch);border-color:var(--amber);}
 .topbar-breadcrumb{display:flex;align-items:center;gap:.5rem;flex:1;min-width:0;}
-.topbar-breadcrumb .page-name{font-size:.92rem;font-weight:700;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.topbar-breadcrumb .page-name{font-size:.92rem;font-weight:700;color:var(--text);}
 .topbar-actions{display:flex;align-items:center;gap:.6rem;flex-shrink:0;}
 .top-chip{display:flex;align-items:center;gap:.4rem;background:var(--linen);border:1px solid var(--border);padding:.35rem .8rem;border-radius:.45rem;font-size:.72rem;color:var(--text2);white-space:nowrap;}
-.top-icon-btn{width:34px;height:34px;border-radius:.45rem;background:var(--linen);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:.95rem;transition:all .2s;position:relative;}
-.top-icon-btn:hover{background:var(--parch);border-color:var(--amber);}
-.notif-dot{position:absolute;top:5px;right:5px;width:7px;height:7px;border-radius:50%;background:var(--red);border:2px solid var(--panel);}
 .btn-view-site{background:var(--forest);color:#fff;border:none;padding:.38rem 1rem;border-radius:.45rem;font-family:'Plus Jakarta Sans',sans-serif;font-size:.73rem;font-weight:700;cursor:pointer;transition:all .2s;white-space:nowrap;display:flex;align-items:center;gap:.35rem;}
 .btn-view-site:hover{background:var(--sage);}
-
 .content{padding:1.5rem;flex:1;min-width:0;}
-@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
-
-/* ── PANELS ── */
 .panel{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);}
 .panel-hd{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 1.4rem;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:.5rem;}
 .panel-hd-left .ph-title{font-size:.9rem;font-weight:700;color:var(--text);}
 .panel-hd-left .ph-sub{font-size:.7rem;color:var(--text3);margin-top:.12rem;}
 .panel-hd-actions{display:flex;align-items:center;gap:.5rem;}
 .panel-body{padding:1.25rem 1.4rem;}
-
-/* ── ROOMS GRID ── */
-.rooms-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.1rem;margin-bottom:1.1rem;}
+.rooms-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.1rem;}
 .details-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;}
-
-/* ── BUTTONS ── */
 .btn{display:inline-flex;align-items:center;gap:.4rem;border:none;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;transition:all .2s;border-radius:.45rem;white-space:nowrap;}
 .btn-sm{font-size:.72rem;padding:.35rem .8rem;}
 .btn-md{font-size:.78rem;padding:.5rem 1.1rem;}
@@ -110,20 +76,14 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--linen);color:va
 .btn-ghost:hover{border-color:var(--amber);background:var(--parch);}
 .btn-danger{background:var(--red-lt);color:var(--red);border:1px solid #FCA5A5;}
 .btn-danger:hover{background:var(--red);color:#fff;}
-
-/* ── FORMS ── */
 .fg{margin-bottom:.9rem;}
 .fg label{display:block;font-size:.68rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--text2);margin-bottom:.38rem;}
 .fg input,.fg select,.fg textarea{width:100%;border:1.5px solid var(--border);border-radius:.45rem;padding:.62rem .9rem;font-family:'Plus Jakarta Sans',sans-serif;font-size:.82rem;color:var(--text);background:var(--snow);outline:none;transition:border-color .2s;}
 .fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--amber);background:#fff;}
 .fg textarea{resize:vertical;min-height:76px;}
-.fg select option{background:#fff;}
 .fg .fg-hint{font-size:.65rem;color:var(--text4);margin-top:.28rem;}
 .fg-row{display:grid;grid-template-columns:1fr 1fr;gap:.85rem;}
-
 .section-label{font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--text3);padding:.8rem 0 .5rem;border-bottom:1px solid var(--border);margin-bottom:.9rem;}
-
-/* ── STATUS PILLS ── */
 .pill{font-size:.62rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.2rem .65rem;border-radius:2rem;display:inline-block;white-space:nowrap;}
 .p-confirmed{background:#DCFCE7;color:#15803D;}
 .p-pending{background:#FEF9C3;color:#92400E;}
@@ -132,26 +92,10 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--linen);color:va
 .p-cancelled{background:#FEE2E2;color:#B91C1C;}
 .p-available{background:#DCFCE7;color:#15803D;}
 .p-occupied{background:#FEE2E2;color:#B91C1C;}
-
-/* ── NOTIFICATIONS ── */
-.notif-dropdown{position:absolute;top:calc(100% + 8px);right:0;width:300px;background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow-lg);z-index:500;display:none;}
-.notif-dropdown.open{display:block;}
-.notif-hd{display:flex;align-items:center;justify-content:space-between;padding:.9rem 1.1rem;border-bottom:1px solid var(--border);}
-.notif-hd span{font-size:.82rem;font-weight:700;}
-.notif-item{padding:.8rem 1.1rem;border-bottom:1px solid var(--linen);cursor:pointer;transition:background .15s;}
-.notif-item:hover{background:var(--linen);}
-.notif-item:last-child{border-bottom:none;}
-.notif-item-title{font-size:.78rem;font-weight:600;color:var(--text);}
-.notif-item-time{font-size:.67rem;color:var(--text3);margin-top:.1rem;}
-.notif-item.unread{border-left:3px solid var(--amber);}
-
-/* ── TOAST ── */
 .toast{position:fixed;bottom:1.5rem;right:1.5rem;z-index:9999;display:flex;align-items:center;gap:.7rem;background:var(--forest-dk);color:#fff;padding:.85rem 1.3rem;border-radius:.6rem;font-size:.8rem;font-weight:500;max-width:320px;box-shadow:var(--shadow-lg);transform:translateY(80px);opacity:0;transition:all .35s cubic-bezier(.23,1,.32,1);border-left:4px solid var(--gold);}
 .toast.show{transform:translateY(0);opacity:1;}
 .toast.t-ok{border-left-color:var(--sage-lt);}
 .toast.t-err{border-left-color:var(--red);}
-
-/* ── MODAL ── */
 .modal-bg{display:none;position:fixed;inset:0;z-index:600;background:rgba(20,14,5,.65);backdrop-filter:blur(5px);align-items:center;justify-content:center;padding:1rem;}
 .modal-bg.open{display:flex;}
 .modal{background:var(--panel);border-radius:var(--radius);width:100%;max-width:520px;max-height:92vh;overflow-y:auto;box-shadow:0 32px 100px rgba(0,0,0,.35);animation:mpop .3s cubic-bezier(.23,1,.32,1);}
@@ -163,39 +107,20 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--linen);color:va
 .modal-ft{padding:1rem 1.4rem;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:.6rem;flex-wrap:wrap;}
 .modal-close-btn{width:30px;height:30px;border-radius:50%;background:var(--linen);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.85rem;color:var(--text3);transition:all .2s;}
 .modal-close-btn:hover{background:var(--red-lt);color:var(--red);}
-
-/* ── EMPTY STATE ── */
 .empty-rooms{text-align:center;padding:2.5rem 1rem;color:var(--text3);}
 .empty-rooms .ei{font-size:2.5rem;margin-bottom:.75rem;opacity:.35;}
 .empty-rooms p{font-size:.82rem;}
-
-/* ════ RESPONSIVE ════ */
-@media(min-width:769px){
-  .sb{transform:translateX(0) !important;}
-  .main{margin-left:var(--sb) !important;}
-  .hamburger{display:none !important;}
-  .sb-overlay{display:none !important;}
-  .sb-close-btn{display:none !important;}
-}
-@media(max-width:768px){
-  :root{--sb:240px;}
-  .sb{transform:translateX(-100%);position:fixed;top:0;left:0;bottom:0;z-index:300;width:var(--sb);}
-  .sb.open{transform:translateX(0);}
-  .main{margin-left:0 !important;width:100%;}
-  .hamburger{display:flex !important;}
-  .sb-close-btn{display:flex !important;}
-  .top-chip{display:none;}
-  .content{padding:1rem .75rem;}
-  .rooms-grid,.details-grid,.fg-row{grid-template-columns:1fr;}
-  .btn-view-site{font-size:.65rem;padding:.35rem .65rem;}
-}
+/* Loading spinner */
+.spin{display:inline-block;width:16px;height:16px;border:2px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;flex-shrink:0;}
+@keyframes spin{to{transform:rotate(360deg);}}
+@media(min-width:769px){.sb{transform:translateX(0)!important;}.main{margin-left:var(--sb)!important;}.hamburger{display:none!important;}.sb-overlay{display:none!important;}.sb-close-btn{display:none!important;}}
+@media(max-width:768px){:root{--sb:240px;}.sb{transform:translateX(-100%);position:fixed;top:0;left:0;bottom:0;z-index:300;}.sb.open{transform:translateX(0);}.main{margin-left:0!important;width:100%;}.hamburger{display:flex!important;}.sb-close-btn{display:flex!important;}.top-chip{display:none;}.content{padding:1rem .75rem;}.rooms-grid,.details-grid,.fg-row{grid-template-columns:1fr;}.btn-view-site{font-size:.65rem;padding:.35rem .65rem;}}
 </style>
 </head>
 <body>
 
 <div class="sb-overlay" id="sb-overlay" onclick="closeSidebar()"></div>
 
-<!-- ════ SIDEBAR ════ -->
 <aside class="sb" id="sidebar">
   <div class="sb-brand">
     <div class="sb-logo">🌴</div>
@@ -205,12 +130,10 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--linen);color:va
     </div>
     <button class="sb-close-btn" onclick="closeSidebar()">✕</button>
   </div>
-
   <nav style="flex:1;overflow-y:auto;padding:.5rem 0;">
     <div class="sb-group-label">Overview</div>
     <a href="admin_dashboard.html" class="sb-item"><span class="ico">📊</span><span class="lbl">Dashboard</span></a>
     <a href="admin_analytics.html" class="sb-item"><span class="ico">📈</span><span class="lbl">Analytics & Reports</span></a>
-
     <div class="sb-group-label">Reservations</div>
     <a href="bookings.html" class="sb-item">
       <span class="ico">📅</span><span class="lbl">All Bookings</span>
@@ -219,19 +142,16 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--linen);color:va
     <a href="newbooking.html" class="sb-item"><span class="ico">➕</span><span class="lbl">New Booking</span></a>
     <a href="calendar.html" class="sb-item"><span class="ico">🗓️</span><span class="lbl">Booking Calendar</span></a>
     <a href="guest.html" class="sb-item"><span class="ico">👥</span><span class="lbl">Guest Directory</span></a>
-
     <div class="sb-group-label">Property</div>
     <a href="rooms.html" class="sb-item active"><span class="ico">🏠</span><span class="lbl">Room Management</span></a>
     <a href="rules_pricing.html" class="sb-item"><span class="ico">💰</span><span class="lbl">Pricing & Rules</span></a>
-
     <div class="sb-group-label">System</div>
     <a href="logs.html" class="sb-item"><span class="ico">🕐</span><span class="lbl">Activity Log</span></a>
     <a href="configuration.html" class="sb-item"><span class="ico">⚙️</span><span class="lbl">Settings</span></a>
   </nav>
-
   <div class="sb-footer">
     <div class="sb-user">
-      <div class="sb-avatar">A</div>
+      <div class="sb-avatar" id="admin-avatar">A</div>
       <div class="sb-user-info">
         <div class="name" id="admin-display-name">Admin</div>
         <div class="role">Property Manager</div>
@@ -241,24 +161,14 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--linen);color:va
   </div>
 </aside>
 
-<!-- ════ MAIN ════ -->
-<div class="main" id="main">
-
+<div class="main">
   <header class="topbar">
-    <button class="hamburger" id="hamburger" onclick="openSidebar()">☰</button>
+    <button class="hamburger" onclick="openSidebar()">☰</button>
     <div class="topbar-breadcrumb"><span class="page-name">Room Management</span></div>
     <div class="topbar-actions">
       <div class="top-chip">📅 <span id="today-label"></span></div>
-      <div style="position:relative;">
-        <div class="top-icon-btn" onclick="toggleNotifs()" id="notif-btn">
-          🔔<div class="notif-dot" id="notif-dot"></div>
-        </div>
-        <div class="notif-dropdown" id="notif-panel">
-          <div class="notif-hd"><span>Notifications</span><button class="btn btn-sm btn-ghost" onclick="clearNotifs()">Clear all</button></div>
-          <div id="notif-list"></div>
-        </div>
-      </div>
-      <button class="btn-view-site" onclick="window.open('index.html','_blank')">🌐 View Site</button>
+      <button class="btn btn-sm btn-ghost" onclick="loadAll()" title="Refresh">🔄</button>
+      <button class="btn-view-site" onclick="window.open('../index.html','_blank')">🌐 View Site</button>
     </div>
   </header>
 
@@ -269,23 +179,25 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--linen);color:va
       <div class="panel-hd">
         <div class="panel-hd-left">
           <div class="ph-title">Live Room Status</div>
-          <div class="ph-sub">Current occupancy across all suites</div>
+          <div class="ph-sub">Current occupancy — live from database</div>
         </div>
         <div class="panel-hd-actions">
           <button class="btn btn-amber btn-sm" onclick="openAddModal()">＋ Add New Suite</button>
         </div>
       </div>
       <div class="panel-body">
-        <div class="rooms-grid" id="rooms-status-grid"></div>
+        <div class="rooms-grid" id="rooms-status-grid">
+          <div class="empty-rooms" style="grid-column:1/-1;"><div class="ei">⏳</div><p>Loading suites…</p></div>
+        </div>
       </div>
     </div>
 
-    <!-- Amenities Editor -->
+    <!-- Details Editor -->
     <div class="panel">
       <div class="panel-hd">
         <div class="panel-hd-left">
           <div class="ph-title">Suite Details & Amenities</div>
-          <div class="ph-sub">Edit info for each suite</div>
+          <div class="ph-sub">Edit info for each suite — changes save to database</div>
         </div>
       </div>
       <div class="panel-body">
@@ -296,7 +208,7 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--linen);color:va
   </div>
 </div>
 
-<!-- ── BOOKING MODAL ── -->
+<!-- BOOKING DETAIL MODAL -->
 <div class="modal-bg" id="bk-modal" onclick="if(event.target===this)this.classList.remove('open')">
   <div class="modal modal-lg">
     <div class="modal-hd">
@@ -308,7 +220,7 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--linen);color:va
   </div>
 </div>
 
-<!-- ── ADD / EDIT SUITE MODAL ── -->
+<!-- ADD / EDIT SUITE MODAL -->
 <div class="modal-bg" id="suite-modal" onclick="if(event.target===this)this.classList.remove('open')">
   <div class="modal">
     <div class="modal-hd">
@@ -364,123 +276,96 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--linen);color:va
     </div>
     <div class="modal-ft">
       <button class="btn btn-ghost btn-md" onclick="g('suite-modal').classList.remove('open')">Cancel</button>
-      <button class="btn btn-primary btn-md" onclick="saveSuite()">✓ Save Suite</button>
+      <button class="btn btn-primary btn-md" id="sm-save-btn" onclick="saveSuite()">✓ Save Suite</button>
     </div>
   </div>
 </div>
 
-<!-- TOAST -->
 <div class="toast" id="toast"><span id="toast-ico">ℹ️</span><span id="toast-msg"></span></div>
 
 <script>
 'use strict';
-const BK_KEY='en3', LOG_KEY='en3_log', CFG_KEY='en3_cfg', ROOMS_KEY='en3_rooms';
-let BK=[], LOG=[], CFG={}, ROOMS=[], notifs=[];
 
-/* ── SIDEBAR ── */
-function openSidebar(){ g('sidebar').classList.add('open'); g('sb-overlay').classList.add('visible'); document.body.style.overflow='hidden'; }
-function closeSidebar(){ g('sidebar').classList.remove('open'); g('sb-overlay').classList.remove('visible'); document.body.style.overflow=''; }
-document.querySelectorAll('.sb-item').forEach(b=>b.addEventListener('click',()=>{ if(window.innerWidth<=768) closeSidebar(); }));
+let ROOMS = [];
+let BK = [];
+
+/* ── AUTH ── */
+const role = sessionStorage.getItem('en3_role');
+const uname = sessionStorage.getItem('en3_uname');
+if (!role || role !== 'admin') window.location.href = '/pages/login.html';
 
 /* ── INIT ── */
-function init(){
-  loadAll();
-  seedIfEmpty();
+async function init() {
   setTopbarDate();
-  renderPendingBadge();
-  renderNotifs();
-  renderRoomsPage();
+  g('admin-display-name').textContent = uname || 'Admin';
+  g('admin-avatar').textContent = (uname || 'A')[0].toUpperCase();
+  await loadAll();
 }
 
-function loadAll(){
-  try{ BK=JSON.parse(localStorage.getItem(BK_KEY)||'[]'); }catch(e){ BK=[]; }
-  try{ LOG=JSON.parse(localStorage.getItem(LOG_KEY)||'[]'); }catch(e){ LOG=[]; }
-  try{ CFG=JSON.parse(localStorage.getItem(CFG_KEY)||'{}'); }catch(e){ CFG={}; }
-  try{ ROOMS=JSON.parse(localStorage.getItem(ROOMS_KEY)||'[]'); }catch(e){ ROOMS=[]; }
-  g('admin-display-name').textContent=CFG.adminName||'Admin';
-}
-
-function saveAll(){
-  localStorage.setItem(BK_KEY, JSON.stringify(BK));
-  localStorage.setItem(LOG_KEY, JSON.stringify(LOG));
-  localStorage.setItem(CFG_KEY, JSON.stringify(CFG));
-  localStorage.setItem(ROOMS_KEY, JSON.stringify(ROOMS));
-}
-
-/* ── SEED ── */
-function dayFromNow(d,h=14){ const dt=new Date(); dt.setDate(dt.getDate()+d); dt.setHours(h,0,0,0); return dt; }
-function mkBk(fn,ln,ph,rm,dOff,h,px,st,note=''){
-  const ci=dayFromNow(dOff,h), co=new Date(ci.getTime()+21*3600000);
-  return{ref:'EN-'+Math.random().toString(36).slice(2,8).toUpperCase(),fn,ln,ph,rm,ci:ci.toISOString(),co:co.toISOString(),px,st,nt:note,created:new Date().toISOString()};
-}
-function seedIfEmpty(){
-  if(!ROOMS.length){
-    ROOMS=[
-      {id:'1',name:'Sterling',emoji:'🌅',bed:'King Bed',sqm:'32',maxpx:4,rate:1999,desc:'King bed suite with warm interiors, perfect for families and couples.',amen:'Air-conditioning, Smart TV, Hot Shower, Mini Bar, Free Wifi, Private Bath'},
-      {id:'2',name:'Habi',emoji:'🌊',bed:'Queen Bed',sqm:'30',maxpx:4,rate:1999,desc:'Queen bed suite with serene vibes, natural light, and tropical touches.',amen:'Air-conditioning, Smart TV, Hot Shower, Mini Bar, Free Wifi, Private Bath'},
-    ];
-    localStorage.setItem(ROOMS_KEY, JSON.stringify(ROOMS));
+async function loadAll() {
+  try {
+    const [rRes, bRes] = await Promise.all([
+      fetch('/api/room'),
+      fetch('/api/Bookings'),
+    ]);
+    ROOMS = await rRes.json();
+    BK    = await bRes.json();
+    renderPendingBadge();
+    renderStatusCards();
+    renderDetailsEditor();
+  } catch (err) {
+    console.error(err);
+    showToast('Failed to load data', '❌', 't-err');
   }
-  if(BK.length>0) return;
-  BK=[
-    mkBk('Nina','Ramos','+63 928 222 3333','1',0,14,3,'confirmed','Arriving by bus'),
-    mkBk('Dan','Pascual','+63 929 333 4444','2',0,16,2,'confirmed'),
-    mkBk('Tina','Navarro','+63 930 444 5555','1',2,13,4,'confirmed','Need extra bed'),
-    mkBk('Vic','Santiago','+63 931 555 6666','2',3,14,2,'pending','Awaiting GCash payment'),
-    mkBk('Rose','Padilla','+63 932 666 7777','1',5,14,3,'confirmed'),
-    mkBk('Ed','Aguilar','+63 933 777 8888','2',7,15,2,'pending'),
-  ];
-  saveAll();
 }
 
-/* ── RENDER ── */
-function renderRoomsPage(){
-  renderStatusCards();
-  renderDetailsEditor();
-}
+/* ── STATUS CARDS ── */
+function renderStatusCards() {
+  const now  = new Date();
+  const grid = g('rooms-status-grid');
 
-function renderStatusCards(){
-  const now=new Date();
-  const grid=g('rooms-status-grid');
-  if(!ROOMS.length){
-    grid.innerHTML=`<div class="empty-rooms" style="grid-column:1/-1"><div class="ei">🏠</div><p>No suites yet. Click <strong>＋ Add New Suite</strong> to get started.</p></div>`;
+  if (!ROOMS.length) {
+    grid.innerHTML = `<div class="empty-rooms" style="grid-column:1/-1"><div class="ei">🏠</div><p>No suites yet. Click <strong>＋ Add New Suite</strong> to get started.</p></div>`;
     return;
   }
-  grid.innerHTML=ROOMS.map(room=>{
-    const occ=isOccupied(room.id,now);
-    const cur=BK.find(b=>b.rm==room.id&&b.st!=='cancelled'&&now>=new Date(b.ci)&&now<new Date(b.co));
-    const up=BK.filter(b=>b.rm==room.id&&b.st!=='cancelled'&&new Date(b.ci)>now).sort((a,b2)=>new Date(a.ci)-new Date(b2.ci)).slice(0,3);
+
+  grid.innerHTML = ROOMS.map(room => {
+    const occ = isOccupied(room.id, now);
+    const cur = BK.find(b => b.rm == room.id && b.st !== 'cancelled' && now >= new Date(b.ci) && now < new Date(b.co));
+    const up  = BK.filter(b => b.rm == room.id && b.st !== 'cancelled' && new Date(b.ci) > now)
+                   .sort((a, b2) => new Date(a.ci) - new Date(b2.ci)).slice(0, 3);
+
     return `
     <div class="panel">
       <div class="panel-hd">
         <div class="panel-hd-left">
-          <div class="ph-title">${room.emoji||'🏠'} Suite ${room.id} · ${room.name}</div>
-          <div class="ph-sub">${room.bed} · ${room.sqm||'—'} sqm · max ${room.maxpx} guests</div>
+          <div class="ph-title">${room.emoji || '🏠'} Suite ${room.id} · ${esc(room.name)}</div>
+          <div class="ph-sub">${room.bed} · ${room.sqm || '—'} sqm · max ${room.maxpx} guests</div>
         </div>
-        <span class="pill ${occ?'p-occupied':'p-available'}">${occ?'Occupied':'Available'}</span>
+        <span class="pill ${occ ? 'p-occupied' : 'p-available'}">${occ ? 'Occupied' : 'Available'}</span>
       </div>
       <div class="panel-body">
-        ${occ&&cur
-          ?`<div style="background:var(--blue-lt);border:1px solid #93C5FD;border-radius:.5rem;padding:.9rem;margin-bottom:1rem;">
-              <div style="font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:.35rem;">Currently Staying</div>
-              <div style="font-weight:700;font-size:.88rem;">${cur.fn} ${cur.ln}</div>
-              <div style="font-size:.73rem;color:var(--text2);">📞 ${cur.ph} · 👥 ${cur.px} guests</div>
-              <div style="font-size:.72rem;color:var(--text3);margin-top:.2rem;">Check-out: ${fmtFull(cur.co)}</div>
-              <button class="btn btn-sm" style="margin-top:.5rem;background:var(--blue-lt);color:var(--blue);border:1px solid #93C5FD;" onclick="openBkModal('${cur.ref}')">View →</button>
-            </div>`
-          :`<div style="background:var(--green-lt);border:1px solid #86EFAC;border-radius:.5rem;padding:.8rem;margin-bottom:1rem;font-size:.8rem;color:var(--green);font-weight:600;">✓ Ready for guests</div>`
+        ${occ && cur
+          ? `<div style="background:var(--blue-lt);border:1px solid #93C5FD;border-radius:.5rem;padding:.9rem;margin-bottom:1rem;">
+               <div style="font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:.35rem;">Currently Staying</div>
+               <div style="font-weight:700;font-size:.88rem;">${esc(cur.fn)} ${esc(cur.ln)}</div>
+               <div style="font-size:.73rem;color:var(--text2);">📞 ${cur.ph} · 👥 ${cur.px} guests</div>
+               <div style="font-size:.72rem;color:var(--text3);margin-top:.2rem;">Check-out: ${fmtFull(cur.co)}</div>
+               <button class="btn btn-sm" style="margin-top:.5rem;background:var(--blue-lt);color:var(--blue);border:1px solid #93C5FD;" onclick="openBkModal('${cur.ref}')">View →</button>
+             </div>`
+          : `<div style="background:var(--green-lt);border:1px solid #86EFAC;border-radius:.5rem;padding:.8rem;margin-bottom:1rem;font-size:.8rem;color:var(--green);font-weight:600;">✓ Ready for guests</div>`
         }
         <div style="font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:.5rem;">Upcoming (next 3)</div>
         ${up.length
-          ?up.map(b=>`
+          ? up.map(b => `
             <div style="display:flex;justify-content:space-between;align-items:center;padding:.55rem 0;border-bottom:1px solid var(--linen);cursor:pointer;" onclick="openBkModal('${b.ref}')">
               <div>
-                <div style="font-size:.8rem;font-weight:600;">${b.fn} ${b.ln}</div>
+                <div style="font-size:.8rem;font-weight:600;">${esc(b.fn)} ${esc(b.ln)}</div>
                 <div style="font-size:.7rem;color:var(--text3);">${fmtShort(b.ci)} · ${b.px} guests</div>
               </div>
               ${pill(b.st)}
             </div>`).join('')
-          :`<div style="font-size:.78rem;color:var(--text3);font-style:italic;">No upcoming reservations</div>`
+          : `<div style="font-size:.78rem;color:var(--text3);font-style:italic;">No upcoming reservations</div>`
         }
         <div style="display:flex;gap:.5rem;margin-top:1rem;padding-top:.85rem;border-top:1px solid var(--linen);">
           <button class="btn btn-ghost btn-sm" onclick="openEditModal('${room.id}')">✏️ Edit</button>
@@ -491,154 +376,221 @@ function renderStatusCards(){
   }).join('');
 }
 
-function renderDetailsEditor(){
-  const grid=g('rooms-details-grid');
-  if(!ROOMS.length){
-    grid.innerHTML=`<div style="color:var(--text3);font-size:.82rem;font-style:italic;">No suites to edit yet.</div>`;
+/* ── DETAILS EDITOR ── */
+function renderDetailsEditor() {
+  const grid = g('rooms-details-grid');
+  if (!ROOMS.length) {
+    grid.innerHTML = `<div style="color:var(--text3);font-size:.82rem;font-style:italic;">No suites to edit yet.</div>`;
     return;
   }
-  grid.innerHTML=ROOMS.map(room=>`
+  grid.innerHTML = ROOMS.map(room => `
     <div>
-      <div class="section-label">${room.emoji||'🏠'} Suite ${room.id} · ${room.name}</div>
+      <div class="section-label">${room.emoji || '🏠'} Suite ${room.id} · ${esc(room.name)}</div>
       <div class="fg-row">
         <div class="fg"><label>Suite Name</label><input type="text" id="rd-name-${room.id}" value="${esc(room.name)}"></div>
         <div class="fg"><label>Max Guests</label><input type="number" id="rd-maxpx-${room.id}" value="${room.maxpx}" min="1" max="20"></div>
       </div>
-      <div class="fg"><label>Description</label><textarea id="rd-desc-${room.id}">${esc(room.desc||'')}</textarea></div>
-      <div class="fg"><label>Amenities (comma separated)</label><input type="text" id="rd-amen-${room.id}" value="${esc(room.amen||'')}"></div>
-      <button class="btn btn-primary btn-md" onclick="saveRoomDetails('${room.id}')">Save Suite ${room.id}</button>
+      <div class="fg"><label>Description</label><textarea id="rd-desc-${room.id}">${esc(room.desc || '')}</textarea></div>
+      <div class="fg"><label>Amenities (comma separated)</label><input type="text" id="rd-amen-${room.id}" value="${esc(room.amen || '')}"></div>
+      <button class="btn btn-primary btn-md" id="save-btn-${room.id}" onclick="saveRoomDetails('${room.id}')">💾 Save Suite ${room.id}</button>
     </div>`).join('');
 }
 
-/* ── ADD / EDIT / DELETE ── */
-function openAddModal(){
-  g('suite-modal-title').textContent='Add New Suite';
-  g('sm-edit-id').value='';
-  ['sm-name','sm-emoji','sm-sqm','sm-desc','sm-amen'].forEach(id=>{ const el=g(id); if(el) el.value=''; });
-  g('sm-maxpx').value=4;
-  g('sm-rate').value='';
-  g('sm-bed').value='King Bed';
+/* ── ADD / EDIT SUITE MODAL ── */
+function openAddModal() {
+  g('suite-modal-title').textContent = 'Add New Suite';
+  g('sm-edit-id').value = '';
+  ['sm-name','sm-emoji','sm-sqm','sm-desc','sm-amen'].forEach(id => { const el = g(id); if (el) el.value = ''; });
+  g('sm-maxpx').value = 4;
+  g('sm-rate').value = '';
+  g('sm-bed').value = 'King Bed';
   g('suite-modal').classList.add('open');
 }
 
-function openEditModal(id){
-  const room=ROOMS.find(r=>r.id===id); if(!room) return;
-  g('suite-modal-title').textContent='Edit Suite';
-  g('sm-edit-id').value=id;
-  g('sm-name').value=room.name||'';
-  g('sm-emoji').value=room.emoji||'';
-  g('sm-bed').value=room.bed||'King Bed';
-  g('sm-sqm').value=room.sqm||'';
-  g('sm-maxpx').value=room.maxpx||4;
-  g('sm-rate').value=room.rate||'';
-  g('sm-desc').value=room.desc||'';
-  g('sm-amen').value=room.amen||'';
+function openEditModal(id) {
+  const room = ROOMS.find(r => r.id === id);
+  if (!room) return;
+  g('suite-modal-title').textContent = 'Edit Suite';
+  g('sm-edit-id').value = id;
+  g('sm-name').value   = room.name  || '';
+  g('sm-emoji').value  = room.emoji || '';
+  g('sm-bed').value    = room.bed   || 'King Bed';
+  g('sm-sqm').value    = room.sqm   || '';
+  g('sm-maxpx').value  = room.maxpx || 4;
+  g('sm-rate').value   = room.rate  || '';
+  g('sm-desc').value   = room.desc  || '';
+  g('sm-amen').value   = room.amen  || '';
   g('suite-modal').classList.add('open');
 }
 
-function saveSuite(){
-  const name=g('sm-name').value.trim();
-  if(!name){ showToast('Suite name is required','⚠️','t-err'); return; }
-  const editId=g('sm-edit-id').value;
-  const data={
+async function saveSuite() {
+  const name = g('sm-name').value.trim();
+  if (!name) { showToast('Suite name is required', '⚠️', 't-err'); return; }
+
+  const editId = g('sm-edit-id').value;
+  const data = {
     name,
-    emoji: g('sm-emoji').value.trim()||'🏠',
+    emoji: g('sm-emoji').value.trim() || '🏠',
     bed:   g('sm-bed').value,
     sqm:   g('sm-sqm').value,
-    maxpx: parseInt(g('sm-maxpx').value)||4,
-    rate:  parseInt(g('sm-rate').value)||0,
+    maxpx: parseInt(g('sm-maxpx').value) || 4,
+    rate:  parseInt(g('sm-rate').value)  || 0,
     desc:  g('sm-desc').value.trim(),
     amen:  g('sm-amen').value.trim(),
   };
-  if(editId){
-    const idx=ROOMS.findIndex(r=>r.id===editId);
-    if(idx>-1) ROOMS[idx]={...ROOMS[idx],...data};
-    LOG.unshift({type:'ok',msg:`Suite ${editId} · ${name} updated`,time:new Date().toISOString()});
-    showToast(`"${name}" updated!`,'✅','t-ok');
-  } else {
-    const nextId=String(ROOMS.length ? Math.max(...ROOMS.map(r=>parseInt(r.id)||0))+1 : 1);
-    ROOMS.push({id:nextId,...data});
-    LOG.unshift({type:'ok',msg:`New suite added — Suite ${nextId} · ${name}`,time:new Date().toISOString()});
-    showToast(`"${name}" added!`,'✅','t-ok');
+
+  const btn = g('sm-save-btn');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spin"></span> Saving…';
+
+  try {
+    let res;
+    if (editId) {
+      res = await fetch('/api/room', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: editId, ...data }),
+      });
+    } else {
+      res = await fetch('/api/room', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+    }
+
+    const result = await res.json();
+    if (result.success) {
+      showToast(`"${name}" ${editId ? 'updated' : 'added'}!`, '✅', 't-ok');
+      g('suite-modal').classList.remove('open');
+      await loadAll();
+    } else {
+      showToast(result.message || 'Save failed', '❌', 't-err');
+    }
+  } catch (err) {
+    showToast('Server error', '❌', 't-err');
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = '✓ Save Suite';
   }
-  saveAll();
-  g('suite-modal').classList.remove('open');
-  renderRoomsPage();
 }
 
-function saveRoomDetails(id){
-  const room=ROOMS.find(r=>r.id===id); if(!room) return;
-  room.name  = g(`rd-name-${id}`)?.value.trim()  || room.name;
-  room.maxpx = parseInt(g(`rd-maxpx-${id}`)?.value) || room.maxpx;
-  room.desc  = g(`rd-desc-${id}`)?.value.trim()  || '';
-  room.amen  = g(`rd-amen-${id}`)?.value.trim()  || '';
-  LOG.unshift({type:'ok',msg:`Suite ${id} details updated`,time:new Date().toISOString()});
-  saveAll();
-  renderRoomsPage();
-  showToast(`Suite ${id} saved!`,'✅','t-ok');
+async function saveRoomDetails(id) {
+  const btn = g(`save-btn-${id}`);
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spin"></span> Saving…';
+
+  const update = {
+    id,
+    name:  g(`rd-name-${id}`)?.value.trim()  || '',
+    maxpx: parseInt(g(`rd-maxpx-${id}`)?.value) || 4,
+    desc:  g(`rd-desc-${id}`)?.value.trim()  || '',
+    amen:  g(`rd-amen-${id}`)?.value.trim()  || '',
+  };
+
+  try {
+    const res = await fetch('/api/room', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(update),
+    });
+    const result = await res.json();
+    if (result.success) {
+      showToast(`Suite ${id} saved!`, '✅', 't-ok');
+      await loadAll();
+    } else {
+      showToast('Save failed', '❌', 't-err');
+    }
+  } catch (err) {
+    showToast('Server error', '❌', 't-err');
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = `💾 Save Suite ${id}`;
+  }
 }
 
-function deleteRoom(id){
-  const room=ROOMS.find(r=>r.id===id); if(!room) return;
-  const hasActive=BK.some(b=>b.rm==id&&['confirmed','checkedin','pending'].includes(b.st));
-  if(hasActive){ showToast('Cannot remove — suite has active bookings','⚠️','t-err'); return; }
-  if(!confirm(`Remove Suite ${id} · ${room.name}? This cannot be undone.`)) return;
-  ROOMS=ROOMS.filter(r=>r.id!==id);
-  LOG.unshift({type:'warn',msg:`Suite ${id} · ${room.name} removed`,time:new Date().toISOString()});
-  saveAll();
-  renderRoomsPage();
-  showToast(`"${room.name}" removed`,'🗑️','');
+async function deleteRoom(id) {
+  const room = ROOMS.find(r => r.id === id);
+  if (!room) return;
+  if (!confirm(`Remove Suite ${id} · ${room.name}? This cannot be undone.`)) return;
+
+  try {
+    const res = await fetch('/api/room', {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id }),
+    });
+    const result = await res.json();
+    if (result.success) {
+      showToast(`"${room.name}" removed`, '🗑️');
+      await loadAll();
+    } else {
+      showToast(result.message || 'Delete failed', '⚠️', 't-err');
+    }
+  } catch (err) {
+    showToast('Server error', '❌', 't-err');
+  }
 }
 
 /* ── BOOKING MODAL ── */
-function openBkModal(ref){
-  const b=BK.find(x=>x.ref===ref); if(!b) return;
-  g('bk-modal-title').textContent=`Booking — ${b.fn} ${b.ln}`;
-  g('bk-modal-body').innerHTML=`
+function openBkModal(ref) {
+  const b = BK.find(x => x.ref === ref);
+  if (!b) return;
+  g('bk-modal-title').textContent = `Booking — ${b.fn} ${b.ln}`;
+  g('bk-modal-body').innerHTML = `
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:.5rem .8rem;font-size:.82rem;">
       <div style="color:var(--text3);">Reference</div><div style="font-weight:700;">${b.ref}</div>
-      <div style="color:var(--text3);">Guest</div><div style="font-weight:700;">${b.fn} ${b.ln}</div>
+      <div style="color:var(--text3);">Guest</div><div style="font-weight:700;">${esc(b.fn)} ${esc(b.ln)}</div>
       <div style="color:var(--text3);">Phone</div><div>${b.ph}</div>
       <div style="color:var(--text3);">Suite</div><div>Suite ${b.rm}</div>
       <div style="color:var(--text3);">Guests</div><div>${b.px}</div>
       <div style="color:var(--text3);">Check-in</div><div>${fmtFull(b.ci)}</div>
       <div style="color:var(--text3);">Check-out</div><div>${fmtFull(b.co)}</div>
       <div style="color:var(--text3);">Status</div><div>${pill(b.st)}</div>
-      ${b.nt?`<div style="color:var(--text3);">Notes</div><div>${b.nt}</div>`:''}
+      ${b.nt ? `<div style="color:var(--text3);">Notes</div><div>${esc(b.nt)}</div>` : ''}
     </div>`;
-  g('bk-modal-ft').innerHTML='';
+  g('bk-modal-ft').innerHTML = `
+    <a href="bookings.html" class="btn btn-ghost btn-md">Open in Bookings</a>
+    <button class="btn btn-ghost btn-md" onclick="g('bk-modal').classList.remove('open')">Close</button>`;
   g('bk-modal').classList.add('open');
 }
 
 /* ── PENDING BADGE ── */
-function renderPendingBadge(){ const n=BK.filter(b=>b.st==='pending').length; const b=g('sb-pending-badge'); b.textContent=n; b.style.display=n>0?'inline':'none'; }
-
-/* ── NOTIFICATIONS ── */
-function renderNotifs(){
-  const wrap=g('notif-list'); if(!wrap) return;
-  const unread=notifs.filter(n=>!n.read).length;
-  g('notif-dot').style.display=unread>0?'block':'none';
-  if(!notifs.length){ wrap.innerHTML=`<div style="padding:1.2rem;text-align:center;font-size:.8rem;color:var(--text3);">No notifications</div>`; return; }
-  wrap.innerHTML=notifs.slice(0,8).map(n=>`<div class="notif-item${!n.read?' unread':''}"><div class="notif-item-title">${n.msg}</div><div class="notif-item-time">${fmtAgo(n.time)}</div></div>`).join('');
+function renderPendingBadge() {
+  const n = BK.filter(b => b.st === 'pending').length;
+  const b = g('sb-pending-badge');
+  b.textContent = n;
+  b.style.display = n > 0 ? 'inline' : 'none';
 }
-function toggleNotifs(){ g('notif-panel').classList.toggle('open'); notifs.forEach(n=>n.read=true); renderNotifs(); }
-function clearNotifs(){ notifs=[]; renderNotifs(); g('notif-panel').classList.remove('open'); }
-document.addEventListener('click',e=>{ if(!g('notif-btn').contains(e.target)) g('notif-panel').classList.remove('open'); });
+
+/* ── SIDEBAR ── */
+function openSidebar()  { g('sidebar').classList.add('open'); g('sb-overlay').classList.add('visible'); document.body.style.overflow = 'hidden'; }
+function closeSidebar() { g('sidebar').classList.remove('open'); g('sb-overlay').classList.remove('visible'); document.body.style.overflow = ''; }
+
+/* ── LOGOUT ── */
+function logout() {
+  if (confirm('Log out?')) { sessionStorage.clear(); window.location.href = '/pages/login.html'; }
+}
 
 /* ── TOAST ── */
 let toastTimer;
-function showToast(msg,ico='ℹ️',cls=''){ const t=g('toast'); g('toast-ico').textContent=ico; g('toast-msg').textContent=msg; t.className='toast show '+(cls||''); clearTimeout(toastTimer); toastTimer=setTimeout(()=>t.classList.remove('show'),3500); }
+function showToast(msg, ico = 'ℹ️', cls = '') {
+  const t = g('toast');
+  g('toast-ico').textContent = ico;
+  g('toast-msg').textContent = msg;
+  t.className = 'toast show ' + cls;
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 3500);
+}
 
 /* ── HELPERS ── */
-function g(id){ return document.getElementById(id); }
-function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;'); }
-function isOccupied(rm,dt){ return BK.some(b=>{ if(b.rm!=rm||b.st==='cancelled') return false; return dt>=new Date(b.ci)&&dt<new Date(b.co); }); }
-function fmtFull(iso){ return new Date(iso).toLocaleString('en-PH',{month:'short',day:'numeric',year:'numeric',hour:'2-digit',minute:'2-digit'}); }
-function fmtShort(iso){ return new Date(iso).toLocaleString('en-PH',{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'}); }
-function fmtAgo(iso){ const diff=(Date.now()-new Date(iso))/1000; if(diff<60) return'just now'; if(diff<3600) return`${Math.round(diff/60)}m ago`; if(diff<86400) return`${Math.round(diff/3600)}h ago`; return new Date(iso).toLocaleDateString('en-PH',{month:'short',day:'numeric'}); }
-function pill(st){ const m={confirmed:'p-confirmed Confirmed',pending:'p-pending Pending',checkedin:'p-checkedin Checked In',checkedout:'p-checkedout Checked Out',cancelled:'p-cancelled Cancelled'}; const parts=(m[st]||'p-pending '+st).split(' '); return`<span class="pill ${parts[0]}">${parts.slice(1).join(' ')||st}</span>`; }
-function setTopbarDate(){ const el=g('today-label'); if(el) el.textContent=new Date().toLocaleDateString('en-PH',{weekday:'short',month:'long',day:'numeric',year:'numeric'}); }
-function logout(){ if(confirm('Log out of admin panel?')) showToast('Logged out','👋'); }
+function g(id) { return document.getElementById(id); }
+function esc(s) { return String(s || '').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;'); }
+function isOccupied(rm, dt) { return BK.some(b => { if (b.rm != rm || b.st === 'cancelled') return false; return dt >= new Date(b.ci) && dt < new Date(b.co); }); }
+function fmtFull(iso)  { return new Date(iso).toLocaleString('en-PH', { month:'short', day:'numeric', year:'numeric', hour:'2-digit', minute:'2-digit' }); }
+function fmtShort(iso) { return new Date(iso).toLocaleString('en-PH', { month:'short', day:'numeric', hour:'2-digit', minute:'2-digit' }); }
+function pill(st) { const m = { confirmed:'p-confirmed Confirmed', pending:'p-pending Pending', checkedin:'p-checkedin Checked In', checkedout:'p-checkedout Checked Out', cancelled:'p-cancelled Cancelled' }; const parts = (m[st] || 'p-pending ' + st).split(' '); return `<span class="pill ${parts[0]}">${parts.slice(1).join(' ') || st}</span>`; }
+function setTopbarDate() { const el = g('today-label'); if (el) el.textContent = new Date().toLocaleDateString('en-PH', { weekday:'short', month:'long', day:'numeric', year:'numeric' }); }
 
 init();
 </script>

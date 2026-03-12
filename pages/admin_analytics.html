@@ -379,7 +379,7 @@ async function init() {
 /* ════ YEAR DROPDOWN ════ */
 async function populateYearDropdown() {
   try {
-    const res  = await fetch('/api/Analytics?year=' + new Date().getFullYear());
+    const res  = await fetch('/api/Analytic?year=' + new Date().getFullYear());
     const data = await res.json();
     if (!data.availableYears?.length) return;
 
@@ -405,7 +405,7 @@ async function buildReports() {
   showSkeletons();
 
   try {
-    const res = await fetch(`/api/analytics?year=${year}`);
+    const res = await fetch(`/api/Analytic?year=${year}`);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
     cachedData = data;

@@ -323,7 +323,7 @@ async function init() {
 async function loadGuests() {
   showSkeletons();
   try {
-    const res  = await fetch('/api/guests');
+    const res  = await fetch('/api/guest');
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
 
