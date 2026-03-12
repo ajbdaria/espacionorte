@@ -83,7 +83,7 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--linen);color:va
 .row.cols-2{grid-template-columns:repeat(2,1fr);}
 .row.cols-2-1{grid-template-columns:1.6fr 1fr;}
 .panel{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);}
-.panel-hd{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 1.4rem;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:.5rem;}
+.panel-hd{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 1.4rem;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:.5rem;text-decoration:none;}
 .panel-hd-left .ph-title{font-size:.9rem;font-weight:700;color:var(--text);}
 .panel-hd-left .ph-sub{font-size:.7rem;color:var(--text3);margin-top:.12rem;}
 .panel-hd-actions{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;}
@@ -395,7 +395,7 @@ async function init() {
 /* ── LOAD DASHBOARD ── */
 async function loadDashboard() {
   try {
-    const res = await fetch('/api/dashboard');
+    const res = await fetch('/api/Dashboard');
     if (!res.ok) throw new Error('Failed to load dashboard');
     dashData = await res.json();
 
