@@ -131,23 +131,14 @@ nav.scrolled { background:rgba(26,22,14,.96); backdrop-filter:blur(18px); paddin
 .section-title em { font-style:italic; color:var(--amber); }
 .section-sub { color:var(--muted); font-size:.92rem; line-height:1.85; font-weight:300; max-width:500px; margin-top:.7rem; }
 
-/* ══════════════════════════════════════════
-   ROOMS SECTION
-══════════════════════════════════════════ */
+/* ══ ROOMS ══ */
 .rooms-section { background:var(--linen); }
 .rooms-header { text-align:center; margin-bottom:4.5rem; }
 .rooms-header .section-sub { margin:.7rem auto 0; text-align:center; }
-
-/* Stack cards so the gallery drawer sits naturally below each */
 .rooms-grid { display:flex; flex-direction:column; gap:2.5rem; }
-
-/* ── Card shell ── */
 .room-card { background:var(--off-white); border-radius:.75rem; overflow:hidden; border:1px solid var(--border-lt); box-shadow:0 6px 28px rgba(42,30,14,.07); transition:box-shadow .45s cubic-bezier(.23,1,.32,1),transform .45s cubic-bezier(.23,1,.32,1); }
 .room-card:hover { transform:translateY(-5px); box-shadow:0 22px 65px rgba(42,30,14,.15); }
-
-/* ── Top row: image | info ── */
 .room-card-top { display:grid; grid-template-columns:1.05fr 1fr; }
-
 .room-img { height:300px; position:relative; overflow:hidden; }
 .room-img img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .6s cubic-bezier(.23,1,.32,1); }
 .room-card:hover .room-img img { transform:scale(1.06); }
@@ -158,57 +149,35 @@ nav.scrolled { background:rgba(26,22,14,.96); backdrop-filter:blur(18px); paddin
 .badge-avail { background:rgba(43,74,26,.88); border-color:rgba(74,122,46,.5); color:#C4F09C; }
 .badge-taken { background:rgba(155,30,30,.88); border-color:rgba(220,60,60,.4); color:#FFC4C4; }
 .room-name-on-img { position:absolute; bottom:1.3rem; left:1.5rem; font-family:'Cormorant Garamond',serif; font-size:1.55rem; font-weight:600; color:var(--off-white); text-shadow:0 2px 12px rgba(0,0,0,.4); }
-
 .room-body { padding:1.6rem 1.85rem 1.85rem; display:flex; flex-direction:column; justify-content:space-between; border-left:1px solid var(--border-lt); }
 .room-meta { display:flex; gap:1.4rem; margin-bottom:1.2rem; flex-wrap:wrap; }
 .room-meta-item { font-size:.77rem; color:var(--muted); display:flex; align-items:center; gap:.3rem; }
 .room-amenities { display:flex; flex-wrap:wrap; gap:.45rem; margin-bottom:1.3rem; }
 .amenity { font-size:.68rem; letter-spacing:.04em; font-weight:500; background:var(--linen); color:var(--muted); padding:.25rem .68rem; border-radius:.2rem; border:1px solid var(--border); transition:all .18s; }
 .amenity:hover { background:var(--parchment); color:var(--forest); border-color:var(--amber); }
-
 .room-footer { display:flex; align-items:center; justify-content:space-between; padding-top:1.2rem; border-top:1px solid var(--border-lt); margin-top:auto; }
 .room-price .price-amt { font-family:'Cormorant Garamond',serif; font-size:2.1rem; font-weight:700; color:var(--amber); line-height:1; }
 .room-price .price-per { font-size:.66rem; color:var(--muted); letter-spacing:.05em; margin-top:.1rem; }
 .room-footer-btns { display:flex; gap:.55rem; align-items:center; flex-wrap:wrap; }
-
 .btn-reserve { background:var(--forest); color:var(--off-white); border:none; padding:.72rem 1.7rem; border-radius:.25rem; font-family:'Jost',sans-serif; font-size:.7rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; cursor:pointer; transition:all .3s; }
 .btn-reserve:hover { background:var(--sage); transform:translateY(-2px); box-shadow:0 6px 20px rgba(43,74,26,.35); }
-
-/* Tour / Gallery toggle button */
 .btn-tour { background:transparent; color:var(--amber); border:1.5px solid var(--amber); padding:.7rem 1.1rem; border-radius:.25rem; font-family:'Jost',sans-serif; font-size:.7rem; font-weight:600; letter-spacing:.11em; text-transform:uppercase; cursor:pointer; transition:all .28s; display:flex; align-items:center; gap:.38rem; white-space:nowrap; }
 .btn-tour:hover,.btn-tour.active { background:var(--amber); color:var(--charcoal); }
 .btn-tour .t-arr { display:inline-block; transition:transform .3s; font-style:normal; }
 .btn-tour.active .t-arr { transform:rotate(90deg); }
 
-/* ══════════════════════════════
-   GALLERY DRAWER
-══════════════════════════════ */
-.gallery-drawer {
-  max-height:0; overflow:hidden;
-  transition:max-height .55s cubic-bezier(.23,1,.32,1), opacity .3s ease;
-  opacity:0;
-  border-top:0px solid var(--border-lt);
-  background:var(--off-white);
-}
-.gallery-drawer.open {
-  max-height:580px; opacity:1;
-  border-top:1px solid var(--border-lt);
-}
+/* ══ GALLERY DRAWER ══ */
+.gallery-drawer { max-height:0; overflow:hidden; transition:max-height .55s cubic-bezier(.23,1,.32,1),opacity .3s ease; opacity:0; border-top:0px solid var(--border-lt); background:var(--off-white); }
+.gallery-drawer.open { max-height:580px; opacity:1; border-top:1px solid var(--border-lt); }
 .gallery-inner { padding:1.75rem 2rem 2.2rem; }
-
-/* Tab strip */
 .g-tabs { display:flex; gap:.35rem; flex-wrap:wrap; margin-bottom:1.5rem; padding-bottom:1.1rem; border-bottom:1px solid var(--border-lt); }
 .g-tab { display:flex; align-items:center; gap:.38rem; padding:.45rem 1rem; border-radius:.3rem; font-family:'Jost',sans-serif; font-size:.68rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase; background:var(--linen); color:var(--muted); border:1px solid var(--border); cursor:pointer; transition:all .2s; white-space:nowrap; }
 .g-tab:hover { background:var(--parchment); color:var(--forest); border-color:var(--amber); }
 .g-tab.active { background:var(--charcoal); color:var(--gold); border-color:var(--charcoal); box-shadow:0 3px 12px rgba(44,36,22,.25); }
 .g-tab-ico { font-size:.9rem; }
-
-/* Panes */
 .g-pane { display:none; animation:gpIn .3s ease; }
 .g-pane.active { display:block; }
 @keyframes gpIn { from{opacity:0;transform:translateY(8px);} to{opacity:1;transform:translateY(0);} }
-
-/* Photo grid pane */
 .g-photos { display:grid; grid-template-columns:1.6fr 1fr; gap:.85rem; }
 .g-main { border-radius:.5rem; overflow:hidden; height:240px; cursor:zoom-in; position:relative; }
 .g-main img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .5s cubic-bezier(.23,1,.32,1); }
@@ -218,8 +187,6 @@ nav.scrolled { background:rgba(26,22,14,.96); backdrop-filter:blur(18px); paddin
 .g-thumb { border-radius:.4rem; overflow:hidden; flex:1; min-height:0; cursor:zoom-in; }
 .g-thumb img { width:100%; height:100%; min-height:80px; object-fit:cover; display:block; transition:transform .4s; }
 .g-thumb:hover img { transform:scale(1.06); }
-
-/* Amenity card grid */
 .g-amen-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(185px,1fr)); gap:.8rem; }
 .g-amen-card { background:var(--linen); border:1px solid var(--border); border-radius:.5rem; padding:1rem 1.1rem; display:flex; align-items:flex-start; gap:.8rem; transition:all .22s; }
 .g-amen-card:hover { border-color:var(--amber); background:var(--off-white); box-shadow:0 4px 16px rgba(42,30,14,.09); transform:translateY(-2px); }
@@ -346,6 +313,7 @@ footer::before { content:''; position:absolute; top:0; left:0; right:0; height:2
 .footer-links { display:flex; gap:2rem; justify-content:center; flex-wrap:wrap; margin-bottom:2.5rem; }
 .footer-links a { color:rgba(242,232,213,.38); text-decoration:none; font-size:.7rem; letter-spacing:.1em; text-transform:uppercase; transition:color .2s; }
 .footer-links a:hover { color:var(--gold); }
+.footer-contact-extra { font-size:.72rem; color:rgba(242,232,213,.28); margin-bottom:1.5rem; display:none; }
 .footer-divider { border:none; border-top:1px solid rgba(242,232,213,.07); margin:1.5rem 0; }
 .footer-copy { font-size:.65rem; color:rgba(242,232,213,.2); letter-spacing:.07em; }
 
@@ -375,12 +343,18 @@ footer::before { content:''; position:absolute; top:0; left:0; right:0; height:2
 .btn-confirm::before { content:''; position:absolute; top:0; left:-100%; width:100%; height:100%; background:linear-gradient(120deg,transparent,rgba(255,255,255,.15),transparent); transition:.55s; }
 .btn-confirm:hover { box-shadow:0 8px 30px rgba(43,74,26,.55); transform:translateY(-1px); }
 .btn-confirm:hover::before { left:100%; }
+.btn-confirm:disabled { opacity:.6; cursor:not-allowed; transform:none; }
 .modal-success { display:none; text-align:center; padding:2.5rem 2rem; }
 .modal-success.show { display:block; }
 .success-ring { width:80px; height:80px; border-radius:50%; background:linear-gradient(135deg,var(--sage),var(--forest)); display:flex; align-items:center; justify-content:center; font-size:2.2rem; margin:0 auto 1.5rem; box-shadow:0 8px 30px rgba(43,74,26,.45); }
 .modal-success h3 { font-family:'Cormorant Garamond',serif; font-size:2rem; font-weight:600; color:var(--forest-dk); margin-bottom:.5rem; }
 .modal-success p  { font-size:.88rem; color:var(--muted); line-height:1.75; }
 .ref-tag { display:inline-block; margin-top:1rem; background:var(--linen); border:1px solid var(--border); padding:.5rem 1.3rem; border-radius:.25rem; font-family:'Cormorant Garamond',serif; font-size:1rem; color:var(--amber); font-weight:600; }
+
+/* Maintenance banner (non-blocking — shows as top banner) */
+.maintenance-banner { display:none; position:fixed; top:0; left:0; right:0; z-index:9999; background:var(--charcoal); border-bottom:2px solid var(--amber); padding:.75rem 2rem; text-align:center; font-size:.78rem; color:rgba(242,232,213,.8); font-weight:500; letter-spacing:.04em; }
+.maintenance-banner.show { display:block; }
+.maintenance-banner em { color:var(--gold); font-style:normal; font-weight:700; }
 
 /* ══ SCROLL NAV ══ */
 .scroll-nav { position:fixed; right:1.5rem; bottom:2rem; z-index:800; display:flex; flex-direction:column; gap:.55rem; opacity:0; transform:translateX(24px); transition:opacity .4s,transform .4s; pointer-events:none; }
@@ -410,11 +384,9 @@ footer::before { content:''; position:absolute; top:0; left:0; right:0; height:2
   .exp-panel { height:240px; }
   .location-inner { grid-template-columns:1fr; gap:3rem; }
   .map-wrap iframe { height:320px; }
-  /* room card stacks on mobile */
   .room-card-top { grid-template-columns:1fr; }
   .room-img { height:240px; }
   .room-body { border-left:none; border-top:1px solid var(--border-lt); }
-  /* gallery adjustments */
   .g-photos { grid-template-columns:1fr; }
   .g-main { height:200px; }
   .g-thumbs { flex-direction:row; }
@@ -436,6 +408,11 @@ footer::before { content:''; position:absolute; top:0; left:0; right:0; height:2
 </style>
 </head>
 <body>
+
+<!-- Maintenance banner (non-blocking top bar, shown when wsMaintenance=true) -->
+<div class="maintenance-banner" id="maintenance-banner">
+  🔧 <em>Espacio Norte</em> is currently under maintenance. Online booking is temporarily unavailable — please contact us directly.
+</div>
 
 <!-- SCROLL NAV -->
 <div class="scroll-nav" id="scrollNav">
@@ -467,7 +444,7 @@ footer::before { content:''; position:absolute; top:0; left:0; right:0; height:2
   </div>
   <div class="nav-actions">
     <button class="btn-login" onclick="window.location.href='pages/login.html'">Login</button>
-    <button class="btn-booknow" onclick="openModal()">Book Now</button>
+    <button class="btn-booknow" id="btn-nav-book" onclick="openModal()">Book Now</button>
   </div>
 </nav>
 
@@ -491,9 +468,10 @@ footer::before { content:''; position:absolute; top:0; left:0; right:0; height:2
       <span class="word">Home</span>
     </h1>
     <span class="hero-script">AirBNB</span>
-    <p class="hero-desc">A beautifully crafted retreat where modern comfort meets warm, tropical living.<br>Two private suites · up to 4 guests each.</p>
+    <!-- wsSub from settings replaces this -->
+    <p class="hero-desc" id="hero-desc">A beautifully crafted retreat where modern comfort meets warm, tropical living.<br>Two private suites · up to 4 guests each.</p>
     <div class="hero-btns">
-      <button class="btn-gold" onclick="openModal()">Reserve Your Suite</button>
+      <button class="btn-gold" id="btn-hero-book" onclick="openModal()">Reserve Your Suite</button>
       <button class="btn-ghost" onclick="document.getElementById('rooms').scrollIntoView({behavior:'smooth'})">Explore Rooms</button>
     </div>
   </div>
@@ -533,9 +511,7 @@ footer::before { content:''; position:absolute; top:0; left:0; right:0; height:2
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════
-     ROOMS SECTION  (updated with gallery)
-═══════════════════════════════════════ -->
+<!-- ROOMS -->
 <section class="section rooms-section" id="rooms">
   <div class="container">
     <div class="rooms-header">
@@ -555,10 +531,9 @@ footer::before { content:''; position:absolute; top:0; left:0; right:0; height:2
 
     <div class="rooms-grid">
 
-      <!-- ══ SUITE 1 · STERLING ══ -->
+      <!-- SUITE 1 · STERLING -->
       <div class="room-card">
         <div class="room-card-top">
-          <!-- Photo -->
           <div class="room-img">
             <img src="assets/images/sterling.jpg" alt="Sterling"
               onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(155deg,#3D6B1F,#C8932A)';">
@@ -569,7 +544,6 @@ footer::before { content:''; position:absolute; top:0; left:0; right:0; height:2
             </div>
             <div class="room-name-on-img">Sterling</div>
           </div>
-          <!-- Info -->
           <div class="room-body">
             <div>
               <div class="room-meta">
@@ -598,17 +572,14 @@ footer::before { content:''; position:absolute; top:0; left:0; right:0; height:2
                 <button class="btn-tour" id="tour-1" onclick="toggleGallery(1)">
                   🖼 Tour Room <em class="t-arr">›</em>
                 </button>
-                <button class="btn-reserve" onclick="openModal(1)">Reserve →</button>
+                <button class="btn-reserve" id="btn-res-1" onclick="openModal(1)">Reserve →</button>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- ── GALLERY DRAWER ── -->
         <div class="gallery-drawer" id="gdrawer-1">
           <div class="gallery-inner">
-
-            <!-- Tab strip -->
             <div class="g-tabs" id="gtabs-1">
               <button class="g-tab active" onclick="switchTab(1,'bedroom',this)"><span class="g-tab-ico">🛏</span>Bedroom</button>
               <button class="g-tab" onclick="switchTab(1,'bathroom',this)"><span class="g-tab-ico">🚿</span>Bathroom / CR</button>
@@ -616,94 +587,16 @@ footer::before { content:''; position:absolute; top:0; left:0; right:0; height:2
               <button class="g-tab" onclick="switchTab(1,'dining',this)"><span class="g-tab-ico">🍽</span>Dining Area</button>
               <button class="g-tab" onclick="switchTab(1,'amenities',this)"><span class="g-tab-ico">✨</span>All Amenities</button>
             </div>
-
-            <!-- Bedroom -->
-            <div class="g-pane active" id="gpane-1-bedroom">
-              <div class="g-photos">
-                <div class="g-main" onclick="openLb('assets/images/sterling_bedroom.jpg','Sterling — Master Bedroom')">
-                  <img src="assets/images/sterling_bedroom.jpg" alt="Bedroom">
-                  <div class="g-main-label">Master Bedroom · King Bed</div>
-                </div>
-                <div class="g-thumbs">
-                  <div class="g-thumb" onclick="openLb('assets/images/sterling_bedroom2.jpg','Sterling — Bed Detail')">
-                    <img src="assets/images/sterling_bedroom2.jpg" alt="Bed">
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Bathroom / CR -->
-            <div class="g-pane" id="gpane-1-bathroom">
-              <div class="g-photos">
-                <div class="g-main" onclick="openLb('assets/images/bathroom.jpg','Sterling — Private Bathroom')">
-                  <img src="assets/images/bathroom.jpg" alt="Bathroom"
-                    onerror="this.parentElement.style.background='linear-gradient(135deg,#2B4A1A,#1A2E10)';this.style.display='none';">
-                  <div class="g-main-label">Private Bathroom · Hot Shower</div>
-                </div>
-                <div class="g-thumbs">
-                  <div class="g-thumb" onclick="openLb('','Sterling — Fixtures')">
-                    <img src=" " alt="Fixtures"
-                      onerror="this.parentElement.style.background='#1A2E10';this.style.display='none';">
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Living Area -->
-            <div class="g-pane" id="gpane-1-living">
-              <div class="g-photos">
-                <div class="g-main" onclick="openLb('assets/images/sterling_living.jpg','Sterling — Living Room')">
-                  <img src="assets/images/sterling_living.jpg" alt="Living Room"
-                    onerror="this.parentElement.style.background='linear-gradient(135deg,#C8932A,#2B4A1A)';this.style.display='none';">
-                  <div class="g-main-label">Cozy Living Room · Smart TV</div>
-                </div>
-                <div class="g-thumbs">
-                  <div class="g-thumb" onclick="openLb('assets/images/livingroom.jpg','Sterling — Lounge')">
-                    <img src="assets/images/sterling_living3.jpg" alt="Lounge"
-                      onerror="this.parentElement.style.background='#2B4A1A';this.style.display='none';">
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Dining Area -->
-            <div class="g-pane" id="gpane-1-dining">
-              <div class="g-photos">
-                <div class="g-main" onclick="openLb('assets/images/dinning.jpg','Sterling — Dining Area')">
-                  <img src="assets/images/dinning.jpg" alt="Dining Area"
-                    onerror="this.parentElement.style.background='linear-gradient(135deg,#8B5E3C,#2B4A1A)';this.style.display='none';">
-                  <div class="g-main-label">Dining Area · Mini Bar</div>
-                </div>
-                <div class="g-thumbs">
-                  <div class="g-thumb" onclick="openLb('assets/images/sterling_dining2.jpg','Sterling — Dining Table')">
-                    <img src="assets/images/sterling_dining2.jpg" alt="Table"
-                      onerror="this.parentElement.style.background='#2B4A1A';this.style.display='none';">
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- All Amenities -->
-            <div class="g-pane" id="gpane-1-amenities">
-              <div class="g-amen-grid">
-                <div class="g-amen-card"><div class="g-amen-ico">❄️</div><div><div class="g-amen-title">Air-conditioning</div><div class="g-amen-desc">Full inverter A/C — stay cool any time of day or night.</div></div></div>
-                <div class="g-amen-card"><div class="g-amen-ico">📺</div><div><div class="g-amen-title">Smart TV</div><div class="g-amen-desc">Stream Netflix, YouTube & more on the big screen via WiFi.</div></div></div>
-                <div class="g-amen-card"><div class="g-amen-ico">🚿</div><div><div class="g-amen-title">Hot Shower</div><div class="g-amen-desc">Instant hot water with strong pressure — always ready.</div></div></div>
-                <div class="g-amen-card"><div class="g-amen-ico">🍹</div><div><div class="g-amen-title">Mini Bar</div><div class="g-amen-desc">Stocked mini-fridge and refreshment setup for your stay.</div></div></div>
-                <div class="g-amen-card"><div class="g-amen-ico">🛁</div><div><div class="g-amen-title">Private CR / Bathroom</div><div class="g-amen-desc">Fully private — linens, towels & toiletries included.</div></div></div>
-                <div class="g-amen-card"><div class="g-amen-ico">📶</div><div><div class="g-amen-title">Free WiFi</div><div class="g-amen-desc">High-speed internet throughout — work or stream easily.</div></div></div>
-                <div class="g-amen-card"><div class="g-amen-ico">🛏</div><div><div class="g-amen-title">King Bed</div><div class="g-amen-desc">Premium king-sized mattress with hotel-quality fresh linens.</div></div></div>
-                <div class="g-amen-card"><div class="g-amen-ico">🍽</div><div><div class="g-amen-title">Dining Area</div><div class="g-amen-desc">Dedicated dining space — perfect for meals as a group.</div></div></div>
-                <div class="g-amen-card"><div class="g-amen-ico">🅿️</div><div><div class="g-amen-title">Free Parking</div><div class="g-amen-desc">Secure on-site parking available for all guests.</div></div></div>
-              </div>
-            </div>
-
+            <div class="g-pane active" id="gpane-1-bedroom"><div class="g-photos"><div class="g-main" onclick="openLb('assets/images/sterling_bedroom.jpg','Sterling — Master Bedroom')"><img src="assets/images/sterling_bedroom.jpg" alt="Bedroom"><div class="g-main-label">Master Bedroom · King Bed</div></div><div class="g-thumbs"><div class="g-thumb" onclick="openLb('assets/images/sterling_bedroom2.jpg','Sterling — Bed Detail')"><img src="assets/images/sterling_bedroom2.jpg" alt="Bed"></div></div></div></div>
+            <div class="g-pane" id="gpane-1-bathroom"><div class="g-photos"><div class="g-main" onclick="openLb('assets/images/bathroom.jpg','Sterling — Private Bathroom')"><img src="assets/images/bathroom.jpg" alt="Bathroom" onerror="this.parentElement.style.background='linear-gradient(135deg,#2B4A1A,#1A2E10)';this.style.display='none';"><div class="g-main-label">Private Bathroom · Hot Shower</div></div><div class="g-thumbs"><div class="g-thumb"><img src=" " alt="" onerror="this.parentElement.style.background='#1A2E10';this.style.display='none';"></div></div></div></div>
+            <div class="g-pane" id="gpane-1-living"><div class="g-photos"><div class="g-main" onclick="openLb('assets/images/sterling_living.jpg','Sterling — Living Room')"><img src="assets/images/sterling_living.jpg" alt="Living Room" onerror="this.parentElement.style.background='linear-gradient(135deg,#C8932A,#2B4A1A)';this.style.display='none';"><div class="g-main-label">Cozy Living Room · Smart TV</div></div><div class="g-thumbs"><div class="g-thumb"><img src="assets/images/sterling_living3.jpg" alt="Lounge" onerror="this.parentElement.style.background='#2B4A1A';this.style.display='none';"></div></div></div></div>
+            <div class="g-pane" id="gpane-1-dining"><div class="g-photos"><div class="g-main" onclick="openLb('assets/images/dinning.jpg','Sterling — Dining Area')"><img src="assets/images/dinning.jpg" alt="Dining Area" onerror="this.parentElement.style.background='linear-gradient(135deg,#8B5E3C,#2B4A1A)';this.style.display='none';"><div class="g-main-label">Dining Area · Mini Bar</div></div><div class="g-thumbs"><div class="g-thumb"><img src="assets/images/sterling_dining2.jpg" alt="Table" onerror="this.parentElement.style.background='#2B4A1A';this.style.display='none';"></div></div></div></div>
+            <div class="g-pane" id="gpane-1-amenities"><div class="g-amen-grid"><div class="g-amen-card"><div class="g-amen-ico">❄️</div><div><div class="g-amen-title">Air-conditioning</div><div class="g-amen-desc">Full inverter A/C — stay cool any time of day or night.</div></div></div><div class="g-amen-card"><div class="g-amen-ico">📺</div><div><div class="g-amen-title">Smart TV</div><div class="g-amen-desc">Stream Netflix, YouTube & more on the big screen via WiFi.</div></div></div><div class="g-amen-card"><div class="g-amen-ico">🚿</div><div><div class="g-amen-title">Hot Shower</div><div class="g-amen-desc">Instant hot water with strong pressure — always ready.</div></div></div><div class="g-amen-card"><div class="g-amen-ico">🍹</div><div><div class="g-amen-title">Mini Bar</div><div class="g-amen-desc">Stocked mini-fridge and refreshment setup for your stay.</div></div></div><div class="g-amen-card"><div class="g-amen-ico">🛁</div><div><div class="g-amen-title">Private CR / Bathroom</div><div class="g-amen-desc">Fully private — linens, towels & toiletries included.</div></div></div><div class="g-amen-card"><div class="g-amen-ico">📶</div><div><div class="g-amen-title">Free WiFi</div><div class="g-amen-desc">High-speed internet throughout — work or stream easily.</div></div></div><div class="g-amen-card"><div class="g-amen-ico">🛏</div><div><div class="g-amen-title">King Bed</div><div class="g-amen-desc">Premium king-sized mattress with hotel-quality fresh linens.</div></div></div><div class="g-amen-card"><div class="g-amen-ico">🍽</div><div><div class="g-amen-title">Dining Area</div><div class="g-amen-desc">Dedicated dining space — perfect for meals as a group.</div></div></div><div class="g-amen-card"><div class="g-amen-ico">🅿️</div><div><div class="g-amen-title">Free Parking</div><div class="g-amen-desc">Secure on-site parking available for all guests.</div></div></div></div></div>
           </div>
-        </div><!-- /gdrawer-1 -->
-      </div><!-- /room-card 1 -->
+        </div>
+      </div>
 
-
-      <!-- ══ SUITE 2 · HABI ══ -->
+      <!-- SUITE 2 · HABI -->
       <div class="room-card">
         <div class="room-card-top">
           <div class="room-img">
@@ -744,16 +637,14 @@ footer::before { content:''; position:absolute; top:0; left:0; right:0; height:2
                 <button class="btn-tour" id="tour-2" onclick="toggleGallery(2)">
                   🖼 Tour Room <em class="t-arr">›</em>
                 </button>
-                <button class="btn-reserve" onclick="openModal(2)">Reserve →</button>
+                <button class="btn-reserve" id="btn-res-2" onclick="openModal(2)">Reserve →</button>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- ── GALLERY DRAWER ── -->
         <div class="gallery-drawer" id="gdrawer-2">
           <div class="gallery-inner">
-
             <div class="g-tabs" id="gtabs-2">
               <button class="g-tab active" onclick="switchTab(2,'bedroom',this)"><span class="g-tab-ico">🛏</span>Bedroom</button>
               <button class="g-tab" onclick="switchTab(2,'bathroom',this)"><span class="g-tab-ico">🚿</span>Bathroom / CR</button>
@@ -761,93 +652,16 @@ footer::before { content:''; position:absolute; top:0; left:0; right:0; height:2
               <button class="g-tab" onclick="switchTab(2,'dining',this)"><span class="g-tab-ico">🍽</span>Dining Area</button>
               <button class="g-tab" onclick="switchTab(2,'amenities',this)"><span class="g-tab-ico">✨</span>All Amenities</button>
             </div>
-
-            <!-- Bedroom -->
-            <div class="g-pane active" id="gpane-2-bedroom">
-              <div class="g-photos">
-                <div class="g-main" onclick="openLb('assets/images/habi_bedroom','Habi — Master Bedroom')">
-                  <img src="assets/images/habi_bedroom.jpg" alt="Bedroom">
-                  <div class="g-main-label">Master Bedroom · Queen Bed</div>
-                </div>
-                <div class="g-thumbs">
-                  <div class="g-thumb" onclick="openLb('assets/images/habi_bedroom2','Habi — Bed Detail')">
-                    <img src="assets/images/habi_bedroom2.jpg" alt="Bed">
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Bathroom / CR -->
-            <div class="g-pane" id="gpane-2-bathroom">
-              <div class="g-photos">
-                <div class="g-main" onclick="openLb('assets/images/bathroom.jpg','Habi — Private Bathroom')">
-                  <img src="assets/images/bathroom.jpg" alt="Bathroom"
-                    onerror="this.parentElement.style.background='linear-gradient(135deg,#2B4A1A,#1A2E10)';this.style.display='none';">
-                  <div class="g-main-label">Private Bathroom · Hot Shower</div>
-                </div>
-                <div class="g-thumbs">
-                  <div class="g-thumb" onclick="openLb('assets/images/bathroom.jpg','Habi — Shower')">
-                    <img src="assets/images/bathroom.jpg" alt="Shower"
-                      onerror="this.parentElement.style.background='#2B4A1A';this.style.display='none';">
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Living Area -->
-            <div class="g-pane" id="gpane-2-living">
-              <div class="g-photos">
-                <div class="g-main" onclick="openLb('assets/images/habi_living2.jpg','Habi — Living Room')">
-                  <img src="assets/images/habi_living2.jpg" alt="Living Room"
-                    onerror="this.parentElement.style.background='linear-gradient(135deg,#C8932A,#2B4A1A)';this.style.display='none';">
-                  <div class="g-main-label">Cozy Living Room · Smart TV</div>
-                </div>
-                <div class="g-thumbs">
-                  <div class="g-thumb" onclick="openLb('assets/images/habi_living3.jpg','Habi — Lounge')">
-                    <img src="assets/images/habi_living3.jpg" alt="Lounge"
-                      onerror="this.parentElement.style.background='#2B4A1A';this.style.display='none';">
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Dining Area -->
-            <div class="g-pane" id="gpane-2-dining">
-              <div class="g-photos">
-                <div class="g-main" onclick="openLb('assets/images/habi_dining.jpg','Habi — Dining Area')">
-                  <img src="assets/images/habi_dining.jpg" alt="Dining Area"
-                    onerror="this.parentElement.style.background='linear-gradient(135deg,#8B5E3C,#2B4A1A)';this.style.display='none';">
-                  <div class="g-main-label">Dining Area · Mini Bar</div>
-                </div>
-                <div class="g-thumbs">
-                  <div class="g-thumb" onclick="openLb('assets/images/habi_dining2.jpg','Habi — Dining Table')">
-                    <img src="assets/images/habi_dining2.jpg" alt="Table"
-                      onerror="this.parentElement.style.background='#2B4A1A';this.style.display='none';">
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- All Amenities -->
-            <div class="g-pane" id="gpane-2-amenities">
-              <div class="g-amen-grid">
-                <div class="g-amen-card"><div class="g-amen-ico">❄️</div><div><div class="g-amen-title">Air-conditioning</div><div class="g-amen-desc">Full inverter A/C — stay cool any time of day or night.</div></div></div>
-                <div class="g-amen-card"><div class="g-amen-ico">📺</div><div><div class="g-amen-title">Smart TV</div><div class="g-amen-desc">Stream Netflix, YouTube & more on the big screen via WiFi.</div></div></div>
-                <div class="g-amen-card"><div class="g-amen-ico">🚿</div><div><div class="g-amen-title">Hot Shower</div><div class="g-amen-desc">Instant hot water with strong pressure — always ready.</div></div></div>
-                <div class="g-amen-card"><div class="g-amen-ico">🍹</div><div><div class="g-amen-title">Mini Bar</div><div class="g-amen-desc">Stocked mini-fridge and refreshment setup for your stay.</div></div></div>
-                <div class="g-amen-card"><div class="g-amen-ico">🛁</div><div><div class="g-amen-title">Private CR / Bathroom</div><div class="g-amen-desc">Fully private — linens, towels & toiletries included.</div></div></div>
-                <div class="g-amen-card"><div class="g-amen-ico">📶</div><div><div class="g-amen-title">Free WiFi</div><div class="g-amen-desc">High-speed internet throughout — work or stream easily.</div></div></div>
-                <div class="g-amen-card"><div class="g-amen-ico">🛏</div><div><div class="g-amen-title">Queen Bed</div><div class="g-amen-desc">Premium queen-sized mattress with hotel-quality fresh linens.</div></div></div>
-                <div class="g-amen-card"><div class="g-amen-ico">🍽</div><div><div class="g-amen-title">Dining Area</div><div class="g-amen-desc">Dedicated dining space — perfect for meals as a group.</div></div></div>
-                <div class="g-amen-card"><div class="g-amen-ico">🅿️</div><div><div class="g-amen-title">Free Parking</div><div class="g-amen-desc">Secure on-site parking available for all guests.</div></div></div>
-              </div>
-            </div>
-
+            <div class="g-pane active" id="gpane-2-bedroom"><div class="g-photos"><div class="g-main" onclick="openLb('assets/images/habi_bedroom.jpg','Habi — Master Bedroom')"><img src="assets/images/habi_bedroom.jpg" alt="Bedroom"><div class="g-main-label">Master Bedroom · Queen Bed</div></div><div class="g-thumbs"><div class="g-thumb" onclick="openLb('assets/images/habi_bedroom2.jpg','Habi — Bed Detail')"><img src="assets/images/habi_bedroom2.jpg" alt="Bed"></div></div></div></div>
+            <div class="g-pane" id="gpane-2-bathroom"><div class="g-photos"><div class="g-main" onclick="openLb('assets/images/bathroom.jpg','Habi — Private Bathroom')"><img src="assets/images/bathroom.jpg" alt="Bathroom" onerror="this.parentElement.style.background='linear-gradient(135deg,#2B4A1A,#1A2E10)';this.style.display='none';"><div class="g-main-label">Private Bathroom · Hot Shower</div></div><div class="g-thumbs"><div class="g-thumb"><img src="assets/images/bathroom.jpg" alt="Shower" onerror="this.parentElement.style.background='#2B4A1A';this.style.display='none';"></div></div></div></div>
+            <div class="g-pane" id="gpane-2-living"><div class="g-photos"><div class="g-main" onclick="openLb('assets/images/habi_living2.jpg','Habi — Living Room')"><img src="assets/images/habi_living2.jpg" alt="Living Room" onerror="this.parentElement.style.background='linear-gradient(135deg,#C8932A,#2B4A1A)';this.style.display='none';"><div class="g-main-label">Cozy Living Room · Smart TV</div></div><div class="g-thumbs"><div class="g-thumb"><img src="assets/images/habi_living3.jpg" alt="Lounge" onerror="this.parentElement.style.background='#2B4A1A';this.style.display='none';"></div></div></div></div>
+            <div class="g-pane" id="gpane-2-dining"><div class="g-photos"><div class="g-main" onclick="openLb('assets/images/habi_dining.jpg','Habi — Dining Area')"><img src="assets/images/habi_dining.jpg" alt="Dining Area" onerror="this.parentElement.style.background='linear-gradient(135deg,#8B5E3C,#2B4A1A)';this.style.display='none';"><div class="g-main-label">Dining Area · Mini Bar</div></div><div class="g-thumbs"><div class="g-thumb"><img src="assets/images/habi_dining2.jpg" alt="Table" onerror="this.parentElement.style.background='#2B4A1A';this.style.display='none';"></div></div></div></div>
+            <div class="g-pane" id="gpane-2-amenities"><div class="g-amen-grid"><div class="g-amen-card"><div class="g-amen-ico">❄️</div><div><div class="g-amen-title">Air-conditioning</div><div class="g-amen-desc">Full inverter A/C — stay cool any time of day or night.</div></div></div><div class="g-amen-card"><div class="g-amen-ico">📺</div><div><div class="g-amen-title">Smart TV</div><div class="g-amen-desc">Stream Netflix, YouTube & more on the big screen via WiFi.</div></div></div><div class="g-amen-card"><div class="g-amen-ico">🚿</div><div><div class="g-amen-title">Hot Shower</div><div class="g-amen-desc">Instant hot water with strong pressure — always ready.</div></div></div><div class="g-amen-card"><div class="g-amen-ico">🍹</div><div><div class="g-amen-title">Mini Bar</div><div class="g-amen-desc">Stocked mini-fridge and refreshment setup for your stay.</div></div></div><div class="g-amen-card"><div class="g-amen-ico">🛁</div><div><div class="g-amen-title">Private CR / Bathroom</div><div class="g-amen-desc">Fully private — linens, towels & toiletries included.</div></div></div><div class="g-amen-card"><div class="g-amen-ico">📶</div><div><div class="g-amen-title">Free WiFi</div><div class="g-amen-desc">High-speed internet throughout — work or stream easily.</div></div></div><div class="g-amen-card"><div class="g-amen-ico">🛏</div><div><div class="g-amen-title">Queen Bed</div><div class="g-amen-desc">Premium queen-sized mattress with hotel-quality fresh linens.</div></div></div><div class="g-amen-card"><div class="g-amen-ico">🍽</div><div><div class="g-amen-title">Dining Area</div><div class="g-amen-desc">Dedicated dining space — perfect for meals as a group.</div></div></div><div class="g-amen-card"><div class="g-amen-ico">🅿️</div><div><div class="g-amen-title">Free Parking</div><div class="g-amen-desc">Secure on-site parking available for all guests.</div></div></div></div></div>
           </div>
-        </div><!-- /gdrawer-2 -->
-      </div><!-- /room-card 2 -->
+        </div>
+      </div>
 
-    </div><!-- /rooms-grid -->
+    </div>
   </div>
 </section>
 
@@ -863,33 +677,9 @@ footer::before { content:''; position:absolute; top:0; left:0; right:0; height:2
 <!-- EXPERIENCE STRIP -->
 <div class="experience-section">
   <div class="exp-strip">
-    <div class="exp-panel">
-      <img src="/assets/images/livingroom.jpg" alt="Cozy Living">
-      <div class="exp-panel-overlay"></div>
-      <div class="exp-panel-content">
-        <div class="exp-panel-tag">The Ambiance</div>
-        <div class="exp-panel-title">Cozy Living Spaces</div>
-        <div class="exp-panel-desc">Warm lighting, thoughtful furnishings — every corner feels like home.</div>
-      </div>
-    </div>
-    <div class="exp-panel">
-      <img src="/assets/images/bathroom.jpg" alt="Private Bath">
-      <div class="exp-panel-overlay"></div>
-      <div class="exp-panel-content">
-        <div class="exp-panel-tag">The Comfort</div>
-        <div class="exp-panel-title">Private Bathrooms</div>
-        <div class="exp-panel-desc">Hot showers and pristine private baths — your personal retreat.</div>
-      </div>
-    </div>
-    <div class="exp-panel">
-      <img src="/assets/images/dinning.jpg" alt="Tropical Setting">
-      <div class="exp-panel-overlay"></div>
-      <div class="exp-panel-content">
-        <div class="exp-panel-tag">The Setting</div>
-        <div class="exp-panel-title">Dining Area</div>
-        <div class="exp-panel-desc">Nature-surrounded property — lush, quiet, and beautifully serene.</div>
-      </div>
-    </div>
+    <div class="exp-panel"><img src="/assets/images/livingroom.jpg" alt="Cozy Living"><div class="exp-panel-overlay"></div><div class="exp-panel-content"><div class="exp-panel-tag">The Ambiance</div><div class="exp-panel-title">Cozy Living Spaces</div><div class="exp-panel-desc">Warm lighting, thoughtful furnishings — every corner feels like home.</div></div></div>
+    <div class="exp-panel"><img src="/assets/images/bathroom.jpg" alt="Private Bath"><div class="exp-panel-overlay"></div><div class="exp-panel-content"><div class="exp-panel-tag">The Comfort</div><div class="exp-panel-title">Private Bathrooms</div><div class="exp-panel-desc">Hot showers and pristine private baths — your personal retreat.</div></div></div>
+    <div class="exp-panel"><img src="/assets/images/dinning.jpg" alt="Tropical Setting"><div class="exp-panel-overlay"></div><div class="exp-panel-content"><div class="exp-panel-tag">The Setting</div><div class="exp-panel-title">Dining Area</div><div class="exp-panel-desc">Nature-surrounded property — lush, quiet, and beautifully serene.</div></div></div>
   </div>
 </div>
 
@@ -903,7 +693,7 @@ footer::before { content:''; position:absolute; top:0; left:0; right:0; height:2
         <p class="section-sub" style="margin-bottom:2rem">Red-marked dates are fully booked. All other dates are open for reservation.</p>
         <div class="calcard">
           <div class="cal-top">
-            <span class="cal-month" id="cal-lbl">February 2026</span>
+            <span class="cal-month" id="cal-lbl">Loading…</span>
             <div class="cal-nav">
               <button class="cal-btn" onclick="prevMo()">‹</button>
               <button class="cal-btn" onclick="nextMo()">›</button>
@@ -947,9 +737,7 @@ footer::before { content:''; position:absolute; top:0; left:0; right:0; height:2
 <!-- TRUST -->
 <section class="trust-section">
   <div class="trust-inner">
-    <div class="eyebrow" style="justify-content:center;margin-bottom:1.5rem">
-      <span class="eyebrow-dash"></span><span class="eyebrow-text">Guest Love</span><span class="eyebrow-dash"></span>
-    </div>
+    <div class="eyebrow" style="justify-content:center;margin-bottom:1.5rem"><span class="eyebrow-dash"></span><span class="eyebrow-text">Guest Love</span><span class="eyebrow-dash"></span></div>
     <div class="trust-stars">★★★★★</div>
     <p class="trust-quote">"Espacio Norte felt like a <em>real home</em> — warm, beautifully decorated, and absolutely peaceful. We didn't want to leave."</p>
     <div class="trust-source">— Maria & Family · Verified Guest</div>
@@ -972,39 +760,41 @@ footer::before { content:''; position:absolute; top:0; left:0; right:0; height:2
       <div class="location-details">
         <div class="loc-detail">
           <div class="loc-detail-icon">📍</div>
-          <div class="loc-detail-body">
+          <div>
             <div class="loc-detail-label">Address</div>
-            <div class="loc-detail-value">Espacio Norte AirBNB<br>Philippines</div>
+            <!-- Populated by settings: addr / propName -->
+            <div class="loc-detail-value" id="loc-addr">Espacio Norte AirBNB<br>Philippines</div>
           </div>
         </div>
         <div class="loc-detail">
           <div class="loc-detail-icon">🗺</div>
-          <div class="loc-detail-body">
+          <div>
             <div class="loc-detail-label">Google Maps</div>
             <div class="loc-detail-value">Search "Espacio Norte" on Google Maps for turn-by-turn directions.</div>
           </div>
         </div>
         <div class="loc-detail">
           <div class="loc-detail-icon">🚗</div>
-          <div class="loc-detail-body">
+          <div>
             <div class="loc-detail-label">Getting Here</div>
             <div class="loc-detail-value">Accessible by car, grab, or tricycle. Parking available on-site.</div>
           </div>
         </div>
         <div class="loc-detail">
           <div class="loc-detail-icon">📞</div>
-          <div class="loc-detail-body">
+          <div>
             <div class="loc-detail-label">Need Directions?</div>
-            <div class="loc-detail-value">Message us on Facebook or WhatsApp — we'll guide you right to the door.</div>
+            <!-- Populated by settings: phone -->
+            <div class="loc-detail-value" id="loc-phone">Message us on Facebook or WhatsApp — we'll guide you right to the door.</div>
           </div>
         </div>
       </div>
-      <a class="btn-directions" href="https://www.google.com/maps/search/Espacio+Norte" target="_blank" rel="noopener noreferrer">
+      <a class="btn-directions" id="btn-directions" href="https://www.google.com/maps/search/Espacio+Norte" target="_blank" rel="noopener noreferrer">
         <span>📍</span> Open in Google Maps
       </a>
     </div>
     <div class="map-wrap">
-      <div class="map-pin-badge"><span>📍</span><span>Espacio Norte AirBNB</span></div>
+      <div class="map-pin-badge"><span>📍</span><span id="map-pin-name">Espacio Norte AirBNB</span></div>
       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d123456!2d121.0!3d14.5!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sEspacio+Norte!5e0!3m2!1sen!2sph!4v1700000000000!5m2!1sen!2sph&q=Espacio+Norte"
         allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Espacio Norte Location"></iframe>
     </div>
@@ -1014,15 +804,20 @@ footer::before { content:''; position:absolute; top:0; left:0; right:0; height:2
 <!-- FOOTER -->
 <footer id="footer">
   <div class="footer-logo">Espacio Norte</div>
-  <span class="footer-script">Your Home Away From Home</span>
-  <p class="footer-desc">A beautifully crafted retreat in the heart of tropical living. Two private suites waiting to welcome you.</p>
+  <!-- wsTagline from settings -->
+  <span class="footer-script" id="footer-tagline">Your Home Away From Home</span>
+  <!-- wsSub from settings -->
+  <p class="footer-desc" id="footer-desc">A beautifully crafted retreat in the heart of tropical living. Two private suites waiting to welcome you.</p>
   <div class="footer-links">
-    <a href="#">Facebook</a>
-    <a href="#">Airbnb Listing</a>
-    <a href="#">Instagram</a>
+    <!-- fb / ig / phone links populated from settings -->
+    <a id="footer-fb" href="#">Facebook</a>
+    <a id="footer-airbnb" href="#">Airbnb Listing</a>
+    <a id="footer-ig" href="#">Instagram</a>
     <a href="#">WhatsApp</a>
-    <a href="tel:+63">Call Us</a>
+    <a id="footer-tel" href="tel:+63">Call Us</a>
   </div>
+  <!-- wsFooter custom contact text from settings -->
+  <p class="footer-contact-extra" id="footer-contact-extra"></p>
   <hr class="footer-divider">
   <p class="footer-copy">© 2026 ESPACIO NORTE AIRBNB · ALL RIGHTS RESERVED</p>
 </footer>
@@ -1062,7 +857,7 @@ footer::before { content:''; position:absolute; top:0; left:0; right:0; height:2
           <div class="summary-row"><span>Check-out (21 hrs later)</span><span class="summary-val" id="s-co">—</span></div>
           <div class="summary-row"><span>Total</span><span class="summary-val" id="s-tot">₱1,999</span></div>
         </div>
-        <button class="btn-confirm" onclick="confirmBooking()">Confirm Reservation</button>
+        <button class="btn-confirm" id="btn-confirm" onclick="confirmBooking()">Confirm Reservation</button>
       </div>
     </div>
     <div class="modal-success" id="modal-success">
@@ -1077,61 +872,360 @@ footer::before { content:''; position:absolute; top:0; left:0; right:0; height:2
 
 <script>
 'use strict';
-const RATE = 1999;
-let bk = JSON.parse(localStorage.getItem('en3') || '[]');
-const save = () => localStorage.setItem('en3', JSON.stringify(bk));
 
-/* ── Nav scroll ── */
-window.addEventListener('scroll', () => {
-  document.getElementById('nav').classList.toggle('scrolled', scrollY > 55);
-});
+/* ═══════════════════════════════════════════════════
+   CONFIG
+═══════════════════════════════════════════════════ */
+const API_BASE = '/api';
+const RATE     = 1999;
+const MN = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+const DN = ['Su','Mo','Tu','We','Th','Fr','Sa'];
 
-/* ── Scroll nav progress rings ── */
-(function () {
-  const nav = document.getElementById('scrollNav');
-  const ringUp   = document.getElementById('prog-up');
-  const ringDown = document.getElementById('prog-down');
-  const CIRC = 2 * Math.PI * 20;
-  function upd() {
-    const s = window.scrollY, max = document.body.scrollHeight - window.innerHeight;
-    const pct = max > 0 ? s / max : 0;
-    nav.classList.toggle('visible', s > 100);
-    ringUp.style.strokeDashoffset   = CIRC * (1 - pct);
-    ringDown.style.strokeDashoffset = CIRC * pct;
+let bk  = [];    // bookings from GET /api/bookings
+let cfg = {};    // settings from GET /api/settings
+let CAL = new Date();
+
+/* ═══════════════════════════════════════════════════
+   BOOT — load settings + bookings together
+═══════════════════════════════════════════════════ */
+async function init() {
+  await Promise.all([loadSettings(), loadBookings()]);
+  applySettings();
+  renderCal();
+  initDateBar();
+}
+
+/* ═══════════════════════════════════════════════════
+   API HELPER
+═══════════════════════════════════════════════════ */
+async function apiFetch(path, opts = {}) {
+  const res  = await fetch(API_BASE + path, { headers: { 'Content-Type': 'application/json' }, ...opts });
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.message || `HTTP ${res.status}`);
+  return data;
+}
+
+/* ═══════════════════════════════════════════════════
+   LOAD SETTINGS  →  GET /api/settings
+   Drives every piece of the page that can change
+   from the Settings panel.
+═══════════════════════════════════════════════════ */
+async function loadSettings() {
+  try { cfg = await apiFetch('/settings'); }
+  catch (_) { cfg = {}; }   // silently fall back — page still works
+}
+
+/*
+  applySettings() wires every settings field to its
+  corresponding element on the public-facing page:
+
+  ┌─ Settings tab ──────┬─ Field ──────────┬─ Element updated ────────────────────────┐
+  │ Website             │ wsTagline        │ #footer-tagline                          │
+  │ Website             │ wsSub            │ #hero-desc, #footer-desc                 │
+  │ Website             │ wsFooter         │ #footer-contact-extra                    │
+  │ Website             │ wsAllowBookings  │ Book/Reserve buttons disabled/enabled    │
+  │ Website             │ wsMaintenance    │ Maintenance banner shown/hidden          │
+  │ Property            │ propName         │ Page <title>, map pin name               │
+  │ Property            │ addr             │ #loc-addr                                │
+  │ Property            │ phone            │ #loc-phone, #footer-tel href             │
+  │ Property            │ fb               │ #footer-fb href                          │
+  │ Property            │ airbnb           │ #footer-airbnb href                      │
+  │ Property            │ ig               │ #footer-ig href                          │
+  └─────────────────────┴──────────────────┴──────────────────────────────────────────┘
+*/
+function applySettings() {
+
+  /* ── Website tab ────────────────────────────── */
+
+  // Hero subtext (wsSub)
+  if (cfg.wsSub) {
+    const el = document.getElementById('hero-desc');
+    if (el) el.textContent = cfg.wsSub;
   }
-  window.addEventListener('scroll', upd, { passive: true });
-  upd();
-})();
 
-/* ══════════════════════
+  // Footer tagline (wsTagline)
+  if (cfg.wsTagline) {
+    const el = document.getElementById('footer-tagline');
+    if (el) el.textContent = cfg.wsTagline;
+  }
+
+  // Footer description (wsSub reused)
+  if (cfg.wsSub) {
+    const el = document.getElementById('footer-desc');
+    if (el) el.textContent = cfg.wsSub;
+  }
+
+  // Footer custom contact block (wsFooter)
+  if (cfg.wsFooter) {
+    const el = document.getElementById('footer-contact-extra');
+    if (el) { el.textContent = cfg.wsFooter; el.style.display = 'block'; }
+  }
+
+  // Maintenance banner (wsMaintenance)
+  if (cfg.wsMaintenance) {
+    document.getElementById('maintenance-banner').classList.add('show');
+  }
+
+  // Disable all booking buttons when wsAllowBookings === false
+  if (cfg.wsAllowBookings === false) {
+    const tip = 'Online booking is currently unavailable. Please contact us directly.';
+    ['btn-nav-book','btn-hero-book','btn-res-1','btn-res-2'].forEach(id => {
+      const btn = document.getElementById(id);
+      if (!btn) return;
+      btn.disabled     = true;
+      btn.title        = tip;
+      btn.style.opacity  = '.45';
+      btn.style.cursor   = 'not-allowed';
+    });
+  }
+
+  /* ── Property tab ───────────────────────────── */
+
+  // Page title
+  if (cfg.propName) {
+    document.title = cfg.propName + ' — ' + (cfg.wsTagline || 'Your Home Away From Home');
+  }
+
+  // Map pin badge name
+  if (cfg.propName) {
+    const el = document.getElementById('map-pin-name');
+    if (el) el.textContent = cfg.propName;
+  }
+
+  // Address block
+  if (cfg.addr) {
+    const el = document.getElementById('loc-addr');
+    if (el) el.innerHTML = (cfg.propName || 'Espacio Norte AirBNB') + '<br>' + cfg.addr;
+  }
+
+  // Phone
+  if (cfg.phone) {
+    const locPhone = document.getElementById('loc-phone');
+    if (locPhone) locPhone.textContent = cfg.phone;
+    const telLink = document.getElementById('footer-tel');
+    if (telLink) telLink.href = 'tel:' + cfg.phone.replace(/\s/g,'');
+  }
+
+  // Social / booking links
+  if (cfg.fb) {
+    const el = document.getElementById('footer-fb');
+    if (el) el.href = cfg.fb;
+  }
+  if (cfg.airbnb) {
+    const el = document.getElementById('footer-airbnb');
+    if (el) el.href = cfg.airbnb;
+  }
+  if (cfg.ig) {
+    const el = document.getElementById('footer-ig');
+    if (el) el.href = 'https://instagram.com/' + cfg.ig.replace('@','');
+  }
+}
+
+/* ═══════════════════════════════════════════════════
+   LOAD BOOKINGS  →  GET /api/bookings
+   (replaces old localStorage read)
+═══════════════════════════════════════════════════ */
+async function loadBookings() {
+  try {
+    const data = await apiFetch('/Bookings');
+    bk = Array.isArray(data) ? data : (data.bookings || []);
+  } catch (_) { bk = []; }
+}
+
+/* ═══════════════════════════════════════════════════
+   CALENDAR
+═══════════════════════════════════════════════════ */
+function renderCal() {
+  document.getElementById('cal-lbl').textContent = MN[CAL.getMonth()] + ' ' + CAL.getFullYear();
+  const g = document.getElementById('cg');
+  g.innerHTML = DN.map(d => '<div class="cal-day-name">' + d + '</div>').join('');
+  const first = new Date(CAL.getFullYear(), CAL.getMonth(), 1).getDay();
+  const total = new Date(CAL.getFullYear(), CAL.getMonth() + 1, 0).getDate();
+  const today = new Date();
+  for (let i = 0; i < first; i++) g.innerHTML += '<div class="cal-day cal-empty"></div>';
+  for (let d = 1; d <= total; d++) {
+    const dt  = new Date(CAL.getFullYear(), CAL.getMonth(), d);
+    const isT = dt.toDateString() === today.toDateString();
+    const isB = isBooked(dt);
+    g.innerHTML += '<div class="cal-day' + (isT ? ' cal-today' : isB ? ' cal-booked' : '') + '">' + d + '</div>';
+  }
+  renderSlots();
+}
+
+function isBooked(dt) {
+  return bk.some(b => {
+    if (b.st === 'cancelled') return false;
+    return dt >= new Date(b.ci) && dt < new Date(b.co);
+  });
+}
+function prevMo() { CAL.setMonth(CAL.getMonth() - 1); renderCal(); }
+function nextMo() { CAL.setMonth(CAL.getMonth() + 1); renderCal(); }
+
+function renderSlots() {
+  const now   = new Date();
+  const rooms = [{ id: 1, n: 'Suite 1 · Sterling' }, { id: 2, n: 'Suite 2 · Habi' }];
+  const canBook = cfg.wsAllowBookings !== false;
+  let h = '';
+  rooms.forEach(r => {
+    const occ = bk.some(b =>
+      b.rm == r.id && b.st !== 'cancelled' &&
+      now >= new Date(b.ci) && now < new Date(b.co)
+    );
+    h += '<div class="slot-card"><div><div class="slot-name">' + r.n + '</div><div class="slot-info">Up to 4 pax · ₱1,999 / 21 hrs</div></div>' +
+         '<div class="slot-right"><span class="pill ' + (occ ? 'pill-taken' : 'pill-avail') + '">' + (occ ? 'Booked' : 'Available') + '</span>' +
+         (!occ && canBook ? '<button class="btn-slot-book" onclick="openModal(' + r.id + ')">Book</button>' : '') +
+         '</div></div>';
+    const badge = document.getElementById('r' + r.id + 'b');
+    if (badge) { badge.textContent = occ ? 'Booked' : 'Available'; badge.className = 'room-badge ' + (occ ? 'badge-taken' : 'badge-avail'); }
+  });
+  document.getElementById('slots').innerHTML = h;
+}
+
+/* ═══════════════════════════════════════════════════
+   MODAL
+═══════════════════════════════════════════════════ */
+function openModal(rm) {
+  if (cfg.wsAllowBookings === false) {
+    alert('Online booking is currently unavailable. Please contact us directly.');
+    return;
+  }
+  document.getElementById('modal').classList.add('open');
+  document.getElementById('modal-form').style.display = 'block';
+  document.getElementById('modal-success').classList.remove('show');
+  const n = new Date(); n.setMinutes(0, 0, 0);
+  document.getElementById('f-ci').value = n.toISOString().slice(0, 16);
+  if (rm) document.getElementById('f-rm').value = rm;
+  recalc();
+}
+function closeModal() { document.getElementById('modal').classList.remove('open'); }
+function closeModalOuter(e) { if (e.target === e.currentTarget) closeModal(); }
+
+function recalc() {
+  const rv = document.getElementById('f-rm').value;
+  const rn = { '1':'Suite 1 · Sterling', '2':'Suite 2 · Habi' };
+  document.getElementById('s-rm').textContent = rv ? rn[rv] : '—';
+  const ci = document.getElementById('f-ci').value;
+  if (ci) {
+    const d = new Date(ci), co = new Date(d.getTime() + 21 * 3600000);
+    const fmt = x => x.toLocaleString('en-PH', { month:'short', day:'numeric', hour:'2-digit', minute:'2-digit' });
+    document.getElementById('s-ci').textContent = fmt(d);
+    document.getElementById('s-co').textContent = fmt(co);
+  }
+  document.getElementById('s-tot').textContent = '₱' + RATE.toLocaleString();
+}
+
+/* ═══════════════════════════════════════════════════
+   CONFIRM BOOKING  →  POST /api/bookings
+   (replaces old localStorage push)
+═══════════════════════════════════════════════════ */
+async function confirmBooking() {
+  const fn = document.getElementById('f-fn').value.trim();
+  const ln = document.getElementById('f-ln').value.trim();
+  const ph = document.getElementById('f-ph').value.trim();
+  const ci = document.getElementById('f-ci').value;
+  const rm = document.getElementById('f-rm').value;
+  const px = parseInt(document.getElementById('f-px').value) || 1;
+  const nt = document.getElementById('f-nt').value.trim();
+
+  if (!fn || !ln || !ph || !ci || !rm) { alert('Please fill in all required fields.'); return; }
+  if (px < 1 || px > 4) { alert('Guests must be between 1 and 4.'); return; }
+
+  const cid = new Date(ci);
+  const cod = new Date(cid.getTime() + 21 * 3600000);
+
+  // Client-side conflict check against already-loaded bookings
+  const conflict = bk.some(b =>
+    b.rm == rm && b.st !== 'cancelled' &&
+    cid < new Date(b.co) && cod > new Date(b.ci)
+  );
+  if (conflict) { alert('Suite ' + rm + ' is already booked for that time. Please choose a different date or suite.'); return; }
+
+  const btn = document.getElementById('btn-confirm');
+  btn.disabled   = true;
+  btn.textContent = 'Confirming…';
+
+  try {
+    const result = await apiFetch('/Bookings', {
+      method: 'POST',
+      body: JSON.stringify({ fn, ln, ph, rm, ci: cid.toISOString(), co: cod.toISOString(), px, nt, st: 'confirmed' }),
+    });
+
+    // Re-fetch bookings so the calendar + badges update immediately
+    await loadBookings();
+    renderCal();
+
+    document.getElementById('modal-form').style.display = 'none';
+    document.getElementById('s-ref').textContent = 'Reference: ' + (result.ref || '—');
+    document.getElementById('modal-success').classList.add('show');
+  } catch (err) {
+    alert(err.message || 'Booking failed. Please try again.');
+  } finally {
+    btn.disabled   = false;
+    btn.textContent = 'Confirm Reservation';
+  }
+}
+
+/* ═══════════════════════════════════════════════════
+   QUICK CHECK (booking bar)
+═══════════════════════════════════════════════════ */
+function quickCheck() {
+  const ci = document.getElementById('qb-in').value;
+  const co = document.getElementById('qb-out').value;
+  const rm = document.getElementById('qb-rm').value;
+  const el = document.getElementById('bb-result');
+  el.style.display = 'block';
+
+  if (!ci || !co || !rm) {
+    el.className = 'bb-result err';
+    el.textContent = 'Please select a date range and suite.';
+    return;
+  }
+  const cid = new Date(ci), cod = new Date(co);
+  if (cod <= cid) {
+    el.className = 'bb-result err';
+    el.textContent = 'Check-out must be after check-in.';
+    return;
+  }
+
+  if (cfg.wsAllowBookings === false) {
+    el.className = 'bb-result err';
+    el.textContent = 'Online booking is temporarily unavailable. Please contact us directly.';
+    return;
+  }
+
+  const conflict = bk.some(b =>
+    b.rm == rm && b.st !== 'cancelled' &&
+    cid < new Date(b.co) && cod > new Date(b.ci)
+  );
+  if (conflict) {
+    el.className = 'bb-result err';
+    el.innerHTML = '✗&nbsp; Suite not available for those dates. Try a different date or suite.';
+  } else {
+    el.className = 'bb-result ok';
+    el.innerHTML = '✓&nbsp; Suite is available! <a href="#" onclick="openModal(' + rm + ');return false;" style="color:var(--gold-pale);text-decoration:underline;font-weight:700;margin-left:.4rem">Book Now →</a>';
+  }
+}
+
+/* ═══════════════════════════════════════════════════
    GALLERY DRAWER
-══════════════════════ */
-const PANE_NAMES = ['bedroom', 'bathroom', 'living', 'dining', 'amenities'];
+═══════════════════════════════════════════════════ */
+const PANE_NAMES = ['bedroom','bathroom','living','dining','amenities'];
 
 function toggleGallery(roomId) {
   const drawer = document.getElementById('gdrawer-' + roomId);
   const btn    = document.getElementById('tour-' + roomId);
   const isOpen = drawer.classList.contains('open');
-  if (isOpen) {
-    drawer.classList.remove('open');
-    btn.classList.remove('active');
-  } else {
-    drawer.classList.add('open');
-    btn.classList.add('active');
-    // Smooth-scroll drawer into view after transition begins
-    setTimeout(() => drawer.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 80);
-  }
+  drawer.classList.toggle('open', !isOpen);
+  btn.classList.toggle('active', !isOpen);
+  if (!isOpen) setTimeout(() => drawer.scrollIntoView({ behavior:'smooth', block:'nearest' }), 80);
 }
 
 function switchTab(roomId, tabName, el) {
-  // Deactivate all tabs in this room
   document.querySelectorAll('#gtabs-' + roomId + ' .g-tab').forEach(t => t.classList.remove('active'));
-  // Hide all panes for this room
   PANE_NAMES.forEach(n => {
     const p = document.getElementById('gpane-' + roomId + '-' + n);
     if (p) p.classList.remove('active');
   });
-  // Activate clicked
   el.classList.add('active');
   const target = document.getElementById('gpane-' + roomId + '-' + tabName);
   if (target) target.classList.add('active');
@@ -1152,132 +1246,38 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape') { closeLb(); closeModal(); }
 });
 
-/* ── Calendar ── */
-const MN = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-const DN = ['Su','Mo','Tu','We','Th','Fr','Sa'];
-let CAL = new Date(2026, 1, 1);
+/* ── Nav scroll ── */
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', scrollY > 55);
+});
 
-function renderCal() {
-  document.getElementById('cal-lbl').textContent = MN[CAL.getMonth()] + ' ' + CAL.getFullYear();
-  const g = document.getElementById('cg');
-  g.innerHTML = DN.map(d => '<div class="cal-day-name">' + d + '</div>').join('');
-  const first = new Date(CAL.getFullYear(), CAL.getMonth(), 1).getDay();
-  const total = new Date(CAL.getFullYear(), CAL.getMonth() + 1, 0).getDate();
-  const today = new Date();
-  for (let i = 0; i < first; i++) g.innerHTML += '<div class="cal-day cal-empty"></div>';
-  for (let d = 1; d <= total; d++) {
-    const dt = new Date(CAL.getFullYear(), CAL.getMonth(), d);
-    const isT = dt.toDateString() === today.toDateString();
-    const isB = isBooked(dt);
-    g.innerHTML += '<div class="cal-day' + (isT ? ' cal-today' : isB ? ' cal-booked' : '') + '">' + d + '</div>';
+/* ── Scroll nav progress rings ── */
+(function () {
+  const nav      = document.getElementById('scrollNav');
+  const ringUp   = document.getElementById('prog-up');
+  const ringDown = document.getElementById('prog-down');
+  const CIRC = 2 * Math.PI * 20;
+  function upd() {
+    const s = window.scrollY, max = document.body.scrollHeight - window.innerHeight;
+    const pct = max > 0 ? s / max : 0;
+    nav.classList.toggle('visible', s > 100);
+    ringUp.style.strokeDashoffset   = CIRC * (1 - pct);
+    ringDown.style.strokeDashoffset = CIRC * pct;
   }
-  renderSlots();
+  window.addEventListener('scroll', upd, { passive: true });
+  upd();
+})();
+
+/* ── Default dates for booking bar ── */
+function initDateBar() {
+  const nd = new Date(); nd.setHours(14, 0, 0, 0);
+  document.getElementById('qb-in').value  = nd.toISOString().slice(0, 10);
+  const nd2 = new Date(nd.getTime() + 21 * 3600000);
+  document.getElementById('qb-out').value = nd2.toISOString().slice(0, 10);
 }
 
-function isBooked(dt) {
-  return bk.some(b => {
-    if (b.st === 'cancelled') return false;
-    return dt >= new Date(b.ci) && dt < new Date(b.co);
-  });
-}
-function prevMo() { CAL.setMonth(CAL.getMonth() - 1); renderCal(); }
-function nextMo() { CAL.setMonth(CAL.getMonth() + 1); renderCal(); }
-
-function renderSlots() {
-  const now = new Date();
-  const rooms = [{ id: 1, n: 'Suite 1 · Sterling' }, { id: 2, n: 'Suite 2 · Habi' }];
-  let h = '';
-  rooms.forEach(r => {
-    const occ = bk.some(b => {
-      if (b.rm != r.id || b.st === 'cancelled') return false;
-      return now >= new Date(b.ci) && now < new Date(b.co);
-    });
-    h += '<div class="slot-card"><div><div class="slot-name">' + r.n + '</div><div class="slot-info">Up to 4 pax · ₱1,999 / 21 hrs</div></div><div class="slot-right"><span class="pill ' + (occ ? 'pill-taken' : 'pill-avail') + '">' + (occ ? 'Booked' : 'Available') + '</span>' + (!occ ? '<button class="btn-slot-book" onclick="openModal(' + r.id + ')">Book</button>' : '') + '</div></div>';
-    const badge = document.getElementById('r' + r.id + 'b');
-    if (badge) { badge.textContent = occ ? 'Booked' : 'Available'; badge.className = 'room-badge ' + (occ ? 'badge-taken' : 'badge-avail'); }
-  });
-  document.getElementById('slots').innerHTML = h;
-}
-
-/* ── Modal ── */
-function openModal(rm) {
-  rm = rm || '';
-  document.getElementById('modal').classList.add('open');
-  document.getElementById('modal-form').style.display = 'block';
-  document.getElementById('modal-success').classList.remove('show');
-  const n = new Date(); n.setMinutes(0, 0, 0);
-  document.getElementById('f-ci').value = n.toISOString().slice(0, 16);
-  if (rm) document.getElementById('f-rm').value = rm;
-  recalc();
-}
-function closeModal() { document.getElementById('modal').classList.remove('open'); }
-function closeModalOuter(e) { if (e.target === e.currentTarget) closeModal(); }
-
-function recalc() {
-  const rv = document.getElementById('f-rm').value;
-  const rn = { '1': 'Suite 1 · Sterling', '2': 'Suite 2 · Habi' };
-  document.getElementById('s-rm').textContent = rv ? rn[rv] : '—';
-  const ci = document.getElementById('f-ci').value;
-  if (ci) {
-    const d = new Date(ci), co = new Date(d.getTime() + 21 * 3600000);
-    const fmt = x => x.toLocaleString('en-PH', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
-    document.getElementById('s-ci').textContent = fmt(d);
-    document.getElementById('s-co').textContent = fmt(co);
-  }
-  document.getElementById('s-tot').textContent = '₱' + RATE.toLocaleString();
-}
-
-function confirmBooking() {
-  const fn = document.getElementById('f-fn').value.trim();
-  const ln = document.getElementById('f-ln').value.trim();
-  const ph = document.getElementById('f-ph').value.trim();
-  const ci = document.getElementById('f-ci').value;
-  const rm = document.getElementById('f-rm').value;
-  const px = parseInt(document.getElementById('f-px').value) || 1;
-  const nt = document.getElementById('f-nt').value.trim();
-  if (!fn || !ln || !ph || !ci || !rm) { alert('Please fill in all required fields.'); return; }
-  if (px < 1 || px > 4) { alert('Guests must be between 1 and 4.'); return; }
-  const cid = new Date(ci), cod = new Date(cid.getTime() + 21 * 3600000);
-  const conflict = bk.some(b => {
-    if (b.rm != rm || b.st === 'cancelled') return false;
-    return cid < new Date(b.co) && cod > new Date(b.ci);
-  });
-  if (conflict) { alert('Suite ' + rm + ' is already booked for that time. Please choose a different date or suite.'); return; }
-  const ref = 'EN-' + Date.now().toString(36).toUpperCase();
-  bk.push({ ref, fn, ln, ph, rm, ci: cid.toISOString(), co: cod.toISOString(), px, nt, st: 'confirmed' });
-  save(); renderCal();
-  document.getElementById('modal-form').style.display = 'none';
-  document.getElementById('s-ref').textContent = 'Reference: ' + ref;
-  document.getElementById('modal-success').classList.add('show');
-}
-
-function quickCheck() {
-  const ci = document.getElementById('qb-in').value;
-  const co = document.getElementById('qb-out').value;
-  const rm = document.getElementById('qb-rm').value;
-  const el = document.getElementById('bb-result');
-  el.style.display = 'block';
-  if (!ci || !co || !rm) { el.className = 'bb-result err'; el.textContent = 'Please select a date range and suite.'; return; }
-  const cid = new Date(ci), cod = new Date(co);
-  const conflict = bk.some(b => {
-    if (b.rm != rm || b.st === 'cancelled') return false;
-    return cid < new Date(b.co) && cod > new Date(b.ci);
-  });
-  if (conflict) {
-    el.className = 'bb-result err';
-    el.innerHTML = '✗&nbsp; Suite not available for those dates. Try a different date or suite.';
-  } else {
-    el.className = 'bb-result ok';
-    el.innerHTML = '✓&nbsp; Suite is available! <a href="#" onclick="openModal(' + rm + ');return false;" style="color:var(--gold-pale);text-decoration:underline;font-weight:700;margin-left:.4rem">Book Now →</a>';
-  }
-}
-
-/* ── Init ── */
-renderCal();
-const nd = new Date(); nd.setHours(14, 0, 0, 0);
-document.getElementById('qb-in').value = nd.toISOString().slice(0, 10);
-const nd2 = new Date(nd.getTime() + 21 * 3600000);
-document.getElementById('qb-out').value = nd2.toISOString().slice(0, 10);
+/* ── Start ── */
+init();
 </script>
 </body>
 </html>
