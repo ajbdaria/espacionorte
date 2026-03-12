@@ -400,7 +400,7 @@ async function loadDashboard() {
     dashData = await res.json();
 
     // Also load all bookings for modal/CSV
-    const bkRes = await fetch('/api/bookings');
+    const bkRes = await fetch('/api/Bookings');
     allBookings = await bkRes.json();
 
     renderStats(dashData.stats);
@@ -584,7 +584,7 @@ async function updateStatus(ref, newStatus) {
   if (!confirm(`${labels[newStatus]} this booking?`)) return;
   document.getElementById('bk-modal').classList.remove('open');
   try {
-    const res = await fetch('/api/bookings', {
+    const res = await fetch('/api/Bookings', {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ ref, st: newStatus })

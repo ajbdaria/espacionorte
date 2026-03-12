@@ -47,140 +47,54 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--linen);color:va
 ::-webkit-scrollbar-thumb{background:var(--parch);border-radius:3px;}
 ::-webkit-scrollbar-thumb:hover{background:var(--amber);}
 
-/* ════ SIDEBAR OVERLAY (mobile) ════ */
-.sb-overlay{
-  display:none;position:fixed;inset:0;z-index:290;
-  background:rgba(0,0,0,.45);backdrop-filter:blur(2px);
-}
-.sb-overlay.visible{ display:block; }
+.sb-overlay{display:none;position:fixed;inset:0;z-index:290;background:rgba(0,0,0,.45);backdrop-filter:blur(2px);}
+.sb-overlay.visible{display:block;}
 
-/* ════ SIDEBAR ════ */
-.sb{
-  width:var(--sb);min-height:100vh;position:fixed;top:0;left:0;bottom:0;z-index:300;
-  background:var(--forest-dk);display:flex;flex-direction:column;
-  transition:transform .28s cubic-bezier(.23,1,.32,1);
-  box-shadow:4px 0 24px rgba(0,0,0,.18);
-  transform:translateX(0);
-}
-.sb.hidden{ transform:translateX(-100%); }
-
-.sb-brand{
-  padding:1.2rem 1.25rem 1rem;border-bottom:1px solid rgba(255,255,255,.07);
-  display:flex;align-items:center;gap:.75rem;
-}
-.sb-logo{
-  width:40px;height:40px;border-radius:10px;flex-shrink:0;
-  background:linear-gradient(135deg,var(--amber),var(--gold));
-  display:flex;align-items:center;justify-content:center;font-size:1.25rem;
-  box-shadow:0 4px 12px rgba(200,147,42,.4);
-}
+.sb{width:var(--sb);min-height:100vh;position:fixed;top:0;left:0;bottom:0;z-index:300;background:var(--forest-dk);display:flex;flex-direction:column;transition:transform .28s cubic-bezier(.23,1,.32,1);box-shadow:4px 0 24px rgba(0,0,0,.18);transform:translateX(0);}
+.sb.hidden{transform:translateX(-100%);}
+.sb-brand{padding:1.2rem 1.25rem 1rem;border-bottom:1px solid rgba(255,255,255,.07);display:flex;align-items:center;gap:.75rem;}
+.sb-logo{width:40px;height:40px;border-radius:10px;flex-shrink:0;background:linear-gradient(135deg,var(--amber),var(--gold));display:flex;align-items:center;justify-content:center;font-size:1.25rem;box-shadow:0 4px 12px rgba(200,147,42,.4);}
 .sb-brand-text strong{display:block;font-size:.88rem;font-weight:800;color:#fff;letter-spacing:.01em;}
 .sb-brand-text small{display:block;font-size:.62rem;color:rgba(255,255,255,.35);letter-spacing:.1em;text-transform:uppercase;margin-top:.1rem;}
-
-.sb-close-btn{
-  display:none;margin-left:auto;background:rgba(255,255,255,.08);border:none;
-  width:30px;height:30px;border-radius:50%;color:rgba(255,255,255,.6);
-  font-size:1rem;cursor:pointer;align-items:center;justify-content:center;
-  transition:background .2s;flex-shrink:0;
-}
+.sb-close-btn{display:none;margin-left:auto;background:rgba(255,255,255,.08);border:none;width:30px;height:30px;border-radius:50%;color:rgba(255,255,255,.6);font-size:1rem;cursor:pointer;align-items:center;justify-content:center;transition:background .2s;flex-shrink:0;}
 .sb-close-btn:hover{background:rgba(255,255,255,.2);}
-
-.sb-section{padding:.25rem 0;}
-.sb-group-label{
-  font-size:.58rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
-  color:rgba(255,255,255,.22);padding:.7rem 1.25rem .3rem;
-}
-.sb-item{
-  display:flex;align-items:center;gap:.65rem;padding:.58rem 1.25rem;
-  font-size:.8rem;font-weight:500;color:rgba(255,255,255,.55);
-  border:none;background:none;width:100%;text-align:left;cursor:pointer;
-  border-left:3px solid transparent;transition:all .17s;position:relative;
-  text-decoration:none;
-}
+.sb-group-label{font-size:.58rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.22);padding:.7rem 1.25rem .3rem;}
+.sb-item{display:flex;align-items:center;gap:.65rem;padding:.58rem 1.25rem;font-size:.8rem;font-weight:500;color:rgba(255,255,255,.55);border:none;background:none;width:100%;text-align:left;cursor:pointer;border-left:3px solid transparent;transition:all .17s;position:relative;text-decoration:none;}
 .sb-item:hover{color:rgba(255,255,255,.9);background:rgba(255,255,255,.05);}
 .sb-item.active{color:#fff;background:rgba(219,168,74,.13);border-left-color:var(--gold);font-weight:600;}
 .sb-item .ico{width:18px;text-align:center;font-size:.95rem;flex-shrink:0;}
 .sb-item .lbl{flex:1;}
-.sb-item .badge{
-  font-size:.58rem;font-weight:800;background:var(--red);color:#fff;
-  padding:.12rem .45rem;border-radius:2rem;min-width:18px;text-align:center;
-}
-.sb-footer{
-  margin-top:auto;border-top:1px solid rgba(255,255,255,.07);padding:1rem 1.25rem;
-}
+.sb-item .badge{font-size:.58rem;font-weight:800;background:var(--red);color:#fff;padding:.12rem .45rem;border-radius:2rem;min-width:18px;text-align:center;}
+.sb-footer{margin-top:auto;border-top:1px solid rgba(255,255,255,.07);padding:1rem 1.25rem;}
 .sb-user{display:flex;align-items:center;gap:.65rem;}
-.sb-avatar{
-  width:34px;height:34px;border-radius:50%;flex-shrink:0;
-  background:linear-gradient(135deg,var(--amber),var(--gold));
-  display:flex;align-items:center;justify-content:center;
-  font-size:.85rem;font-weight:800;color:var(--forest-dk);
-}
+.sb-avatar{width:34px;height:34px;border-radius:50%;flex-shrink:0;background:linear-gradient(135deg,var(--amber),var(--gold));display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:800;color:var(--forest-dk);}
 .sb-user-info .name{font-size:.8rem;font-weight:700;color:#fff;}
 .sb-user-info .role{font-size:.62rem;color:rgba(255,255,255,.35);margin-top:.05rem;}
-.sb-logout{
-  margin-left:auto;background:none;border:none;cursor:pointer;
-  color:rgba(255,255,255,.3);font-size:.9rem;transition:color .2s;padding:.2rem;
-}
+.sb-logout{margin-left:auto;background:none;border:none;cursor:pointer;color:rgba(255,255,255,.3);font-size:.9rem;transition:color .2s;padding:.2rem;}
 .sb-logout:hover{color:var(--red-lt);}
 
-/* ════ MAIN AREA ════ */
-.main{
-  margin-left:var(--sb);flex:1;display:flex;flex-direction:column;min-height:100vh;
-  transition:margin-left .28s cubic-bezier(.23,1,.32,1);
-}
+.main{margin-left:var(--sb);flex:1;display:flex;flex-direction:column;min-height:100vh;transition:margin-left .28s cubic-bezier(.23,1,.32,1);}
 
-/* ── TOPBAR ── */
-.topbar{
-  height:var(--topbar);background:var(--panel);border-bottom:1px solid var(--border);
-  display:flex;align-items:center;padding:0 1.25rem;gap:.75rem;
-  position:sticky;top:0;z-index:200;box-shadow:0 1px 8px rgba(0,0,0,.05);
-}
-.hamburger{
-  display:none;width:36px;height:36px;border-radius:.45rem;
-  background:var(--linen);border:1px solid var(--border);
-  align-items:center;justify-content:center;
-  cursor:pointer;font-size:1.1rem;flex-shrink:0;transition:all .2s;
-}
+.topbar{height:var(--topbar);background:var(--panel);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 1.25rem;gap:.75rem;position:sticky;top:0;z-index:200;box-shadow:0 1px 8px rgba(0,0,0,.05);}
+.hamburger{display:none;width:36px;height:36px;border-radius:.45rem;background:var(--linen);border:1px solid var(--border);align-items:center;justify-content:center;cursor:pointer;font-size:1.1rem;flex-shrink:0;transition:all .2s;}
 .hamburger:hover{background:var(--parch);border-color:var(--amber);}
 .topbar-breadcrumb{display:flex;align-items:center;gap:.5rem;flex:1;min-width:0;}
 .topbar-breadcrumb .page-name{font-size:.92rem;font-weight:700;color:var(--text);}
 .topbar-actions{display:flex;align-items:center;gap:.6rem;flex-shrink:0;}
-.top-chip{
-  display:flex;align-items:center;gap:.4rem;
-  background:var(--linen);border:1px solid var(--border);
-  padding:.35rem .8rem;border-radius:.45rem;font-size:.72rem;color:var(--text2);white-space:nowrap;
-}
-.top-icon-btn{
-  width:34px;height:34px;border-radius:.45rem;background:var(--linen);
-  border:1px solid var(--border);display:flex;align-items:center;justify-content:center;
-  cursor:pointer;font-size:.95rem;transition:all .2s;position:relative;
-}
+.top-chip{display:flex;align-items:center;gap:.4rem;background:var(--linen);border:1px solid var(--border);padding:.35rem .8rem;border-radius:.45rem;font-size:.72rem;color:var(--text2);white-space:nowrap;}
+.top-icon-btn{width:34px;height:34px;border-radius:.45rem;background:var(--linen);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:.95rem;transition:all .2s;position:relative;}
 .top-icon-btn:hover{background:var(--parch);border-color:var(--amber);}
-.notif-dot{
-  position:absolute;top:5px;right:5px;width:7px;height:7px;
-  border-radius:50%;background:var(--red);border:2px solid var(--panel);
-}
-.btn-view-site{
-  background:var(--forest);color:#fff;border:none;padding:.38rem 1rem;border-radius:.45rem;
-  font-family:'Plus Jakarta Sans',sans-serif;font-size:.73rem;font-weight:700;
-  cursor:pointer;transition:all .2s;white-space:nowrap;display:flex;align-items:center;gap:.35rem;
-}
+.notif-dot{position:absolute;top:5px;right:5px;width:7px;height:7px;border-radius:50%;background:var(--red);border:2px solid var(--panel);}
+.btn-view-site{background:var(--forest);color:#fff;border:none;padding:.38rem 1rem;border-radius:.45rem;font-family:'Plus Jakarta Sans',sans-serif;font-size:.73rem;font-weight:700;cursor:pointer;transition:all .2s;white-space:nowrap;display:flex;align-items:center;gap:.35rem;}
 .btn-view-site:hover{background:var(--sage);}
 
-/* ── CONTENT ── */
 .content{padding:1.5rem;flex:1;min-width:0;}
 
-/* ════ SHARED COMPONENTS ════ */
 .row{display:grid;gap:1.1rem;margin-bottom:1.1rem;}
 .row.cols-3{grid-template-columns:repeat(3,1fr);}
 .row.cols-2{grid-template-columns:repeat(2,1fr);}
 
-/* ── STAT CARDS ── */
-.stat-card{
-  background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);
-  padding:1.15rem 1.3rem;box-shadow:var(--shadow);position:relative;overflow:hidden;
-  transition:box-shadow .2s,transform .2s;cursor:default;
-}
+.stat-card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:1.15rem 1.3rem;box-shadow:var(--shadow);position:relative;overflow:hidden;transition:box-shadow .2s,transform .2s;cursor:default;}
 .stat-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-1px);}
 .stat-card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:10px 10px 0 0;}
 .sc-green::after{background:linear-gradient(90deg,var(--green),var(--sage-lt));}
@@ -191,8 +105,11 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--linen);color:va
 .sc-teal::after{background:linear-gradient(90deg,#0D9488,#34D399);}
 .sc-val{font-size:1.75rem;font-weight:800;color:var(--text);line-height:1;margin-bottom:.25rem;}
 .sc-label{font-size:.7rem;font-weight:500;color:var(--text3);}
+.sc-yoy{font-size:.65rem;font-weight:600;margin-top:.3rem;}
+.sc-yoy.up{color:var(--green);}
+.sc-yoy.down{color:var(--red);}
+.sc-yoy.neutral{color:var(--text3);}
 
-/* ── BUTTONS ── */
 .btn{display:inline-flex;align-items:center;gap:.4rem;border:none;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;transition:all .2s;border-radius:.45rem;white-space:nowrap;}
 .btn-md{font-size:.78rem;padding:.5rem 1.1rem;}
 .btn-amber{background:linear-gradient(135deg,var(--amber),var(--gold));color:var(--forest-dk);box-shadow:0 2px 12px rgba(200,147,42,.3);}
@@ -201,7 +118,6 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--linen);color:va
 .btn-ghost:hover{border-color:var(--amber);background:var(--parch);}
 .btn-sm{font-size:.72rem;padding:.35rem .8rem;}
 
-/* ── TABLES ── */
 .tbl-wrap{overflow-x:auto;border-radius:0 0 var(--radius) var(--radius);}
 table.tbl{width:100%;border-collapse:collapse;min-width:300px;}
 .tbl th{font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);padding:.62rem 1rem;text-align:left;background:var(--linen);border-bottom:2px solid var(--border);white-space:nowrap;}
@@ -209,14 +125,12 @@ table.tbl{width:100%;border-collapse:collapse;min-width:300px;}
 .tbl tr:last-child td{border-bottom:none;}
 .tbl tbody tr:hover td{background:#FDFAF5;}
 
-/* ── TOAST ── */
 .toast{position:fixed;bottom:1.5rem;right:1.5rem;z-index:9999;display:flex;align-items:center;gap:.7rem;background:var(--forest-dk);color:#fff;padding:.85rem 1.3rem;border-radius:.6rem;font-size:.8rem;font-weight:500;max-width:320px;box-shadow:var(--shadow-lg);transform:translateY(80px);opacity:0;transition:all .35s cubic-bezier(.23,1,.32,1);border-left:4px solid var(--gold);}
 .toast.show{transform:translateY(0);opacity:1;}
 .toast.t-ok{border-left-color:var(--sage-lt);}
 .toast.t-err{border-left-color:var(--red);}
 .toast.t-warn{border-left-color:var(--gold);}
 
-/* ── NOTIFICATIONS ── */
 .notif-dropdown{position:absolute;top:calc(100% + 8px);right:0;width:300px;background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow-lg);z-index:500;display:none;}
 .notif-dropdown.open{display:block;}
 .notif-hd{display:flex;align-items:center;justify-content:space-between;padding:.9rem 1.1rem;border-bottom:1px solid var(--border);}
@@ -228,11 +142,10 @@ table.tbl{width:100%;border-collapse:collapse;min-width:300px;}
 .notif-item-time{font-size:.67rem;color:var(--text3);margin-top:.1rem;}
 .notif-item.unread{border-left:3px solid var(--amber);}
 
-/* ── REPORTS ── */
 .rpt-header{background:linear-gradient(135deg,var(--forest-dk),var(--forest));border-radius:var(--radius) var(--radius) 0 0;padding:1.4rem 1.75rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
 .rpt-header h2{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:#fff;font-style:italic;}
 .rpt-header p{font-size:.72rem;color:rgba(255,255,255,.5);margin-top:.2rem;}
-.rpt-controls{display:flex;gap:.5rem;flex-wrap:wrap;}
+.rpt-controls{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center;}
 .rpt-ctrl{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);color:#fff;padding:.38rem .8rem;border-radius:.35rem;font-family:'Plus Jakarta Sans',sans-serif;font-size:.74rem;outline:none;cursor:pointer;}
 .rpt-ctrl option{background:#1A2E10;color:#fff;}
 .month-bar-mini{height:6px;background:var(--border);border-radius:3px;margin-top:.3rem;}
@@ -240,7 +153,6 @@ table.tbl{width:100%;border-collapse:collapse;min-width:300px;}
 .mbm-green{background:linear-gradient(90deg,var(--sage),var(--sage-lt));}
 .mbm-amber{background:linear-gradient(90deg,var(--amber),var(--gold));}
 
-/* ── INSIGHT CARD ── */
 .insight-card{border-radius:.6rem;padding:1rem 1.1rem;position:relative;overflow:hidden;}
 .insight-card.green{background:var(--green-lt);border:1px solid #86EFAC;}
 .insight-card.amber{background:#FFFBEB;border:1px solid #FCD34D;}
@@ -254,31 +166,40 @@ table.tbl{width:100%;border-collapse:collapse;min-width:300px;}
 .insight-val{font-size:1.4rem;font-weight:800;color:var(--text);line-height:1;}
 .insight-desc{font-size:.72rem;color:var(--text2);margin-top:.3rem;line-height:1.5;}
 
-/* ── PANEL ── */
 .panel{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);}
 .panel-body{padding:1.25rem 1.4rem;}
 
-/* ════ RESPONSIVE ════ */
+/* ── SKELETON LOADER ── */
+.skeleton{background:linear-gradient(90deg,var(--linen) 25%,var(--parch) 50%,var(--linen) 75%);background-size:200% 100%;animation:shimmer 1.4s infinite;border-radius:.4rem;}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.skeleton-card{height:80px;border-radius:var(--radius);}
+.skeleton-row{height:42px;margin-bottom:.4rem;}
+
+/* ── LOADING OVERLAY ── */
+.loading-state{display:flex;align-items:center;justify-content:center;gap:.6rem;padding:3rem;color:var(--text3);font-size:.82rem;}
+.spinner{width:18px;height:18px;border:2px solid var(--border);border-top-color:var(--amber);border-radius:50%;animation:spin .7s linear infinite;flex-shrink:0;}
+@keyframes spin{to{transform:rotate(360deg)}}
+
 @media(min-width:769px){
-  .sb{ transform:translateX(0) !important; }
-  .main{ margin-left:var(--sb) !important; }
-  .hamburger{ display:none !important; }
-  .sb-overlay{ display:none !important; }
-  .sb-close-btn{ display:none !important; }
+  .sb{transform:translateX(0) !important;}
+  .main{margin-left:var(--sb) !important;}
+  .hamburger{display:none !important;}
+  .sb-overlay{display:none !important;}
+  .sb-close-btn{display:none !important;}
 }
 @media(max-width:768px){
-  :root{ --sb:240px; }
-  .sb{ transform:translateX(-100%); position:fixed;top:0;left:0;bottom:0;z-index:300;width:var(--sb); }
-  .sb.open{ transform:translateX(0); }
-  .main{ margin-left:0 !important; width:100%; }
-  .hamburger{ display:flex !important; }
-  .sb-close-btn{ display:flex !important; }
-  .top-chip{ display:none; }
-  .content{ padding:1rem .75rem; }
-  .row.cols-3,.row.cols-2{ grid-template-columns:1fr; }
+  :root{--sb:240px;}
+  .sb{transform:translateX(-100%);position:fixed;top:0;left:0;bottom:0;z-index:300;width:var(--sb);}
+  .sb.open{transform:translateX(0);}
+  .main{margin-left:0 !important;width:100%;}
+  .hamburger{display:flex !important;}
+  .sb-close-btn{display:flex !important;}
+  .top-chip{display:none;}
+  .content{padding:1rem .75rem;}
+  .row.cols-3,.row.cols-2{grid-template-columns:1fr;}
 }
 @media(min-width:769px) and (max-width:1100px){
-  .row.cols-3{ grid-template-columns:repeat(2,1fr); }
+  .row.cols-3{grid-template-columns:repeat(2,1fr);}
 }
 </style>
 </head>
@@ -387,29 +308,49 @@ table.tbl{width:100%;border-collapse:collapse;min-width:300px;}
         </div>
         <div class="rpt-controls">
           <select class="rpt-ctrl" id="rpt-year" onchange="buildReports()">
-            <option>2026</option><option>2025</option>
+            <option value="2026">2026</option>
+            <option value="2025">2025</option>
           </select>
           <button class="btn btn-amber btn-md" onclick="exportCSV()">📥 Export CSV</button>
           <button class="btn btn-ghost btn-md" style="color:#fff;border-color:rgba(255,255,255,.3);" onclick="window.print()">🖨️ Print</button>
         </div>
       </div>
       <div class="panel-body">
-        <div class="row cols-3" id="rpt-kpis" style="margin-bottom:1.5rem;"></div>
+
+        <!-- KPI CARDS -->
+        <div class="row cols-3" id="rpt-kpis" style="margin-bottom:1.5rem;">
+          <!-- skeleton placeholders -->
+          <div class="stat-card sc-green skeleton skeleton-card"></div>
+          <div class="stat-card sc-amber skeleton skeleton-card"></div>
+          <div class="stat-card sc-blue skeleton skeleton-card"></div>
+          <div class="stat-card sc-purple skeleton skeleton-card"></div>
+          <div class="stat-card sc-red skeleton skeleton-card"></div>
+          <div class="stat-card sc-teal skeleton skeleton-card"></div>
+        </div>
+
         <div class="row cols-2" style="margin-bottom:1.5rem;">
           <div>
             <div style="font-size:.8rem;font-weight:700;margin-bottom:1rem;color:var(--text);">📅 Monthly Breakdown</div>
             <div class="tbl-wrap">
               <table class="tbl" id="month-table" style="min-width:auto;">
                 <thead><tr><th>Month</th><th>Bookings</th><th>Revenue</th><th>Trend</th></tr></thead>
-                <tbody id="month-tbody"></tbody>
+                <tbody id="month-tbody">
+                  <tr><td colspan="4"><div class="loading-state"><div class="spinner"></div> Loading data…</div></td></tr>
+                </tbody>
               </table>
             </div>
           </div>
           <div>
             <div style="font-size:.8rem;font-weight:700;margin-bottom:1rem;color:var(--text);">💡 Business Insights</div>
-            <div id="rpt-insights" style="display:flex;flex-direction:column;gap:.75rem;"></div>
+            <div id="rpt-insights" style="display:flex;flex-direction:column;gap:.75rem;">
+              <div class="skeleton" style="height:80px;border-radius:.6rem;"></div>
+              <div class="skeleton" style="height:80px;border-radius:.6rem;"></div>
+              <div class="skeleton" style="height:80px;border-radius:.6rem;"></div>
+              <div class="skeleton" style="height:80px;border-radius:.6rem;"></div>
+            </div>
           </div>
         </div>
+
       </div>
     </div>
   </div>
@@ -420,22 +361,237 @@ table.tbl{width:100%;border-collapse:collapse;min-width:300px;}
 
 <script>
 'use strict';
-const BK_KEY = 'en3';
-const RATE = 1999;
-const MFull = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-const M3 = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-let BK = [], notifs = [];
 
-/* ── INIT ── */
-function init() {
-  try { BK = JSON.parse(localStorage.getItem(BK_KEY) || '[]'); } catch(e) { BK = []; }
+const MFull = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+const M3    = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+let notifs   = [];
+let cachedData = null;   // cache last API response for CSV export
+
+/* ════ INIT ════ */
+async function init() {
   setTopbarDate();
   renderNotifs();
-  renderPendingBadge();
-  buildReports();
+  await populateYearDropdown();
+  await buildReports();
 }
 
-/* ── SIDEBAR TOGGLE ── */
+/* ════ YEAR DROPDOWN ════ */
+async function populateYearDropdown() {
+  try {
+    const res  = await fetch('/api/Analytics?year=' + new Date().getFullYear());
+    const data = await res.json();
+    if (!data.availableYears?.length) return;
+
+    const sel = document.getElementById('rpt-year');
+    sel.innerHTML = '';
+    data.availableYears.forEach(y => {
+      const opt = document.createElement('option');
+      opt.value = y;
+      opt.textContent = y;
+      if (y === new Date().getFullYear()) opt.selected = true;
+      sel.appendChild(opt);
+    });
+  } catch (e) {
+    // fallback: keep the hardcoded options already in HTML
+  }
+}
+
+/* ════ FETCH & RENDER ════ */
+async function buildReports() {
+  const year = parseInt(document.getElementById('rpt-year')?.value || new Date().getFullYear());
+
+  // show skeletons while loading
+  showSkeletons();
+
+  try {
+    const res = await fetch(`/api/analytics?year=${year}`);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    cachedData = data;
+
+    renderKPIs(data.kpis, year);
+    renderMonthTable(data.monthly, data.kpis);
+    renderInsights(data.insights, data.kpis.cancellations);
+
+    // update pending badge from kpis if available (optional)
+    renderPendingBadge(data.kpis.pendingCount ?? 0);
+
+  } catch (err) {
+    console.error('Analytics fetch error:', err);
+    showError();
+    showToast('Failed to load analytics data', '❌', 't-err');
+  }
+}
+
+/* ── SKELETONS ── */
+function showSkeletons() {
+  document.getElementById('rpt-kpis').innerHTML = Array(6).fill(0).map((_, i) =>
+    `<div class="stat-card sc-${['green','amber','blue','purple','red','teal'][i]} skeleton skeleton-card"></div>`
+  ).join('');
+
+  document.getElementById('month-tbody').innerHTML =
+    `<tr><td colspan="4"><div class="loading-state"><div class="spinner"></div> Loading data…</div></td></tr>`;
+
+  document.getElementById('rpt-insights').innerHTML = Array(4).fill(0).map(() =>
+    `<div class="skeleton" style="height:80px;border-radius:.6rem;"></div>`
+  ).join('');
+}
+
+function showError() {
+  document.getElementById('rpt-kpis').innerHTML =
+    `<div style="grid-column:1/-1;padding:1rem;text-align:center;font-size:.8rem;color:var(--red);">⚠️ Could not load analytics data. Please try again.</div>`;
+  document.getElementById('month-tbody').innerHTML =
+    `<tr><td colspan="4" style="text-align:center;color:var(--red);font-size:.8rem;padding:1.5rem;">Failed to load monthly data.</td></tr>`;
+  document.getElementById('rpt-insights').innerHTML = '';
+}
+
+/* ── KPI CARDS ── */
+function renderKPIs(kpis, year) {
+  const yoyBadge = (val) => {
+    if (val === null || val === undefined) return '';
+    const cls = val > 0 ? 'up' : val < 0 ? 'down' : 'neutral';
+    const arrow = val > 0 ? '▲' : val < 0 ? '▼' : '—';
+    return `<div class="sc-yoy ${cls}">${arrow} ${Math.abs(val)}% vs last year</div>`;
+  };
+
+  document.getElementById('rpt-kpis').innerHTML = [
+    { label: 'Total Revenue',         val: `₱${kpis.totalRevenue.toLocaleString()}`,    color: 'sc-green',  yoy: kpis.revYoY },
+    { label: 'Total Bookings',        val: kpis.totalBookings,                           color: 'sc-amber',  yoy: kpis.bkYoY  },
+    { label: 'Busiest Month',         val: kpis.busiestMonth,                            color: 'sc-blue',   yoy: null        },
+    { label: 'Avg / Month',           val: kpis.avgPerMonth.toFixed(1),                  color: 'sc-purple', yoy: null        },
+    { label: 'Total Cancellations',   val: kpis.cancellations,                           color: 'sc-red',    yoy: null        },
+    { label: 'Avg Revenue / Booking', val: `₱${kpis.avgRevPerBooking.toLocaleString()}`, color: 'sc-teal',   yoy: null        },
+  ].map(k => `
+    <div class="stat-card ${k.color}" style="min-height:auto;padding:1rem;">
+      <div class="sc-val" style="font-size:1.4rem;">${k.val}</div>
+      <div class="sc-label">${k.label} ${year}</div>
+      ${yoyBadge(k.yoy)}
+    </div>`).join('');
+}
+
+/* ── MONTHLY TABLE ── */
+function renderMonthTable(monthly, kpis) {
+  const maxM    = Math.max(...monthly.map(m => m.bookings), 1);
+  const bestI   = monthly.findIndex(m => m.bookings === maxM);
+
+  document.getElementById('month-tbody').innerHTML = monthly.map((m, i) => {
+    const pct = Math.round((m.bookings / maxM) * 100) || 0;
+    const isBest = i === bestI;
+    return `<tr style="${isBest ? 'background:#FFFBEB;font-weight:600;' : ''}">
+      <td>${isBest ? '⭐ ' : ''}<span style="font-size:.75rem;">${m.month}</span></td>
+      <td>
+        <span style="font-weight:700;">${m.bookings}</span>
+        <div class="month-bar-mini"><div class="mbm-fill ${isBest ? 'mbm-amber' : 'mbm-green'}" style="width:${pct}%"></div></div>
+      </td>
+      <td style="font-weight:${m.revenue > 0 ? '700' : '400'};color:${m.revenue > 0 ? 'var(--forest)' : 'var(--text4)'};">₱${m.revenue.toLocaleString()}</td>
+      <td style="font-size:.72rem;color:var(--text3);">${isBest ? '<span style="color:var(--amber);font-weight:700;">🏆 Peak</span>' : m.bookings > 0 ? `${m.r1}·${m.r2}` : '—'}</td>
+    </tr>`;
+  }).join('');
+}
+
+/* ── INSIGHTS ── */
+function renderInsights(ins, cancellations) {
+  document.getElementById('rpt-insights').innerHTML = [
+    {
+      tag: '🏆 Best Month',
+      cls: 'green',
+      val: ins.bestMonth.name,
+      desc: `${ins.bestMonth.bookings} bookings · ₱${ins.bestMonth.revenue.toLocaleString()} revenue.`
+    },
+    {
+      tag: '💡 Slowest Month',
+      cls: 'amber',
+      val: ins.worstMonth.name,
+      desc: `${ins.worstMonth.bookings} bookings · ₱${ins.worstMonth.revenue.toLocaleString()} revenue. Consider promos.`
+    },
+    {
+      tag: '📊 Room Popularity',
+      cls: 'blue',
+      val: ins.popularRoom,
+      desc: `Suite 1: ${ins.r1Total} · Suite 2: ${ins.r2Total} bookings.`
+    },
+    {
+      tag: '⚠️ Cancellations',
+      cls: cancellations > 3 ? 'red' : 'amber',
+      val: cancellations,
+      desc: cancellations > 0
+        ? `${cancellations} cancellation${cancellations > 1 ? 's' : ''} this year.`
+        : 'No cancellations this year!'
+    },
+  ].map(k => `
+    <div class="insight-card ${k.cls}">
+      <div class="insight-tag ${k.cls}">${k.tag}</div>
+      <div class="insight-val">${k.val}</div>
+      <div class="insight-desc">${k.desc}</div>
+    </div>`).join('');
+}
+
+/* ════ CSV EXPORT ════ */
+async function exportCSV() {
+  try {
+    // fetch all bookings for the selected year's raw data
+    const year = parseInt(document.getElementById('rpt-year')?.value || new Date().getFullYear());
+    const res  = await fetch(`/api/Bookings/export?year=${year}`);
+
+    if (res.ok) {
+      // if you have a dedicated export endpoint that returns raw bookings
+      const bookings = await res.json();
+      generateCSV(bookings);
+    } else {
+      // fallback: export from cached monthly data
+      exportFromCache();
+    }
+  } catch (e) {
+    exportFromCache();
+  }
+}
+
+function exportFromCache() {
+  if (!cachedData) {
+    showToast('No data to export', '⚠️', 't-warn');
+    return;
+  }
+  const year = parseInt(document.getElementById('rpt-year')?.value || new Date().getFullYear());
+  const rows = [['Month', 'Bookings', 'Revenue (₱)', 'Suite 1', 'Suite 2']];
+  cachedData.monthly.forEach(m => {
+    rows.push([m.month, m.bookings, m.revenue, m.r1, m.r2]);
+  });
+  rows.push([]);
+  rows.push(['KPI Summary', '']);
+  rows.push(['Total Revenue',         `₱${cachedData.kpis.totalRevenue.toLocaleString()}`]);
+  rows.push(['Total Bookings',        cachedData.kpis.totalBookings]);
+  rows.push(['Avg Bookings / Month',  cachedData.kpis.avgPerMonth]);
+  rows.push(['Avg Revenue / Booking', `₱${cachedData.kpis.avgRevPerBooking.toLocaleString()}`]);
+  rows.push(['Cancellations',         cachedData.kpis.cancellations]);
+  rows.push(['Busiest Month',         cachedData.kpis.busiestMonth]);
+
+  const csv = rows.map(r => r.map(c => `"${String(c ?? '').replace(/"/g,'""')}"`).join(',')).join('\n');
+  dlFile(`espacio-norte-analytics-${year}-${new Date().toISOString().slice(0,10)}.csv`,
+         'data:text/csv;charset=utf-8,' + encodeURIComponent(csv));
+  showToast('Analytics CSV exported!', '📥', 't-ok');
+}
+
+function generateCSV(bookings) {
+  const year = parseInt(document.getElementById('rpt-year')?.value || new Date().getFullYear());
+  const rows = [['Ref','First Name','Last Name','Phone','Email','Suite','Check-in','Check-out','Pax','Total','Payment','Status','Notes','Created']];
+  bookings.forEach(b => rows.push([
+    b.ref, b.fn, b.ln, b.ph, b.em || '', 'Suite ' + b.rm,
+    fmtFull(b.ci), fmtFull(b.co), b.px, b.total || '', b.pay || '', b.st, b.nt || '',
+    b.created ? fmtFull(b.created) : ''
+  ]));
+  const csv = rows.map(r => r.map(c => `"${String(c ?? '').replace(/"/g,'""')}"`).join(',')).join('\n');
+  dlFile(`espacio-norte-bookings-${year}-${new Date().toISOString().slice(0,10)}.csv`,
+         'data:text/csv;charset=utf-8,' + encodeURIComponent(csv));
+  showToast('CSV exported!', '📥', 't-ok');
+}
+
+function dlFile(name, data) {
+  const a = document.createElement('a');
+  a.href = data; a.download = name; a.click();
+}
+
+/* ════ SIDEBAR ════ */
 function openSidebar() {
   document.getElementById('sidebar').classList.add('open');
   document.getElementById('sb-overlay').classList.add('visible');
@@ -450,92 +606,20 @@ document.querySelectorAll('.sb-item').forEach(btn => {
   btn.addEventListener('click', () => { if (window.innerWidth <= 768) closeSidebar(); });
 });
 
-/* ── ANALYTICS ── */
-function buildReports() {
-  const year = parseInt(document.getElementById('rpt-year')?.value || new Date().getFullYear());
-  const monthly = M3.map((_, i) => {
-    const bks = BK.filter(b => {
-      const d = new Date(b.ci);
-      return d.getFullYear() === year && d.getMonth() === i && b.st !== 'cancelled';
-    });
-    return { bks: bks.length, rev: bks.length * RATE, r1: bks.filter(b => b.rm == 1).length, r2: bks.filter(b => b.rm == 2).length };
-  });
-  const tot = monthly.reduce((s, m) => s + m.bks, 0);
-  const rev = monthly.reduce((s, m) => s + m.rev, 0);
-  const maxM = Math.max(...monthly.map(m => m.bks), 1);
-  const bestI = monthly.findIndex(m => m.bks === maxM);
-  const worstI = monthly.reduce((bi, m, i) => m.bks < monthly[bi].bks ? i : bi, 0);
-  const canc = BK.filter(b => new Date(b.ci).getFullYear() === year && b.st === 'cancelled').length;
-
-  document.getElementById('rpt-kpis').innerHTML = [
-    { label: 'Total Revenue',          val: `₱${rev.toLocaleString()}`,                              color: 'sc-green'  },
-    { label: 'Total Bookings',         val: tot,                                                      color: 'sc-amber'  },
-    { label: 'Busiest Month',          val: M3[bestI],                                                color: 'sc-blue'   },
-    { label: 'Avg / Month',            val: (tot / 12).toFixed(1),                                   color: 'sc-purple' },
-    { label: 'Total Cancellations',    val: canc,                                                     color: 'sc-red'    },
-    { label: 'Avg Revenue / Booking',  val: `₱${tot ? Math.round(rev / tot).toLocaleString() : '0'}`, color: 'sc-teal'   },
-  ].map(k => `
-    <div class="stat-card ${k.color}" style="min-height:auto;padding:1rem;">
-      <div class="sc-val" style="font-size:1.4rem;">${k.val}</div>
-      <div class="sc-label">${k.label} ${year}</div>
-    </div>`).join('');
-
-  document.getElementById('month-tbody').innerHTML = monthly.map((m, i) => {
-    const pct = Math.round((m.bks / maxM) * 100) || 0;
-    return `<tr style="${i === bestI ? 'background:#FFFBEB;font-weight:600;' : ''}">
-      <td>${i === bestI ? '⭐ ' : ''}<span style="font-size:.75rem;">${MFull[i]}</span></td>
-      <td>
-        <span style="font-weight:700;">${m.bks}</span>
-        <div class="month-bar-mini"><div class="mbm-fill ${i === bestI ? 'mbm-amber' : 'mbm-green'}" style="width:${pct}%"></div></div>
-      </td>
-      <td style="font-weight:${m.rev > 0 ? '700' : '400'};color:${m.rev > 0 ? 'var(--forest)' : 'var(--text4)'};">₱${m.rev.toLocaleString()}</td>
-      <td style="font-size:.72rem;color:var(--text3);">${i === bestI ? '<span style="color:var(--amber);font-weight:700;">🏆 Peak</span>' : m.bks > 0 ? `${m.r1}·${m.r2}` : '—'}</td>
-    </tr>`;
-  }).join('');
-
-  document.getElementById('rpt-insights').innerHTML = [
-    { tag: '🏆 Best Month',      cls: 'green', val: MFull[bestI],  desc: `${monthly[bestI].bks} bookings · ₱${monthly[bestI].rev.toLocaleString()} revenue.` },
-    { tag: '💡 Slowest Month',   cls: 'amber', val: MFull[worstI], desc: `${monthly[worstI].bks} bookings · ₱${monthly[worstI].rev.toLocaleString()} revenue. Consider promos.` },
-    { tag: '📊 Room Popularity', cls: 'blue',  val: `Suite ${monthly.reduce((s,m)=>s+m.r1,0) >= monthly.reduce((s,m)=>s+m.r2,0) ? '1' : '2'}`, desc: `Suite 1: ${monthly.reduce((s,m)=>s+m.r1,0)} · Suite 2: ${monthly.reduce((s,m)=>s+m.r2,0)} bookings.` },
-    { tag: '⚠️ Cancellations',   cls: canc > 3 ? 'red' : 'amber', val: canc, desc: canc > 0 ? `${canc} cancellation${canc > 1 ? 's' : ''} this year.` : 'No cancellations this year!' },
-  ].map(k => `
-    <div class="insight-card ${k.cls}">
-      <div class="insight-tag ${k.cls}">${k.tag}</div>
-      <div class="insight-val">${k.val}</div>
-      <div class="insight-desc">${k.desc}</div>
-    </div>`).join('');
-}
-
-/* ── DATA EXPORT ── */
-function exportCSV() {
-  const rows = [['Ref','First Name','Last Name','Phone','Email','Suite','Check-in','Check-out','Pax','Total','Payment','Status','Notes','Created']];
-  BK.forEach(b => rows.push([b.ref, b.fn, b.ln, b.ph, b.em||'', 'Suite '+b.rm, fmtFull(b.ci), fmtFull(b.co), b.px, RATE, b.pay||'', b.st, b.nt||'', b.created ? fmtFull(b.created) : '']));
-  const csv = rows.map(r => r.map(c => `"${String(c||'').replace(/"/g,'""')}"`).join(',')).join('\n');
-  dlFile(`espacio-norte-bookings-${new Date().toISOString().slice(0,10)}.csv`, 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv));
-  showToast('CSV exported!', '📥', 't-ok');
-}
-
-function dlFile(name, data) {
-  const a = document.createElement('a');
-  a.href = data; a.download = name; a.click();
-}
-
-/* ── NOTIFICATIONS ── */
+/* ════ NOTIFICATIONS ════ */
 function renderNotifs() {
-  const wrap = document.getElementById('notif-list');
+  const wrap  = document.getElementById('notif-list');
+  const dot   = document.getElementById('notif-dot');
   if (!wrap) return;
-  const dot = document.getElementById('notif-dot');
   const unread = notifs.filter(n => !n.read).length;
   dot.style.display = unread > 0 ? 'block' : 'none';
-  if (!notifs.length) {
-    wrap.innerHTML = `<div style="padding:1.2rem;text-align:center;font-size:.8rem;color:var(--text3);">No notifications</div>`;
-    return;
-  }
-  wrap.innerHTML = notifs.slice(0, 8).map(n => `
-    <div class="notif-item${!n.read ? ' unread' : ''}">
-      <div class="notif-item-title">${n.msg}</div>
-      <div class="notif-item-time">${fmtAgo(n.time)}</div>
-    </div>`).join('');
+  wrap.innerHTML = !notifs.length
+    ? `<div style="padding:1.2rem;text-align:center;font-size:.8rem;color:var(--text3);">No notifications</div>`
+    : notifs.slice(0, 8).map(n => `
+        <div class="notif-item${!n.read ? ' unread' : ''}">
+          <div class="notif-item-title">${n.msg}</div>
+          <div class="notif-item-time">${fmtAgo(n.time)}</div>
+        </div>`).join('');
 }
 function toggleNotifs() {
   document.getElementById('notif-panel').classList.toggle('open');
@@ -552,13 +636,14 @@ document.addEventListener('click', e => {
     document.getElementById('notif-panel').classList.remove('open');
 });
 
-function renderPendingBadge() {
-  const n = BK.filter(b => b.st === 'pending').length;
+function renderPendingBadge(count = 0) {
   const b = document.getElementById('sb-pending-badge');
-  b.textContent = n; b.style.display = n > 0 ? 'inline' : 'none';
+  if (!b) return;
+  b.textContent = count;
+  b.style.display = count > 0 ? 'inline' : 'none';
 }
 
-/* ── TOAST ── */
+/* ════ TOAST ════ */
 let toastTimer;
 function showToast(msg, ico = 'ℹ️', cls = '') {
   const t = document.getElementById('toast');
@@ -569,22 +654,28 @@ function showToast(msg, ico = 'ℹ️', cls = '') {
   toastTimer = setTimeout(() => t.classList.remove('show'), 3500);
 }
 
-/* ── HELPERS ── */
-function fmtFull(iso) { return new Date(iso).toLocaleString('en-PH', { month:'short', day:'numeric', year:'numeric', hour:'2-digit', minute:'2-digit' }); }
+/* ════ HELPERS ════ */
+function fmtFull(iso) {
+  return new Date(iso).toLocaleString('en-PH', { month:'short', day:'numeric', year:'numeric', hour:'2-digit', minute:'2-digit' });
+}
 function fmtAgo(iso) {
   const diff = (Date.now() - new Date(iso)) / 1000;
-  if (diff < 60) return 'just now';
-  if (diff < 3600) return `${Math.round(diff / 60)}m ago`;
+  if (diff < 60)    return 'just now';
+  if (diff < 3600)  return `${Math.round(diff / 60)}m ago`;
   if (diff < 86400) return `${Math.round(diff / 3600)}h ago`;
   return new Date(iso).toLocaleDateString('en-PH', { month:'short', day:'numeric' });
 }
 function setTopbarDate() {
   const el = document.getElementById('today-label');
-  if (el) el.textContent = new Date().toLocaleDateString('en-PH', { weekday:'short', month:'long', day:'numeric', year:'numeric' });
+  if (el) el.textContent = new Date().toLocaleDateString('en-PH', {
+    weekday:'short', month:'long', day:'numeric', year:'numeric'
+  });
 }
-function logout() { if (confirm('Log out of admin panel?')) showToast('Logged out', '👋'); }
+function logout() {
+  if (confirm('Log out of admin panel?')) showToast('Logged out', '👋');
+}
 
-/* ── START ── */
+/* ════ START ════ */
 init();
 </script>
 </body>

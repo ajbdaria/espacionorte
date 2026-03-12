@@ -42,121 +42,54 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--linen);color:va
 ::-webkit-scrollbar-thumb{background:var(--parch);border-radius:3px;}
 ::-webkit-scrollbar-thumb:hover{background:var(--amber);}
 
-/* ════ SIDEBAR OVERLAY (mobile) ════ */
-.sb-overlay{
-  display:none;position:fixed;inset:0;z-index:290;
-  background:rgba(0,0,0,.45);backdrop-filter:blur(2px);
-}
-.sb-overlay.visible{ display:block; }
-
-/* ════ SIDEBAR ════ */
-.sb{
-  width:var(--sb);min-height:100vh;position:fixed;top:0;left:0;bottom:0;z-index:300;
-  background:var(--forest-dk);display:flex;flex-direction:column;
-  transition:transform .28s cubic-bezier(.23,1,.32,1);
-  box-shadow:4px 0 24px rgba(0,0,0,.18);
-  transform:translateX(0);
-}
-.sb-brand{
-  padding:1.2rem 1.25rem 1rem;border-bottom:1px solid rgba(255,255,255,.07);
-  display:flex;align-items:center;gap:.75rem;
-}
-.sb-logo{
-  width:40px;height:40px;border-radius:10px;flex-shrink:0;
-  background:linear-gradient(135deg,var(--amber),var(--gold));
-  display:flex;align-items:center;justify-content:center;font-size:1.25rem;
-  box-shadow:0 4px 12px rgba(200,147,42,.4);
-}
+.sb-overlay{display:none;position:fixed;inset:0;z-index:290;background:rgba(0,0,0,.45);backdrop-filter:blur(2px);}
+.sb-overlay.visible{display:block;}
+.sb{width:var(--sb);min-height:100vh;position:fixed;top:0;left:0;bottom:0;z-index:300;background:var(--forest-dk);display:flex;flex-direction:column;transition:transform .28s cubic-bezier(.23,1,.32,1);box-shadow:4px 0 24px rgba(0,0,0,.18);}
+.sb-brand{padding:1.2rem 1.25rem 1rem;border-bottom:1px solid rgba(255,255,255,.07);display:flex;align-items:center;gap:.75rem;}
+.sb-logo{width:40px;height:40px;border-radius:10px;flex-shrink:0;background:linear-gradient(135deg,var(--amber),var(--gold));display:flex;align-items:center;justify-content:center;font-size:1.25rem;box-shadow:0 4px 12px rgba(200,147,42,.4);}
 .sb-brand-text strong{display:block;font-size:.88rem;font-weight:800;color:#fff;letter-spacing:.01em;}
 .sb-brand-text small{display:block;font-size:.62rem;color:rgba(255,255,255,.35);letter-spacing:.1em;text-transform:uppercase;margin-top:.1rem;}
-.sb-close-btn{
-  display:none;margin-left:auto;background:rgba(255,255,255,.08);border:none;
-  width:30px;height:30px;border-radius:50%;color:rgba(255,255,255,.6);
-  font-size:1rem;cursor:pointer;align-items:center;justify-content:center;
-  transition:background .2s;flex-shrink:0;
-}
+.sb-close-btn{display:none;margin-left:auto;background:rgba(255,255,255,.08);border:none;width:30px;height:30px;border-radius:50%;color:rgba(255,255,255,.6);font-size:1rem;cursor:pointer;align-items:center;justify-content:center;transition:background .2s;flex-shrink:0;}
 .sb-close-btn:hover{background:rgba(255,255,255,.2);}
-.sb-group-label{
-  font-size:.58rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
-  color:rgba(255,255,255,.22);padding:.7rem 1.25rem .3rem;
-}
-.sb-item{
-  display:flex;align-items:center;gap:.65rem;padding:.58rem 1.25rem;
-  font-size:.8rem;font-weight:500;color:rgba(255,255,255,.55);
-  border:none;background:none;width:100%;text-align:left;cursor:pointer;
-  border-left:3px solid transparent;transition:all .17s;
-  text-decoration:none;
-}
+.sb-group-label{font-size:.58rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.22);padding:.7rem 1.25rem .3rem;}
+.sb-item{display:flex;align-items:center;gap:.65rem;padding:.58rem 1.25rem;font-size:.8rem;font-weight:500;color:rgba(255,255,255,.55);border:none;background:none;width:100%;text-align:left;cursor:pointer;border-left:3px solid transparent;transition:all .17s;text-decoration:none;}
 .sb-item:hover{color:rgba(255,255,255,.9);background:rgba(255,255,255,.05);}
 .sb-item.active{color:#fff;background:rgba(219,168,74,.13);border-left-color:var(--gold);font-weight:600;}
 .sb-item .ico{width:18px;text-align:center;font-size:.95rem;flex-shrink:0;}
 .sb-item .lbl{flex:1;}
-.sb-item .badge{
-  font-size:.58rem;font-weight:800;background:var(--red);color:#fff;
-  padding:.12rem .45rem;border-radius:2rem;min-width:18px;text-align:center;
-}
+.sb-item .badge{font-size:.58rem;font-weight:800;background:var(--red);color:#fff;padding:.12rem .45rem;border-radius:2rem;min-width:18px;text-align:center;}
 .sb-footer{margin-top:auto;border-top:1px solid rgba(255,255,255,.07);padding:1rem 1.25rem;}
 .sb-user{display:flex;align-items:center;gap:.65rem;}
-.sb-avatar{
-  width:34px;height:34px;border-radius:50%;flex-shrink:0;
-  background:linear-gradient(135deg,var(--amber),var(--gold));
-  display:flex;align-items:center;justify-content:center;
-  font-size:.85rem;font-weight:800;color:var(--forest-dk);
-}
+.sb-avatar{width:34px;height:34px;border-radius:50%;flex-shrink:0;background:linear-gradient(135deg,var(--amber),var(--gold));display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:800;color:var(--forest-dk);}
 .sb-user-info .name{font-size:.8rem;font-weight:700;color:#fff;}
 .sb-user-info .role{font-size:.62rem;color:rgba(255,255,255,.35);margin-top:.05rem;}
 .sb-logout{margin-left:auto;background:none;border:none;cursor:pointer;color:rgba(255,255,255,.3);font-size:.9rem;transition:color .2s;padding:.2rem;}
 .sb-logout:hover{color:var(--red-lt);}
 
-/* ════ MAIN AREA ════ */
 .main{margin-left:var(--sb);flex:1;display:flex;flex-direction:column;min-height:100vh;transition:margin-left .28s cubic-bezier(.23,1,.32,1);}
-
-/* ── TOPBAR ── */
-.topbar{
-  height:var(--topbar);background:var(--panel);border-bottom:1px solid var(--border);
-  display:flex;align-items:center;padding:0 1.25rem;gap:.75rem;
-  position:sticky;top:0;z-index:200;box-shadow:0 1px 8px rgba(0,0,0,.05);
-}
-.hamburger{
-  display:none;width:36px;height:36px;border-radius:.45rem;
-  background:var(--linen);border:1px solid var(--border);
-  align-items:center;justify-content:center;
-  cursor:pointer;font-size:1.1rem;flex-shrink:0;transition:all .2s;
-}
+.topbar{height:var(--topbar);background:var(--panel);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 1.25rem;gap:.75rem;position:sticky;top:0;z-index:200;box-shadow:0 1px 8px rgba(0,0,0,.05);}
+.hamburger{display:none;width:36px;height:36px;border-radius:.45rem;background:var(--linen);border:1px solid var(--border);align-items:center;justify-content:center;cursor:pointer;font-size:1.1rem;flex-shrink:0;transition:all .2s;}
 .hamburger:hover{background:var(--parch);border-color:var(--amber);}
 .topbar-breadcrumb{display:flex;align-items:center;gap:.5rem;flex:1;min-width:0;}
 .topbar-breadcrumb .page-name{font-size:.92rem;font-weight:700;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .topbar-actions{display:flex;align-items:center;gap:.6rem;flex-shrink:0;}
-.top-chip{
-  display:flex;align-items:center;gap:.4rem;background:var(--linen);border:1px solid var(--border);
-  padding:.35rem .8rem;border-radius:.45rem;font-size:.72rem;color:var(--text2);white-space:nowrap;
-}
-.top-icon-btn{
-  width:34px;height:34px;border-radius:.45rem;background:var(--linen);border:1px solid var(--border);
-  display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:.95rem;transition:all .2s;position:relative;
-}
+.top-chip{display:flex;align-items:center;gap:.4rem;background:var(--linen);border:1px solid var(--border);padding:.35rem .8rem;border-radius:.45rem;font-size:.72rem;color:var(--text2);white-space:nowrap;}
+.top-icon-btn{width:34px;height:34px;border-radius:.45rem;background:var(--linen);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:.95rem;transition:all .2s;position:relative;}
 .top-icon-btn:hover{background:var(--parch);border-color:var(--amber);}
 .notif-dot{position:absolute;top:5px;right:5px;width:7px;height:7px;border-radius:50%;background:var(--red);border:2px solid var(--panel);}
-.btn-view-site{
-  background:var(--forest);color:#fff;border:none;padding:.38rem 1rem;border-radius:.45rem;
-  font-family:'Plus Jakarta Sans',sans-serif;font-size:.73rem;font-weight:700;
-  cursor:pointer;transition:all .2s;white-space:nowrap;display:flex;align-items:center;gap:.35rem;
-}
+.btn-view-site{background:var(--forest);color:#fff;border:none;padding:.38rem 1rem;border-radius:.45rem;font-family:'Plus Jakarta Sans',sans-serif;font-size:.73rem;font-weight:700;cursor:pointer;transition:all .2s;white-space:nowrap;display:flex;align-items:center;gap:.35rem;}
 .btn-view-site:hover{background:var(--sage);}
 
-/* ── CONTENT ── */
 .content{padding:1.5rem;flex:1;min-width:0;}
 .page{animation:fadeIn .2s ease;}
 @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
 
-/* ════ SHARED COMPONENTS ════ */
 .panel{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);}
 .panel-hd{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 1.4rem;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:.5rem;}
 .panel-hd-left .ph-title{font-size:.9rem;font-weight:700;color:var(--text);}
 .panel-hd-left .ph-sub{font-size:.7rem;color:var(--text3);margin-top:.12rem;}
 .panel-body{padding:1.25rem 1.4rem;}
 
-/* ── BUTTONS ── */
 .btn{display:inline-flex;align-items:center;gap:.4rem;border:none;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;transition:all .2s;border-radius:.45rem;white-space:nowrap;}
 .btn-sm{font-size:.72rem;padding:.35rem .8rem;}
 .btn-lg{font-size:.82rem;padding:.65rem 1.4rem;}
@@ -164,22 +97,30 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--linen);color:va
 .btn-primary:hover{box-shadow:0 4px 20px rgba(43,74,26,.45);transform:translateY(-1px);}
 .btn-ghost{background:var(--linen);color:var(--text2);border:1px solid var(--border);}
 .btn-ghost:hover{border-color:var(--amber);background:var(--parch);}
+.btn:disabled{opacity:.5;cursor:not-allowed;transform:none !important;pointer-events:none;}
 
-/* ── FORMS ── */
 .fg{margin-bottom:.9rem;}
 .fg label{display:block;font-size:.68rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--text2);margin-bottom:.38rem;}
-.fg input,.fg select,.fg textarea{width:100%;border:1.5px solid var(--border);border-radius:.45rem;padding:.62rem .9rem;font-family:'Plus Jakarta Sans',sans-serif;font-size:.82rem;color:var(--text);background:var(--snow);outline:none;transition:border-color .2s;}
+.fg input,.fg select,.fg textarea{width:100%;border:1.5px solid var(--border);border-radius:.45rem;padding:.62rem .9rem;font-family:'Plus Jakarta Sans',sans-serif;font-size:.82rem;color:var(--text);background:var(--snow);outline:none;transition:border-color .2s,background .2s;}
 .fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--amber);background:#fff;}
+.fg input.field-err,.fg select.field-err{border-color:var(--red) !important;background:var(--red-lt);}
 .fg input[readonly]{background:var(--linen);color:var(--text2);}
 .fg textarea{resize:vertical;min-height:76px;}
 .fg select option{background:#fff;}
 .fg .fg-hint{font-size:.65rem;color:var(--text4);margin-top:.28rem;}
 .fg-row{display:grid;grid-template-columns:1fr 1fr;gap:.85rem;}
 
-/* ── SECTION LABEL ── */
 .section-label{font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--text3);padding:.8rem 0 .5rem;border-bottom:1px solid var(--border);margin-bottom:.9rem;}
 
-/* ── NOTIFICATIONS ── */
+/* conflict warning banner */
+.conflict-banner{
+  display:none;align-items:center;gap:.6rem;
+  background:var(--red-lt);border:1.5px solid #FCA5A5;border-radius:.45rem;
+  padding:.75rem 1rem;margin-bottom:.9rem;
+  font-size:.78rem;color:var(--red);font-weight:600;line-height:1.4;
+}
+.conflict-banner.show{display:flex;}
+
 .notif-dropdown{position:absolute;top:calc(100% + 8px);right:0;width:300px;background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow-lg);z-index:500;display:none;}
 .notif-dropdown.open{display:block;}
 .notif-hd{display:flex;align-items:center;justify-content:space-between;padding:.9rem 1.1rem;border-bottom:1px solid var(--border);}
@@ -191,31 +132,33 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--linen);color:va
 .notif-item-time{font-size:.67rem;color:var(--text3);margin-top:.1rem;}
 .notif-item.unread{border-left:3px solid var(--amber);}
 
-/* ── TOAST ── */
 .toast{position:fixed;bottom:1.5rem;right:1.5rem;z-index:9999;display:flex;align-items:center;gap:.7rem;background:var(--forest-dk);color:#fff;padding:.85rem 1.3rem;border-radius:.6rem;font-size:.8rem;font-weight:500;max-width:320px;box-shadow:var(--shadow-lg);transform:translateY(80px);opacity:0;transition:all .35s cubic-bezier(.23,1,.32,1);border-left:4px solid var(--gold);}
 .toast.show{transform:translateY(0);opacity:1;}
 .toast.t-ok{border-left-color:var(--sage-lt);}
 .toast.t-err{border-left-color:var(--red);}
+.toast.t-warn{border-left-color:var(--gold);}
 
-/* ════ RESPONSIVE ════ */
+@keyframes spin{to{transform:rotate(360deg)}}
+.spinner{display:inline-block;width:15px;height:15px;border:2px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;flex-shrink:0;}
+
 @media(min-width:769px){
-  .sb{ transform:translateX(0) !important; }
-  .main{ margin-left:var(--sb) !important; }
-  .hamburger{ display:none !important; }
-  .sb-overlay{ display:none !important; }
-  .sb-close-btn{ display:none !important; }
+  .sb{transform:translateX(0) !important;}
+  .main{margin-left:var(--sb) !important;}
+  .hamburger{display:none !important;}
+  .sb-overlay{display:none !important;}
+  .sb-close-btn{display:none !important;}
 }
 @media(max-width:768px){
-  :root{ --sb:240px; }
-  .sb{ transform:translateX(-100%);position:fixed;top:0;left:0;bottom:0;z-index:300;width:var(--sb); }
-  .sb.open{ transform:translateX(0); }
-  .main{ margin-left:0 !important;width:100%; }
-  .hamburger{ display:flex !important; }
-  .sb-close-btn{ display:flex !important; }
-  .top-chip{ display:none; }
-  .content{ padding:1rem .75rem; }
-  .fg-row{ grid-template-columns:1fr; }
-  .btn-view-site{ font-size:.65rem;padding:.35rem .65rem; }
+  :root{--sb:240px;}
+  .sb{transform:translateX(-100%);position:fixed;top:0;left:0;bottom:0;z-index:300;width:var(--sb);}
+  .sb.open{transform:translateX(0);}
+  .main{margin-left:0 !important;width:100%;}
+  .hamburger{display:flex !important;}
+  .sb-close-btn{display:flex !important;}
+  .top-chip{display:none;}
+  .content{padding:1rem .75rem;}
+  .fg-row{grid-template-columns:1fr;}
+  .btn-view-site{font-size:.65rem;padding:.35rem .65rem;}
 }
 </style>
 </head>
@@ -257,7 +200,6 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--linen);color:va
     <a href="configuration.html" class="sb-item"><span class="ico">⚙️</span><span class="lbl">Settings</span></a>
   </nav>
 
-
   <div class="sb-footer">
     <div class="sb-user">
       <div class="sb-avatar">A</div>
@@ -273,7 +215,6 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--linen);color:va
 <!-- ════ MAIN ════ -->
 <div class="main" id="main">
 
-  <!-- TOPBAR -->
   <header class="topbar">
     <button class="hamburger" id="hamburger" onclick="openSidebar()">☰</button>
     <div class="topbar-breadcrumb">
@@ -283,10 +224,13 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--linen);color:va
       <div class="top-chip">📅 <span id="today-label"></span></div>
       <div style="position:relative;">
         <div class="top-icon-btn" onclick="toggleNotifs()" id="notif-btn">
-          🔔<div class="notif-dot" id="notif-dot"></div>
+          🔔<div class="notif-dot" id="notif-dot" style="display:none"></div>
         </div>
         <div class="notif-dropdown" id="notif-panel">
-          <div class="notif-hd"><span>Notifications</span><button class="btn btn-sm btn-ghost" onclick="clearNotifs()">Clear all</button></div>
+          <div class="notif-hd">
+            <span>Notifications</span>
+            <button class="btn btn-sm btn-ghost" onclick="clearNotifs()">Clear all</button>
+          </div>
           <div id="notif-list"></div>
         </div>
       </div>
@@ -294,7 +238,6 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--linen);color:va
     </div>
   </header>
 
-  <!-- ════ CONTENT ════ -->
   <div class="content">
     <div class="page" id="page-new-booking">
       <div style="max-width:680px;">
@@ -306,6 +249,12 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--linen);color:va
             </div>
           </div>
           <div class="panel-body">
+
+            <!-- Conflict warning — shown when suite is already booked -->
+            <div class="conflict-banner" id="conflict-banner">
+              ❌ <span id="conflict-msg">Suite already booked at that time.</span>
+            </div>
+
             <div class="section-label">👤 Guest Information</div>
             <div class="fg-row">
               <div class="fg"><label>First Name *</label><input type="text" id="nb-fn" placeholder="Juan"></div>
@@ -319,14 +268,16 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--linen);color:va
 
             <div class="section-label">🏠 Reservation Details</div>
             <div class="fg-row">
-              <div class="fg"><label>Suite *</label>
+              <div class="fg">
+                <label>Suite *</label>
                 <select id="nb-rm" onchange="nbCalc()">
                   <option value="">— Select Suite —</option>
                   <option value="1">Suite 1 · Sterling (King Bed)</option>
                   <option value="2">Suite 2 · Habi (Queen Bed)</option>
                 </select>
               </div>
-              <div class="fg"><label>Number of Guests *</label>
+              <div class="fg">
+                <label>Number of Guests *</label>
                 <input type="number" id="nb-px" min="1" max="4" value="2">
                 <div class="fg-hint">Maximum 4 guests per suite</div>
               </div>
@@ -338,7 +289,8 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--linen);color:va
 
             <div class="section-label">💳 Payment & Notes</div>
             <div class="fg-row">
-              <div class="fg"><label>Payment Method</label>
+              <div class="fg">
+                <label>Payment Method</label>
                 <select id="nb-pay">
                   <option value="cash">Cash on Arrival</option>
                   <option value="gcash">GCash</option>
@@ -346,38 +298,44 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--linen);color:va
                   <option value="paid">Already Paid</option>
                 </select>
               </div>
-              <div class="fg"><label>Booking Status</label>
+              <div class="fg">
+                <label>Booking Status</label>
                 <select id="nb-st">
                   <option value="confirmed">Confirmed</option>
                   <option value="pending">Pending (awaiting payment)</option>
                 </select>
               </div>
             </div>
-            <div class="fg"><label>Special Requests / Notes</label>
+            <div class="fg">
+              <label>Special Requests / Notes</label>
               <textarea id="nb-note" placeholder="e.g. Anniversary celebration, early check-in, extra towels…"></textarea>
             </div>
 
+            <!-- Booking Summary -->
             <div style="background:linear-gradient(135deg,var(--forest-dk),var(--forest));border-radius:.55rem;padding:1.1rem 1.25rem;margin:.5rem 0 1.25rem;">
               <div style="font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:.7rem;">BOOKING SUMMARY</div>
               <div style="display:grid;grid-template-columns:1fr 1fr;gap:.4rem .5rem;">
-                <div style="font-size:.72rem;color:rgba(255,255,255,.5);">Suite</div><div style="font-size:.72rem;font-weight:600;color:#fff;" id="nbs-rm">—</div>
-                <div style="font-size:.72rem;color:rgba(255,255,255,.5);">Check-in</div><div style="font-size:.72rem;font-weight:600;color:#fff;" id="nbs-ci">—</div>
-                <div style="font-size:.72rem;color:rgba(255,255,255,.5);">Check-out</div><div style="font-size:.72rem;font-weight:600;color:#fff;" id="nbs-co">—</div>
+                <div style="font-size:.72rem;color:rgba(255,255,255,.5);">Suite</div>
+                <div style="font-size:.72rem;font-weight:600;color:#fff;" id="nbs-rm">—</div>
+                <div style="font-size:.72rem;color:rgba(255,255,255,.5);">Check-in</div>
+                <div style="font-size:.72rem;font-weight:600;color:#fff;" id="nbs-ci">—</div>
+                <div style="font-size:.72rem;color:rgba(255,255,255,.5);">Check-out</div>
+                <div style="font-size:.72rem;font-weight:600;color:#fff;" id="nbs-co">—</div>
                 <div style="font-size:.75rem;font-weight:700;color:rgba(255,255,255,.6);border-top:1px solid rgba(255,255,255,.1);padding-top:.4rem;margin-top:.2rem;">Total Due</div>
-                <div style="font-size:1.1rem;font-weight:800;color:var(--gold);border-top:1px solid rgba(255,255,255,.1);padding-top:.4rem;margin-top:.2rem;" id="nbs-tot">₱1,999</div>
+                <div style="font-size:1.1rem;font-weight:800;color:var(--gold);border-top:1px solid rgba(255,255,255,.1);padding-top:.4rem;margin-top:.2rem;">₱1,999</div>
               </div>
             </div>
 
             <div style="display:flex;gap:.7rem;flex-wrap:wrap;">
-              <button class="btn btn-primary btn-lg" onclick="submitNewBooking()">✓ Confirm Reservation</button>
-              <button class="btn btn-ghost btn-lg" onclick="clearNBForm()">Clear Form</button>
+              <button class="btn btn-primary btn-lg" id="submit-btn" onclick="submitNewBooking()">✓ Confirm Reservation</button>
+              <button class="btn btn-ghost btn-lg" id="clear-btn" onclick="clearNBForm()">Clear Form</button>
             </div>
+
           </div>
         </div>
       </div>
     </div>
   </div>
-
 </div>
 
 <!-- TOAST -->
@@ -385,122 +343,313 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--linen);color:va
 
 <script>
 'use strict';
-const BK_KEY='en3', LOG_KEY='en3_log', CFG_KEY='en3_cfg', RATE=1999;
-let BK=[], LOG=[], CFG={}, notifs=[];
 
-/* ── SIDEBAR TOGGLE ── */
-function openSidebar(){
-  document.getElementById('sidebar').classList.add('open');
-  document.getElementById('sb-overlay').classList.add('visible');
-  document.body.style.overflow='hidden';
-}
-function closeSidebar(){
-  document.getElementById('sidebar').classList.remove('open');
-  document.getElementById('sb-overlay').classList.remove('visible');
-  document.body.style.overflow='';
-}
-document.querySelectorAll('.sb-item').forEach(btn=>{
-  btn.addEventListener('click',()=>{ if(window.innerWidth<=768) closeSidebar(); });
-});
+const RATE       = 1999;
+let   notifs     = [];
+let   existingBk = []; // cached from GET /api/bookings — used for conflict check
+let   submitting = false;
 
-/* ── INIT ── */
-function init(){
-  loadAll();
+/* ════ INIT ════ */
+async function init() {
   setTopbarDate();
-  renderPendingBadge();
   renderNotifs();
-  // Set default check-in to today at 14:00
-  const defDt=new Date(); defDt.setHours(14,0,0,0);
-  const nbCi=g('nb-ci'); if(nbCi) nbCi.value=defDt.toISOString().slice(0,16);
+
+  // default check-in: today at 14:00 local time
+  const defDt = new Date();
+  defDt.setHours(14, 0, 0, 0);
+  const ciEl = g('nb-ci');
+  if (ciEl) ciEl.value = toLocalISO(defDt);
   nbCalc();
+
+  // load existing bookings for conflict detection + pending badge
+  // non-blocking — page is fully usable before this resolves
+  loadExisting();
 }
 
-function loadAll(){
-  try{ BK=JSON.parse(localStorage.getItem(BK_KEY)||'[]'); }catch(e){ BK=[]; }
-  try{ LOG=JSON.parse(localStorage.getItem(LOG_KEY)||'[]'); }catch(e){ LOG=[]; }
-  try{ CFG=JSON.parse(localStorage.getItem(CFG_KEY)||'{}'); }catch(e){ CFG={}; }
-  document.getElementById('admin-display-name').textContent=CFG.adminName||'Admin';
-}
-
-function saveAll(){
-  localStorage.setItem(BK_KEY, JSON.stringify(BK));
-  localStorage.setItem(LOG_KEY, JSON.stringify(LOG));
-  localStorage.setItem(CFG_KEY, JSON.stringify(CFG));
-}
-
-/* ── NEW BOOKING ── */
-function nbCalc(){
-  const rm=g('nb-rm').value;
-  const ci=g('nb-ci').value;
-  const rn={'1':'Suite 1 · Sterling','2':'Suite 2 · Habi'};
-  setText('nbs-rm', rm ? rn[rm] : '—');
-  if(ci){
-    const d=new Date(ci), co=new Date(d.getTime()+21*3600000);
-    g('nb-co').value=co.toLocaleString('en-PH',{month:'short',day:'numeric',year:'numeric',hour:'2-digit',minute:'2-digit'});
-    setText('nbs-ci', fmtFull(d));
-    setText('nbs-co', fmtFull(co));
-  } else {
-    setText('nbs-ci','—'); setText('nbs-co','—');
+/* ════ LOAD EXISTING
+   GET /api/bookings → plain array (same endpoint used in bookings.html) ════ */
+async function loadExisting() {
+  try {
+    const res = await fetch('/api/bookings');
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    existingBk = await res.json();
+    renderPendingBadge();
+    // re-run calc in case the user already filled in dates while loading
+    nbCalc();
+  } catch (err) {
+    console.warn('Could not load bookings for conflict check:', err.message);
+    // non-fatal — server validates on POST too
   }
 }
 
-function submitNewBooking(){
-  const fn=g('nb-fn').value.trim(), ln=g('nb-ln').value.trim(), ph=g('nb-ph').value.trim();
-  const ci=g('nb-ci').value, rm=g('nb-rm').value, px=parseInt(g('nb-px').value)||1;
-  const nt=g('nb-note').value.trim(), pay=g('nb-pay').value, st=g('nb-st').value;
-  const em=g('nb-em').value.trim(), fb=g('nb-fb').value.trim();
-  if(!fn||!ln||!ph||!ci||!rm){ showToast('Please fill all required fields','⚠️','t-err'); return; }
-  if(px<1||px>4){ showToast('Guests must be 1–4','⚠️','t-err'); return; }
-  const cid=new Date(ci), cod=new Date(cid.getTime()+21*3600000);
-  const conflict=BK.some(b=>{ if(b.rm!=rm||b.st==='cancelled') return false; return cid<new Date(b.co)&&cod>new Date(b.ci); });
-  if(conflict){ showToast(`Suite ${rm} already booked at that time.`,'❌','t-err'); return; }
-  const ref='EN-'+Date.now().toString(36).toUpperCase();
-  BK.push({ref,fn,ln,ph,em,fb,rm,ci:cid.toISOString(),co:cod.toISOString(),px,nt,pay,st,created:new Date().toISOString()});
-  LOG.unshift({type:'ok',msg:`New booking created — ${fn} ${ln} (Suite ${rm}, ${fmtShort(cid)})`,time:new Date().toISOString()});
-  addNotif(`New booking: ${fn} ${ln} — Suite ${rm}`);
-  saveAll();
-  renderPendingBadge();
-  clearNBForm();
-  showToast(`Booking confirmed for ${fn} ${ln}!`,'✅','t-ok');
+/* ════ SUMMARY CALC + LIVE CONFLICT CHECK ════ */
+function nbCalc() {
+  const rm = g('nb-rm').value;
+  const ci = g('nb-ci').value;
+  const rn = { '1': 'Suite 1 · Sterling', '2': 'Suite 2 · Habi' };
+
+  setText('nbs-rm', rm ? rn[rm] : '—');
+
+  if (ci) {
+    const cid = new Date(ci);
+    const cod = new Date(cid.getTime() + 21 * 3600000);
+    g('nb-co').value = cod.toLocaleString('en-PH', {
+      month:'short', day:'numeric', year:'numeric', hour:'2-digit', minute:'2-digit'
+    });
+    setText('nbs-ci', fmtFull(cid));
+    setText('nbs-co', fmtFull(cod));
+
+    if (rm) checkConflict(rm, cid, cod);
+    else    hideConflict();
+  } else {
+    g('nb-co').value = '';
+    setText('nbs-ci', '—');
+    setText('nbs-co', '—');
+    hideConflict();
+  }
 }
 
-function clearNBForm(){
-  ['nb-fn','nb-ln','nb-ph','nb-em','nb-fb','nb-ci','nb-co','nb-note'].forEach(id=>{ const el=g(id); if(el) el.value=''; });
-  g('nb-rm').value=''; g('nb-px').value=2; g('nb-pay').value='cash'; g('nb-st').value='confirmed';
-  ['nbs-rm','nbs-ci','nbs-co'].forEach(id=>setText(id,'—'));
+function checkConflict(rm, cid, cod) {
+  const hit = existingBk.find(b =>
+    String(b.rm) === String(rm) &&
+    b.st !== 'cancelled' &&
+    cid < new Date(b.co) &&
+    cod > new Date(b.ci)
+  );
+  if (hit) {
+    const msg = `Suite ${rm} is already booked: ${fmtFull(hit.ci)} → ${fmtFull(hit.co)} (${hit.fn} ${hit.ln}).`;
+    document.getElementById('conflict-msg').textContent = msg;
+    document.getElementById('conflict-banner').classList.add('show');
+  } else {
+    hideConflict();
+  }
+}
+function hideConflict() {
+  document.getElementById('conflict-banner').classList.remove('show');
 }
 
-/* ── PENDING BADGE ── */
-function renderPendingBadge(){ const n=BK.filter(b=>b.st==='pending').length; const b=document.getElementById('sb-pending-badge'); b.textContent=n; b.style.display=n>0?'inline':'none'; }
+/* ════ SUBMIT
+   POST /api/bookings with full booking data
+   Your API: checks required fields, auto-generates ref + created, logs it
+   Returns: { success: true, ref: "EN-XXXXXX" } ════ */
+async function submitNewBooking() {
+  if (submitting) return;
 
-/* ── NOTIFICATIONS ── */
-function addNotif(msg){ notifs.unshift({msg,time:new Date().toISOString(),read:false}); renderNotifs(); }
-function renderNotifs(){
-  const wrap=document.getElementById('notif-list'); if(!wrap) return;
-  const dot=document.getElementById('notif-dot');
-  const unread=notifs.filter(n=>!n.read).length;
-  dot.style.display=unread>0?'block':'none';
-  if(!notifs.length){ wrap.innerHTML=`<div style="padding:1.2rem;text-align:center;font-size:.8rem;color:var(--text3);">No notifications</div>`; return; }
-  wrap.innerHTML=notifs.slice(0,8).map(n=>`<div class="notif-item${!n.read?' unread':''}"><div class="notif-item-title">${n.msg}</div><div class="notif-item-time">${fmtAgo(n.time)}</div></div>`).join('');
+  const fn  = g('nb-fn').value.trim();
+  const ln  = g('nb-ln').value.trim();
+  const ph  = g('nb-ph').value.trim();
+  const em  = g('nb-em').value.trim();
+  const fb  = g('nb-fb').value.trim();
+  const rm  = g('nb-rm').value;
+  const px  = parseInt(g('nb-px').value) || 1;
+  const ci  = g('nb-ci').value;
+  const nt  = g('nb-note').value.trim();
+  const pay = g('nb-pay').value;
+  const st  = g('nb-st').value;
+
+  // ── validation ──
+  const missing = [];
+  if (!fn) { markErr('nb-fn'); missing.push('First name'); }
+  if (!ln) { markErr('nb-ln'); missing.push('Last name');  }
+  if (!ph) { markErr('nb-ph'); missing.push('Phone');      }
+  if (!ci) { markErr('nb-ci'); missing.push('Check-in');   }
+  if (!rm) { markErr('nb-rm'); missing.push('Suite');      }
+  if (missing.length) {
+    showToast('Required: ' + missing.join(', '), '⚠️', 't-err');
+    return;
+  }
+  if (px < 1 || px > 4) {
+    showToast('Number of guests must be 1–4', '⚠️', 't-err');
+    return;
+  }
+
+  const cid = new Date(ci);
+  const cod = new Date(cid.getTime() + 21 * 3600000);
+
+  // ── final conflict check before sending ──
+  const conflict = existingBk.find(b =>
+    String(b.rm) === String(rm) &&
+    b.st !== 'cancelled' &&
+    cid < new Date(b.co) &&
+    cod > new Date(b.ci)
+  );
+  if (conflict) {
+    showToast(`Suite ${rm} is already booked at that time.`, '❌', 't-err');
+    checkConflict(rm, cid, cod); // show the banner too
+    return;
+  }
+
+  // ── build payload — matches your API's expected fields ──
+  const payload = {
+    fn, ln, ph,
+    ...(em && { em }),
+    ...(fb && { fb }),
+    rm,
+    px,
+    ci:  cid.toISOString(),
+    co:  cod.toISOString(),
+    pay,
+    st,
+    ...(nt && { nt }),
+    // ref, created, logged by the server — don't send them
+  };
+
+  setSubmitting(true);
+
+  try {
+    const res  = await fetch('/api/Bookings', {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify(payload),
+    });
+    const data = await res.json();
+
+    if (!res.ok || !data.success) {
+      throw new Error(data.message || `HTTP ${res.status}`);
+    }
+
+    // success — add to local cache with server-generated ref
+    existingBk.push({ ...payload, ref: data.ref, created: new Date().toISOString() });
+    renderPendingBadge();
+    addNotif(`New booking: ${fn} ${ln} — Suite ${rm}`);
+    showToast(`Booking confirmed! Ref: ${data.ref}`, '✅', 't-ok');
+    clearNBForm();
+
+  } catch (err) {
+    console.error('Submit error:', err);
+    showToast('Failed to save booking: ' + err.message, '❌', 't-err');
+  } finally {
+    setSubmitting(false);
+  }
 }
-function toggleNotifs(){ document.getElementById('notif-panel').classList.toggle('open'); notifs.forEach(n=>n.read=true); renderNotifs(); }
-function clearNotifs(){ notifs=[]; renderNotifs(); document.getElementById('notif-panel').classList.remove('open'); }
-document.addEventListener('click',e=>{ if(!document.getElementById('notif-btn').contains(e.target)) document.getElementById('notif-panel').classList.remove('open'); });
 
-/* ── TOAST ── */
+function setSubmitting(state) {
+  submitting = state;
+  const sb = g('submit-btn');
+  const cb = g('clear-btn');
+  if (sb) { sb.disabled = state; sb.innerHTML = state ? '<div class="spinner"></div> Saving…' : '✓ Confirm Reservation'; }
+  if (cb) cb.disabled = state;
+}
+
+/* ════ FORM CLEAR ════ */
+function clearNBForm() {
+  ['nb-fn','nb-ln','nb-ph','nb-em','nb-fb','nb-ci','nb-co','nb-note'].forEach(id => {
+    const el = g(id);
+    if (el) { el.value = ''; el.classList.remove('field-err'); }
+  });
+  g('nb-rm').value  = '';
+  g('nb-px').value  = 2;
+  g('nb-pay').value = 'cash';
+  g('nb-st').value  = 'confirmed';
+  ['nbs-rm','nbs-ci','nbs-co'].forEach(id => setText(id, '—'));
+  hideConflict();
+}
+
+function markErr(id) {
+  const el = g(id); if (!el) return;
+  el.classList.add('field-err');
+  el.addEventListener('input', () => el.classList.remove('field-err'), { once: true });
+}
+
+/* ════ SIDEBAR ════ */
+function openSidebar() {
+  document.getElementById('sidebar').classList.add('open');
+  document.getElementById('sb-overlay').classList.add('visible');
+  document.body.style.overflow = 'hidden';
+}
+function closeSidebar() {
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('sb-overlay').classList.remove('visible');
+  document.body.style.overflow = '';
+}
+document.querySelectorAll('.sb-item').forEach(btn => {
+  btn.addEventListener('click', () => { if (window.innerWidth <= 768) closeSidebar(); });
+});
+
+/* ════ NOTIFICATIONS ════ */
+function addNotif(msg) {
+  notifs.unshift({ msg, time: new Date().toISOString(), read: false });
+  renderNotifs();
+}
+function renderNotifs() {
+  const wrap = g('notif-list'); if (!wrap) return;
+  const dot  = g('notif-dot');
+  dot.style.display = notifs.filter(n => !n.read).length > 0 ? 'block' : 'none';
+  wrap.innerHTML = !notifs.length
+    ? `<div style="padding:1.2rem;text-align:center;font-size:.8rem;color:var(--text3);">No notifications</div>`
+    : notifs.slice(0, 8).map(n => `
+        <div class="notif-item${!n.read ? ' unread' : ''}">
+          <div class="notif-item-title">${esc(n.msg)}</div>
+          <div class="notif-item-time">${fmtAgo(n.time)}</div>
+        </div>`).join('');
+}
+function toggleNotifs() {
+  g('notif-panel').classList.toggle('open');
+  notifs.forEach(n => n.read = true);
+  renderNotifs();
+}
+function clearNotifs() {
+  notifs = [];
+  renderNotifs();
+  g('notif-panel').classList.remove('open');
+}
+document.addEventListener('click', e => {
+  if (!g('notif-btn').contains(e.target)) g('notif-panel').classList.remove('open');
+});
+
+function renderPendingBadge() {
+  const n  = existingBk.filter(b => b.st === 'pending').length;
+  const el = g('sb-pending-badge');
+  if (!el) return;
+  el.textContent   = n;
+  el.style.display = n > 0 ? 'inline' : 'none';
+}
+
+/* ════ TOAST ════ */
 let toastTimer;
-function showToast(msg,ico='ℹ️',cls=''){ const t=document.getElementById('toast'); document.getElementById('toast-ico').textContent=ico; document.getElementById('toast-msg').textContent=msg; t.className='toast show '+(cls||''); clearTimeout(toastTimer); toastTimer=setTimeout(()=>t.classList.remove('show'),3500); }
+function showToast(msg, ico = 'ℹ️', cls = '') {
+  const t = g('toast');
+  g('toast-ico').textContent = ico;
+  g('toast-msg').textContent = msg;
+  t.className = 'toast show ' + (cls || '');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 4000);
+}
 
-/* ── HELPERS ── */
-function g(id){ return document.getElementById(id); }
-function setText(id,v){ const el=document.getElementById(id); if(el) el.textContent=v; }
-function fmtFull(d){ return (d instanceof Date ? d : new Date(d)).toLocaleString('en-PH',{month:'short',day:'numeric',year:'numeric',hour:'2-digit',minute:'2-digit'}); }
-function fmtShort(d){ return (d instanceof Date ? d : new Date(d)).toLocaleString('en-PH',{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'}); }
-function fmtAgo(iso){ const diff=(Date.now()-new Date(iso))/1000; if(diff<60) return'just now'; if(diff<3600) return`${Math.round(diff/60)}m ago`; if(diff<86400) return`${Math.round(diff/3600)}h ago`; return new Date(iso).toLocaleDateString('en-PH',{month:'short',day:'numeric'}); }
-function setTopbarDate(){ const d=new Date(); const el=document.getElementById('today-label'); if(el) el.textContent=d.toLocaleDateString('en-PH',{weekday:'short',month:'long',day:'numeric',year:'numeric'}); }
-function logout(){ if(confirm('Log out of admin panel?')) showToast('Logged out','👋'); }
+/* ════ HELPERS ════ */
+function g(id) { return document.getElementById(id); }
+function setText(id, v) { const el = g(id); if (el) el.textContent = v; }
+function esc(s) {
+  return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+function fmtFull(d) {
+  return (d instanceof Date ? d : new Date(d)).toLocaleString('en-PH', {
+    month:'short', day:'numeric', year:'numeric', hour:'2-digit', minute:'2-digit'
+  });
+}
+function fmtAgo(iso) {
+  const diff = (Date.now() - new Date(iso)) / 1000;
+  if (diff < 60)    return 'just now';
+  if (diff < 3600)  return `${Math.round(diff / 60)}m ago`;
+  if (diff < 86400) return `${Math.round(diff / 3600)}h ago`;
+  return new Date(iso).toLocaleDateString('en-PH', { month:'short', day:'numeric' });
+}
+// produces "YYYY-MM-DDTHH:MM" in local time for datetime-local input
+function toLocalISO(d) {
+  const p = n => String(n).padStart(2, '0');
+  return `${d.getFullYear()}-${p(d.getMonth()+1)}-${p(d.getDate())}T${p(d.getHours())}:${p(d.getMinutes())}`;
+}
+function setTopbarDate() {
+  const el = g('today-label');
+  if (el) el.textContent = new Date().toLocaleDateString('en-PH', {
+    weekday:'short', month:'long', day:'numeric', year:'numeric'
+  });
+}
+function logout() {
+  if (confirm('Log out of admin panel?')) showToast('Logged out', '👋');
+}
 
-/* ── START ── */
+/* ════ START ════ */
 init();
 </script>
 </body>
