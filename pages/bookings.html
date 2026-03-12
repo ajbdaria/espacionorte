@@ -342,7 +342,7 @@ async function init() {
 async function loadBookings() {
   showLoading();
   try {
-    const res = await fetch('/api/bookings');
+    const res = await fetch('/api/Bookings');
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     allBookings = await res.json();  // plain array from your API
     renderPendingBadge();
