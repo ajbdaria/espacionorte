@@ -605,7 +605,7 @@ async function fetchProfile() {
 }
 
 async function fetchBookings() {
-  const res = await fetch('/api/bookings');
+  const res = await fetch('/api/Bookings');
   if (!res.ok) throw new Error('Bookings fetch failed');
   ALL_BK = await res.json();
   MY_BK  = ALL_BK.filter(b => b.guestUser === sessUname);
