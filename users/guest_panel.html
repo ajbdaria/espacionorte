@@ -985,7 +985,7 @@ async function submitBooking() {
 
   try {
     const parts=(UINFO.name||sessUname).trim().split(' ');
-    const res=await fetch('/api/bookings',{
+    const res=await fetch('/api/Bookings',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
       body:JSON.stringify({
@@ -1029,7 +1029,7 @@ async function confirmCancel() {
   const btn=g('cancel-confirm-btn');
   btn.disabled=true; btn.textContent='Cancelling…';
   try {
-    const res=await fetch('/api/bookings',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({ref:cancelRef,st:'cancelled'})});
+    const res=await fetch('/api/Bookings',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({ref:cancelRef,st:'cancelled'})});
     const data=await res.json();
     if(data.success){
       g('cancel-modal').classList.remove('open');
