@@ -40,114 +40,55 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--linen);color:va
 ::-webkit-scrollbar-thumb{background:var(--parch);border-radius:3px;}
 ::-webkit-scrollbar-thumb:hover{background:var(--amber);}
 
-/* ════ SIDEBAR OVERLAY (mobile) ════ */
-.sb-overlay{
-  display:none;position:fixed;inset:0;z-index:290;
-  background:rgba(0,0,0,.45);backdrop-filter:blur(2px);
-}
-.sb-overlay.visible{ display:block; }
+.sb-overlay{display:none;position:fixed;inset:0;z-index:290;background:rgba(0,0,0,.45);backdrop-filter:blur(2px);}
+.sb-overlay.visible{display:block;}
 
-/* ════ SIDEBAR ════ */
-.sb{
-  width:var(--sb);min-height:100vh;position:fixed;top:0;left:0;bottom:0;z-index:300;
-  background:var(--forest-dk);display:flex;flex-direction:column;
-  transition:transform .28s cubic-bezier(.23,1,.32,1);
-  box-shadow:4px 0 24px rgba(0,0,0,.18);
-  transform:translateX(0);
-}
-.sb-brand{
-  padding:1.2rem 1.25rem 1rem;border-bottom:1px solid rgba(255,255,255,.07);
-  display:flex;align-items:center;gap:.75rem;
-}
-.sb-logo{
-  width:40px;height:40px;border-radius:10px;flex-shrink:0;
-  background:linear-gradient(135deg,var(--amber),var(--gold));
-  display:flex;align-items:center;justify-content:center;font-size:1.25rem;
-  box-shadow:0 4px 12px rgba(200,147,42,.4);
-}
+.sb{width:var(--sb);min-height:100vh;position:fixed;top:0;left:0;bottom:0;z-index:300;background:var(--forest-dk);display:flex;flex-direction:column;transition:transform .28s cubic-bezier(.23,1,.32,1);box-shadow:4px 0 24px rgba(0,0,0,.18);transform:translateX(0);}
+.sb-brand{padding:1.2rem 1.25rem 1rem;border-bottom:1px solid rgba(255,255,255,.07);display:flex;align-items:center;gap:.75rem;}
+.sb-logo{width:40px;height:40px;border-radius:10px;flex-shrink:0;background:linear-gradient(135deg,var(--amber),var(--gold));display:flex;align-items:center;justify-content:center;font-size:1.25rem;box-shadow:0 4px 12px rgba(200,147,42,.4);}
 .sb-brand-text strong{display:block;font-size:.88rem;font-weight:800;color:#fff;letter-spacing:.01em;}
 .sb-brand-text small{display:block;font-size:.62rem;color:rgba(255,255,255,.35);letter-spacing:.1em;text-transform:uppercase;margin-top:.1rem;}
-.sb-close-btn{
-  display:none;margin-left:auto;background:rgba(255,255,255,.08);border:none;
-  width:30px;height:30px;border-radius:50%;color:rgba(255,255,255,.6);
-  font-size:1rem;cursor:pointer;align-items:center;justify-content:center;
-  transition:background .2s;flex-shrink:0;
-}
+.sb-close-btn{display:none;margin-left:auto;background:rgba(255,255,255,.08);border:none;width:30px;height:30px;border-radius:50%;color:rgba(255,255,255,.6);font-size:1rem;cursor:pointer;align-items:center;justify-content:center;transition:background .2s;flex-shrink:0;}
 .sb-close-btn:hover{background:rgba(255,255,255,.2);}
-.sb-group-label{
-  font-size:.58rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
-  color:rgba(255,255,255,.22);padding:.7rem 1.25rem .3rem;
-}
-.sb-item{
-  display:flex;align-items:center;gap:.65rem;padding:.58rem 1.25rem;
-  font-size:.8rem;font-weight:500;color:rgba(255,255,255,.55);
-  border:none;background:none;width:100%;text-align:left;cursor:pointer;
-  border-left:3px solid transparent;transition:all .17s;
-  text-decoration:none;
-}
+.sb-group-label{font-size:.58rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.22);padding:.7rem 1.25rem .3rem;}
+.sb-item{display:flex;align-items:center;gap:.65rem;padding:.58rem 1.25rem;font-size:.8rem;font-weight:500;color:rgba(255,255,255,.55);border:none;background:none;width:100%;text-align:left;cursor:pointer;border-left:3px solid transparent;transition:all .17s;text-decoration:none;}
 .sb-item:hover{color:rgba(255,255,255,.9);background:rgba(255,255,255,.05);}
 .sb-item.active{color:#fff;background:rgba(219,168,74,.13);border-left-color:var(--gold);font-weight:600;}
 .sb-item .ico{width:18px;text-align:center;font-size:.95rem;flex-shrink:0;}
 .sb-item .lbl{flex:1;}
-.sb-item .badge{
-  font-size:.58rem;font-weight:800;background:var(--red);color:#fff;
-  padding:.12rem .45rem;border-radius:2rem;min-width:18px;text-align:center;
-}
+.sb-item .badge{font-size:.58rem;font-weight:800;background:var(--red);color:#fff;padding:.12rem .45rem;border-radius:2rem;min-width:18px;text-align:center;}
 .sb-footer{margin-top:auto;border-top:1px solid rgba(255,255,255,.07);padding:1rem 1.25rem;}
 .sb-user{display:flex;align-items:center;gap:.65rem;}
-.sb-avatar{
-  width:34px;height:34px;border-radius:50%;flex-shrink:0;
-  background:linear-gradient(135deg,var(--amber),var(--gold));
-  display:flex;align-items:center;justify-content:center;
-  font-size:.85rem;font-weight:800;color:var(--forest-dk);
-}
+.sb-avatar{width:34px;height:34px;border-radius:50%;flex-shrink:0;background:linear-gradient(135deg,var(--amber),var(--gold));display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:800;color:var(--forest-dk);}
 .sb-user-info .name{font-size:.8rem;font-weight:700;color:#fff;}
 .sb-user-info .role{font-size:.62rem;color:rgba(255,255,255,.35);margin-top:.05rem;}
 .sb-logout{margin-left:auto;background:none;border:none;cursor:pointer;color:rgba(255,255,255,.3);font-size:.9rem;transition:color .2s;padding:.2rem;}
 .sb-logout:hover{color:var(--red-lt);}
 
-/* ════ MAIN AREA ════ */
 .main{margin-left:var(--sb);flex:1;display:flex;flex-direction:column;min-height:100vh;transition:margin-left .28s cubic-bezier(.23,1,.32,1);}
 
-/* ── TOPBAR ── */
-.topbar{
-  height:var(--topbar);background:var(--panel);border-bottom:1px solid var(--border);
-  display:flex;align-items:center;padding:0 1.25rem;gap:.75rem;
-  position:sticky;top:0;z-index:200;box-shadow:0 1px 8px rgba(0,0,0,.05);
-}
-.hamburger{
-  display:none;width:36px;height:36px;border-radius:.45rem;
-  background:var(--linen);border:1px solid var(--border);
-  align-items:center;justify-content:center;
-  cursor:pointer;font-size:1.1rem;flex-shrink:0;transition:all .2s;
-}
+.topbar{height:var(--topbar);background:var(--panel);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 1.25rem;gap:.75rem;position:sticky;top:0;z-index:200;box-shadow:0 1px 8px rgba(0,0,0,.05);}
+.hamburger{display:none;width:36px;height:36px;border-radius:.45rem;background:var(--linen);border:1px solid var(--border);align-items:center;justify-content:center;cursor:pointer;font-size:1.1rem;flex-shrink:0;transition:all .2s;}
 .hamburger:hover{background:var(--parch);border-color:var(--amber);}
 .topbar-breadcrumb{display:flex;align-items:center;gap:.5rem;flex:1;min-width:0;}
 .topbar-breadcrumb .page-name{font-size:.92rem;font-weight:700;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .topbar-actions{display:flex;align-items:center;gap:.6rem;flex-shrink:0;}
-.top-chip{
-  display:flex;align-items:center;gap:.4rem;background:var(--linen);border:1px solid var(--border);
-  padding:.35rem .8rem;border-radius:.45rem;font-size:.72rem;color:var(--text2);white-space:nowrap;
-}
-.top-icon-btn{
-  width:34px;height:34px;border-radius:.45rem;background:var(--linen);border:1px solid var(--border);
-  display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:.95rem;transition:all .2s;position:relative;
-}
+.top-chip{display:flex;align-items:center;gap:.4rem;background:var(--linen);border:1px solid var(--border);padding:.35rem .8rem;border-radius:.45rem;font-size:.72rem;color:var(--text2);white-space:nowrap;}
+.top-icon-btn{width:34px;height:34px;border-radius:.45rem;background:var(--linen);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:.95rem;transition:all .2s;position:relative;}
 .top-icon-btn:hover{background:var(--parch);border-color:var(--amber);}
 .notif-dot{position:absolute;top:5px;right:5px;width:7px;height:7px;border-radius:50%;background:var(--red);border:2px solid var(--panel);}
-.btn-view-site{
-  background:var(--forest);color:#fff;border:none;padding:.38rem 1rem;border-radius:.45rem;
-  font-family:'Plus Jakarta Sans',sans-serif;font-size:.73rem;font-weight:700;
-  cursor:pointer;transition:all .2s;white-space:nowrap;display:flex;align-items:center;gap:.35rem;
-}
+.btn-view-site{background:var(--forest);color:#fff;border:none;padding:.38rem 1rem;border-radius:.45rem;font-family:'Plus Jakarta Sans',sans-serif;font-size:.73rem;font-weight:700;cursor:pointer;transition:all .2s;white-space:nowrap;display:flex;align-items:center;gap:.35rem;}
 .btn-view-site:hover{background:var(--sage);}
 
-/* ── CONTENT ── */
 .content{padding:1.5rem;flex:1;min-width:0;}
 .page{animation:fadeIn .2s ease;}
 @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
 
-/* ════ SHARED COMPONENTS ════ */
+/* ── LOADING SKELETON ── */
+.skeleton{background:linear-gradient(90deg,var(--parch) 25%,var(--linen) 50%,var(--parch) 75%);background-size:200% 100%;animation:shimmer 1.5s infinite;border-radius:.35rem;height:38px;width:100%;}
+@keyframes shimmer{0%{background-position:200% 0;}100%{background-position:-200% 0;}}
+
+/* ── PANEL ── */
 .panel{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);}
 .panel-hd{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 1.4rem;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:.5rem;}
 .panel-hd-left .ph-title{font-size:.9rem;font-weight:700;color:var(--text);}
@@ -164,6 +105,7 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--linen);color:va
 .btn-md{font-size:.78rem;padding:.5rem 1.1rem;}
 .btn-primary{background:linear-gradient(135deg,var(--forest),var(--sage));color:#fff;box-shadow:0 2px 12px rgba(43,74,26,.3);}
 .btn-primary:hover{box-shadow:0 4px 20px rgba(43,74,26,.45);transform:translateY(-1px);}
+.btn-primary:disabled{opacity:.55;cursor:not-allowed;transform:none;}
 .btn-ghost{background:var(--linen);color:var(--text2);border:1px solid var(--border);}
 .btn-ghost:hover{border-color:var(--amber);background:var(--parch);}
 .btn-danger{background:var(--red-lt);color:var(--red);border:1px solid #FCA5A5;}
@@ -177,6 +119,21 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--linen);color:va
 .fg textarea{resize:vertical;min-height:76px;}
 .fg select option{background:#fff;}
 .fg .fg-hint{font-size:.65rem;color:var(--text4);margin-top:.28rem;}
+
+/* ── SAVE STATUS STRIP ── */
+.save-strip{display:flex;align-items:center;gap:.5rem;font-size:.72rem;color:var(--text3);margin-top:.75rem;}
+.save-strip .dot{width:7px;height:7px;border-radius:50%;background:var(--text4);flex-shrink:0;transition:background .3s;}
+.save-strip.saved .dot{background:var(--sage-lt);}
+.save-strip.saving .dot{background:var(--amber);animation:pulse .8s infinite;}
+.save-strip.error .dot{background:var(--red);}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
+
+/* ── BLOCKED DATE ROWS ── */
+.bd-row{display:flex;align-items:center;gap:.75rem;padding:.55rem .75rem;background:var(--red-lt);border:1px solid #FCA5A5;border-radius:.4rem;margin-bottom:.45rem;transition:opacity .2s;}
+.bd-row.removing{opacity:.4;}
+.bd-row .bd-info{flex:1;font-size:.8rem;}
+.bd-row .bd-info strong{color:var(--text);}
+.bd-row .bd-info span{color:var(--text3);}
 
 /* ── NOTIFICATIONS ── */
 .notif-dropdown{position:absolute;top:calc(100% + 8px);right:0;width:300px;background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow-lg);z-index:500;display:none;}
@@ -196,33 +153,15 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--linen);color:va
 .toast.t-ok{border-left-color:var(--sage-lt);}
 .toast.t-err{border-left-color:var(--red);}
 
-/* ════ RESPONSIVE ════ */
-@media(min-width:769px){
-  .sb{ transform:translateX(0) !important; }
-  .main{ margin-left:var(--sb) !important; }
-  .hamburger{ display:none !important; }
-  .sb-overlay{ display:none !important; }
-  .sb-close-btn{ display:none !important; }
-}
-@media(max-width:768px){
-  :root{ --sb:240px; }
-  .sb{ transform:translateX(-100%);position:fixed;top:0;left:0;bottom:0;z-index:300;width:var(--sb); }
-  .sb.open{ transform:translateX(0); }
-  .main{ margin-left:0 !important;width:100%; }
-  .hamburger{ display:flex !important; }
-  .sb-close-btn{ display:flex !important; }
-  .top-chip{ display:none; }
-  .content{ padding:1rem .75rem; }
-  .row.cols-2{ grid-template-columns:1fr; }
-  .btn-view-site{ font-size:.65rem;padding:.35rem .65rem; }
-}
+@media(min-width:769px){.sb{transform:translateX(0) !important;}.main{margin-left:var(--sb) !important;}.hamburger{display:none !important;}.sb-overlay{display:none !important;}.sb-close-btn{display:none !important;}}
+@media(max-width:768px){:root{--sb:240px;}.sb{transform:translateX(-100%);position:fixed;top:0;left:0;bottom:0;z-index:300;width:var(--sb);}.sb.open{transform:translateX(0);}.main{margin-left:0 !important;width:100%;}.hamburger{display:flex !important;}.sb-close-btn{display:flex !important;}.top-chip{display:none;}.content{padding:1rem .75rem;}.row.cols-2{grid-template-columns:1fr;}.btn-view-site{font-size:.65rem;padding:.35rem .65rem;}}
 </style>
 </head>
 <body>
 
 <div class="sb-overlay" id="sb-overlay" onclick="closeSidebar()"></div>
 
-<!-- ════ SIDEBAR ════ -->
+<!-- SIDEBAR -->
 <aside class="sb" id="sidebar">
   <div class="sb-brand">
     <div class="sb-logo">🌴</div>
@@ -232,31 +171,22 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--linen);color:va
     </div>
     <button class="sb-close-btn" onclick="closeSidebar()">✕</button>
   </div>
-
-<nav style="flex:1;overflow-y:auto;padding:.5rem 0;">
+  <nav style="flex:1;overflow-y:auto;padding:.5rem 0;">
     <div class="sb-group-label">Overview</div>
     <a href="admin_dashboard.html" class="sb-item"><span class="ico">📊</span><span class="lbl">Dashboard</span></a>
     <a href="admin_analytics.html" class="sb-item"><span class="ico">📈</span><span class="lbl">Analytics & Reports</span></a>
-
     <div class="sb-group-label">Reservations</div>
-    <a href="bookings.html" class="sb-item">
-      <span class="ico">📅</span><span class="lbl">All Bookings</span>
-      <span class="badge" id="sb-pending-badge" style="display:none">0</span>
-    </a>
+    <a href="bookings.html" class="sb-item"><span class="ico">📅</span><span class="lbl">All Bookings</span><span class="badge" id="sb-pending-badge" style="display:none">0</span></a>
     <a href="newbooking.html" class="sb-item"><span class="ico">➕</span><span class="lbl">New Booking</span></a>
     <a href="calendar.html" class="sb-item"><span class="ico">🗓️</span><span class="lbl">Booking Calendar</span></a>
     <a href="guest.html" class="sb-item"><span class="ico">👥</span><span class="lbl">Guest Directory</span></a>
-
     <div class="sb-group-label">Property</div>
     <a href="rooms.html" class="sb-item"><span class="ico">🏠</span><span class="lbl">Room Management</span></a>
     <a href="rules_pricing.html" class="sb-item active"><span class="ico">💰</span><span class="lbl">Pricing & Rules</span></a>
-
     <div class="sb-group-label">System</div>
     <a href="logs.html" class="sb-item"><span class="ico">🕐</span><span class="lbl">Activity Log</span></a>
     <a href="configuration.html" class="sb-item"><span class="ico">⚙️</span><span class="lbl">Settings</span></a>
   </nav>
-
-
   <div class="sb-footer">
     <div class="sb-user">
       <div class="sb-avatar">A</div>
@@ -269,10 +199,9 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--linen);color:va
   </div>
 </aside>
 
-<!-- ════ MAIN ════ -->
+<!-- MAIN -->
 <div class="main" id="main">
 
-  <!-- TOPBAR -->
   <header class="topbar">
     <button class="hamburger" id="hamburger" onclick="openSidebar()">☰</button>
     <div class="topbar-breadcrumb">
@@ -282,7 +211,7 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--linen);color:va
       <div class="top-chip">📅 <span id="today-label"></span></div>
       <div style="position:relative;">
         <div class="top-icon-btn" onclick="toggleNotifs()" id="notif-btn">
-          🔔<div class="notif-dot" id="notif-dot"></div>
+          🔔<div class="notif-dot" id="notif-dot" style="display:none"></div>
         </div>
         <div class="notif-dropdown" id="notif-panel">
           <div class="notif-hd"><span>Notifications</span><button class="btn btn-sm btn-ghost" onclick="clearNotifs()">Clear all</button></div>
@@ -293,61 +222,116 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--linen);color:va
     </div>
   </header>
 
-  <!-- ════ CONTENT ════ -->
   <div class="content">
     <div class="page" id="page-pricing">
-      <div class="row cols-2">
-        <div class="panel">
-          <div class="panel-hd">
-            <div class="panel-hd-left"><div class="ph-title">Base Pricing</div><div class="ph-sub">Applied to all bookings by default</div></div>
-          </div>
-          <div class="panel-body">
-            <div class="fg"><label>Standard Rate (₱ per booking)</label><input type="number" id="pr-rate" value="1999"><div class="fg-hint">This applies to both suites</div></div>
-            <div class="fg"><label>Stay Duration (hours)</label><input type="number" id="pr-hrs" value="21"><div class="fg-hint">Check-out = check-in + this many hours</div></div>
-            <div class="fg"><label>Minimum Guests</label><input type="number" id="pr-minpx" value="1"></div>
-            <div class="fg"><label>Maximum Guests Per Room</label><input type="number" id="pr-maxpx" value="4"></div>
-            <button class="btn btn-primary btn-md" onclick="savePricing()">Save Pricing</button>
-          </div>
-        </div>
-        <div class="panel">
-          <div class="panel-hd">
-            <div class="panel-hd-left"><div class="ph-title">Booking Policies</div></div>
-          </div>
-          <div class="panel-body">
-            <div class="fg"><label>Cancellation Policy</label>
-              <select id="pr-cancel">
-                <option value="flexible">Flexible — Full refund if cancelled before check-in</option>
-                <option value="moderate">Moderate — 50% refund if cancelled 24hrs before</option>
-                <option value="strict">Strict — No refund</option>
-              </select>
-            </div>
-            <div class="fg"><label>Check-in Instructions</label><textarea id="pr-checkin-note">Call the owner upon arrival. Gate code will be shared on confirmation.</textarea></div>
-            <div class="fg"><label>House Rules</label><textarea id="pr-rules">No smoking inside. No pets. No outside visitors. Quiet hours: 10PM–7AM.</textarea></div>
-            <button class="btn btn-primary btn-md" onclick="savePolicies()">Save Policies</button>
-          </div>
-        </div>
+
+      <!-- Loading state -->
+      <div id="loading-state" class="row cols-2" style="margin-bottom:1.1rem;">
+        <div class="panel"><div class="panel-body" style="display:flex;flex-direction:column;gap:.75rem;"><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton" style="height:28px;width:40%;"></div></div></div>
+        <div class="panel"><div class="panel-body" style="display:flex;flex-direction:column;gap:.75rem;"><div class="skeleton"></div><div class="skeleton" style="height:76px;"></div><div class="skeleton" style="height:28px;width:40%;"></div></div></div>
       </div>
 
-      <div class="panel">
-        <div class="panel-hd">
-          <div class="panel-hd-left"><div class="ph-title">Blocked Dates</div><div class="ph-sub">Mark dates as unavailable</div></div>
-          <div class="panel-hd-actions"><button class="btn btn-primary btn-sm" onclick="addBlockedDate()">+ Add Date</button></div>
-        </div>
-        <div class="panel-body">
-          <div id="blocked-dates-list"></div>
-          <div style="display:none;gap:.7rem;align-items:flex-end;flex-wrap:wrap;margin-top:.5rem;" id="blocked-date-form">
-            <div class="fg" style="flex:1;margin:0;min-width:140px;"><label>Date</label><input type="date" id="bd-date"></div>
-            <div class="fg" style="flex:1;margin:0;min-width:140px;"><label>Suite</label>
-              <select id="bd-rm"><option value="both">Both Suites</option><option value="1">Suite 1 only</option><option value="2">Suite 2 only</option></select>
+      <!-- Actual content (hidden until loaded) -->
+      <div id="main-content" style="display:none;">
+        <div class="row cols-2">
+
+          <!-- Base Pricing -->
+          <div class="panel">
+            <div class="panel-hd">
+              <div class="panel-hd-left">
+                <div class="ph-title">Base Pricing</div>
+                <div class="ph-sub">Applied to all bookings by default</div>
+              </div>
             </div>
-            <div class="fg" style="flex:2;margin:0;min-width:160px;"><label>Reason</label><input type="text" id="bd-reason" placeholder="Maintenance, personal use…"></div>
-            <button class="btn btn-primary btn-md" onclick="saveBlockedDate()">Add</button>
+            <div class="panel-body">
+              <div class="fg">
+                <label>Standard Rate (₱ per booking)</label>
+                <input type="number" id="pr-rate" min="0" placeholder="1999">
+                <div class="fg-hint">This applies to both suites</div>
+              </div>
+              <div class="fg">
+                <label>Stay Duration (hours)</label>
+                <input type="number" id="pr-hrs" min="1" placeholder="21">
+                <div class="fg-hint">Check-out = check-in + this many hours</div>
+              </div>
+              <div class="fg">
+                <label>Minimum Guests</label>
+                <input type="number" id="pr-minpx" min="1" placeholder="1">
+              </div>
+              <div class="fg">
+                <label>Maximum Guests Per Room</label>
+                <input type="number" id="pr-maxpx" min="1" placeholder="4">
+              </div>
+              <button class="btn btn-primary btn-md" id="btn-save-pricing" onclick="savePricing()">Save Pricing</button>
+              <div class="save-strip" id="strip-pricing"><span class="dot"></span><span class="strip-msg"></span></div>
+            </div>
+          </div>
+
+          <!-- Booking Policies -->
+          <div class="panel">
+            <div class="panel-hd">
+              <div class="panel-hd-left"><div class="ph-title">Booking Policies</div></div>
+            </div>
+            <div class="panel-body">
+              <div class="fg">
+                <label>Cancellation Policy</label>
+                <select id="pr-cancel">
+                  <option value="flexible">Flexible — Full refund if cancelled before check-in</option>
+                  <option value="moderate">Moderate — 50% refund if cancelled 24hrs before</option>
+                  <option value="strict">Strict — No refund</option>
+                </select>
+              </div>
+              <div class="fg">
+                <label>Check-in Instructions</label>
+                <textarea id="pr-checkin-note" placeholder="Call the owner upon arrival. Gate code will be shared on confirmation."></textarea>
+              </div>
+              <div class="fg">
+                <label>House Rules</label>
+                <textarea id="pr-rules" placeholder="No smoking inside. No pets. No outside visitors. Quiet hours: 10PM–7AM."></textarea>
+              </div>
+              <button class="btn btn-primary btn-md" id="btn-save-policies" onclick="savePolicies()">Save Policies</button>
+              <div class="save-strip" id="strip-policies"><span class="dot"></span><span class="strip-msg"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Blocked Dates -->
+        <div class="panel">
+          <div class="panel-hd">
+            <div class="panel-hd-left">
+              <div class="ph-title">Blocked Dates</div>
+              <div class="ph-sub">Mark dates as unavailable</div>
+            </div>
+            <div class="panel-hd-actions">
+              <button class="btn btn-primary btn-sm" onclick="toggleBlockedForm()">+ Add Date</button>
+            </div>
+          </div>
+          <div class="panel-body">
+            <!-- Add form -->
+            <div style="display:none;gap:.7rem;align-items:flex-end;flex-wrap:wrap;margin-bottom:1rem;padding:.9rem;background:var(--linen);border-radius:.5rem;border:1px solid var(--border);" id="blocked-date-form">
+              <div class="fg" style="flex:1;margin:0;min-width:140px;"><label>Date</label><input type="date" id="bd-date"></div>
+              <div class="fg" style="flex:1;margin:0;min-width:140px;">
+                <label>Suite</label>
+                <select id="bd-rm">
+                  <option value="both">Both Suites</option>
+                  <option value="1">Suite 1 only</option>
+                  <option value="2">Suite 2 only</option>
+                </select>
+              </div>
+              <div class="fg" style="flex:2;margin:0;min-width:160px;"><label>Reason (optional)</label><input type="text" id="bd-reason" placeholder="Maintenance, personal use…"></div>
+              <div style="display:flex;gap:.5rem;padding-bottom:.9rem;">
+                <button class="btn btn-primary btn-md" id="btn-add-bd" onclick="saveBlockedDate()">Add</button>
+                <button class="btn btn-ghost btn-md" onclick="toggleBlockedForm()">Cancel</button>
+              </div>
+            </div>
+
+            <!-- List -->
+            <div id="blocked-dates-list"></div>
           </div>
         </div>
       </div>
     </div>
   </div>
-
 </div>
 
 <!-- TOAST -->
@@ -355,125 +339,349 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--linen);color:va
 
 <script>
 'use strict';
-const BK_KEY='en3', LOG_KEY='en3_log', CFG_KEY='en3_cfg';
-let BK=[], LOG=[], CFG={}, blockedDates=[], notifs=[], bdFormVisible=false;
 
-/* ── SIDEBAR TOGGLE ── */
-function openSidebar(){
+/* ══════════════════════════════════════════
+   API helpers
+══════════════════════════════════════════ */
+const API = '/api/settings';
+
+async function apiGet() {
+  const r = await fetch(API);
+  if (!r.ok) throw new Error(`GET ${r.status}`);
+  return r.json();
+}
+
+async function apiPut(body) {
+  const r = await fetch(API, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body),
+  });
+  if (!r.ok) {
+    const err = await r.json().catch(() => ({}));
+    throw new Error(err.message || `PUT ${r.status}`);
+  }
+  return r.json();
+}
+
+async function apiPatch(body) {
+  const r = await fetch(API, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body),
+  });
+  if (!r.ok) {
+    const err = await r.json().catch(() => ({}));
+    throw new Error(err.message || `PATCH ${r.status}`);
+  }
+  return r.json();
+}
+
+/* ══════════════════════════════════════════
+   State
+══════════════════════════════════════════ */
+let blockedDates = [];
+let bdFormVisible = false;
+let notifs = [];
+
+/* ══════════════════════════════════════════
+   Sidebar
+══════════════════════════════════════════ */
+function openSidebar() {
   document.getElementById('sidebar').classList.add('open');
   document.getElementById('sb-overlay').classList.add('visible');
-  document.body.style.overflow='hidden';
+  document.body.style.overflow = 'hidden';
 }
-function closeSidebar(){
+function closeSidebar() {
   document.getElementById('sidebar').classList.remove('open');
   document.getElementById('sb-overlay').classList.remove('visible');
-  document.body.style.overflow='';
+  document.body.style.overflow = '';
 }
-document.querySelectorAll('.sb-item').forEach(btn=>{
-  btn.addEventListener('click',()=>{ if(window.innerWidth<=768) closeSidebar(); });
+document.querySelectorAll('.sb-item').forEach(btn => {
+  btn.addEventListener('click', () => { if (window.innerWidth <= 768) closeSidebar(); });
 });
 
-/* ── INIT ── */
-function init(){
-  loadAll();
+/* ══════════════════════════════════════════
+   Init — load settings from API
+══════════════════════════════════════════ */
+async function init() {
   setTopbarDate();
-  renderPendingBadge();
-  renderNotifs();
-  renderBlockedDates();
+
+  try {
+    const cfg = await apiGet();
+
+    // Populate pricing fields
+    setVal('pr-rate',         cfg.prRate        ?? 1999);
+    setVal('pr-hrs',          cfg.prHrs         ?? 21);
+    setVal('pr-minpx',        cfg.prMinPx       ?? 1);
+    setVal('pr-maxpx',        cfg.prMaxPx       ?? 4);
+
+    // Populate policies fields
+    setVal('pr-cancel',       cfg.prCancelPolicy ?? 'flexible');
+    setVal('pr-checkin-note', cfg.prCheckinNote  ?? 'Call the owner upon arrival. Gate code will be shared on confirmation.');
+    setVal('pr-rules',        cfg.prHouseRules   ?? 'No smoking inside. No pets. No outside visitors. Quiet hours: 10PM–7AM.');
+
+    // Blocked dates
+    blockedDates = Array.isArray(cfg.blockedDates) ? cfg.blockedDates : [];
+    renderBlockedDates();
+
+    // Admin name
+    if (cfg.adminName) document.getElementById('admin-display-name').textContent = cfg.adminName;
+
+  } catch (err) {
+    console.error('Failed to load settings:', err);
+    showToast('Could not load settings — showing defaults', '⚠️', 't-err');
+  }
+
+  // Show content, hide skeleton
+  document.getElementById('loading-state').style.display = 'none';
+  document.getElementById('main-content').style.display = 'block';
 }
 
-function loadAll(){
-  try{ BK=JSON.parse(localStorage.getItem(BK_KEY)||'[]'); }catch(e){ BK=[]; }
-  try{ LOG=JSON.parse(localStorage.getItem(LOG_KEY)||'[]'); }catch(e){ LOG=[]; }
-  try{ CFG=JSON.parse(localStorage.getItem(CFG_KEY)||'{}'); }catch(e){ CFG={}; }
-  blockedDates=CFG.blockedDates||[];
-  document.getElementById('admin-display-name').textContent=CFG.adminName||'Admin';
-}
+/* ══════════════════════════════════════════
+   Save Pricing
+══════════════════════════════════════════ */
+async function savePricing() {
+  const btn = document.getElementById('btn-save-pricing');
+  const strip = document.getElementById('strip-pricing');
 
-function saveAll(){
-  localStorage.setItem(BK_KEY, JSON.stringify(BK));
-  localStorage.setItem(LOG_KEY, JSON.stringify(LOG));
-  CFG.blockedDates=blockedDates;
-  localStorage.setItem(CFG_KEY, JSON.stringify(CFG));
-}
+  const prRate  = parseFloat(g('pr-rate')?.value);
+  const prHrs   = parseFloat(g('pr-hrs')?.value);
+  const prMinPx = parseInt(g('pr-minpx')?.value);
+  const prMaxPx = parseInt(g('pr-maxpx')?.value);
 
-/* ── PRICING ── */
-function savePricing(){
-  LOG.unshift({type:'ok',msg:'Pricing settings updated',time:new Date().toISOString()});
-  saveAll();
-  showToast('Pricing saved!','✅','t-ok');
-}
-
-function savePolicies(){
-  LOG.unshift({type:'ok',msg:'Booking policies updated',time:new Date().toISOString()});
-  saveAll();
-  showToast('Policies saved!','✅','t-ok');
-}
-
-function renderBlockedDates(){
-  const wrap=document.getElementById('blocked-dates-list'); if(!wrap) return;
-  if(!blockedDates.length){
-    wrap.innerHTML=`<div style="font-size:.78rem;color:var(--text3);font-style:italic;margin-bottom:.75rem;">No blocked dates added yet.</div>`;
+  if (isNaN(prRate) || isNaN(prHrs) || isNaN(prMinPx) || isNaN(prMaxPx)) {
+    showToast('Please fill in all pricing fields', '⚠️', 't-err');
     return;
   }
-  wrap.innerHTML=blockedDates.map((bd,i)=>`
-    <div style="display:flex;align-items:center;gap:.75rem;padding:.55rem .75rem;background:var(--red-lt);border:1px solid #FCA5A5;border-radius:.4rem;margin-bottom:.45rem;">
-      <div style="flex:1;font-size:.8rem;"><strong>${bd.date}</strong> — Suite ${bd.rm==='both'?'1 & 2':bd.rm} <span style="color:var(--text3);">(${bd.reason||'No reason'})</span></div>
-      <button class="btn btn-sm btn-danger" onclick="removeBlockedDate(${i})">Remove</button>
+  if (prMinPx > prMaxPx) {
+    showToast('Min guests cannot exceed max guests', '⚠️', 't-err');
+    return;
+  }
+
+  setStrip(strip, 'saving', 'Saving…');
+  btn.disabled = true;
+  btn.textContent = 'Saving…';
+
+  try {
+    await apiPut({ prRate, prHrs, prMinPx, prMaxPx });
+    setStrip(strip, 'saved', `Saved ${fmtTime(new Date())}`);
+    showToast('Pricing saved!', '✅', 't-ok');
+  } catch (err) {
+    setStrip(strip, 'error', 'Save failed');
+    showToast('Failed to save pricing: ' + err.message, '❌', 't-err');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Save Pricing';
+  }
+}
+
+/* ══════════════════════════════════════════
+   Save Policies
+══════════════════════════════════════════ */
+async function savePolicies() {
+  const btn = document.getElementById('btn-save-policies');
+  const strip = document.getElementById('strip-policies');
+
+  const prCancelPolicy = g('pr-cancel')?.value;
+  const prCheckinNote  = g('pr-checkin-note')?.value?.trim();
+  const prHouseRules   = g('pr-rules')?.value?.trim();
+
+  setStrip(strip, 'saving', 'Saving…');
+  btn.disabled = true;
+  btn.textContent = 'Saving…';
+
+  try {
+    await apiPut({ prCancelPolicy, prCheckinNote, prHouseRules });
+    setStrip(strip, 'saved', `Saved ${fmtTime(new Date())}`);
+    showToast('Policies saved!', '✅', 't-ok');
+  } catch (err) {
+    setStrip(strip, 'error', 'Save failed');
+    showToast('Failed to save policies: ' + err.message, '❌', 't-err');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Save Policies';
+  }
+}
+
+/* ══════════════════════════════════════════
+   Blocked Dates
+══════════════════════════════════════════ */
+function toggleBlockedForm() {
+  bdFormVisible = !bdFormVisible;
+  const f = document.getElementById('blocked-date-form');
+  f.style.display = bdFormVisible ? 'flex' : 'none';
+  if (!bdFormVisible) {
+    g('bd-date').value = '';
+    g('bd-reason').value = '';
+  }
+}
+
+async function saveBlockedDate() {
+  const date   = g('bd-date')?.value;
+  const rm     = g('bd-rm')?.value;
+  const reason = g('bd-reason')?.value?.trim();
+
+  if (!date) { showToast('Please pick a date', '⚠️', 't-err'); return; }
+
+  const btn = document.getElementById('btn-add-bd');
+  btn.disabled = true;
+  btn.textContent = 'Adding…';
+
+  try {
+    const result = await apiPatch({ action: 'add', entry: { date, rm, reason } });
+    // Use server's returned array as source of truth
+    if (Array.isArray(result.blockedDates)) blockedDates = result.blockedDates;
+    else blockedDates.push({ date, rm, reason });
+
+    renderBlockedDates();
+    g('bd-date').value = '';
+    g('bd-reason').value = '';
+    showToast('Date blocked', '✅', 't-ok');
+  } catch (err) {
+    showToast('Failed to add blocked date: ' + err.message, '❌', 't-err');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Add';
+  }
+}
+
+async function removeBlockedDate(i) {
+  const bd = blockedDates[i];
+  if (!bd) return;
+
+  // Optimistic UI
+  const row = document.getElementById(`bd-row-${i}`);
+  if (row) row.classList.add('removing');
+
+  try {
+    const result = await apiPatch({ action: 'remove', date: bd.date, rm: bd.rm });
+    if (Array.isArray(result.blockedDates)) blockedDates = result.blockedDates;
+    else blockedDates.splice(i, 1);
+
+    renderBlockedDates();
+    showToast('Date unblocked', '✅', 't-ok');
+  } catch (err) {
+    if (row) row.classList.remove('removing');
+    showToast('Failed to remove: ' + err.message, '❌', 't-err');
+  }
+}
+
+function renderBlockedDates() {
+  const wrap = document.getElementById('blocked-dates-list');
+  if (!wrap) return;
+
+  if (!blockedDates.length) {
+    wrap.innerHTML = `<div style="font-size:.78rem;color:var(--text3);font-style:italic;">No blocked dates added yet.</div>`;
+    return;
+  }
+
+  // Sort by date ascending
+  const sorted = [...blockedDates].map((bd, idx) => ({ ...bd, _orig: idx }));
+  sorted.sort((a, b) => a.date.localeCompare(b.date));
+
+  wrap.innerHTML = sorted.map((bd) => `
+    <div class="bd-row" id="bd-row-${bd._orig}">
+      <div class="bd-info">
+        <strong>${bd.date}</strong>
+        — Suite ${bd.rm === 'both' ? '1 & 2' : bd.rm}
+        ${bd.reason ? `<span> · ${bd.reason}</span>` : ''}
+      </div>
+      <button class="btn btn-sm btn-danger" onclick="removeBlockedDate(${bd._orig})">Remove</button>
     </div>`).join('');
 }
 
-function addBlockedDate(){
-  const f=document.getElementById('blocked-date-form');
-  bdFormVisible=!bdFormVisible;
-  f.style.display=bdFormVisible?'flex':'none';
+/* ══════════════════════════════════════════
+   Save-strip helper
+══════════════════════════════════════════ */
+function setStrip(el, state, msg) {
+  el.className = 'save-strip ' + state;
+  el.querySelector('.strip-msg').textContent = msg;
 }
 
-function saveBlockedDate(){
-  const date=g('bd-date')?.value, rm=g('bd-rm')?.value, reason=g('bd-reason')?.value;
-  if(!date) return;
-  blockedDates.push({date,rm,reason});
-  saveAll();
-  renderBlockedDates();
-  if(g('bd-date')) g('bd-date').value='';
-  if(g('bd-reason')) g('bd-reason').value='';
-  showToast('Date blocked','✅','t-ok');
+/* ══════════════════════════════════════════
+   Notifications (local-only for now)
+══════════════════════════════════════════ */
+function renderNotifs() {
+  const wrap = document.getElementById('notif-list');
+  const dot  = document.getElementById('notif-dot');
+  if (!wrap) return;
+  const unread = notifs.filter(n => !n.read).length;
+  dot.style.display = unread > 0 ? 'block' : 'none';
+  if (!notifs.length) {
+    wrap.innerHTML = `<div style="padding:1.2rem;text-align:center;font-size:.8rem;color:var(--text3);">No notifications</div>`;
+    return;
+  }
+  wrap.innerHTML = notifs.slice(0, 8).map(n => `
+    <div class="notif-item${!n.read ? ' unread' : ''}">
+      <div class="notif-item-title">${n.msg}</div>
+      <div class="notif-item-time">${fmtAgo(n.time)}</div>
+    </div>`).join('');
 }
-
-function removeBlockedDate(i){
-  blockedDates.splice(i,1);
-  saveAll();
-  renderBlockedDates();
+function toggleNotifs() {
+  document.getElementById('notif-panel').classList.toggle('open');
+  notifs.forEach(n => n.read = true);
+  renderNotifs();
 }
-
-/* ── PENDING BADGE ── */
-function renderPendingBadge(){ const n=BK.filter(b=>b.st==='pending').length; const b=document.getElementById('sb-pending-badge'); b.textContent=n; b.style.display=n>0?'inline':'none'; }
-
-/* ── NOTIFICATIONS ── */
-function renderNotifs(){
-  const wrap=document.getElementById('notif-list'); if(!wrap) return;
-  const dot=document.getElementById('notif-dot');
-  const unread=notifs.filter(n=>!n.read).length;
-  dot.style.display=unread>0?'block':'none';
-  if(!notifs.length){ wrap.innerHTML=`<div style="padding:1.2rem;text-align:center;font-size:.8rem;color:var(--text3);">No notifications</div>`; return; }
-  wrap.innerHTML=notifs.slice(0,8).map(n=>`<div class="notif-item${!n.read?' unread':''}"><div class="notif-item-title">${n.msg}</div><div class="notif-item-time">${fmtAgo(n.time)}</div></div>`).join('');
+function clearNotifs() {
+  notifs = [];
+  renderNotifs();
+  document.getElementById('notif-panel').classList.remove('open');
 }
-function toggleNotifs(){ document.getElementById('notif-panel').classList.toggle('open'); notifs.forEach(n=>n.read=true); renderNotifs(); }
-function clearNotifs(){ notifs=[]; renderNotifs(); document.getElementById('notif-panel').classList.remove('open'); }
-document.addEventListener('click',e=>{ if(!document.getElementById('notif-btn').contains(e.target)) document.getElementById('notif-panel').classList.remove('open'); });
+document.addEventListener('click', e => {
+  if (!document.getElementById('notif-btn').contains(e.target))
+    document.getElementById('notif-panel').classList.remove('open');
+});
 
-/* ── TOAST ── */
+/* ══════════════════════════════════════════
+   Toast
+══════════════════════════════════════════ */
 let toastTimer;
-function showToast(msg,ico='ℹ️',cls=''){ const t=document.getElementById('toast'); document.getElementById('toast-ico').textContent=ico; document.getElementById('toast-msg').textContent=msg; t.className='toast show '+(cls||''); clearTimeout(toastTimer); toastTimer=setTimeout(()=>t.classList.remove('show'),3500); }
+function showToast(msg, ico = 'ℹ️', cls = '') {
+  const t = document.getElementById('toast');
+  document.getElementById('toast-ico').textContent = ico;
+  document.getElementById('toast-msg').textContent = msg;
+  t.className = 'toast show ' + (cls || '');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 3500);
+}
 
-/* ── HELPERS ── */
-function g(id){ return document.getElementById(id); }
-function fmtAgo(iso){ const diff=(Date.now()-new Date(iso))/1000; if(diff<60) return'just now'; if(diff<3600) return`${Math.round(diff/60)}m ago`; if(diff<86400) return`${Math.round(diff/3600)}h ago`; return new Date(iso).toLocaleDateString('en-PH',{month:'short',day:'numeric'}); }
-function setTopbarDate(){ const d=new Date(); const el=document.getElementById('today-label'); if(el) el.textContent=d.toLocaleDateString('en-PH',{weekday:'short',month:'long',day:'numeric',year:'numeric'}); }
-function logout(){ if(confirm('Log out of admin panel?')) showToast('Logged out','👋'); }
+/* ══════════════════════════════════════════
+   Misc helpers
+══════════════════════════════════════════ */
+function g(id) { return document.getElementById(id); }
 
-/* ── START ── */
+function setVal(id, val) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.value = val ?? '';
+}
+
+function fmtTime(d) {
+  return d.toLocaleTimeString('en-PH', { hour: '2-digit', minute: '2-digit' });
+}
+
+function fmtAgo(iso) {
+  const diff = (Date.now() - new Date(iso)) / 1000;
+  if (diff < 60) return 'just now';
+  if (diff < 3600) return `${Math.round(diff / 60)}m ago`;
+  if (diff < 86400) return `${Math.round(diff / 3600)}h ago`;
+  return new Date(iso).toLocaleDateString('en-PH', { month: 'short', day: 'numeric' });
+}
+
+function setTopbarDate() {
+  const d = new Date();
+  const el = document.getElementById('today-label');
+  if (el) el.textContent = d.toLocaleDateString('en-PH', { weekday: 'short', month: 'long', day: 'numeric', year: 'numeric' });
+}
+
+function logout() {
+  if (confirm('Log out of admin panel?')) showToast('Logged out', '👋');
+}
+
+/* ── Start ── */
 init();
+renderNotifs();
 </script>
 </body>
 </html>
